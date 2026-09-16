@@ -1,0 +1,1146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mark Chester Santos | AI Automation Engineer & Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Mark Chester Santos - AI Automation Engineer, Prompt Engineer, and Full-Stack Developer. Creator of AI Engineering OS, Sonata LicenseDesk, and Enterprise Systems.">
+  <style>
+/* Mark Chester Santos Portfolio - Cyber Dark Glassmorphic Design System */
+:root {
+  --bg: #070913;
+  --bg-secondary: #0d1224;
+  --card-bg: rgba(16, 23, 42, 0.75);
+  --card-border: rgba(56, 189, 248, 0.16);
+  --card-hover-border: rgba(56, 189, 248, 0.5);
+  --primary: #38bdf8;
+  --primary-glow: rgba(56, 189, 248, 0.25);
+  --accent: #818cf8;
+  --accent-purple: #c084fc;
+  --success: #34d399;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+  background-color: var(--bg);
+  color: var(--text-main);
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.08) 0px, transparent 50%);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header & Nav */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7, 9, 19, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.nav-logo {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text-main);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-logo span {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero {
+  padding: 100px 0 70px;
+  text-align: center;
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--primary);
+}
+
+.hero h1 {
+  font-size: clamp(38px, 6vw, 64px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero h1 span.gradient {
+  background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p.lead {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 760px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+/* Stat Counters */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  border-color: var(--card-hover-border);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px var(--primary-glow);
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Sections */
+.section {
+  padding: 90px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  margin-bottom: 12px;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--primary);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+/* Project Cards Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 28px;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(12px);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  border-color: var(--card-hover-border);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 35px var(--primary-glow);
+}
+
+.project-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(129, 140, 248, 0.15);
+  color: var(--accent);
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+.project-card h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.project-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.project-highlights {
+  list-style: none;
+  margin-bottom: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 16px;
+}
+
+.project-highlights li {
+  font-size: 13px;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.project-highlights li::before {
+  content: "▹";
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.project-links {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.project-links a {
+  flex: 1;
+  text-align: center;
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+/* Architecture Blueprints Section */
+.blueprint-box {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  margin-top: 20px;
+}
+
+.blueprint-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.bp-tab {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.bp-tab:hover, .bp-tab.active {
+  color: #fff;
+  background: rgba(56, 189, 248, 0.15);
+}
+
+.blueprint-content {
+  display: none;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #cbd5e1;
+}
+
+.blueprint-content.active {
+  display: block;
+}
+
+.diagram-block {
+  background: #050811;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  white-space: pre-wrap;
+  margin-bottom: 20px;
+  color: #38bdf8;
+}
+
+/* Skills Matrix */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.skill-category {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+}
+
+.skill-category h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary);
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Experience & History */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  border-left: 2px solid rgba(56, 189, 248, 0.2);
+  padding-left: 32px;
+}
+
+.timeline-item {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -41px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 12px var(--primary);
+}
+
+.timeline-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.timeline-meta {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.timeline-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 50px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+footer a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero h1 { font-size: 34px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .blueprint-box { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-logo">Mark<span>.Santos</span></a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#blueprints">Architecture Blueprints</a></li>
+        <li><a href="#skills">Technical Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="mailto:chesrakzxc@gmail.com" class="btn btn-primary">Hire Me</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge-tag">
+        <span class="pulse"></span> Available for AI Automation & Full-Stack Roles
+      </div>
+      <h1>
+        Building Autonomous <span class="gradient">AI Pipelines</span><br>
+        & Scalable Full-Stack Systems
+      </h1>
+      <p class="lead">
+        Hi, I'm <strong>Mark Chester Santos</strong> — an AI Automation Engineer, Prompt Engineer, and Full-Stack Developer with 5+ years of programming experience. I architect multi-agent systems, serverless APIs, and production platforms operating with strict cost-discipline ($0/mo free-tier architectures).
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">⚡ Explore Key Projects</a>
+        <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          whodakingofhell
+        </a>
+        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+
+      <!-- Quick Metrics -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Production Apps Deployed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10,400+</div>
+          <div class="stat-label">Lines Enterprise Java Core (SMC)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">14-Stage</div>
+          <div class="stat-label">Automated AI Content Pipeline</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">11-Layer</div>
+          <div class="stat-label">Security Defense Architecture</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Production Applications & Frameworks</h2>
+        <p>A selection of production-grade systems spanning AI orchestration, enterprise backends, and full-stack SaaS.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="ai">AI & Automation</button>
+        <button class="filter-btn" data-filter="fullstack">Full-Stack SaaS</button>
+        <button class="filter-btn" data-filter="enterprise">Enterprise Systems</button>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: Sonata LicenseDesk -->
+        <div class="project-card" data-category="fullstack">
+          <span class="project-badge">Next.js 15 • React 19 • SaaS</span>
+          <h3>Sonata — Microsoft Setup Form (LicenseDesk)</h3>
+          <p>A production-grade booking platform for Microsoft account lifecycle management (Windows Activation, Office Activation) featuring full pipeline integration from form to fulfillment.</p>
+          <ul class="project-highlights">
+            <li>Discord webhook notifications with 3-attempt retry logic and Sentry monitoring.</li>
+            <li>Serverless API route with Zod schema validation, deduplication engine, and email rate limiting.</li>
+            <li>Cloudflare Turnstile bot protection, Resend transactional emails, and Supabase persistence.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tag">Next.js 15</span>
+            <span class="tag">React 19</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Tailwind CSS 4</span>
+            <span class="tag">Zod</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">Sentry</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/whodakingofhell/MarkChesterSantosSoftwareDeveloperAutomationEngineer" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Project 2: AI Engineering OS -->
+        <div class="project-card" data-category="ai">
+          <span class="project-badge">Open Source • Multi-Agent Framework</span>
+          <h3>AI Engineering OS & YouTube Pipeline</h3>
+          <p>A 13-section operating system for AI-assisted software engineering covering Vision, Architecture, Engineering, QA, Security, Automation, and Roadmap.</p>
+          <ul class="project-highlights">
+            <li>14-stage automated YouTube Content Pipeline (n8n + Python + LLM prompts) reducing manual production from hours to minutes.</li>
+            <li>QA Criticism Framework and Feature Score Rubric auto-injecting 10/10 quality gates into outputs.</li>
+            <li>10-persona Elite Team system with system-prompt-ready role files operating at $0/mo cost discipline.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tag">n8n</span>
+            <span class="tag">Python</span>
+            <span class="tag">Multi-Agent</span>
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">YouTube API v3</span>
+            <span class="tag">Gemini API</span>
+          </div>
+          <div class="project-links">
+            <a href="#blueprints" class="btn btn-secondary">View Blueprint</a>
+          </div>
+        </div>
+
+        <!-- Project 3: Philippine Skyland -->
+        <div class="project-card" data-category="fullstack">
+          <span class="project-badge">Next.js 16 • PostgreSQL • SaaS</span>
+          <h3>Philippine Skyland — Real Estate Platform</h3>
+          <p>Full-stack SaaS platform for Philippine real estate professionals featuring property listings, broker/appraiser profiles, transaction tracking, and client inquiry workflows.</p>
+          <ul class="project-highlights">
+            <li>13 Prisma database models, 14+ API endpoints, and RBAC (Admin, Broker, Appraiser, Client).</li>
+            <li>Built-in 11-layer security defense stack with CSRF protection, HMAC signing, and Turnstile CAPTCHA.</li>
+            <li>Multi-language support (English, Filipino, Chinese), dark/light mode, and AI chatbot widget.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tag">Next.js 16</span>
+            <span class="tag">Prisma ORM</span>
+            <span class="tag">PostgreSQL 16</span>
+            <span class="tag">NextAuth</span>
+            <span class="tag">Playwright E2E</span>
+            <span class="tag">Cloudinary</span>
+          </div>
+          <div class="project-links">
+            <a href="https://philippine-skyland.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live App</a>
+            <a href="https://github.com/whodakingofhell/MarkChesterSantosRealEstateProj" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Project 4: AI Appointment Assistant -->
+        <div class="project-card" data-category="ai">
+          <span class="project-badge">Serverless • Backend API • Vercel</span>
+          <h3>AI Appointment Assistant — Backend API</h3>
+          <p>A serverless appointment booking backend for remote PC support sessions (5-20 min via AnyDesk/TeamViewer) with Philippine timezone handling.</p>
+          <ul class="project-highlights">
+            <li>3 Vercel serverless functions: book-appointment (POST), list-appointments (GET), health (GET).</li>
+            <li>Supabase Row-Level Security (RLS), audit logging, rate limiting (5 bookings/IP/hr), and CORS restrictions.</li>
+            <li>Instant Discord webhook notifications for booking alerts with structured JSON payloads.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">Supabase (PostgreSQL)</span>
+            <span class="tag">Vercel Serverless</span>
+            <span class="tag">Discord Webhooks</span>
+            <span class="tag">Supabase CLI</span>
+          </div>
+          <div class="project-links">
+            <a href="https://appointment-backend-one.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">API Endpoint</a>
+          </div>
+        </div>
+
+        <!-- Project 5: SMC Inventory System -->
+        <div class="project-card" data-category="enterprise">
+          <span class="project-badge">Java 17 • MySQL 8.0 • Enterprise POS</span>
+          <h3>SMC Inventory System — Enterprise POS</h3>
+          <p>Complete enterprise-grade Point-of-Sale and inventory management system architected in clean layered architecture (Model-Service-Repository-UI) with 47 source files and 10,400+ lines of code.</p>
+          <ul class="project-highlights">
+            <li>Transaction-wrapped sales processing with SELECT FOR UPDATE row locking & deadlock retry.</li>
+            <li>Enterprise security: BCrypt password hashing (12 rounds), PreparedStatement SQL prevention, audit trails.</li>
+            <li>100+ automated tests (JUnit 5 + Mockito + H2) across model, repo, service, and live layers.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tag">Java 17</span>
+            <span class="tag">Swing + FlatLaf</span>
+            <span class="tag">MySQL 8.0</span>
+            <span class="tag">HikariCP</span>
+            <span class="tag">JUnit 5</span>
+            <span class="tag">Mockito</span>
+            <span class="tag">Gradle</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/whodakingofhell/MarkChesterSantosSoftwareDeveloperAutomationEngineer" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Project 6: AI-Ops Vault & PAIOS -->
+        <div class="project-card" data-category="ai">
+          <span class="project-badge">Obsidian • PAIOS • Knowledge Governance</span>
+          <h3>AI-Ops Vault & Multi-AI Document System</h3>
+          <p>Canonical document management system coordinating 6 AI tools (OpenCode, Claude, Codex, Gemini, ZCode, Copilot) through inbox-to-canonical promotion workflows.</p>
+          <ul class="project-highlights">
+            <li>13-section research knowledge base covering AI, Cloud, Cybersecurity, DevOps, and Engineering.</li>
+            <li>Designed PAIOS (Personal AI Operating System) governance layer with constitution and verification frameworks.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tag">Obsidian</span>
+            <span class="tag">PAIOS</span>
+            <span class="tag">Multi-AI Sync</span>
+            <span class="tag">Markdown Governance</span>
+          </div>
+          <div class="project-links">
+            <a href="#blueprints" class="btn btn-secondary">Explore PAIOS</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Architectural Blueprints Section -->
+  <section id="blueprints" class="section" style="background: rgba(13, 18, 36, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <h2>System Architecture Blueprints</h2>
+        <p>How I architect cost-efficient, enterprise-secure, and autonomous multi-agent pipelines.</p>
+      </div>
+
+      <div class="blueprint-box">
+        <div class="blueprint-tabs">
+          <button class="bp-tab active" data-target="bp-security">11-Layer Security Defense</button>
+          <button class="bp-tab" data-target="bp-pipeline">14-Stage AI Content Pipeline</button>
+          <button class="bp-tab" data-target="bp-cost">$0/Month Cost Discipline</button>
+          <button class="bp-tab" data-target="bp-pos">Enterprise POS Row-Locking</button>
+        </div>
+
+        <!-- Blueprint 1 -->
+        <div class="blueprint-content active" id="bp-security">
+          <div class="diagram-block">
+[Client Browser] 
+      │ 
+      ▼
+1. Cloudflare Turnstile CAPTCHA (Bot Protection)
+      │
+      ▼
+2. Rate Limiting (IP/Session Leaky Bucket)
+      │
+      ▼
+3. HMAC-SHA256 Request Signing
+      │
+      ▼
+4. Zod Schema Validation & Input Sanitization
+      │
+      ▼
+5. CSRF Protection Tokens
+      │
+      ▼
+6. NextAuth JWT Session Verification
+      │
+      ▼
+7. Role-Based Access Control (Admin, Broker, Appraiser, Client)
+      │
+      ▼
+8. BCrypt 12-Round Password Hashing
+      │
+      ▼
+9. PreparedStatements & Prisma ORM (SQL Injection Defense)
+      │
+      ▼
+10. Row-Level Security (RLS) & PostgreSQL 16 Isolation
+      │
+      ▼
+11. Audit Logging & Sentry Real-Time Alerting
+          </div>
+          <p>Implemented across Philippine Skyland and Sonata to deliver enterprise-grade security against unauthorized access, injection, brute-force, and automated bot scraping.</p>
+        </div>
+
+        <!-- Blueprint 2 -->
+        <div class="blueprint-content" id="bp-pipeline">
+          <div class="diagram-block">
+[Topic Intake / Webhook]
+      │
+      ▼
+1. Research & Trend Scraper (Perplexity / Brave API)
+      │
+      ▼
+2. Outline & Hook Generator (LLM Persona)
+      │
+      ▼
+3. Script Synthesizer (Gemini / Claude)
+      │
+      ▼
+4. Quality Gate: QA Criticism Framework (10/10 Score Rubric)
+      │
+      ▼
+5. Voice Synthesis (ElevenLabs API)
+      │
+      ▼
+6. Video Assets & B-Roll Assembly (FFmpeg + ComfyUI)
+      │
+      ▼
+7. Thumbnail Generator & Title A/B Scoring
+      │
+      ▼
+8. YouTube Data API v3 Automatic Upload & Tagging
+      │
+      ▼
+9. Analytics Webhook & Discord Performance Alerts
+          </div>
+          <p>Reduces manual video and documentation production time from hours to minutes using event-driven n8n triggers, Python microservices, and multi-model LLM prompts.</p>
+        </div>
+
+        <!-- Blueprint 3 -->
+        <div class="blueprint-content" id="bp-cost">
+          <div class="diagram-block">
++-------------------------------------------------------------------+
+|            $0/Month Cost-Discipline Production Stack              |
++-------------------------------------------------------------------+
+|  Compute / Hosting  | Vercel Serverless & GitHub Pages ($0/mo)    |
+|  Database / Storage | Supabase PostgreSQL + RLS Free Tier ($0/mo) |
+|  AI Inference       | Google AI Studio (Gemini Flash Free Quotas) |
+|  Authentication     | Supabase Auth / NextAuth JWT ($0/mo)        |
+|  Bot Protection     | Cloudflare Turnstile ($0/mo)                |
+|  Error Monitoring   | Sentry Developer Tier ($0/mo)               |
+|  Alerts / Webhooks  | Discord Webhook Embeds ($0/mo)              |
++-------------------------------------------------------------------+
+          </div>
+          <p>Delivers full production stability, automated CI/CD, and real-time observability without incurring recurring cloud overhead.</p>
+        </div>
+
+        <!-- Blueprint 4 -->
+        <div class="blueprint-content" id="bp-pos">
+          <div class="diagram-block">
+[POS Terminal Checkout] ──> [Spring/Java Controller] ──> [Sales Service]
+                                                              │
+                                            ┌─────────────────┴─────────────────┐
+                                            │ Transaction Begins                │
+                                            │ SELECT ... FOR UPDATE (Row Lock)  │
+                                            │ Stock Decrement & Price Verify    │
+                                            │ Audit Log Record Insert           │
+                                            │ Commit Transaction                │
+                                            └─────────────────┬─────────────────┘
+                                                              ▼
+                                               [Deadlock Retry with Backoff]
+          </div>
+          <p>Engineered in the SMC Inventory System across 10,400+ lines of Java 17, preventing race conditions during concurrent multi-terminal inventory deductions.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills Matrix -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Technical Arsenal</h2>
+        <p>Technologies, frameworks, and platforms applied across production environments.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>⚡ Languages</h3>
+          <div class="skill-list">
+            <span class="skill-item">Python</span>
+            <span class="skill-item">TypeScript</span>
+            <span class="skill-item">JavaScript</span>
+            <span class="skill-item">Java 17 (4 years)</span>
+            <span class="skill-item">SQL</span>
+            <span class="skill-item">C</span>
+            <span class="skill-item">HTML/CSS</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>🤖 AI & Prompt Engineering</h3>
+          <div class="skill-list">
+            <span class="skill-item">Claude (Anthropic)</span>
+            <span class="skill-item">OpenAI GPT</span>
+            <span class="skill-item">Gemini (Google)</span>
+            <span class="skill-item">Grok (xAI)</span>
+            <span class="skill-item">Perplexity</span>
+            <span class="skill-item">Multi-Agent Systems</span>
+            <span class="skill-item">Prompt Engineering</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>🎨 Frontend Development</h3>
+          <div class="skill-list">
+            <span class="skill-item">React 19 / 18</span>
+            <span class="skill-item">Next.js 15 / 16</span>
+            <span class="skill-item">Tailwind CSS 4 / 3.4</span>
+            <span class="skill-item">Radix UI</span>
+            <span class="skill-item">Framer Motion</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>🛠️ Backend & Databases</h3>
+          <div class="skill-list">
+            <span class="skill-item">Node.js</span>
+            <span class="skill-item">Vercel Serverless</span>
+            <span class="skill-item">PostgreSQL 16</span>
+            <span class="skill-item">Supabase (PostgreSQL)</span>
+            <span class="skill-item">MySQL 8.0</span>
+            <span class="skill-item">Prisma ORM</span>
+            <span class="skill-item">HikariCP</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>🚀 Automation & DevOps</h3>
+          <div class="skill-list">
+            <span class="skill-item">n8n</span>
+            <span class="skill-item">Docker</span>
+            <span class="skill-item">GitHub Actions</span>
+            <span class="skill-item">Python Automation</span>
+            <span class="skill-item">YouTube Data API v3</span>
+            <span class="skill-item">Discord Webhooks</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>🛡️ Security & Cloud</h3>
+          <div class="skill-list">
+            <span class="skill-item">Cloudflare Turnstile</span>
+            <span class="skill-item">HMAC-SHA256</span>
+            <span class="skill-item">Row-Level Security (RLS)</span>
+            <span class="skill-item">BCrypt Hashing</span>
+            <span class="skill-item">Vercel</span>
+            <span class="skill-item">Cloudflare</span>
+            <span class="skill-item">Railway</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience Section -->
+  <section id="experience" class="section" style="background: rgba(13, 18, 36, 0.3);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Professional Experience & Education</h2>
+        <p>Combining rigorous technical execution with proven customer-facing problem solving.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">Customer Service Representative</div>
+          <div class="timeline-meta">IBEX Global Solutions INC (Walmart) | Oct 2025 – Jun 2026</div>
+          <div class="timeline-desc">
+            Delivered technical and account support across phone, chat, and email channels. Resolved complex order, payment, and account anomalies by navigating multiple enterprise backend systems simultaneously while maintaining top CSAT and first-call resolution scores.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">Travel Associate</div>
+          <div class="timeline-meta">IGT Solutions (Atain) | Mar 2025 – Sep 2025</div>
+          <div class="timeline-desc">
+            Managed end-to-end reservations and modifications in high-volume, deadline-driven environments. Troubleshot booking engine errors, coordinated partner escalations, and collaborated with team leads to optimize average handle times (AHT).
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">Bachelor of Science in Information Technology</div>
+          <div class="timeline-meta">South Mansfield College | Jul 2017 – Aug 2023</div>
+          <div class="timeline-desc">
+            Focus on software architecture, database management, network security, and enterprise application development.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container" style="max-width: 700px; text-align: center;">
+      <div class="section-header">
+        <h2>Let's Build Something Exceptional</h2>
+        <p>I am available for full-time, contract, or remote roles in AI Automation, Prompt Engineering, and Full-Stack Development.</p>
+      </div>
+
+      <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 36px; backdrop-filter: blur(12px);">
+        <p style="font-size: 16px; margin-bottom: 24px; color: #cbd5e1;">Direct contact channels:</p>
+        <div style="display: flex; flex-direction: column; gap: 14px; align-items: center; margin-bottom: 28px;">
+          <a href="mailto:chesrakzxc@gmail.com" style="color: var(--primary); font-size: 18px; font-weight: 700; text-decoration: none;">
+            📧 chesrakzxc@gmail.com
+          </a>
+          <span style="color: var(--text-muted); font-size: 16px; font-weight: 600;">
+            📱 +63995-814-0991
+          </span>
+          <span style="color: var(--text-subtle); font-size: 14px;">
+            📍 Muntinlupa, Philippines 1772 (Philippine Timezone / Remote Ready)
+          </span>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <a href="mailto:chesrakzxc@gmail.com" class="btn btn-primary">Send Email</a>
+          <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit GitHub Profile</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Mark Chester Santos. Engineered with AI Automation & Full-Stack Rigor.</p>
+    </div>
+  </footer>
+
+  <script>
+// Mark Chester Santos Portfolio - Interactive Controller
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Project Category Filtering
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.getAttribute("data-filter");
+
+      projectCards.forEach(card => {
+        const category = card.getAttribute("data-category");
+        if (filter === "all" || category === filter) {
+          card.style.display = "flex";
+          setTimeout(() => {
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, 50);
+        } else {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(10px)";
+          setTimeout(() => {
+            card.style.display = "none";
+          }, 200);
+        }
+      });
+    });
+  });
+
+  // 2. Blueprint Tab Switching
+  const bpTabs = document.querySelectorAll(".bp-tab");
+  const bpContents = document.querySelectorAll(".blueprint-content");
+
+  bpTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      bpTabs.forEach(t => t.classList.remove("active"));
+      bpContents.forEach(c => c.classList.remove("active"));
+
+      tab.classList.add("active");
+      const targetId = tab.getAttribute("data-target");
+      const targetContent = document.getElementById(targetId);
+      if (targetContent) {
+        targetContent.classList.add("active");
+      }
+    });
+  });
+
+  // 3. Navbar scroll subtle shadow
+  window.addEventListener("scroll", () => {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 30) {
+      navbar.style.borderBottomColor = "rgba(56, 189, 248, 0.2)";
+      navbar.style.boxShadow = "0 8px 30px rgba(0, 0, 0, 0.5)";
+    } else {
+      navbar.style.borderBottomColor = "rgba(255, 255, 255, 0.07)";
+      navbar.style.boxShadow = "none";
+    }
+  });
+});
+</script>
+</body>
+</html>
