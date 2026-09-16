@@ -1,0 +1,44 @@
+﻿# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editor & IDE Files
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+*~
+
+# Environment & Secrets (Never commit secrets)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Temporary / Local Helper Scripts
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.temp/
+scratch/
+
+# Build & Dependency Artifacts
+node_modules/
+dist/
+build/
+.cache/
+.vercel
