@@ -4,27 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="YcaeUuoo-kEFDwEuasEwqpO5Ihl06qTV3i_UCVUo3NI" />
-  <title>Mark Chester R. Santos | AI Automation Engineer & Full-Stack Developer</title>
+  <title>Mark Chester Santos — AI Automation Engineer & Full-Stack Developer</title>
   
-  <meta name="description" content="Portfolio of Mark Chester R. Santos: AI Automation Engineer, Prompt Engineer, and Full-Stack Systems Architect specializing in autonomous agent workflows, enterprise LLM integration, and resilient distributed systems." />
-  <meta name="keywords" content="Mark Chester Santos, AI Automation Engineer, Prompt Engineer, Full-Stack Developer, AI Agents, LangChain, Composio, Next.js, Python, Philippines" />
+  <meta name="description" content="Official portfolio of Mark Chester R. Santos. AI Automation Engineer, Prompt Engineer, and Full-Stack Developer specializing in autonomous agent systems, high-concurrency backends, and Apple-grade digital experiences." />
+  <meta name="keywords" content="Mark Chester Santos, AI Automation Engineer, Prompt Engineer, Full-Stack Developer, AI Agents, Python, Java, Next.js, Philippines" />
   <meta name="author" content="Mark Chester R. Santos" />
   <meta name="robots" content="index, follow" />
-  
-  <!-- Open Graph / Social Cards -->
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mark-chester-santos-portfolio.vercel.app/" />
-  <meta property="og:title" content="Mark Chester R. Santos | AI Automation Engineer & Systems Architect" />
-  <meta property="og:description" content="Transforming complex operations into autonomous AI workflows, resilient multi-agent systems, and production web applications." />
+  <meta property="og:title" content="Mark Chester Santos — AI Automation Engineer & Full-Stack Developer" />
+  <meta property="og:description" content="Autonomous AI Pipelines, Enterprise Systems, and Apple-grade precision software architecture." />
   <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" />
 
-  <!-- Favicon / Brand Icon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='50%' stop-color='%23818cf8'/><stop offset='100%' stop-color='%23c084fc'/></linearGradient></defs><rect width='100' height='100' rx='28' fill='%23090d16'/><rect x='2' y='2' width='96' height='96' rx='26' fill='none' stroke='url(%23g)' stroke-width='3' stroke-opacity='0.6'/><path d='M22 68 V32 L36 52 L50 32 V68' fill='none' stroke='url(%23g)' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/><path d='M60 40 C60 33 76 33 76 40 C76 48 60 52 60 60 C60 67 76 67 76 60' fill='none' stroke='url(%23g)' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+  <!-- Apple Touch Icon & Favicon: Clean Apple Silicon Style MCS Monogram -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23000000'/><rect x='1' y='1' width='98' height='98' rx='21' fill='none' stroke='%23333336' stroke-width='2'/><path d='M26 70 V30 L40 50 L54 30 V70' fill='none' stroke='%23f5f5f7' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M62 40 C62 33 76 33 76 40 C76 48 62 52 62 60 C62 67 76 67 76 60' fill='none' stroke='%232997ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
 
-  <!-- Fonts & CDN Tailwind -->
+  <!-- Fonts: Inter & JetBrains Mono for Apple SF Pro aesthetics -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -32,46 +32,25 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'SFMono-Regular', 'Menlo', 'monospace'],
           },
           colors: {
-            brand: {
-              50: '#f0f9ff',
-              400: '#38bdf8',
-              500: '#0284c7',
-              600: '#0369a1',
-            },
-            accent: {
-              purple: '#a855f7',
-              cyan: '#06b6d4',
-              emerald: '#10b981',
-            },
-            dark: {
-              base: '#05070d',
-              surface: '#0c101d',
-              card: 'rgba(16, 23, 42, 0.65)',
-              border: 'rgba(255, 255, 255, 0.08)',
-              glass: 'rgba(255, 255, 255, 0.03)',
-            }
-          },
-          animation: {
-            'glow-pulse': 'glow 8s ease-in-out infinite alternate',
-            'float': 'float 6s ease-in-out infinite',
-            'island-drop': 'islandDrop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-          },
-          keyframes: {
-            glow: {
-              '0%': { opacity: '0.4', transform: 'scale(1)' },
-              '100%': { opacity: '0.8', transform: 'scale(1.08)' }
-            },
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-8px)' }
-            },
-            islandDrop: {
-              '0%': { transform: 'translate(-50%, -20px) scale(0.95)', opacity: '0' },
-              '100%': { transform: 'translate(-50%, 0) scale(1)', opacity: '1' }
+            apple: {
+              black: '#000000',
+              canvas: '#000000',
+              surface: '#161617',
+              card: '#1c1c1e',
+              border: '#2c2c2e',
+              borderSubtle: 'rgba(255, 255, 255, 0.08)',
+              textPrimary: '#f5f5f7',
+              textSecondary: '#86868b',
+              textTertiary: '#6e6e73',
+              blue: '#2997ff',
+              blueHover: '#0077ed',
+              green: '#30d158',
+              orange: '#ff9f0a',
+              purple: '#bf5af2',
             }
           }
         }
@@ -80,104 +59,109 @@
   </script>
 
   <style>
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #05070d; }
-    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 9999px; }
-    ::-webkit-scrollbar-thumb:hover { background: #334155; }
-
-    /* Glassmorphism & VisionOS Depth */
-    .vision-glass {
-      background: rgba(15, 23, 42, 0.72);
-      backdrop-filter: blur(28px) saturate(190%);
-      -webkit-backdrop-filter: blur(28px) saturate(190%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    /* Apple Clean Smooth Scrolling & Typography Defaults */
+    html {
+      background-color: #000000;
+      color: #f5f5f7;
+      letter-spacing: -0.015em;
     }
-    .vision-card {
-      position: relative;
-      background: rgba(13, 19, 36, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+    
+    /* Apple Cupertino Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #000000; }
+    ::-webkit-scrollbar-thumb { background: #2c2c2e; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3a3a3c; }
+
+    /* Apple Titanium Text Gradient */
+    .text-titanium {
+      background: linear-gradient(180deg, #FFFFFF 20%, #A1A1A6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Apple Frosted Glass / Vibrancy */
+    .apple-glass {
+      background: rgba(22, 22, 23, 0.8);
+      backdrop-filter: saturate(190%) blur(24px);
+      -webkit-backdrop-filter: saturate(190%) blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+    .apple-glass-pill {
+      background: rgba(26, 26, 28, 0.75);
+      backdrop-filter: saturate(190%) blur(20px);
+      -webkit-backdrop-filter: saturate(190%) blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* Apple Bento Card */
+    .apple-bento-card {
+      background: #161617;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
       overflow: hidden;
     }
-    .vision-card::before {
+    .apple-bento-card::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.14), transparent 40%);
-      opacity: 0;
-      transition: opacity 0.5s ease;
+      border-radius: 28px;
+      padding: 1px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
       pointer-events: none;
-      z-index: 1;
     }
-    .vision-card:hover::before {
-      opacity: 1;
-    }
-    .vision-card:hover {
-      border-color: rgba(56, 189, 248, 0.35);
-      transform: translateY(-4px) scale(1.006);
-      box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.15), 0 0 0 1px rgba(56, 189, 248, 0.2);
+    .apple-bento-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
     }
 
-    /* Ambient Background Mesh */
-    .ambient-glow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .ambient-orb {
-      position: absolute;
-      filter: blur(140px);
-      border-radius: 9999px;
-      opacity: 0.35;
-      mix-blend-mode: screen;
-    }
-
-    /* Dynamic Island Nav */
+    /* Dynamic Island Pill */
     .dynamic-island {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
-    .dynamic-island-content {
-      background: rgba(10, 15, 28, 0.85);
-      backdrop-filter: blur(32px) saturate(210%);
-      -webkit-backdrop-filter: blur(32px) saturate(210%);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    .dynamic-island.expanded {
+      width: 92%;
+      max-width: 680px;
+      border-radius: 32px;
+      padding: 20px 24px;
+    }
+
+    /* macOS Traffic Lights */
+    .mac-dot {
+      width: 12px;
+      height: 12px;
       border-radius: 9999px;
+      display: inline-block;
+    }
+    .mac-dot-close { background-color: #ff5f56; border: 1px solid #e0443e; }
+    .mac-dot-min { background-color: #ffbd2e; border: 1px solid #dea123; }
+    .mac-dot-max { background-color: #27c93f; border: 1px solid #1aab29; }
+
+    /* iOS Segmented Pill Controls */
+    .segmented-pill-active {
+      background: #2c2c2e;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     }
 
-    /* Interactive Badge */
-    .status-pill {
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34d399;
-    }
-
-    /* Haptic Toast */
-    #haptic-toast {
+    /* iOS Haptic Toast Alert */
+    #apple-toast {
       position: fixed;
-      top: 24px;
+      top: 18px;
       left: 50%;
-      transform: translateX(-50%) translateY(-100px);
+      transform: translateX(-50%) translateY(-90px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
       z-index: 200;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
       opacity: 0;
       pointer-events: none;
     }
-    #haptic-toast.show {
+    #apple-toast.show {
       transform: translateX(-50%) translateY(0);
       opacity: 1;
       pointer-events: auto;
@@ -185,591 +169,609 @@
   </style>
 </head>
 
-<body class="bg-[#05070d] text-slate-200 font-sans antialiased selection:bg-brand-500 selection:text-white relative min-h-screen">
+<body class="bg-black text-[#f5f5f7] font-sans antialiased selection:bg-[#2997ff] selection:text-white relative min-h-screen">
 
-  <!-- Ambient Lighting Layer -->
-  <div class="ambient-glow">
-    <div class="ambient-orb w-[650px] h-[650px] -top-40 left-1/4 bg-cyan-600/30 animate-glow-pulse"></div>
-    <div class="ambient-orb w-[600px] h-[600px] top-1/3 -right-40 bg-purple-700/25 animate-glow-pulse" style="animation-delay: 3s;"></div>
-    <div class="ambient-orb w-[700px] h-[700px] bottom-10 left-10 bg-blue-700/20 animate-glow-pulse" style="animation-delay: 5s;"></div>
+  <!-- iOS Dynamic Island Notification Toast -->
+  <div id="apple-toast" class="flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#1c1c1e] text-[#f5f5f7] text-xs font-medium border border-[rgba(255,255,255,0.16)] shadow-2xl">
+    <div class="w-2 h-2 rounded-full bg-[#30d158] animate-pulse"></div>
+    <span id="apple-toast-text">Action Completed</span>
   </div>
 
-  <!-- Dynamic Island Notification Toast (iPhone Style) -->
-  <div id="haptic-toast" class="flex items-center gap-3 px-5 py-2.5 rounded-full vision-glass text-sm text-white font-medium shadow-2xl border border-brand-400/40">
-    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-    <span id="toast-message">Copied to clipboard</span>
-  </div>
-
-  <!-- VisionOS Dynamic Island Navigation Pill -->
-  <header class="dynamic-island w-[94%] max-w-4xl">
-    <nav class="dynamic-island-content px-4 py-2.5 flex items-center justify-between transition-all duration-300">
+  <!-- iOS / macOS Top Bar & Dynamic Island -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 px-4 pointer-events-none">
+    <div id="dynamic-island-nav" class="dynamic-island pointer-events-auto bg-[#000000] border border-[rgba(255,255,255,0.14)] rounded-full px-4 py-2 flex items-center justify-between w-[95%] max-w-4xl">
       
-      <!-- Brand Logo: Custom MCS Monogram -->
-      <a href="#hero" class="flex items-center gap-3 group focus:outline-none" aria-label="Mark Chester Santos Home">
-        <div class="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-400 via-indigo-500 to-purple-600 p-[1.5px] shadow-lg shadow-cyan-500/20 transition-transform duration-300 group-hover:scale-105">
-          <div class="w-full h-full bg-[#090d18] rounded-[14px] flex items-center justify-center overflow-hidden">
-            <!-- Modern Geometric MCS SVG Logo -->
-            <svg class="w-7 h-7 transform transition-transform duration-300 group-hover:rotate-6" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#38bdf8" />
-                  <stop offset="50%" stop-color="#818cf8" />
-                  <stop offset="100%" stop-color="#c084fc" />
-                </linearGradient>
-              </defs>
-              <!-- M Glyph -->
-              <path d="M22 68 V32 L36 52 L50 32 V68" stroke="url(#logo-grad)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" />
-              <!-- CS Flow Glyph -->
-              <path d="M58 40 C58 33 76 33 76 40 C76 49 58 52 58 60 C58 67 76 67 76 60" stroke="url(#logo-grad)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" />
-              <!-- Core Cyber Pip -->
-              <circle cx="50" cy="50" r="3.5" fill="#38bdf8" />
-            </svg>
-          </div>
+      <!-- Left: Apple Silicon Style MCS Monogram -->
+      <a href="#hero" class="flex items-center gap-3 group focus:outline-none" aria-label="Mark Chester Santos">
+        <div class="w-8 h-8 rounded-[9px] bg-[#161617] border border-[rgba(255,255,255,0.16)] flex items-center justify-center transition-transform group-hover:scale-105">
+          <svg class="w-5 h-5" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26 70 V30 L40 50 L54 30 V70" stroke="#f5f5f7" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M62 40 C62 33 76 33 76 40 C76 48 62 52 62 60 C62 67 76 67 76 60" stroke="#2997ff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </div>
-        <div class="hidden sm:block">
-          <div class="text-sm font-extrabold tracking-tight text-white group-hover:text-brand-400 transition-colors">MARK SANTOS</div>
-          <div class="text-[10px] font-mono tracking-widest text-slate-400 uppercase">AI Automation Eng</div>
+        <div class="flex flex-col">
+          <span class="text-xs font-semibold text-white tracking-tight group-hover:text-[#2997ff] transition-colors">Mark Santos</span>
+          <span class="text-[10px] text-[#86868b] leading-tight">Pro Architect</span>
         </div>
       </a>
 
-      <!-- Navigation Links -->
-      <div class="hidden md:flex items-center space-x-1 text-xs font-medium text-slate-300">
-        <a href="#about" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">About</a>
-        <a href="#projects" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Projects</a>
-        <a href="#skills" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Capabilities</a>
-        <a href="#experience" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Experience</a>
-        <a href="#contact" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Contact</a>
+      <!-- Middle: Navigation Tabs -->
+      <div class="hidden md:flex items-center space-x-1 text-xs text-[#86868b] font-medium">
+        <a href="#about" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-[#1c1c1e] transition-all">Overview</a>
+        <a href="#projects" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-[#1c1c1e] transition-all">Projects</a>
+        <a href="#mac-terminal" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-[#1c1c1e] transition-all">Mac Console</a>
+        <a href="#specs" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-[#1c1c1e] transition-all">Tech Specs</a>
+        <a href="#experience" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-[#1c1c1e] transition-all">Experience</a>
       </div>
 
-      <!-- Action Pill: Sound Feedback & Quick Connect -->
-      <div class="flex items-center gap-2">
-        <!-- Audio Haptic Toggle Button -->
-        <button id="sound-toggle-btn" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-all text-xs" title="Toggle UI sound feedback" aria-label="Toggle Sound">
-          <span id="sound-icon">🔊</span>
-        </button>
-        
-        <!-- Live Status Pill -->
-        <div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full status-pill text-[11px] font-mono font-medium">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>Open for AI & Dev Roles</span>
+      <!-- Right: Island Status Pill & Primary CTA -->
+      <div class="flex items-center gap-2.5">
+        <!-- Live Status Dot -->
+        <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#1c1c1e] text-[11px] text-[#86868b] border border-[rgba(255,255,255,0.06)]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#30d158] animate-pulse"></span>
+          <span>Available</span>
         </div>
 
-        <!-- Direct Contact Action -->
-        <a href="#contact" class="px-4 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-md shadow-cyan-500/25 transition-all transform hover:scale-[1.03] active:scale-95">
-          Hire Me
+        <!-- Haptic Sound Toggle -->
+        <button id="sound-btn" class="w-7 h-7 rounded-full bg-[#1c1c1e] hover:bg-[#2c2c2e] border border-[rgba(255,255,255,0.08)] flex items-center justify-center text-[10px] text-[#86868b] hover:text-white transition-all" title="Toggle Sound Feedback">
+          <span id="sound-state">🔊</span>
+        </button>
+
+        <!-- Apple Blue Action Pill -->
+        <a href="#contact" class="px-3.5 py-1.5 rounded-full bg-[#2997ff] hover:bg-[#0077ed] text-white text-xs font-medium tracking-tight transition-all active:scale-95 shadow-sm">
+          Contact
         </a>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
-  <!-- Main Container -->
-  <main class="relative z-10 pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <!-- MAIN WRAPPER -->
+  <main class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-28">
 
-    <!-- HERO SECTION: Apple Bento Spotlight -->
-    <section id="hero" class="pt-8 pb-16 lg:pt-16 lg:pb-24">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        
-        <!-- Pill Label -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full vision-glass text-xs font-mono text-cyan-300 mb-6 border border-cyan-500/20 shadow-inner">
-          <span class="flex h-2 w-2 relative">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-          </span>
-          Next-Gen AI Systems & Enterprise Full-Stack
-        </div>
-
-        <!-- Main Heading -->
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
-          Architecting <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400">Autonomous AI</span> Systems & Web Scale.
-        </h1>
-
-        <!-- Subtitle -->
-        <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl mx-auto">
-          Hi, I'm <strong class="text-white font-semibold">Mark Chester R. Santos</strong> — an AI Automation Engineer, Prompt Engineer, and Full-Stack Developer based in the Philippines. I turn high-friction human workflows into resilient, multi-agent AI ecosystems and high-speed web apps.
-        </p>
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <a href="#projects" class="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 text-white font-semibold text-sm shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-            <span>Explore Engineering Work</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
-          <button onclick="copyContact('chesrakzxc@gmail.com', 'Email copied: chesrakzxc@gmail.com')" class="px-6 py-3 rounded-full vision-glass text-slate-200 hover:text-white font-medium text-sm hover:border-cyan-400/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-            <span>Copy Email (Instant Reach)</span>
-          </button>
-          <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full vision-glass text-slate-300 hover:text-white hover:border-cyan-400/40 hover:scale-105 transition-all" aria-label="GitHub Profile">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          </a>
-        </div>
+    <!-- HERO SECTION: Apple Keynote Style -->
+    <section id="hero" class="pt-8 text-center max-w-4xl mx-auto">
+      
+      <!-- Apple Product Tagline -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1c1c1e] border border-[rgba(255,255,255,0.1)] text-xs text-[#86868b] font-medium mb-6">
+        <span class="text-[#2997ff] font-semibold">Special Edition</span>
+        <span>•</span>
+        <span>Engineered in Muntinlupa, Philippines</span>
       </div>
 
-      <!-- Quick Metrics Bento Bar -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-        <div class="vision-card rounded-2xl p-5 text-center">
-          <div class="text-3xl font-extrabold text-cyan-400 font-mono">10,400+</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Lines of Java & POS</div>
-        </div>
-        <div class="vision-card rounded-2xl p-5 text-center">
-          <div class="text-3xl font-extrabold text-indigo-400 font-mono">14-Stage</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Autonomous AI Pipeline</div>
-        </div>
-        <div class="vision-card rounded-2xl p-5 text-center">
-          <div class="text-3xl font-extrabold text-purple-400 font-mono">10+ Bots</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Coordinated Multi-Agent Fleet</div>
-        </div>
-        <div class="vision-card rounded-2xl p-5 text-center">
-          <div class="text-3xl font-extrabold text-emerald-400 font-mono">99.9%</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Reliability & SLA Standard</div>
-        </div>
+      <!-- Main Headline: Clean Titanium Gradient -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-titanium mb-6 leading-[1.08]">
+        Autonomous AI.<br class="hidden sm:inline" />
+        Pure Full-Stack Precision.
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl text-[#86868b] font-normal leading-relaxed max-w-2xl mx-auto mb-9">
+        I am <span class="text-white font-medium">Mark Chester R. Santos</span>. I design autonomous multi-agent pipelines, bulletproof enterprise backends, and sub-second web applications with the discipline of Apple engineering.
+      </p>
+
+      <!-- Clean Apple CTA Row -->
+      <div class="flex flex-wrap items-center justify-center gap-3.5 mb-16">
+        <!-- White Pill CTA -->
+        <a href="#projects" class="px-6 py-3 rounded-full bg-white text-black hover:bg-[#e8e8ed] font-medium text-sm transition-all active:scale-95 flex items-center gap-2 shadow-lg">
+          <span>Explore Projects</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Frosted Glass Secondary CTA -->
+        <button onclick="copyToClipboard('chesrakzxc@gmail.com', 'Copied: chesrakzxc@gmail.com')" class="px-5 py-3 rounded-full apple-glass-pill text-white hover:bg-[rgba(255,255,255,0.12)] font-medium text-sm transition-all active:scale-95 flex items-center gap-2">
+          <svg class="w-4 h-4 text-[#2997ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          <span>Copy Email</span>
+        </button>
+
+        <!-- GitHub Profile -->
+        <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full apple-glass-pill text-[#86868b] hover:text-white hover:bg-[rgba(255,255,255,0.12)] transition-all" aria-label="GitHub Profile">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
       </div>
-    </section>
 
-    <!-- ABOUT & CORE PHILOSOPHY SECTION -->
-    <section id="about" class="py-16">
-      <div class="max-w-5xl mx-auto">
-        
-        <div class="text-center mb-12">
-          <h2 class="text-xs font-mono font-semibold tracking-widest text-cyan-400 uppercase mb-2">Architectural Foundation</h2>
-          <p class="text-3xl font-bold text-white tracking-tight">Engineer. Builder. AI Automator.</p>
+      <!-- Apple Keynote Spec Strip (Clean Hardware Specs) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
+        <div class="p-4 rounded-2xl bg-[#161617] border border-[rgba(255,255,255,0.06)] text-center">
+          <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">10.4K<span class="text-[#2997ff] text-xl">+</span></div>
+          <div class="text-[11px] text-[#86868b] mt-0.5">Java 17 POS Core</div>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          <!-- Bento Item 1: Profile & Identity -->
-          <div class="vision-card md:col-span-2 rounded-3xl p-8 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-3 mb-6">
-                <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl font-bold">
-                  MC
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold text-white">Mark Chester R. Santos</h3>
-                  <p class="text-sm text-cyan-400 font-mono">Muntinlupa City, Philippines 1772</p>
-                </div>
-              </div>
-              <p class="text-slate-300 leading-relaxed mb-4 text-sm sm:text-base">
-                I specialize in bridging the gap between cutting-edge LLMs and practical production software. Rather than treating AI as a simple chatbot widget, I build <strong>autonomous agent architectures</strong> that autonomously discover skills, self-heal, synchronize distributed tasks, and interface securely with real-world APIs, databases, and enterprise backends.
-              </p>
-              <p class="text-slate-400 text-sm leading-relaxed">
-                With a deep foundation in rigorous full-stack development (Java 17, TypeScript, Python, Next.js, MySQL, PostgreSQL), I architect software designed for durability, zero data loss, and sub-second user responsiveness.
-              </p>
-            </div>
-
-            <div class="mt-8 pt-6 border-t border-white/5 flex flex-wrap items-center gap-3">
-              <span class="text-xs font-mono text-slate-400">Core Focus:</span>
-              <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-medium border border-cyan-500/20">Agent Orchestration</span>
-              <span class="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 text-xs font-medium border border-indigo-500/20">Prompt Systems</span>
-              <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-medium border border-purple-500/20">Full-Stack Cloud</span>
-            </div>
-          </div>
-
-          <!-- Bento Item 2: Quick Contact Card -->
-          <div class="vision-card rounded-3xl p-8 flex flex-col justify-between">
-            <div>
-              <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-6">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              </div>
-              <h3 class="text-lg font-bold text-white mb-2">Direct Contact</h3>
-              <p class="text-xs text-slate-400 mb-6 leading-relaxed">Available for immediate hiring, freelance automation contracts, and engineering partnerships.</p>
-              
-              <div class="space-y-3 font-mono text-xs">
-                <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
-                  <span class="text-slate-400">Email</span>
-                  <button onclick="copyContact('chesrakzxc@gmail.com', 'Email copied: chesrakzxc@gmail.com')" class="text-cyan-400 hover:underline">chesrakzxc@gmail.com</button>
-                </div>
-                <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
-                  <span class="text-slate-400">Phone</span>
-                  <a href="tel:+639958140991" class="text-cyan-400 hover:underline">+63 995 814 0991</a>
-                </div>
-                <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
-                  <span class="text-slate-400">GitHub</span>
-                  <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">@whodakingofhell</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-6">
-              <a href="mailto:chesrakzxc@gmail.com" class="w-full block py-2.5 rounded-xl text-center text-xs font-semibold bg-white/10 hover:bg-white/20 text-white transition-all">
-                Send Direct Message
-              </a>
-            </div>
-          </div>
-
+        <div class="p-4 rounded-2xl bg-[#161617] border border-[rgba(255,255,255,0.06)] text-center">
+          <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">14<span class="text-[#bf5af2] text-xl">-Stage</span></div>
+          <div class="text-[11px] text-[#86868b] mt-0.5">Autonomous Pipeline</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-[#161617] border border-[rgba(255,255,255,0.06)] text-center">
+          <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">10<span class="text-[#30d158] text-xl">+</span></div>
+          <div class="text-[11px] text-[#86868b] mt-0.5">Fleet Agents Synced</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-[#161617] border border-[rgba(255,255,255,0.06)] text-center">
+          <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">0<span class="text-[#ff9f0a] text-xl">%</span></div>
+          <div class="text-[11px] text-[#86868b] mt-0.5">State Loss Tolerance</div>
         </div>
       </div>
     </section>
 
-    <!-- FEATURED PROJECTS BENTO GRID -->
-    <section id="projects" class="py-16">
-      <div class="max-w-6xl mx-auto">
+    <!-- ABOUT SECTION: Apple Bento Overview -->
+    <section id="about" class="space-y-6">
+      <div class="text-center max-w-xl mx-auto">
+        <h2 class="text-xs font-semibold text-[#2997ff] uppercase tracking-wider mb-2">Architectural Blueprint</h2>
+        <p class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Built with intent. Engineered for production.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <!-- Bento Card 1: Core Bio -->
+        <div class="apple-bento-card md:col-span-2 p-8 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-[#2c2c2e] flex items-center justify-center text-sm font-bold text-white">
+                MS
+              </div>
+              <div>
+                <h3 class="text-base font-semibold text-white">Mark Chester R. Santos</h3>
+                <p class="text-xs text-[#86868b]">AI Automation Engineer • Muntinlupa, PH</p>
+              </div>
+            </div>
+            <p class="text-sm text-[#a1a1a6] leading-relaxed">
+              I specialize in taking real-world human bottlenecks and converting them into fault-tolerant, autonomous software pipelines. Rather than using AI as a novelty, I implement <strong>deterministic multi-agent ecosystems</strong> with tool-calling capabilities, atomic rollback guarantees, and rigorous zero data loss standards.
+            </p>
+            <p class="text-sm text-[#a1a1a6] leading-relaxed">
+              Combined with extensive full-stack experience in Java 17, TypeScript, Next.js, and relational database locking mechanisms, I deliver systems that execute reliably under real user pressure.
+            </p>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-[rgba(255,255,255,0.06)] flex flex-wrap gap-2 text-xs">
+            <span class="px-3 py-1 rounded-full bg-[#2c2c2e] text-[#f5f5f7]">Autonomous Agents</span>
+            <span class="px-3 py-1 rounded-full bg-[#2c2c2e] text-[#f5f5f7]">Prompt Engineering</span>
+            <span class="px-3 py-1 rounded-full bg-[#2c2c2e] text-[#f5f5f7]">Enterprise Concurrency</span>
+            <span class="px-3 py-1 rounded-full bg-[#2c2c2e] text-[#f5f5f7]">Zero-State Corruption</span>
+          </div>
+        </div>
+
+        <!-- Bento Card 2: Quick Connect Widget (iOS Widget Style) -->
+        <div class="apple-bento-card p-8 flex flex-col justify-between">
           <div>
-            <h2 class="text-xs font-mono font-semibold tracking-widest text-cyan-400 uppercase mb-2">Engineered Systems</h2>
-            <p class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Featured Production Projects</p>
-          </div>
-          <p class="text-slate-400 text-sm max-w-md mt-4 md:mt-0">
-            Real-world systems combining autonomous agent runtimes, robust frontend UIs, and mission-critical databases.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <!-- PROJECT 1: Sonata LicenseDesk -->
-          <div class="vision-card rounded-3xl p-7 flex flex-col justify-between group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-cyan-500/10 text-cyan-300 border border-cyan-500/25">SaaS & Security</span>
-                <span class="text-xs text-slate-400 font-mono">2026 Production</span>
-              </div>
-              <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">Sonata (LicenseDesk)</h3>
-              <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                High-security SaaS software license management portal. Features cryptographic license key generation, automated tier entitlement validation, webhook revocation, and an administrative real-time analytics dashboard.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Next.js 14</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">TypeScript</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Stripe Webhooks</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">PostgreSQL</span>
-              </div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-semibold text-[#86868b] uppercase tracking-wider">Quick Connect</span>
+              <div class="w-2 h-2 rounded-full bg-[#30d158]"></div>
             </div>
-            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-              <span class="text-xs text-slate-400">Enterprise Licensing</span>
-              <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                <span>View Repo</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            <h3 class="text-lg font-bold text-white mb-2">Direct Contact</h3>
+            <p class="text-xs text-[#86868b] mb-6">Immediate availability for full-time roles and high-impact engineering contracts.</p>
+
+            <div class="space-y-2.5 text-xs">
+              <button onclick="copyToClipboard('chesrakzxc@gmail.com', 'Copied Email')" class="w-full text-left p-3 rounded-xl bg-[#202022] hover:bg-[#2c2c2e] border border-[rgba(255,255,255,0.04)] transition-all flex items-center justify-between">
+                <span class="text-[#86868b]">Email</span>
+                <span class="text-white font-mono text-[11px]">chesrakzxc@gmail.com</span>
+              </button>
+              <a href="tel:+639958140991" class="w-full text-left p-3 rounded-xl bg-[#202022] hover:bg-[#2c2c2e] border border-[rgba(255,255,255,0.04)] transition-all flex items-center justify-between block">
+                <span class="text-[#86868b]">Phone</span>
+                <span class="text-white font-mono text-[11px]">+63 995 814 0991</span>
+              </a>
+              <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="w-full text-left p-3 rounded-xl bg-[#202022] hover:bg-[#2c2c2e] border border-[rgba(255,255,255,0.04)] transition-all flex items-center justify-between block">
+                <span class="text-[#86868b]">GitHub</span>
+                <span class="text-[#2997ff] font-mono text-[11px]">@whodakingofhell</span>
               </a>
             </div>
           </div>
 
-          <!-- PROJECT 2: Philippine Skyline -->
-          <div class="vision-card rounded-3xl p-7 flex flex-col justify-between group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-purple-500/10 text-purple-300 border border-purple-500/25">Live Web App</span>
-                <span class="text-xs text-emerald-400 font-mono">● Live on Vercel</span>
-              </div>
-              <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors mb-2">Philippine Skyline</h3>
-              <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                Ultra-responsive interactive web portal showcasing Philippine architectural marvels, dynamic skyline visualizations, and geo-spatial data with optimized client-side caching and sub-second page loads.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Vercel Edge</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Tailwind CSS</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Interactive Maps</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">SEO Optim</span>
-              </div>
-            </div>
-            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-              <span class="text-xs text-slate-400">Deployed App</span>
-              <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1">
-                <span>Explore Code</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- PROJECT 3: AI Engineering OS Pipeline -->
-          <div class="vision-card rounded-3xl p-7 flex flex-col justify-between group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/25">AI Automation</span>
-                <span class="text-xs text-slate-400 font-mono">14 Orchestrations</span>
-              </div>
-              <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors mb-2">AI Engineering OS</h3>
-              <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                14-stage autonomous content orchestration pipeline. Ingests raw video, performs automated transcription, AI diarization, multi-perspective code extraction, SEO title ranking, and syndicates assets across social hubs.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Python 3.12</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Whisper API</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Claude 3.5</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Composio</span>
-              </div>
-            </div>
-            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-              <span class="text-xs text-slate-400">Autonomous Workflow</span>
-              <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
-                <span>View Architecture</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- PROJECT 4: SMC Inventory & POS Enterprise -->
-          <div class="vision-card rounded-3xl p-7 flex flex-col justify-between group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/25">Enterprise POS</span>
-                <span class="text-xs text-slate-400 font-mono">10,400+ LOC</span>
-              </div>
-              <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">SMC Inventory & POS</h3>
-              <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                Full-scale enterprise desktop point-of-sale and warehouse inventory suite built in Java 17. Handles multi-branch inventory tracking, thermal receipt printing, role-based audit logging, and offline database synchronization.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Java 17</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Swing / FlatLaf</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">MySQL</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">JasperReports</span>
-              </div>
-            </div>
-            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-              <span class="text-xs text-slate-400">Desktop Architecture</span>
-              <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
-                <span>View Details</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- PROJECT 5: AI-Ops Vault (PAIOS) -->
-          <div class="vision-card rounded-3xl p-7 flex flex-col justify-between group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-cyan-500/10 text-cyan-300 border border-cyan-500/25">Agent Protocol</span>
-                <span class="text-xs text-slate-400 font-mono">Zero Data Loss</span>
-              </div>
-              <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">AI-Ops Fleet Vault</h3>
-              <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                Decentralized multi-agent orchestrator connecting 8+ specialized AI bots (Hermes, Atlas, Vulcan, Minerva). Implements atomic checkpoints, game-aware sleep/wake states, skill auto-discovery, and telemetry dashboards.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Hermes Agent</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Composio Dev</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">PowerShell Core</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">HTTP REST</span>
-              </div>
-            </div>
-            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-              <span class="text-xs text-slate-400">Autonomous Fleet</span>
-              <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                <span>View Specs</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- PROJECT 6: AI Voice & Appointment Agent -->
-          <div class="vision-card rounded-3xl p-7 flex flex-col justify-between group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-rose-500/10 text-rose-300 border border-rose-500/25">Voice AI</span>
-                <span class="text-xs text-slate-400 font-mono">Twilio & Calendar</span>
-              </div>
-              <h3 class="text-xl font-bold text-white group-hover:text-rose-400 transition-colors mb-2">Voice Appointment Bot</h3>
-              <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                Inbound call automated scheduling agent. Handles natural conversational speech, resolves calendar conflict windows via Google Calendar API, sends SMS confirmations, and handles cancellation edge-cases gracefully.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Vapi.ai</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Twilio Webhooks</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">FastAPI</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">OAuth 2.0</span>
-              </div>
-            </div>
-            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-              <span class="text-xs text-slate-400">Conversational AI</span>
-              <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-rose-400 hover:text-rose-300 flex items-center gap-1">
-                <span>View Architecture</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- TECHNICAL CAPABILITIES & SKILLS MATRIX -->
-    <section id="skills" class="py-16">
-      <div class="max-w-5xl mx-auto">
-        
-        <div class="text-center mb-12">
-          <h2 class="text-xs font-mono font-semibold tracking-widest text-cyan-400 uppercase mb-2">Technical Mastery</h2>
-          <p class="text-3xl font-bold text-white tracking-tight">Capabilities & Engineering Stack</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-          <!-- Col 1: AI & Automation -->
-          <div class="vision-card rounded-3xl p-6">
-            <div class="text-cyan-400 text-2xl mb-4 font-mono">⚡ 01</div>
-            <h3 class="text-lg font-bold text-white mb-3">AI & Automation</h3>
-            <ul class="space-y-2.5 text-xs text-slate-300 font-mono">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Autonomous Multi-Agent Systems</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Composio & LangChain Tools</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Hermes Fleet Orchestration</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Prompt Engineering & Guardrails</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>RAG (Retrieval-Augmented Gen)</li>
-            </ul>
-          </div>
-
-          <!-- Col 2: Full-Stack Web -->
-          <div class="vision-card rounded-3xl p-6">
-            <div class="text-indigo-400 text-2xl mb-4 font-mono">🌐 02</div>
-            <h3 class="text-lg font-bold text-white mb-3">Modern Web</h3>
-            <ul class="space-y-2.5 text-xs text-slate-300 font-mono">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Next.js 14 / React Server Comp</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>TypeScript & Modern ESNext</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Tailwind CSS & Glassmorphism</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Vercel Edge & Cloudflare</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>RESTful & GraphQL APIs</li>
-            </ul>
-          </div>
-
-          <!-- Col 3: Backend & Enterprise -->
-          <div class="vision-card rounded-3xl p-6">
-            <div class="text-purple-400 text-2xl mb-4 font-mono">⚙️ 03</div>
-            <h3 class="text-lg font-bold text-white mb-3">Backend & Core</h3>
-            <ul class="space-y-2.5 text-xs text-slate-300 font-mono">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Python 3.12 (FastAPI, AsyncIO)</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Java 17 (Spring, POS Systems)</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>PostgreSQL, MySQL, Redis</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>PowerShell & Bash Automation</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Microservices & Webhooks</li>
-            </ul>
-          </div>
-
-          <!-- Col 4: DevOps & Reliability -->
-          <div class="vision-card rounded-3xl p-6">
-            <div class="text-emerald-400 text-2xl mb-4 font-mono">🛡️ 04</div>
-            <h3 class="text-lg font-bold text-white mb-3">DevOps & Security</h3>
-            <ul class="space-y-2.5 text-xs text-slate-300 font-mono">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Git & GitHub Actions CI/CD</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Docker Containerization</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Data Loss Prevention Protocol</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>OAuth2, JWT & API Key Vaults</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Health Monitoring & Telemetry</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE & WORK TIMELINE -->
-    <section id="experience" class="py-16">
-      <div class="max-w-4xl mx-auto">
-        
-        <div class="text-center mb-12">
-          <h2 class="text-xs font-mono font-semibold tracking-widest text-cyan-400 uppercase mb-2">Track Record</h2>
-          <p class="text-3xl font-bold text-white tracking-tight">Professional Experience</p>
-        </div>
-
-        <div class="relative border-l border-white/10 ml-4 md:ml-32 space-y-12">
-
-          <!-- Job 1 -->
-          <div class="relative pl-8 group">
-            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-[#05070d] border-2 border-cyan-400 group-hover:scale-125 transition-transform"></div>
-            
-            <div class="vision-card rounded-2xl p-6">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
-                <h3 class="text-lg font-bold text-white">Autonomous AI Systems Lead & Automator</h3>
-                <span class="text-xs font-mono text-cyan-400 mt-1 sm:mt-0">2024 - Present</span>
-              </div>
-              <div class="text-xs font-mono text-slate-400 mb-4">Independent Contractor & Solutions Architect</div>
-              <p class="text-sm text-slate-300 leading-relaxed mb-3">
-                Architected enterprise multi-agent workflows connecting external CRM, calendar, and payment systems using Composio, Hermes, and custom REST gateways. Created silent, fault-tolerant background runners executing continuous learning and task telemetry.
-              </p>
-              <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
-                <li>Reduced manual video post-production turnaround by 75% via 14-stage AI pipeline.</li>
-                <li>Engineered live autonomous task checkpoints with zero state corruption.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Job 2 -->
-          <div class="relative pl-8 group">
-            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-[#05070d] border-2 border-indigo-400 group-hover:scale-125 transition-transform"></div>
-            
-            <div class="vision-card rounded-2xl p-6">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
-                <h3 class="text-lg font-bold text-white">Full-Stack Application Developer</h3>
-                <span class="text-xs font-mono text-indigo-400 mt-1 sm:mt-0">2023 - 2024</span>
-              </div>
-              <div class="text-xs font-mono text-slate-400 mb-4">Enterprise POS & Web Engineering</div>
-              <p class="text-sm text-slate-300 leading-relaxed mb-3">
-                Authored 10,400+ lines of robust, production-ready Java 17 code powering the SMC Point of Sale and Inventory Management System. Designed transactional database queries in MySQL guaranteeing zero double-spend or phantom inventory decrements.
-              </p>
-              <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
-                <li>Engineered customized thermal receipt printing drivers and hardware barcode integration.</li>
-                <li>Delivered high-performance Next.js and Vercel web apps with 100/100 Core Web Vitals.</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT / HIRE ME SECTION -->
-    <section id="contact" class="py-16">
-      <div class="max-w-4xl mx-auto">
-        <div class="vision-glass rounded-3xl p-8 sm:p-12 relative overflow-hidden text-center">
-          
-          <div class="absolute -right-20 -top-20 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
-          <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
-
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Let's Build Something Exceptional</h2>
-          <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
-            Whether you need a dedicated AI Automation Engineer, an expert Prompt Architect, or a seasoned Full-Stack Developer to scale your product, my inbox is open.
-          </p>
-
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <!-- Copy Email Button with Haptic feedback -->
-            <button onclick="copyContact('chesrakzxc@gmail.com', 'Copied: chesrakzxc@gmail.com')" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold text-sm shadow-xl shadow-cyan-500/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              <span>chesrakzxc@gmail.com</span>
-            </button>
-            <!-- Call Phone -->
-            <a href="tel:+639958140991" class="w-full sm:w-auto px-8 py-3.5 rounded-full vision-card text-white hover:border-cyan-400 font-semibold text-sm hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
-              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-              <span>+63 995 814 0991</span>
+          <div class="mt-6">
+            <a href="mailto:chesrakzxc@gmail.com" class="w-full block py-2.5 text-center text-xs font-semibold bg-white text-black hover:bg-[#e8e8ed] rounded-xl transition-all">
+              Compose Email
             </a>
           </div>
-
-          <p class="text-xs font-mono text-slate-400">Based in Muntinlupa City, Philippines • Open to Worldwide Remote Roles</p>
         </div>
+
+      </div>
+    </section>
+
+    <!-- macOS INTERACTIVE WINDOW: System Architecture Console -->
+    <section id="mac-terminal" class="space-y-6">
+      <div class="text-center max-w-xl mx-auto">
+        <h2 class="text-xs font-semibold text-[#2997ff] uppercase tracking-wider mb-2">Interactive macos preview</h2>
+        <p class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Engineered Console & Blueprints</p>
+      </div>
+
+      <!-- macOS Window Frame -->
+      <div class="rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[#161617] shadow-2xl overflow-hidden">
+        
+        <!-- macOS Window Header with Traffic Lights -->
+        <div class="px-4 py-3 bg-[#1c1c1e] border-b border-[rgba(255,255,255,0.08)] flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="mac-dot mac-dot-close"></span>
+            <span class="mac-dot mac-dot-min"></span>
+            <span class="mac-dot mac-dot-max"></span>
+          </div>
+          <div class="text-xs font-mono text-[#86868b] flex items-center gap-2">
+            <span>mark-santos — architecture-console — zsh</span>
+          </div>
+          <div class="text-[11px] font-mono text-[#6e6e73]">macOS 15.0</div>
+        </div>
+
+        <!-- Interactive Architecture Tab Switcher -->
+        <div class="p-3 bg-[#121214] border-b border-[rgba(255,255,255,0.06)] flex items-center gap-2 overflow-x-auto text-xs font-mono">
+          <button onclick="switchMacTab('agent-fleet')" id="tab-agent-fleet" class="px-3 py-1.5 rounded-lg bg-[#2c2c2e] text-white transition-all">01_MultiAgent_Fleet.sh</button>
+          <button onclick="switchMacTab('pos-concurrency')" id="tab-pos-concurrency" class="px-3 py-1.5 rounded-lg text-[#86868b] hover:text-white transition-all">02_Java_ACID_Lock.java</button>
+          <button onclick="switchMacTab('content-pipeline')" id="tab-content-pipeline" class="px-3 py-1.5 rounded-lg text-[#86868b] hover:text-white transition-all">03_14Stage_Pipeline.py</button>
+          <button onclick="switchMacTab('security-model')" id="tab-security-model" class="px-3 py-1.5 rounded-lg text-[#86868b] hover:text-white transition-all">04_11Layer_Defense.env</button>
+        </div>
+
+        <!-- Terminal Output Screen -->
+        <div class="p-6 bg-[#0c0c0e] font-mono text-xs sm:text-sm text-[#a1a1a6] min-h-[260px] overflow-x-auto leading-relaxed">
+          <div id="mac-content-agent-fleet">
+            <p class="text-[#30d158]">// Hermes Autonomous Multi-Agent Fleet Telemetry (Active Runtime)</p>
+            <p class="text-white mt-2">$ fleet-patrol --status --mesh=atomic</p>
+            <p class="mt-2">[HERMES] Primary Orchestrator (PID: 8842) -> Status: IDLE_LISTENING</p>
+            <p>[ATLAS] Infrastructure & Telemetry Sentry -> Latency: 4ms | ErrorRate: 0.00%</p>
+            <p>[VULCAN] Full-Stack Code Synthesizer -> State: STANDBY (Zero data loss checkpoint: OK)</p>
+            <p>[MINERVA] Skill Acquisition Scout -> Composio Dev Tools: CONNECTED</p>
+            <p class="text-[#2997ff] mt-2">✓ Synchronization complete. 8/8 Bots aligned with zero lock contention.</p>
+          </div>
+
+          <div id="mac-content-pos-concurrency" class="hidden">
+            <p class="text-[#ff9f0a]// Java 17 Enterprise POS Concurrency Engine (10,400+ LOC Architecture)</p>
+            <p class="text-white mt-2">@Transactional(isolation = Isolation.SERIALIZABLE)</p>
+            <p>public synchronized Receipt executeCheckout(OrderContext ctx) {</p>
+            <p class="pl-4 text-[#86868b]">// Row-Level Lock prevents inventory oversell across 12 branch registers</p>
+            <p class="pl-4 text-white">StockItem item = stockRepo.findByIdForUpdate(ctx.itemId());</p>
+            <p class="pl-4 text-[#30d158]">if (item.getQuantity() < ctx.qty()) throw new StockDepletedException();</p>
+            <p class="pl-4">item.decrement(ctx.qty());</p>
+            <p class="pl-4">return printThermalReceipt(auditLog(item));</p>
+            <p>}</p>
+          </div>
+
+          <div id="mac-content-content-pipeline" class="hidden">
+            <p class="text-[#bf5af2]// 14-Stage Autonomous Video & Content Ingestion Engine</p>
+            <p class="text-white mt-2">async def run_pipeline(source_media_url: str):</p>
+            <p class="pl-4">audio_stream = await extract_lossless_audio(source_media_url)</p>
+            <p class="pl-4">transcript = await whisper_v3_diarize(audio_stream)</p>
+            <p class="pl-4 text-[#2997ff]">code_blocks = await claude_35_sonnet.extract_executable_code(transcript)</p>
+            <p class="pl-4">seo_score = await rank_youtube_titles(transcript, target_ctr=0.14)</p>
+            <p class="pl-4 text-[#30d158]">return await syndicate_to_distribution_channels(code_blocks, seo_score)</p>
+          </div>
+
+          <div id="mac-content-security-model" class="hidden">
+            <p class="text-[#30d158]// 11-Layer Enterprise Defense Architecture</p>
+            <p class="text-white mt-2">[LAYER 01] Cloudflare Edge Protection & Bot Mitigation (Turnstile)</p>
+            <p>[LAYER 02] Distributed Token-Bucket Rate Limiting</p>
+            <p>[LAYER 03] Cryptographic HMAC Webhook Signature Verification</p>
+            <p>[LAYER 04] Strict Runtime Schema Validation (Zod / Pydantic)</p>
+            <p>[LAYER 05] Database Connection Isolation & Row-Level Security (PostgreSQL RLS)</p>
+            <p class="text-[#2997ff] mt-2">Status: 100% Defense Verification Passed. Zero open attack vectors.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION: Apple Bento Grid -->
+    <section id="projects" class="space-y-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h2 class="text-xs font-semibold text-[#2997ff] uppercase tracking-wider mb-2">Engineered Software</h2>
+          <p class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Featured Projects</p>
+        </div>
+
+        <!-- iOS Segmented Filter Control -->
+        <div class="p-1 rounded-xl bg-[#1c1c1e] border border-[rgba(255,255,255,0.08)] flex items-center gap-1 text-xs">
+          <button onclick="filterProjects('all')" id="btn-filter-all" class="px-3 py-1.5 rounded-lg segmented-pill-active font-medium transition-all">All</button>
+          <button onclick="filterProjects('ai')" id="btn-filter-ai" class="px-3 py-1.5 rounded-lg text-[#86868b] hover:text-white transition-all">AI & Agents</button>
+          <button onclick="filterProjects('web')" id="btn-filter-web" class="px-3 py-1.5 rounded-lg text-[#86868b] hover:text-white transition-all">Full-Stack</button>
+          <button onclick="filterProjects('enterprise')" id="btn-filter-enterprise" class="px-3 py-1.5 rounded-lg text-[#86868b] hover:text-white transition-all">Core Systems</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- Project 1: Sonata LicenseDesk -->
+        <div class="apple-bento-card p-7 flex flex-col justify-between project-item" data-category="web">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-semibold text-[#2997ff] bg-[#2997ff]/10 px-2.5 py-0.5 rounded-full">SaaS & Licensing</span>
+              <span class="text-[11px] text-[#86868b]">2026 Production</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Sonata (LicenseDesk)</h3>
+            <p class="text-xs text-[#a1a1a6] leading-relaxed mb-4">
+              High-security software license management portal. Features cryptographic license validation, automated tier entitlements, stripe webhook synchronization, and administrative telemetry.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Next.js 14</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">TypeScript</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">PostgreSQL</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Stripe</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.06)] flex items-center justify-between">
+            <span class="text-[11px] text-[#6e6e73]">Enterprise Licensing</span>
+            <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-[#2997ff] hover:text-[#0077ed] flex items-center gap-1">
+              <span>View Source</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2: Philippine Skyline -->
+        <div class="apple-bento-card p-7 flex flex-col justify-between project-item" data-category="web">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-semibold text-[#30d158] bg-[#30d158]/10 px-2.5 py-0.5 rounded-full">Live App</span>
+              <span class="text-[11px] text-[#30d158]">● Vercel Edge</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Philippine Skyline</h3>
+            <p class="text-xs text-[#a1a1a6] leading-relaxed mb-4">
+              Modern architectural portal featuring geo-spatial skyline visualizations, high-performance client caching, dynamic dark mode, and 100/100 Core Web Vitals optimization.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Vercel Edge</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Tailwind CSS</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Interactive Maps</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.06)] flex items-center justify-between">
+            <span class="text-[11px] text-[#6e6e73]">Production Web App</span>
+            <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-[#30d158] hover:underline flex items-center gap-1">
+              <span>Explore Repo</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: AI Engineering OS -->
+        <div class="apple-bento-card p-7 flex flex-col justify-between project-item" data-category="ai">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-semibold text-[#bf5af2] bg-[#bf5af2]/10 px-2.5 py-0.5 rounded-full">Autonomous AI</span>
+              <span class="text-[11px] text-[#86868b]">14 Stages</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">AI Engineering OS</h3>
+            <p class="text-xs text-[#a1a1a6] leading-relaxed mb-4">
+              Autonomous content orchestration engine. Ingests raw video, produces timestamped transcriptions, extracts verified code snippets, generates viral titles, and handles distribution.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Python 3.12</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Whisper API</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Claude 3.5</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Composio</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.06)] flex items-center justify-between">
+            <span class="text-[11px] text-[#6e6e73]">Autonomous Workflow</span>
+            <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-[#bf5af2] hover:underline flex items-center gap-1">
+              <span>View System</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4: SMC Inventory & POS -->
+        <div class="apple-bento-card p-7 flex flex-col justify-between project-item" data-category="enterprise">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-semibold text-[#ff9f0a] bg-[#ff9f0a]/10 px-2.5 py-0.5 rounded-full">Enterprise POS</span>
+              <span class="text-[11px] text-[#86868b]">10,400+ LOC</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">SMC Inventory & POS</h3>
+            <p class="text-xs text-[#a1a1a6] leading-relaxed mb-4">
+              Industrial point-of-sale and warehouse inventory suite built in Java 17. Handles multi-branch synchronizations, thermal receipt printing, role-based access control, and offline database fallback.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Java 17</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">MySQL 8.0</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">FlatLaf Dark</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">JasperReports</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.06)] flex items-center justify-between">
+            <span class="text-[11px] text-[#6e6e73]">Desktop Architecture</span>
+            <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-[#ff9f0a] hover:underline flex items-center gap-1">
+              <span>View Specs</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 5: AI-Ops Fleet Vault -->
+        <div class="apple-bento-card p-7 flex flex-col justify-between project-item" data-category="ai">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-semibold text-[#2997ff] bg-[#2997ff]/10 px-2.5 py-0.5 rounded-full">Multi-Agent</span>
+              <span class="text-[11px] text-[#86868b]">Fleet Protocol</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">AI-Ops Fleet Vault</h3>
+            <p class="text-xs text-[#a1a1a6] leading-relaxed mb-4">
+              Decentralized multi-agent orchestrator connecting 8+ specialized bots (Hermes, Atlas, Vulcan). Implements atomic checkpoints, game-aware sleep/wake states, and autonomous skill acquisition.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Hermes Core</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Composio Tools</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">PowerShell Core</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.06)] flex items-center justify-between">
+            <span class="text-[11px] text-[#6e6e73]">Agent Mesh</span>
+            <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-[#2997ff] hover:underline flex items-center gap-1">
+              <span>Inspect Fleet</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 6: Voice AI Appointment Assistant -->
+        <div class="apple-bento-card p-7 flex flex-col justify-between project-item" data-category="ai">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-semibold text-[#30d158] bg-[#30d158]/10 px-2.5 py-0.5 rounded-full">Voice Intelligence</span>
+              <span class="text-[11px] text-[#86868b]">Calendar Sync</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Voice Appointment Bot</h3>
+            <p class="text-xs text-[#a1a1a6] leading-relaxed mb-4">
+              Inbound call scheduling agent. Resolves calendar conflicts in real time, synchronizes appointments with Google Calendar API, and sends instant SMS confirmations.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Vapi.ai</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">Twilio API</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#2c2c2e] text-[10px] text-[#86868b]">FastAPI</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.06)] flex items-center justify-between">
+            <span class="text-[11px] text-[#6e6e73]">Conversational AI</span>
+            <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-[#30d158] hover:underline flex items-center gap-1">
+              <span>View Specs</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECHNICAL CAPABILITIES: Apple Tech Specs Matrix -->
+    <section id="specs" class="space-y-6">
+      <div class="text-center max-w-xl mx-auto">
+        <h2 class="text-xs font-semibold text-[#2997ff] uppercase tracking-wider mb-2">Tech Specs</h2>
+        <p class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Core Competencies & Stack</p>
+      </div>
+
+      <div class="apple-bento-card p-8 sm:p-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <!-- Column 1 -->
+          <div>
+            <div class="text-xs font-semibold text-[#2997ff] tracking-wider uppercase mb-3">AI & Orchestration</div>
+            <ul class="space-y-2 text-xs text-[#a1a1a6]">
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#2997ff]"></span>Hermes Multi-Agent Fleet</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#2997ff]"></span>Composio Dev Tools & Skills</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#2997ff]"></span>Prompt Engineering & Guardrails</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#2997ff]"></span>LangChain & RAG Retrieval</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#2997ff]"></span>Vapi Voice & Speech Pipelines</li>
+            </ul>
+          </div>
+
+          <!-- Column 2 -->
+          <div>
+            <div class="text-xs font-semibold text-[#30d158] tracking-wider uppercase mb-3">Frontend Precision</div>
+            <ul class="space-y-2 text-xs text-[#a1a1a6]">
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#30d158]"></span>Next.js 14 / 15 App Router</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#30d158]"></span>TypeScript (Strict Type-Safety)</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#30d158]"></span>Tailwind CSS & Responsive UI</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#30d158]"></span>Apple Design Aesthetics</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#30d158]"></span>Core Web Vitals Optimization</li>
+            </ul>
+          </div>
+
+          <!-- Column 3 -->
+          <div>
+            <div class="text-xs font-semibold text-[#bf5af2] tracking-wider uppercase mb-3">Backend & Database</div>
+            <ul class="space-y-2 text-xs text-[#a1a1a6]">
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#bf5af2]"></span>Java 17 (Enterprise Spring Core)</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#bf5af2]"></span>Python 3.12 (FastAPI, AsyncIO)</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#bf5af2]"></span>PostgreSQL & Supabase RLS</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#bf5af2]"></span>MySQL 8.0 ACID Concurrency</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#bf5af2]"></span>PowerShell & Shell Automation</li>
+            </ul>
+          </div>
+
+          <!-- Column 4 -->
+          <div>
+            <div class="text-xs font-semibold text-[#ff9f0a] tracking-wider uppercase mb-3">Security & Reliability</div>
+            <ul class="space-y-2 text-xs text-[#a1a1a6]">
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#ff9f0a]"></span>Zero Data Loss Protocol</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#ff9f0a]"></span>Cloudflare Turnstile & Edge</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#ff9f0a]"></span>HMAC & Cryptographic Signing</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#ff9f0a]"></span>Git & GitHub Actions CI/CD</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[#ff9f0a]"></span>Vercel Edge Deployment</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION: Apple Timeline -->
+    <section id="experience" class="space-y-6">
+      <div class="text-center max-w-xl mx-auto">
+        <h2 class="text-xs font-semibold text-[#2997ff] uppercase tracking-wider mb-2">Track Record</h2>
+        <p class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Professional Experience</p>
+      </div>
+
+      <div class="space-y-3 max-w-3xl mx-auto">
+
+        <!-- Experience 1 -->
+        <div class="apple-bento-card p-6 sm:p-8">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+            <h3 class="text-base font-bold text-white">Autonomous AI Systems Lead & Automator</h3>
+            <span class="text-xs font-mono text-[#2997ff]">2024 — Present</span>
+          </div>
+          <div class="text-xs text-[#86868b] mb-4">Independent Contractor • Global Solutions</div>
+          <p class="text-xs sm:text-sm text-[#a1a1a6] leading-relaxed">
+            Architected enterprise multi-agent workflows connecting external CRM, calendar, and payment systems using Composio, Hermes, and custom REST gateways. Created silent, fault-tolerant background runners executing continuous learning and task telemetry.
+          </p>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="apple-bento-card p-6 sm:p-8">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+            <h3 class="text-base font-bold text-white">Full-Stack Application Developer</h3>
+            <span class="text-xs font-mono text-[#bf5af2]">2023 — 2024</span>
+          </div>
+          <div class="text-xs text-[#86868b] mb-4">Enterprise POS & Web Engineering</div>
+          <p class="text-xs sm:text-sm text-[#a1a1a6] leading-relaxed">
+            Authored 10,400+ lines of robust, production-ready Java 17 code powering the SMC Point of Sale and Inventory Management System. Designed transactional database queries in MySQL guaranteeing zero double-spend or phantom inventory decrements.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION: Apple Card -->
+    <section id="contact" class="text-center max-w-3xl mx-auto">
+      <div class="apple-bento-card p-10 sm:p-14 space-y-6">
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Let's build something exceptional.</h2>
+        <p class="text-sm sm:text-base text-[#86868b] max-w-lg mx-auto leading-relaxed">
+          Looking for an AI Automation Engineer, Prompt Architect, or Full-Stack Developer to design reliable, resilient software? Reach out directly.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <!-- Direct Email Button -->
+          <button onclick="copyToClipboard('chesrakzxc@gmail.com', 'Copied: chesrakzxc@gmail.com')" class="px-6 py-3 rounded-full bg-white text-black hover:bg-[#e8e8ed] font-medium text-sm transition-all active:scale-95 flex items-center gap-2 shadow-lg">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>chesrakzxc@gmail.com</span>
+          </button>
+
+          <!-- Call Phone -->
+          <a href="tel:+639958140991" class="px-6 py-3 rounded-full apple-glass-pill text-white hover:bg-[rgba(255,255,255,0.12)] font-medium text-sm transition-all active:scale-95 flex items-center gap-2">
+            <svg class="w-4 h-4 text-[#30d158]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span>+63 995 814 0991</span>
+          </a>
+        </div>
+
+        <p class="text-[11px] text-[#6e6e73] font-mono pt-4">Muntinlupa City, Philippines 1772 • Open to Global Remote Roles</p>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="relative z-10 border-t border-white/5 py-8 text-center text-xs text-slate-500 font-mono">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-        <span>Mark Chester R. Santos • Portfolio 2026</span>
-      </div>
-      <div>Designed with Apple VisionOS aesthetics & Modern Web Standards</div>
+  <!-- APPLE FOOTER -->
+  <footer class="border-t border-[rgba(255,255,255,0.06)] py-10 px-4 text-xs text-[#6e6e73]">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors">GitHub: @whodakingofhell</a>
+        <span>Copyright © 2026 Mark Chester R. Santos. Designed in Apple Pro style.</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="hover:text-[#f5f5f7] transition-colors">GitHub</a>
+        <a href="mailto:chesrakzxc@gmail.com" class="hover:text-[#f5f5f7] transition-colors">Contact</a>
+        <span class="text-[#86868b] font-mono">PH (UTC+8)</span>
       </div>
     </div>
   </footer>
 
-  <!-- Interactive JavaScript: Bento Mouse Spotlight, Audio Synthesizer, Dynamic Island Toast -->
+  <!-- SCRIPT: Apple Clean Interactions & Sound Synthesizer -->
   <script>
-    // 1. Specular Spotlight Hover Tracking for Vision Cards
-    document.querySelectorAll('.vision-card').forEach(card => {
-      card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-      });
-    });
-
-    // 2. Web Audio API Minimalist iPhone Mechanical Haptic Click
+    // 1. Apple Minimalist Mechanical Audio Feedback
     let soundEnabled = true;
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
 
-    function playHapticBeep(frequency = 600, duration = 0.04) {
+    function playAppleClick(freq = 800, duration = 0.03) {
       if (!soundEnabled) return;
       try {
         if (!audioCtx) audioCtx = new AudioContext();
@@ -777,47 +779,45 @@
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start();
         osc.stop(audioCtx.currentTime + duration);
-      } catch (err) {
-        // Audio not allowed yet
-      }
+      } catch(e) {}
     }
 
-    const soundToggle = document.getElementById('sound-toggle-btn');
-    const soundIcon = document.getElementById('sound-icon');
-    soundToggle.addEventListener('click', () => {
+    const soundBtn = document.getElementById('sound-btn');
+    const soundState = document.getElementById('sound-state');
+    soundBtn.addEventListener('click', () => {
       soundEnabled = !soundEnabled;
-      soundIcon.textContent = soundEnabled ? '🔊' : '🔇';
-      showToast(soundEnabled ? 'Interactive audio feedback enabled' : 'Audio feedback muted');
-      if (soundEnabled) playHapticBeep(800, 0.06);
+      soundState.textContent = soundEnabled ? '🔊' : '🔇';
+      showAppleToast(soundEnabled ? 'Sound feedback on' : 'Sound feedback muted');
+      if (soundEnabled) playAppleClick(1000, 0.04);
     });
 
-    // 3. Dynamic Island Toast System
+    // 2. iOS Toast Notification
     let toastTimeout = null;
-    function showToast(message) {
-      const toast = document.getElementById('haptic-toast');
-      const toastMsg = document.getElementById('toast-message');
-      toastMsg.textContent = message;
+    function showAppleToast(msg) {
+      const toast = document.getElementById('apple-toast');
+      const toastText = document.getElementById('apple-toast-text');
+      toastText.textContent = msg;
       toast.classList.add('show');
-      playHapticBeep(900, 0.05);
+      playAppleClick(900, 0.04);
 
       if (toastTimeout) clearTimeout(toastTimeout);
       toastTimeout = setTimeout(() => {
         toast.classList.remove('show');
-      }, 3200);
+      }, 3000);
     }
 
-    // 4. Clipboard Copy Helper
-    function copyContact(text, toastMsg) {
+    // 3. Clipboard Helper
+    function copyToClipboard(text, toastMsg) {
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text).then(() => {
-          showToast(toastMsg || 'Copied to clipboard');
+          showAppleToast(toastMsg);
         }).catch(() => fallbackCopy(text, toastMsg));
       } else {
         fallbackCopy(text, toastMsg);
@@ -825,27 +825,68 @@
     }
 
     function fallbackCopy(text, toastMsg) {
-      const textArea = document.createElement('textarea');
-      textArea.value = text;
-      textArea.style.position = 'fixed';
-      textArea.style.left = '-999999px';
-      textArea.style.top = '-999999px';
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
+      const el = document.createElement('textarea');
+      el.value = text;
+      el.style.position = 'fixed';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      el.select();
       try {
         document.execCommand('copy');
-        showToast(toastMsg || 'Copied to clipboard');
-      } catch (err) {
-        showToast('Press Ctrl+C to copy: ' + text);
+        showAppleToast(toastMsg);
+      } catch(e) {
+        showAppleToast('Email: ' + text);
       }
-      textArea.remove();
+      document.body.removeChild(el);
     }
 
-    // Attach haptic feedback to all clickable buttons and links
+    // 4. macOS Terminal Tab Switcher
+    function switchMacTab(tabKey) {
+      playAppleClick(700, 0.02);
+      const tabs = ['agent-fleet', 'pos-concurrency', 'content-pipeline', 'security-model'];
+      tabs.forEach(t => {
+        const content = document.getElementById('mac-content-' + t);
+        const btn = document.getElementById('tab-' + t);
+        if (t === tabKey) {
+          content.classList.remove('hidden');
+          btn.classList.add('bg-[#2c2c2e]', 'text-white');
+          btn.classList.remove('text-[#86868b]');
+        } else {
+          content.classList.add('hidden');
+          btn.classList.remove('bg-[#2c2c2e]', 'text-white');
+          btn.classList.add('text-[#86868b]');
+        }
+      });
+    }
+
+    // 5. iOS Segmented Project Filtering
+    function filterProjects(cat) {
+      playAppleClick(650, 0.02);
+      const buttons = ['all', 'ai', 'web', 'enterprise'];
+      buttons.forEach(b => {
+        const btn = document.getElementById('btn-filter-' + b);
+        if (b === cat) {
+          btn.classList.add('segmented-pill-active');
+          btn.classList.remove('text-[#86868b]');
+        } else {
+          btn.classList.remove('segmented-pill-active');
+          btn.classList.add('text-[#86868b]');
+        }
+      });
+
+      const cards = document.querySelectorAll('.project-item');
+      cards.forEach(c => {
+        if (cat === 'all' || c.getAttribute('data-category') === cat) {
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    }
+
+    // Add subtle hover acoustic feedback to links and buttons
     document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => playHapticBeep(450, 0.02));
-      el.addEventListener('click', () => playHapticBeep(700, 0.04));
+      el.addEventListener('mouseenter', () => playAppleClick(500, 0.015));
     });
   </script>
 </body>
