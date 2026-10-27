@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="YcaeUuoo-kEFDwEuasEwqpO5Ihl06qTV3i_UCVUo3NI" />
-  <title>Mark Chester R. Santos — Remote AI Operations, Technical VA &amp; Full-Stack Engineer</title>
+  <title>Mark Chester Santos Portfolio</title>
 
-  <meta name="description" content="Portfolio of Mark Chester R. Santos — Remote AI Automation Specialist, Technical Virtual Assistant, and Full-Stack Developer. Proven enterprise support track record at Walmart (IBEX Global) &amp; IGT Solutions plus 5+ production web and AI automation systems." />
-  <meta name="keywords" content="Mark Chester Santos, Technical Virtual Assistant, AI Operations Specialist, AI Automation Engineer, Full-Stack Developer, Remote Work Philippines, Next.js, n8n, Python, Agent-Reach, US Shift VA, UK Shift VA" />
+  <meta name="description" content="Official Mark Chester Santos Portfolio — Remote AI Automation Specialist, Technical Virtual Assistant, and Full-Stack Developer. Proven enterprise support track record at Walmart (IBEX Global) &amp; IGT Solutions plus 5+ production web and AI automation systems." />
+  <meta name="keywords" content="Mark Chester Santos, Mark Chester Santos Portfolio, Technical Virtual Assistant, AI Operations Specialist, AI Automation Engineer, Full-Stack Developer, Remote Work Philippines, Next.js, n8n, Python, Agent-Reach, US Shift VA, UK Shift VA" />
   <meta name="author" content="Mark Chester R. Santos" />
   <meta name="robots" content="index, follow" />
 
   <!-- Open Graph / Social Preview -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mark-chester-santos-portfolio.vercel.app/" />
-  <meta property="og:title" content="Mark Chester R. Santos — Remote Technical VA, AI Operations &amp; Full-Stack Builder" />
+  <meta property="og:title" content="Mark Chester Santos Portfolio" />
   <meta property="og:description" content="Enterprise customer &amp; booking operations (Walmart/IBEX, IGT Solutions) + production Next.js apps, n8n AI pipelines, and zero-cost Agent-Reach automation." />
 
   <!-- Schema.org JSON-LD for Search Engines & Global Recruiters -->
@@ -51,7 +51,7 @@
       },
       {
         "@type": "ProfessionalService",
-        "name": "Mark Chester Santos Remote Technical Operations",
+        "name": "Mark Chester Santos Portfolio",
         "description": "Remote Technical Virtual Assistant, Customer Support Operations, and AI Automation Services for overseas companies.",
         "url": "https://mark-chester-santos-portfolio.vercel.app/",
         "areaServed": "Global Remote (US, UK, Australia, APAC)",
@@ -88,6 +88,9 @@
 
 <body class="font-sans antialiased selection:bg-[#2997ff] selection:text-white min-h-screen">
 
+  <!-- Ambient Background Canvas -->
+  <canvas id="ambient-canvas"></canvas>
+
   <!-- Toast Notification -->
   <div id="toast-notification" class="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#181b26] text-[#f5f5f7] text-xs font-medium border border-white/15 shadow-2xl">
     <span class="w-2 h-2 rounded-full bg-[#30d158]"></span>
@@ -98,19 +101,19 @@
   <header class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 px-4 pointer-events-none no-print">
     <nav class="glass-nav pointer-events-auto rounded-full px-4 py-2.5 flex items-center justify-between w-full max-w-6xl">
       <!-- Brand Identity -->
-      <a href="#hero" class="flex items-center gap-3 group focus:outline-none">
+      <a href="#hero" class="flex items-center gap-3 group focus:outline-none" title="Mark Chester Santos Portfolio">
         <div class="w-8 h-8 rounded-xl bg-[#181b26] border border-white/15 flex items-center justify-center transition-transform group-hover:scale-105">
           <span class="text-xs font-extrabold tracking-tighter text-white">MC<span class="text-[#2997ff]">S</span></span>
         </div>
         <div class="flex flex-col">
-          <span class="text-xs font-semibold text-white tracking-tight group-hover:text-[#2997ff] transition-colors">Mark Chester Santos</span>
+          <span class="text-xs font-semibold text-white tracking-tight group-hover:text-[#2997ff] transition-colors">Mark Chester Santos Portfolio</span>
           <span class="text-[10px] text-[#a1a6b4] leading-tight">Remote Tech VA • AI &amp; Full-Stack</span>
         </div>
       </a>
 
-      <!-- Navigation Links -->
+      <!-- Navigation Links (/#video-intro REMOVED) -->
       <div class="hidden lg:flex items-center space-x-1 text-xs text-[#a1a6b4] font-medium">
-        <a href="#video-intro" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Video Intro</a>
+        <a href="#about-bento" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">About Hub</a>
         <a href="#calculator" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">ROI Calculator</a>
         <a href="#deliverables" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">What I Do</a>
         <a href="#projects" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Live Systems</a>
@@ -135,7 +138,7 @@
   </header>
 
   <!-- MAIN CONTENT -->
-  <main class="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-24">
+  <main class="relative z-10 pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-24">
 
     <!-- ====================================================================
          1. HERO SECTION WITH EMPLOYER ROLE LENS SWITCHER
@@ -160,9 +163,9 @@
         </div>
       </div>
 
-      <!-- Status Pill (Privacy Safe: No Postal Code or Street Address) -->
+      <!-- Status Pill -->
       <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#181b26] border border-white/10 text-xs text-[#d1d5db] font-medium mb-6">
-        <span class="w-2 h-2 rounded-full bg-[#30d158]"></span>
+        <span class="w-2 h-2 rounded-full bg-[#30d158] animate-pulse"></span>
         <span id="hero-badge-text">100% Remote &amp; WFH Ready • US / UK / AU / APAC Shift Coverage</span>
       </div>
 
@@ -177,11 +180,11 @@
         I combine enterprise customer support &amp; booking operations (<strong class="text-white font-medium">Walmart / IBEX Global</strong> &amp; <strong class="text-white font-medium">IGT Solutions</strong>) with production <strong class="text-white font-medium">AI workflow automation (n8n, Python, Agent-Reach)</strong> and <strong class="text-white font-medium">Next.js / Supabase engineering</strong>—so I can run your daily operations on Day 1 and automate the repetitive work by Week 2.
       </p>
 
-      <!-- Primary Action Buttons -->
+      <!-- Primary Action Buttons (/#video-intro removed) -->
       <div class="flex flex-wrap items-center justify-center gap-3.5 mb-14">
-        <a href="#video-intro" class="px-6 py-3 rounded-full bg-white text-black hover:bg-[#e5e7eb] font-semibold text-sm transition-all active:scale-95 flex items-center gap-2 shadow-lg">
-          <svg class="w-4 h-4 text-[#2997ff]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          <span>Watch / Read 60s Intro Pitch</span>
+        <a href="#about-bento" class="px-6 py-3 rounded-full bg-white text-black hover:bg-[#e5e7eb] font-semibold text-sm transition-all active:scale-95 flex items-center gap-2 shadow-lg">
+          <span>Explore Bento Hub</span>
+          <svg class="w-4 h-4 text-[#2997ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M19 9l-7 7-7-7"/></svg>
         </a>
 
         <a href="#calculator" class="px-5 py-3 rounded-full glass-pill text-white hover:bg-white/10 font-semibold text-sm transition-all active:scale-95 flex items-center gap-2">
@@ -224,99 +227,265 @@
     </section>
 
     <!-- ====================================================================
-         2. VIDEO INTRODUCTION & INTERACTIVE 60-SECOND EXECUTIVE PITCH
+         INFINITE TOOLS & PLATFORMS MARQUEE (Visual Marquee Concept)
          ==================================================================== -->
-    <section id="video-intro" class="space-y-6">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <span class="text-xs font-semibold text-[#2997ff] uppercase tracking-wider">Candidate Introduction</span>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">60-Second Executive Intro &amp; Walkthrough</h2>
+    <div class="py-2">
+      <div class="text-center mb-3">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-[#a1a6b4]">Autonomous Toolchain &amp; Engineering Stack</span>
+      </div>
+      <div class="marquee-container py-2">
+        <div class="marquee-content">
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#2997ff]">⚡</span> n8n Workflow Automation
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#30d158]">🔍</span> Agent-Reach Multi-Platform CLI
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#bf5af2]">🐍</span> Python 3.12
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#2997ff]">▲</span> Next.js 15 &amp; 16
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#38bdf8]">⚛</span> React 19 / 18
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#30d158]">⚡</span> Supabase (PostgreSQL &amp; RLS)
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#ff9f0a]">☕</span> Java 17 &amp; MySQL 8.0
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#2997ff]">🛡️</span> Cloudflare Turnstile CAPTCHA
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#bf5af2]">🎙️</span> ElevenLabs Voice AI
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#30d158]">📺</span> YouTube Data API v3
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#2997ff]">🤖</span> Claude 3.5 &amp; OpenAI GPT-4o
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#bf5af2]">📓</span> Obsidian Knowledge Vault
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#30d158]">🎧</span> AnyDesk &amp; TeamViewer
+          </span>
         </div>
-        <div class="text-xs text-[#a1a6b4] flex items-center gap-2">
-          <span class="px-2.5 py-1 rounded-full bg-[#181b26] border border-white/10 text-[#30d158] font-medium">Fluent English (Voice, Chat &amp; Video)</span>
+        <!-- Duplicated for continuous seamless loop -->
+        <div class="marquee-content" aria-hidden="true">
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#2997ff]">⚡</span> n8n Workflow Automation
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#30d158]">🔍</span> Agent-Reach Multi-Platform CLI
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#bf5af2]">🐍</span> Python 3.12
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#2997ff]">▲</span> Next.js 15 &amp; 16
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#38bdf8]">⚛</span> React 19 / 18
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#30d158]">⚡</span> Supabase (PostgreSQL &amp; RLS)
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#ff9f0a]">☕</span> Java 17 &amp; MySQL 8.0
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#2997ff]">🛡️</span> Cloudflare Turnstile CAPTCHA
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#bf5af2]">🎙️</span> ElevenLabs Voice AI
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#30d158]">📺</span> YouTube Data API v3
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#2997ff]">🤖</span> Claude 3.5 &amp; OpenAI GPT-4o
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#bf5af2]">📓</span> Obsidian Knowledge Vault
+          </span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-[#12141d] border border-white/10 text-xs font-medium text-white flex items-center gap-2">
+            <span class="text-[#30d158]">🎧</span> AnyDesk &amp; TeamViewer
+          </span>
         </div>
       </div>
+    </div>
 
-      <div class="bento-card bento-card-highlight p-6 sm:p-8">
-        <!-- Container that auto-renders Loom/YouTube/MP4 when INTRO_VIDEO_URL is set in app.js -->
-        <div id="video-embed-container" class="hidden mb-6"></div>
+    <!-- ====================================================================
+         2. BENTO GRID: ABOUT & OPERATIONS COMMAND HUB
+         ==================================================================== -->
+    <section id="about-bento" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-semibold text-[#2997ff] uppercase tracking-wider">Operations &amp; Systems Hub</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">Contextual Bento Overview</h2>
+        </div>
+        <p class="text-xs text-[#a1a6b4] max-w-md">
+          A high-signal view of my daily execution, live operational readiness, and instant communication dispatch.
+        </p>
+      </div>
 
-        <!-- Interactive Pitch Deck Stage -->
-        <div id="video-pitch-stage" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          <!-- Left: Interactive Chapter Selector -->
-          <div class="lg:col-span-5 flex flex-col justify-between space-y-3">
-            <div>
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2997ff]/15 border border-[#2997ff]/30 text-[11px] text-[#2997ff] font-semibold mb-3">
-                <span>🎬 Interactive Pitch Preview</span>
-              </div>
-              <h3 class="text-lg font-bold text-white mb-1">Why Hire Mark Chester Santos?</h3>
-              <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-                Click through the 3 chapters below to preview how I combine enterprise customer support with full-stack AI automation:
-              </p>
+      <!-- Bento Grid (12 Columns) -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
 
-              <div class="space-y-2.5">
-                <button onclick="selectVideoChapter(1)" id="chapter-btn-1" class="chapter-btn active w-full text-left p-3.5 rounded-xl bg-[#141722] border border-white/10 hover:border-white/25 transition-all flex items-center justify-between">
-                  <div>
-                    <div class="text-xs font-bold text-white">01. Who I Am &amp; Remote Readiness</div>
-                    <div class="text-[11px] text-[#a1a6b4]">Walmart (IBEX) &amp; IGT Ops + BSIT Engineering</div>
-                  </div>
-                  <span class="text-[11px] font-mono text-[#2997ff]">0:00–0:20</span>
-                </button>
-
-                <button onclick="selectVideoChapter(2)" id="chapter-btn-2" class="chapter-btn w-full text-left p-3.5 rounded-xl bg-[#141722] border border-white/10 hover:border-white/25 transition-all flex items-center justify-between">
-                  <div>
-                    <div class="text-xs font-bold text-white">02. Day-1 Tasks I Take Off Your Plate</div>
-                    <div class="text-[11px] text-[#a1a6b4]">Support, Bookings, CRM &amp; Agent-Reach Automation</div>
-                  </div>
-                  <span class="text-[11px] font-mono text-[#30d158]">0:20–0:40</span>
-                </button>
-
-                <button onclick="selectVideoChapter(3)" id="chapter-btn-3" class="chapter-btn w-full text-left p-3.5 rounded-xl bg-[#141722] border border-white/10 hover:border-white/25 transition-all flex items-center justify-between">
-                  <div>
-                    <div class="text-xs font-bold text-white">03. Live Systems &amp; $0/Mo AI Stack</div>
-                    <div class="text-[11px] text-[#a1a6b4]">5+ Deployed Apps &amp; 14-Stage Pipelines</div>
-                  </div>
-                  <span class="text-[11px] font-mono text-[#ff9f0a]">0:40–1:00</span>
-                </button>
-              </div>
+        <!-- Bento Card 1 (5 cols): Live Operational Command Center -->
+        <div class="bento-card md:col-span-5 p-6 sm:p-7 flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-mono text-[#2997ff] uppercase tracking-wider font-semibold">Command Center</span>
+              <span class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#30d158]/15 text-[#30d158] text-[10px] font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#30d158] animate-pulse"></span> SYSTEM ARMED
+              </span>
             </div>
+            <h3 class="text-base font-bold text-white mb-2">Live Remote Readiness</h3>
+            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
+              Equipped for zero-downtime remote execution with enterprise-grade redundant hardware and communication infrastructure.
+            </p>
 
-            <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-[#a1a6b4]">
-              <span>Want a live video walkthrough on Zoom / Google Meet?</span>
-              <a href="#contact" class="text-[#2997ff] font-semibold hover:underline">Book 15-Min Intro →</a>
+            <div class="space-y-2 text-xs">
+              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
+                <span class="text-[#d1d5db]">Primary Line:</span>
+                <span class="font-mono text-[#30d158] font-semibold">200 Mbps Fiber (Low Ping)</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
+                <span class="text-[#d1d5db]">Auto-Failover:</span>
+                <span class="font-mono text-white">5G Wireless Hotspot</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
+                <span class="text-[#d1d5db]">Power Protection:</span>
+                <span class="font-mono text-white">UPS Battery Backup</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
+                <span class="text-[#d1d5db]">Password Vault:</span>
+                <span class="font-mono text-[#2997ff]">1Password / Bitwarden</span>
+              </div>
             </div>
           </div>
 
-          <!-- Right: Active Chapter Transcript & Key Outcomes Stage -->
-          <div class="lg:col-span-7 video-stage p-6 sm:p-8 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <span id="video-chapter-duration" class="px-2.5 py-1 rounded-md bg-white/10 text-white font-mono text-xs">0:00 – 0:20</span>
-                <span class="text-[11px] text-[#a1a6b4] font-mono">HD Video Player Slot Ready</span>
-              </div>
-
-              <h4 id="video-chapter-title" class="text-xl sm:text-2xl font-bold text-white mb-4">
-                1. Who I Am &amp; Why Overseas Teams Trust Me
-              </h4>
-
-              <blockquote id="video-chapter-summary" class="text-sm sm:text-base text-[#e5e7eb] leading-relaxed italic bg-black/30 p-4 rounded-xl border border-white/10 mb-6">
-                "Hi, I'm Mark Chester Santos based in Metro Manila. Unlike traditional developers who only write code in isolation—or traditional VAs who get stuck when technical tools break—I bridge both worlds. I've supported enterprise customers for Walmart (IBEX Global) and international travel clients at IGT Solutions, while holding a BS in Information Technology and 5+ years of building real software."
-              </blockquote>
-            </div>
-
-            <div>
-              <div class="text-xs font-semibold uppercase tracking-wider text-[#2997ff] mb-2.5">Key Employer Takeaways:</div>
-              <ul id="video-chapter-list" class="space-y-2">
-                <!-- Populated by app.js -->
-              </ul>
-            </div>
+          <div class="pt-3 border-t border-white/10 text-[11px] text-[#a1a6b4] flex items-center justify-between">
+            <span>Location: Metro Manila (UTC+8)</span>
+            <span class="text-white font-medium">US / UK Shift Ready</span>
           </div>
         </div>
+
+        <!-- Bento Card 2 (7 cols): Interactive "Quick Note to Mark" Direct Dispatch -->
+        <div class="bento-card bento-card-highlight md:col-span-7 p-6 sm:p-7 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-mono text-[#30d158] uppercase tracking-wider font-semibold">Direct Communication</span>
+              <span class="text-[11px] text-[#a1a6b4] font-mono">Response: &lt; 2 hrs</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Send a Quick Note to Mark</h3>
+            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
+              Have an open remote role, customer support backlog, or automation task? Type your note below to start a conversation:
+            </p>
+
+            <!-- Interactive Direct Message Dispatcher -->
+            <div class="space-y-3">
+              <div class="relative">
+                <textarea id="bento-quick-input" rows="3" placeholder="e.g. Hi Mark, we need a Technical VA to handle our customer queues and build n8n webhook alerts for our US team..." class="w-full p-3 rounded-xl bg-[#181b26] border border-white/12 text-xs text-white placeholder-[#6e7485] outline-none focus:border-[#2997ff] resize-none leading-relaxed"></textarea>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <div id="bento-quick-status" class="text-xs"></div>
+                <button onclick="sendBentoQuickNote()" class="px-5 py-2.5 rounded-xl bg-[#2997ff] hover:bg-[#1482eb] text-white text-xs font-semibold tracking-tight transition-all active:scale-95 shadow-md flex items-center gap-1.5">
+                  <span>Send Direct Note</span>
+                  <span>→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-[#a1a6b4]">
+            <span>Direct Email: <strong class="text-white">chesrakzxc@gmail.com</strong></span>
+            <button onclick="copyText('chesrakzxc@gmail.com', 'Copied: chesrakzxc@gmail.com')" class="text-[#2997ff] hover:underline">Copy Address</button>
+          </div>
+        </div>
+
+        <!-- Bento Card 3 (4 cols): Deep Focus Flow & Ambient State (Inspired by Music Card) -->
+        <div class="bento-card md:col-span-4 p-6 sm:p-7 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-mono text-[#bf5af2] uppercase tracking-wider font-semibold">Workflow Engine</span>
+              <div class="flex items-end gap-1 h-5">
+                <span class="eq-bar eq-bar-1"></span>
+                <span class="eq-bar eq-bar-2"></span>
+                <span class="eq-bar eq-bar-3"></span>
+                <span class="eq-bar eq-bar-4"></span>
+              </div>
+            </div>
+            <h3 class="text-base font-bold text-white mb-1">Deep Work Mode</h3>
+            <p id="focus-flow-state" class="text-[11px] font-mono text-[#30d158] mb-3">
+              Deep Flow: Active (Low-Latency Ops)
+            </p>
+            <p class="text-xs text-[#a1a6b4] leading-relaxed">
+              Operating on async principles: 1) Strict daily priorities, 2) Zero task loss via Obsidian vaults, and 3) End-of-day Loom video recaps.
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+            <span class="text-[11px] text-[#a1a6b4]">Async Collaboration</span>
+            <button onclick="toggleFocusFlow()" class="px-3 py-1 rounded-lg bg-[#181b26] hover:bg-white/10 text-[11px] text-[#d1d5db] font-mono border border-white/10 transition-all">
+              Toggle Mode
+            </button>
+          </div>
+        </div>
+
+        <!-- Bento Card 4 (8 cols): Day-1 vs Week-2 Transformation -->
+        <div class="bento-card md:col-span-8 p-6 sm:p-7 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-mono text-[#ff9f0a] uppercase tracking-wider font-semibold">Operational Roadmap</span>
+              <span class="text-[11px] text-[#30d158] font-mono font-semibold">Fast Onboarding</span>
+            </div>
+            <h3 class="text-base font-bold text-white mb-1">How I Create Immediate Value For Your Team</h3>
+            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
+              A clear progression from day-one execution to long-term workflow automation:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-3.5 rounded-xl bg-[#181b26] border border-white/8 space-y-1.5">
+                <div class="font-bold text-[#2997ff] flex items-center gap-1.5">
+                  <span>📅</span>
+                  <span>Day 1 — Operational Triage</span>
+                </div>
+                <p class="text-[#d1d5db] leading-relaxed">
+                  Step straight into customer queues (Zendesk, email, live chat), AnyDesk client PC setups, and calendar scheduling with battle-tested Walmart/IGT discipline.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-[#181b26] border border-white/8 space-y-1.5">
+                <div class="font-bold text-[#30d158] flex items-center gap-1.5">
+                  <span>⚡</span>
+                  <span>Week 2+ — AI Automation</span>
+                </div>
+                <p class="text-[#d1d5db] leading-relaxed">
+                  Identify repetitive admin bottlenecks and build zero-cost n8n pipelines, Agent-Reach lead scrapers, and Discord alerts that permanently save team hours.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-white/10 text-[11px] text-[#a1a6b4] flex items-center justify-between">
+            <span>Result: Lower overhead &amp; higher team velocity</span>
+            <a href="#calculator" class="text-[#2997ff] font-semibold hover:underline">Calculate Your ROI →</a>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- ====================================================================
-         3. INTERACTIVE ROI & TIME SAVINGS CALCULATOR (ENTERPRISE FEATURE)
+         3. INTERACTIVE ROI & TIME SAVINGS CALCULATOR
          ==================================================================== -->
     <section id="calculator" class="space-y-6">
       <div class="text-center max-w-2xl mx-auto">
@@ -491,7 +660,7 @@
         </div>
       </div>
 
-      <!-- Home Office Specs & Redundancy Checklist (Trust Builder) -->
+      <!-- Home Office Specs & Redundancy Checklist -->
       <div class="bento-card p-6 sm:p-8 bg-[#12141d]">
         <div class="flex items-center gap-2 mb-4">
           <span class="w-2.5 h-2.5 rounded-full bg-[#30d158]"></span>
@@ -521,7 +690,7 @@
         </div>
       </div>
 
-      <!-- Live Global Timezone & Remote Work Readiness Bar -->
+      <!-- Live Global Timezone Bar -->
       <div class="bento-card p-5 sm:p-6 bg-[#12141d]">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
@@ -557,7 +726,7 @@
     </section>
 
     <!-- ====================================================================
-         5. FEATURED PRODUCTION PROJECTS (WITH CASE STUDY MODAL TRIGGERS)
+         5. FEATURED PRODUCTION APPLICATIONS (WITH VISUAL MOCKUP HEADERS)
          ==================================================================== -->
     <section id="projects" class="space-y-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -578,30 +747,48 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
         <!-- Project 1: Sonata (LicenseDesk) -->
-        <article class="bento-card p-7 flex flex-col justify-between project-item" data-category="web ops">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-[11px] font-semibold text-[#2997ff] bg-[#2997ff]/10 px-2.5 py-0.5 rounded-full">Service Booking &amp; Fulfillment</span>
-              <span class="text-[11px] text-[#30d158] font-mono">● Vercel Production</span>
+        <article class="bento-card p-6 sm:p-7 flex flex-col justify-between project-item" data-category="web ops">
+          <div class="space-y-4">
+            <!-- Visual Browser Toolbar Mockup -->
+            <div class="project-mockup-header p-2.5">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-1.5">
+                  <span class="win-dot win-dot-red"></span>
+                  <span class="win-dot win-dot-yellow"></span>
+                  <span class="win-dot win-dot-green"></span>
+                </div>
+                <div class="px-2 py-0.5 rounded-md bg-[#181b26] text-[10px] font-mono text-[#a1a6b4] flex items-center gap-1">
+                  <span class="text-[#30d158]">🔒</span> sonata-licensedesk.vercel.app
+                </div>
+                <span class="text-[10px] text-[#2997ff] font-mono">Next.js 15</span>
+              </div>
+              <div class="p-2 rounded-lg bg-[#141722] text-[11px] font-mono text-[#d1d5db] flex items-center justify-between">
+                <span>Webhook: Discord (3x retry)</span>
+                <span class="text-[#30d158] font-bold">200 OK</span>
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">Sonata — Microsoft Setup Form (LicenseDesk)</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              Production service booking platform for Microsoft account lifecycle management (Windows &amp; Office Activation). Automates the entire customer intake-to-fulfillment pipeline with real-time Discord webhook alerts (3-attempt retry logic), Resend email confirmations, and Sentry error tracking.
-            </p>
-            <ul class="text-[11px] text-[#d1d5db] space-y-1 mb-5">
-              <li>• Serverless API route with Zod schema validation &amp; deduplication</li>
-              <li>• Email rate limiting &amp; Cloudflare Turnstile bot protection</li>
-            </ul>
-            <div class="flex flex-wrap gap-1.5 mb-6">
+
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-semibold text-[#2997ff] bg-[#2997ff]/10 px-2.5 py-0.5 rounded-full">SaaS Fulfillment</span>
+                <span class="text-[11px] text-[#30d158] font-mono">● Live on Vercel</span>
+              </div>
+              <h3 class="text-base font-bold text-white mb-1.5">Sonata — Microsoft Setup Form (LicenseDesk)</h3>
+              <p class="text-xs text-[#a1a6b4] leading-relaxed mb-3">
+                Production service booking platform for Microsoft account lifecycle management (Windows &amp; Office Activation). Full submission-to-fulfillment pipeline with Zod validation, Resend email confirmations, and Sentry error monitoring.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5">
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Next.js 15</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">React 19</span>
-              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">TypeScript</span>
-              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Tailwind CSS 4</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Tailwind 4</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Supabase</span>
-              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Resend &amp; Discord</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Discord Webhooks</span>
             </div>
           </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-5">
             <button onclick="openCaseStudy('sonata')" class="text-xs font-semibold text-white hover:text-[#2997ff] flex items-center gap-1 transition-colors">
               <span>Case Study ↗</span>
             </button>
@@ -613,28 +800,47 @@
         </article>
 
         <!-- Project 2: AI Appointment Assistant Backend API -->
-        <article class="bento-card p-7 flex flex-col justify-between project-item" data-category="ops web">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-[11px] font-semibold text-[#30d158] bg-[#30d158]/10 px-2.5 py-0.5 rounded-full">Remote Support Booking API</span>
-              <span class="text-[11px] text-[#30d158] font-mono">● Live Endpoint</span>
+        <article class="bento-card p-6 sm:p-7 flex flex-col justify-between project-item" data-category="ops web">
+          <div class="space-y-4">
+            <!-- Visual Terminal Toolbar Mockup -->
+            <div class="project-mockup-header p-2.5">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-1.5">
+                  <span class="win-dot win-dot-red"></span>
+                  <span class="win-dot win-dot-yellow"></span>
+                  <span class="win-dot win-dot-green"></span>
+                </div>
+                <div class="px-2 py-0.5 rounded-md bg-[#181b26] text-[10px] font-mono text-[#a1a6b4] flex items-center gap-1">
+                  <span>⚡</span> appointment-backend-one.vercel.app
+                </div>
+                <span class="text-[10px] text-[#30d158] font-mono">Node.js</span>
+              </div>
+              <div class="p-2 rounded-lg bg-[#141722] text-[11px] font-mono text-[#d1d5db] flex items-center justify-between">
+                <span>POST /api/book-appointment</span>
+                <span class="text-[#30d158]">RateLimit: 5/hr</span>
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">AI Appointment Assistant — Backend API</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              Serverless appointment scheduling backend built for remote PC technical support sessions (5–20 min via AnyDesk / TeamViewer) with automatic timezone handling and instant Discord booking notifications.
-            </p>
-            <ul class="text-[11px] text-[#d1d5db] space-y-1 mb-5">
-              <li>• 3 Vercel serverless endpoints: <code class="text-white">book-appointment</code>, <code class="text-white">list-appointments</code>, <code class="text-white">health</code></li>
-              <li>• Supabase Row-Level Security (RLS), audit logging &amp; IP rate limiting (5/hr)</li>
-            </ul>
-            <div class="flex flex-wrap gap-1.5 mb-6">
+
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-semibold text-[#30d158] bg-[#30d158]/10 px-2.5 py-0.5 rounded-full">Remote Support API</span>
+                <span class="text-[11px] text-[#30d158] font-mono">● Live Endpoint</span>
+              </div>
+              <h3 class="text-base font-bold text-white mb-1.5">AI Appointment Assistant — Backend API</h3>
+              <p class="text-xs text-[#a1a6b4] leading-relaxed mb-3">
+                Serverless appointment booking backend for remote PC technical support sessions (5–20 min via AnyDesk / TeamViewer) with automated Philippine/overseas timezone handling and Supabase Row-Level Security.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5">
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Node.js</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Supabase PostgreSQL</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Vercel Serverless</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Discord Webhooks</span>
             </div>
           </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-5">
             <button onclick="openCaseStudy('appointment')" class="text-xs font-semibold text-white hover:text-[#30d158] flex items-center gap-1 transition-colors">
               <span>Case Study ↗</span>
             </button>
@@ -646,29 +852,48 @@
         </article>
 
         <!-- Project 3: Philippine Skyland -->
-        <article class="bento-card p-7 flex flex-col justify-between project-item" data-category="web">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-[11px] font-semibold text-[#2997ff] bg-[#2997ff]/10 px-2.5 py-0.5 rounded-full">Real Estate SaaS</span>
-              <span class="text-[11px] text-[#30d158] font-mono">● philippine-skyland.vercel.app</span>
+        <article class="bento-card p-6 sm:p-7 flex flex-col justify-between project-item" data-category="web">
+          <div class="space-y-4">
+            <!-- Visual Browser Toolbar Mockup -->
+            <div class="project-mockup-header p-2.5">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-1.5">
+                  <span class="win-dot win-dot-red"></span>
+                  <span class="win-dot win-dot-yellow"></span>
+                  <span class="win-dot win-dot-green"></span>
+                </div>
+                <div class="px-2 py-0.5 rounded-md bg-[#181b26] text-[10px] font-mono text-[#a1a6b4] flex items-center gap-1">
+                  <span>🛡️</span> philippine-skyland.vercel.app
+                </div>
+                <span class="text-[10px] text-[#2997ff] font-mono">Next.js 16</span>
+              </div>
+              <div class="p-2 rounded-lg bg-[#141722] text-[11px] font-mono text-[#d1d5db] flex items-center justify-between">
+                <span>Security: 11-Layer Shield</span>
+                <span class="text-[#30d158]">Turnstile OK</span>
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">Philippine Skyland — Broker &amp; Appraiser SaaS</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              Full-stack SaaS platform for real estate professionals featuring property listings, broker/appraiser directories, transaction tracking, appraisal workflows, client inquiry management, and an integrated AI assistant widget.
-            </p>
-            <ul class="text-[11px] text-[#d1d5db] space-y-1 mb-5">
-              <li>• 13 Prisma models on PostgreSQL 16 + 14 REST API endpoints &amp; 4-role RBAC</li>
-              <li>• 11-layer security stack (Zod, CSRF, bcrypt, JWT, HMAC, Turnstile, audit logs)</li>
-            </ul>
-            <div class="flex flex-wrap gap-1.5 mb-6">
+
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-semibold text-[#2997ff] bg-[#2997ff]/10 px-2.5 py-0.5 rounded-full">Real Estate SaaS</span>
+                <span class="text-[11px] text-[#30d158] font-mono">● Live on Vercel</span>
+              </div>
+              <h3 class="text-base font-bold text-white mb-1.5">Philippine Skyland — Broker &amp; Appraiser SaaS</h3>
+              <p class="text-xs text-[#a1a6b4] leading-relaxed mb-3">
+                Full-stack SaaS for real estate brokers and appraisers. Features 13 Prisma database models on PostgreSQL 16, 14+ API endpoints, 11-layer security stack (Zod, bcrypt, JWT, HMAC), multi-language support, and AI chatbot widget.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5">
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Next.js 16</span>
-              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">TypeScript 5.4</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Prisma ORM</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">PostgreSQL 16</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">NextAuth</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Playwright E2E</span>
             </div>
           </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-5">
             <button onclick="openCaseStudy('skyland')" class="text-xs font-semibold text-white hover:text-[#2997ff] flex items-center gap-1 transition-colors">
               <span>Case Study ↗</span>
             </button>
@@ -680,29 +905,48 @@
         </article>
 
         <!-- Project 4: AI Engineering OS + Agent-Reach Integration -->
-        <article class="bento-card p-7 flex flex-col justify-between project-item" data-category="ops">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-[11px] font-semibold text-[#bf5af2] bg-[#bf5af2]/10 px-2.5 py-0.5 rounded-full">AI Automation Framework</span>
-              <span class="text-[11px] text-[#a1a6b4] font-mono">$0/mo Free-Tier Stack</span>
+        <article class="bento-card p-6 sm:p-7 flex flex-col justify-between project-item" data-category="ops">
+          <div class="space-y-4">
+            <!-- Visual Pipeline Mockup -->
+            <div class="project-mockup-header p-2.5">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-1.5">
+                  <span class="win-dot win-dot-red"></span>
+                  <span class="win-dot win-dot-yellow"></span>
+                  <span class="win-dot win-dot-green"></span>
+                </div>
+                <div class="px-2 py-0.5 rounded-md bg-[#181b26] text-[10px] font-mono text-[#a1a6b4] flex items-center gap-1">
+                  <span>⚡</span> 14-stage-pipeline.py
+                </div>
+                <span class="text-[10px] text-[#bf5af2] font-mono">n8n + AI</span>
+              </div>
+              <div class="p-2 rounded-lg bg-[#141722] text-[11px] font-mono text-[#d1d5db] flex items-center justify-between">
+                <span>Media Automation</span>
+                <span class="text-[#30d158]">4.5h → 6m</span>
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">AI Engineering OS &amp; 14-Stage Content Pipeline</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              13-section operational blueprint for AI-assisted software &amp; content delivery. Includes a 14-stage YouTube Content Pipeline (n8n + Python + LLM prompts) automating intake, scriptwriting, ElevenLabs voiceover, FFmpeg video assembly, upload, and analytics—cutting production from hours to minutes.
-            </p>
-            <ul class="text-[11px] text-[#d1d5db] space-y-1 mb-5">
-              <li>• Enhanced with <strong>Agent-Reach</strong> for zero-API-fee multi-platform research</li>
-              <li>• Built-in QA Criticism Framework &amp; 10-persona role prompts</li>
-            </ul>
-            <div class="flex flex-wrap gap-1.5 mb-6">
+
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-semibold text-[#bf5af2] bg-[#bf5af2]/10 px-2.5 py-0.5 rounded-full">AI Automation Framework</span>
+                <span class="text-[11px] text-[#a1a6b4] font-mono">$0/mo Free Tier</span>
+              </div>
+              <h3 class="text-base font-bold text-white mb-1.5">AI Engineering OS &amp; 14-Stage Content Pipeline</h3>
+              <p class="text-xs text-[#a1a6b4] leading-relaxed mb-3">
+                13-section operational blueprint for AI-assisted software delivery. Includes a 14-stage YouTube Content Pipeline (n8n + Python + LLMs) automating intake, scripting, ElevenLabs audio, and YouTube Data API v3 publishing.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5">
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">n8n Automation</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Python</span>
-              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Agent-Reach CLI</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Agent-Reach</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">ElevenLabs</span>
-              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">YouTube Data API v3</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">YouTube API</span>
             </div>
           </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-5">
             <button onclick="openCaseStudy('content-os')" class="text-xs font-semibold text-white hover:text-[#bf5af2] flex items-center gap-1 transition-colors">
               <span>Case Study ↗</span>
             </button>
@@ -714,28 +958,47 @@
         </article>
 
         <!-- Project 5: AI-Ops Vault (Multi-AI Document Management System) -->
-        <article class="bento-card p-7 flex flex-col justify-between project-item" data-category="ops">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-[11px] font-semibold text-[#30d158] bg-[#30d158]/10 px-2.5 py-0.5 rounded-full">Knowledge &amp; SOP Ops</span>
-              <span class="text-[11px] text-[#a1a6b4] font-mono">6 AI Tools Coordinated</span>
+        <article class="bento-card p-6 sm:p-7 flex flex-col justify-between project-item" data-category="ops">
+          <div class="space-y-4">
+            <!-- Visual Obsidian Vault Mockup -->
+            <div class="project-mockup-header p-2.5">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-1.5">
+                  <span class="win-dot win-dot-red"></span>
+                  <span class="win-dot win-dot-yellow"></span>
+                  <span class="win-dot win-dot-green"></span>
+                </div>
+                <div class="px-2 py-0.5 rounded-md bg-[#181b26] text-[10px] font-mono text-[#a1a6b4] flex items-center gap-1">
+                  <span>📓</span> Obsidian Vault (PAIOS)
+                </div>
+                <span class="text-[10px] text-[#30d158] font-mono">6 AI Tools</span>
+              </div>
+              <div class="p-2 rounded-lg bg-[#141722] text-[11px] font-mono text-[#d1d5db] flex items-center justify-between">
+                <span>Knowledge Base: 13 Domains</span>
+                <span class="text-[#30d158]">Verified SOP</span>
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">AI-Ops Vault — Multi-AI Knowledge System</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              Obsidian-based canonical document &amp; SOP management system coordinating 6 AI tools (Claude, OpenAI Codex, Gemini, OpenCode, ZCode, Copilot) through structured inbox-to-canonical verification workflows.
-            </p>
-            <ul class="text-[11px] text-[#d1d5db] space-y-1 mb-5">
-              <li>• 13-section research knowledge base spanning AI, Cloud, Security &amp; Business Ops</li>
-              <li>• PAIOS governance layer ensuring zero hallucinated documentation</li>
-            </ul>
-            <div class="flex flex-wrap gap-1.5 mb-6">
+
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-semibold text-[#30d158] bg-[#30d158]/10 px-2.5 py-0.5 rounded-full">Knowledge &amp; SOP Ops</span>
+                <span class="text-[11px] text-[#a1a6b4] font-mono">Multi-AI Coordinated</span>
+              </div>
+              <h3 class="text-base font-bold text-white mb-1.5">AI-Ops Vault — Multi-AI Knowledge System</h3>
+              <p class="text-xs text-[#a1a6b4] leading-relaxed mb-3">
+                Obsidian-based canonical document &amp; SOP management system coordinating 6 AI tools (Claude, OpenAI Codex, Gemini, OpenCode, ZCode, Copilot) through structured inbox-to-canonical verification workflows.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5">
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Obsidian</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Claude / Gemini / GPT</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">SOP Governance</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Git Versioning</span>
             </div>
           </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-5">
             <button onclick="openCaseStudy('ops-vault')" class="text-xs font-semibold text-white hover:text-[#30d158] flex items-center gap-1 transition-colors">
               <span>Case Study ↗</span>
             </button>
@@ -747,29 +1010,48 @@
         </article>
 
         <!-- Project 6: SMC Inventory System (Java 17 & MySQL 8.0 POS) -->
-        <article class="bento-card p-7 flex flex-col justify-between project-item" data-category="systems">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-[11px] font-semibold text-[#ff9f0a] bg-[#ff9f0a]/10 px-2.5 py-0.5 rounded-full">Enterprise POS &amp; Inventory</span>
-              <span class="text-[11px] text-[#a1a6b4] font-mono">47 Files • 10,400+ LOC</span>
+        <article class="bento-card p-6 sm:p-7 flex flex-col justify-between project-item" data-category="systems">
+          <div class="space-y-4">
+            <!-- Visual Terminal Toolbar Mockup -->
+            <div class="project-mockup-header p-2.5">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-1.5">
+                  <span class="win-dot win-dot-red"></span>
+                  <span class="win-dot win-dot-yellow"></span>
+                  <span class="win-dot win-dot-green"></span>
+                </div>
+                <div class="px-2 py-0.5 rounded-md bg-[#181b26] text-[10px] font-mono text-[#a1a6b4] flex items-center gap-1">
+                  <span>☕</span> smc-inventory-pos.jar
+                </div>
+                <span class="text-[10px] text-[#ff9f0a] font-mono">Java 17</span>
+              </div>
+              <div class="p-2 rounded-lg bg-[#141722] text-[11px] font-mono text-[#d1d5db] flex items-center justify-between">
+                <span>Concurrency: Row-Locked</span>
+                <span class="text-[#30d158]">100+ Tests Pass</span>
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">SMC Inventory System — Java 17 POS</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              Complete enterprise Point-of-Sale and warehouse inventory system built with clean layered architecture (Model-Service-Repository-UI). Features transaction-wrapped sales processing, <code class="text-white">SELECT FOR UPDATE</code> row locking, and deadlock retry with exponential backoff.
-            </p>
-            <ul class="text-[11px] text-[#d1d5db] space-y-1 mb-5">
-              <li>• BCrypt (12 rounds), PreparedStatement SQLi defense &amp; full audit trails</li>
-              <li>• 100+ automated tests (JUnit 5 + Mockito + H2) &amp; Gradle Shadow fat JAR</li>
-            </ul>
-            <div class="flex flex-wrap gap-1.5 mb-6">
+
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-semibold text-[#ff9f0a] bg-[#ff9f0a]/10 px-2.5 py-0.5 rounded-full">Enterprise POS Core</span>
+                <span class="text-[11px] text-[#a1a6b4] font-mono">10,400+ LOC</span>
+              </div>
+              <h3 class="text-base font-bold text-white mb-1.5">SMC Inventory System — Java 17 POS</h3>
+              <p class="text-xs text-[#a1a6b4] leading-relaxed mb-3">
+                Complete enterprise POS and inventory system built with clean layered architecture (Model-Service-Repository-UI). Transaction-wrapped sales processing, <code class="text-white">SELECT FOR UPDATE</code> row locking, deadlock retry, and HikariCP pooling.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5">
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Java 17</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">MySQL 8.0</span>
-              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Swing + FlatLaf</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">Swing FlatLaf</span>
               <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">HikariCP</span>
-              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">JUnit 5 &amp; Mockito</span>
+              <span class="px-2 py-0.5 rounded-md bg-[#181b26] border border-white/10 text-[10px] text-[#d1d5db]">JUnit 5</span>
             </div>
           </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-5">
             <button onclick="openCaseStudy('inventory')" class="text-xs font-semibold text-white hover:text-[#ff9f0a] flex items-center gap-1 transition-colors">
               <span>Case Study ↗</span>
             </button>
@@ -1247,10 +1529,10 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-10 px-4 text-xs text-[#a1a6b4] no-print">
+  <footer class="relative z-10 border-t border-white/10 py-10 px-4 text-xs text-[#a1a6b4] no-print">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        <span>© 2026 Mark Chester R. Santos. Built for 100% Remote Global Operations &amp; Engineering.</span>
+        <span>© 2026 Mark Chester Santos Portfolio. Built for 100% Remote Global Operations &amp; Engineering.</span>
       </div>
       <div class="flex items-center gap-6">
         <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub</a>

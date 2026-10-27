@@ -1,13 +1,11 @@
 // ============================================================================
-// Mark Chester R. Santos — Interactive Portfolio Controller (10/10 Enterprise Edition)
-// Zero AI Slop • Privacy Hardened • Remote Employer Conversion Focused
+// Mark Chester Santos Portfolio — Interactive Controller
+// High-Conversion Bento Grid • Zero AI Slop • 100% Privacy-Protected
 // ============================================================================
 
 const PORTFOLIO_CONFIG = {
-  // Paste your Loom, YouTube embed, or direct .mp4 link here when ready!
-  // Example: "https://www.loom.com/embed/YOUR_VIDEO_ID" or "https://www.youtube.com/embed/YOUR_VIDEO_ID"
-  INTRO_VIDEO_URL: "",
-  CONTACT_EMAIL: "chesrakzxc@gmail.com"
+  CONTACT_EMAIL: "chesrakzxc@gmail.com",
+  SITE_NAME: "Mark Chester Santos Portfolio"
 };
 
 // Role Lens Data — Tailors the Hero & Highlights to the Employer's Exact Need
@@ -53,43 +51,6 @@ const ROLE_LENSES = {
     stat3Label: "Autonomous Content & QA Pipeline",
     stat4Val: "100+ Tests",
     stat4Label: "JUnit 5, Mockito & Playwright E2E"
-  }
-};
-
-// Interactive Video Pitch Chapters (Used before & alongside recorded video)
-const VIDEO_CHAPTERS = {
-  1: {
-    duration: "0:00 – 0:20",
-    title: "1. Who I Am & Why Overseas Teams Trust Me",
-    summary:
-      "\"Hi, I'm Mark Chester Santos based in Metro Manila. Unlike traditional developers who only write code in isolation—or traditional VAs who get stuck when technical tools break—I bridge both worlds. I've supported enterprise customers for Walmart (IBEX Global) and international travel clients at IGT Solutions, while holding a BS in Information Technology and 5+ years of building real software.\"",
-    takeaways: [
-      "Clear, empathetic English communication across voice, live chat, and email",
-      "Battle-tested under strict SLA, Average Handle Time (AHT), and CSAT metrics",
-      "Fully equipped home office with fiber + mobile failover ready for US, UK, AU, or APAC shifts"
-    ]
-  },
-  2: {
-    duration: "0:20 – 0:40",
-    title: "2. What I Take Off Your Plate in Week 1",
-    summary:
-      "\"On Day 1, I can step straight into your customer support queues, appointment bookings, CRM updates, technical onboarding, or multi-platform market research. Then, instead of doing repetitive tasks manually forever, I use tools like n8n, Python, and Agent-Reach to automate data collection, Discord/Slack alerts, and content pipelines at $0 extra software cost.\"",
-    takeaways: [
-      "Day-1 execution: Customer tickets, travel/service scheduling, remote PC support",
-      "Agent-Reach integration: Zero-API-fee research across GitHub, Reddit, YouTube & Web",
-      "Turns 4-hour manual admin or content workflows into 5-minute automated pipelines"
-    ]
-  },
-  3: {
-    duration: "0:40 – 1:00",
-    title: "3. Live Proof: 5+ Deployed Systems You Can Test Today",
-    summary:
-      "\"Everything on my resume is backed by live, verifiable systems: Sonata (a Next.js 15 Microsoft licensing & booking platform), an AI Appointment Assistant API with rate-limiting and Discord alerts, Philippine Skyland (a real estate SaaS with 11 security layers), a 10,400-line Java 17 POS system, and my open-source AI Engineering OS. Let's hop on a quick call and see how I can help your team immediately.\"",
-    takeaways: [
-      "Live Vercel deployments & public GitHub repositories ready for inspection",
-      "Built with enterprise security (Row-Level Security, Zod validation, Turnstile, RBAC)",
-      "Available for immediate full-time or contract remote onboarding"
-    ]
   }
 };
 
@@ -218,7 +179,7 @@ const AGENT_REACH_SIMULATIONS = {
   github: [
     { text: "$ agent-reach github --repo=whodakingofhell/mark-chester-santos-portfolio", color: "text-white" },
     { text: "[INFO] Fetching repository health and deployment status...", color: "text-[#a1a6b4]" },
-    { text: "[STATUS] Branch: main (Commit: 599377d) -> Clean tree", color: "text-[#30d158]" },
+    { text: "[STATUS] Branch: main (Commit: 256f396) -> Clean tree", color: "text-[#30d158]" },
     { text: "[STATUS] Vercel Deploy Hook: Triggered automatically via GitHub push", color: "text-[#30d158]" },
     { text: "[AUDIT] Sensitive data scan: 0 leaks, 0 exposed keys, 0 phone numbers", color: "text-[#30d158]" },
     { text: "[AUDIT] Security headers: Strict CSP, HSTS, and X-Content-Type-Options active", color: "text-[#30d158]" },
@@ -321,73 +282,6 @@ function setRoleLens(lensKey) {
   showToast(lensNames[lensKey] || "Profile updated");
 }
 
-// Switch Video Introduction Chapter
-function selectVideoChapter(chapterNum) {
-  const chapter = VIDEO_CHAPTERS[chapterNum];
-  if (!chapter) return;
-
-  [1, 2, 3].forEach((n) => {
-    const btn = document.getElementById("chapter-btn-" + n);
-    if (btn) {
-      if (n === chapterNum) {
-        btn.classList.add("active");
-      } else {
-        btn.classList.remove("active");
-      }
-    }
-  });
-
-  const durationEl = document.getElementById("video-chapter-duration");
-  const titleEl = document.getElementById("video-chapter-title");
-  const summaryEl = document.getElementById("video-chapter-summary");
-  const listEl = document.getElementById("video-chapter-list");
-
-  if (durationEl) durationEl.textContent = chapter.duration;
-  if (titleEl) titleEl.textContent = chapter.title;
-  if (summaryEl) summaryEl.textContent = chapter.summary;
-  if (listEl) {
-    listEl.innerHTML = chapter.takeaways
-      .map(
-        (item) =>
-          `<li class="flex items-start gap-2.5 text-xs sm:text-sm text-[#d1d5db]">
-            <span class="text-[#30d158] font-bold mt-0.5">✓</span>
-            <span>${item}</span>
-          </li>`
-      )
-      .join("");
-  }
-}
-
-// Initialize Video Section (Automatically embeds video if INTRO_VIDEO_URL is set)
-function initVideoSection() {
-  const videoContainer = document.getElementById("video-embed-container");
-  const pitchStage = document.getElementById("video-pitch-stage");
-  if (!videoContainer || !pitchStage) return;
-
-  const url = (PORTFOLIO_CONFIG.INTRO_VIDEO_URL || "").trim();
-  if (url.length > 0) {
-    pitchStage.classList.add("hidden");
-    videoContainer.classList.remove("hidden");
-    if (url.endsWith(".mp4") || url.endsWith(".webm")) {
-      videoContainer.innerHTML = `
-        <video controls class="w-full aspect-video rounded-2xl bg-black border border-white/10 shadow-2xl">
-          <source src="${url}" type="video/mp4" />
-          Your browser does not support HTML5 video.
-        </video>`;
-    } else {
-      videoContainer.innerHTML = `
-        <iframe
-          src="${url}"
-          title="Mark Chester Santos — Video Introduction"
-          class="w-full aspect-video rounded-2xl bg-black border border-white/10 shadow-2xl"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>`;
-    }
-  }
-}
-
 // Switch Architecture / Automation Blueprints Tab
 function switchBlueprintTab(tabKey) {
   const tabs = ["agent-reach", "sonata-api", "content-pipeline", "pos-security"];
@@ -463,7 +357,7 @@ function updateWorldClocks() {
 }
 
 // ============================================================================
-// NEW ENTERPRISE FEATURE 1: Remote ROI & Time Savings Calculator
+// ROI Calculator
 // ============================================================================
 function calculateROI() {
   const supportHours = parseFloat(document.getElementById("calc-support-input")?.value || 15);
@@ -471,7 +365,6 @@ function calculateROI() {
   const researchHours = parseFloat(document.getElementById("calc-research-input")?.value || 12);
   const hourlyRate = parseFloat(document.getElementById("calc-rate-input")?.value || 35);
 
-  // Update slider badge labels
   const supLabel = document.getElementById("calc-support-label");
   const admLabel = document.getElementById("calc-admin-label");
   const resLabel = document.getElementById("calc-research-label");
@@ -482,7 +375,6 @@ function calculateROI() {
   if (resLabel) resLabel.textContent = researchHours + " hrs/wk";
   if (rateLabel) rateLabel.textContent = "$" + hourlyRate + "/hr";
 
-  // Calculation: Mark's automations + fast operations eliminate ~70% of support friction, 80% of admin, 75% of research
   const weeklyHoursSaved = supportHours * 0.7 + adminHours * 0.8 + researchHours * 0.75;
   const monthlyHoursSaved = Math.round(weeklyHoursSaved * 4.2);
   const monthlyDollarsSaved = Math.round(monthlyHoursSaved * hourlyRate);
@@ -497,7 +389,6 @@ function calculateROI() {
   if (aEl) aEl.textContent = "$" + annualDollarsSaved.toLocaleString();
 }
 
-// Copy ROI audit calculation to email
 function copyROIAuditToEmail() {
   const supportHours = document.getElementById("calc-support-input")?.value || 15;
   const adminHours = document.getElementById("calc-admin-input")?.value || 10;
@@ -519,14 +410,13 @@ function copyROIAuditToEmail() {
 }
 
 // ============================================================================
-// NEW ENTERPRISE FEATURE 2: Interactive Agent-Reach Terminal Simulator
+// Agent-Reach Live Simulation
 // ============================================================================
 let simInterval = null;
 function runAgentReachSim(scenarioKey) {
   const terminalScreen = document.getElementById("agent-reach-sim-screen");
   if (!terminalScreen) return;
 
-  // Update active pill styling
   ["doctor", "radar", "transcribe", "github"].forEach((k) => {
     const btn = document.getElementById("sim-btn-" + k);
     if (btn) {
@@ -568,7 +458,7 @@ function runAgentReachSim(scenarioKey) {
 }
 
 // ============================================================================
-// NEW ENTERPRISE FEATURE 3: Case Study Deep-Dive Modal
+// Case Study Deep-Dive Modal
 // ============================================================================
 function openCaseStudy(caseKey) {
   const data = CASE_STUDIES[caseKey];
@@ -619,7 +509,7 @@ function closeCaseStudy() {
 }
 
 // ============================================================================
-// NEW ENTERPRISE FEATURE 4: ATS Clean Resume Modal & 1-Click Print
+// ATS Clean Resume Modal & 1-Click Print
 // ============================================================================
 function openResumeModal() {
   const modal = document.getElementById("resume-modal");
@@ -642,7 +532,57 @@ function printCleanResume() {
 }
 
 // ============================================================================
-// NEW ENTERPRISE FEATURE 5: Direct Client Briefing & Timezone Sync
+// Bento Grid Feature: Direct Quick Note to Mark (Card 2 from reference concept)
+// ============================================================================
+function sendBentoQuickNote() {
+  const input = document.getElementById("bento-quick-input");
+  const statusEl = document.getElementById("bento-quick-status");
+  const text = (input?.value || "").trim();
+
+  if (!text) {
+    showToast("Please enter a short message first!");
+    return;
+  }
+
+  const subject = encodeURIComponent("Quick Message from Mark Chester Santos Portfolio");
+  const body = encodeURIComponent(
+    `Hi Mark,\n\nI visited your portfolio and wanted to reach out regarding:\n\n"${text}"\n\nLet's connect!\n`
+  );
+
+  if (statusEl) {
+    statusEl.innerHTML = `<span class="text-[#30d158] font-medium">✓ Opening email client...</span>`;
+    setTimeout(() => {
+      statusEl.innerHTML = "";
+    }, 4000);
+  }
+
+  window.location.href = `mailto:${PORTFOLIO_CONFIG.CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  showToast("Opening email composer with your note!");
+}
+
+// ============================================================================
+// Bento Grid Feature: Deep Focus Flow Toggle
+// ============================================================================
+let focusFlowActive = true;
+function toggleFocusFlow() {
+  focusFlowActive = !focusFlowActive;
+  const bars = document.querySelectorAll(".eq-bar");
+  const stateText = document.getElementById("focus-flow-state");
+
+  bars.forEach((b) => {
+    b.style.animationPlayState = focusFlowActive ? "running" : "paused";
+  });
+
+  if (stateText) {
+    stateText.textContent = focusFlowActive ? "Deep Flow: Active (Low-Latency Ops)" : "Flow Paused (Ready for Sync)";
+    stateText.className = focusFlowActive ? "text-[11px] font-mono text-[#30d158]" : "text-[11px] font-mono text-[#a1a6b4]";
+  }
+
+  showToast(focusFlowActive ? "Focus Flow Mode: Active" : "Focus Flow: Paused");
+}
+
+// ============================================================================
+// Direct Client Briefing & Timezone Sync
 // ============================================================================
 function updateClientBriefingLink() {
   const tzSelect = document.getElementById("client-tz-select")?.value || "US Eastern (EST)";
@@ -680,6 +620,60 @@ function copyStructuredBriefing() {
   copyText(text, "Structured briefing copied! You can paste it into an email or message.");
 }
 
+// ============================================================================
+// Ambient Canvas Background (Subtle Interactive Light Atmosphere)
+// ============================================================================
+function initAmbientCanvas() {
+  const canvas = document.getElementById("ambient-canvas");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  window.addEventListener("resize", () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  const particles = [];
+  const particleCount = 28;
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 2 + 1,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      alpha: Math.random() * 0.4 + 0.15
+    });
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+
+    particles.forEach((p) => {
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0) p.x = width;
+      if (p.x > width) p.x = 0;
+      if (p.y < 0) p.y = height;
+      if (p.y > height) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(41, 151, 255, ${p.alpha})`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(render);
+  }
+
+  render();
+}
+
 // Global Modal Esc Key Listener
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
@@ -690,8 +684,7 @@ document.addEventListener("keydown", (e) => {
 
 // Initialization
 document.addEventListener("DOMContentLoaded", () => {
-  initVideoSection();
-  selectVideoChapter(1);
+  initAmbientCanvas();
   updateWorldClocks();
   setInterval(updateWorldClocks, 30000);
 
