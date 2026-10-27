@@ -7,7 +7,7 @@
   --bg-canvas: #090a0f;
   --bg-surface: #12141d;
   --bg-elevated: #181b26;
-  --bg-glass: rgba(18, 20, 29, 0.82);
+  --bg-glass: rgba(18, 20, 29, 0.85);
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(255, 255, 255, 0.2);
   --text-primary: #f5f5f7;
@@ -63,7 +63,7 @@ body {
 
 /* Frosted Glass Navigation & Pills */
 .glass-nav {
-  background: rgba(12, 14, 20, 0.85);
+  background: rgba(12, 14, 20, 0.88);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.11);
@@ -133,7 +133,7 @@ body {
   left: 50%;
   transform: translateX(-50%) translateY(-100px);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
-  z-index: 250;
+  z-index: 350;
   opacity: 0;
   pointer-events: none;
 }
@@ -160,4 +160,143 @@ body {
 .code-scroll {
   scrollbar-width: thin;
   scrollbar-color: #262936 #0c0d13;
+}
+
+/* Custom Styled Range Sliders for ROI Calculator */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #25293a;
+  border-radius: 9999px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2997ff;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(41, 151, 255, 0.6);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: #0077ed;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2997ff;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(41, 151, 255, 0.6);
+  border: none;
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-content {
+  background: #12141d;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  max-width: 850px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9);
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-overlay.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* FAQ Accordion Details */
+details summary::-webkit-details-marker {
+  display: none;
+}
+details[open] summary .faq-icon {
+  transform: rotate(180deg);
+  color: #2997ff;
+}
+
+/* Blinking Terminal Cursor */
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background-color: #30d158;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* High-Quality Print Stylesheet for 1-Click Clean Resume Download */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-resume, #printable-resume * {
+    visibility: visible;
+  }
+  #printable-resume {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #ffffff !important;
+    color: #111827 !important;
+    padding: 24px !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  #printable-resume a {
+    color: #1d4ed8 !important;
+    text-decoration: underline !important;
+  }
+  #printable-resume .no-print {
+    display: none !important;
+  }
+  #printable-resume h1,
+  #printable-resume h2,
+  #printable-resume h3,
+  #printable-resume strong {
+    color: #000000 !important;
+  }
+  #printable-resume .text-titanium {
+    -webkit-text-fill-color: #000000 !important;
+  }
+  #printable-resume .bg-\[\#181b26\],
+  #printable-resume .bg-\[\#12141d\],
+  #printable-resume .bg-\[\#25293a\] {
+    background: #f3f4f6 !important;
+    color: #111827 !important;
+    border-color: #e5e7eb !important;
+  }
 }
