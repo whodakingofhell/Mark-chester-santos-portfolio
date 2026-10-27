@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "name": "Mark Chester Portfolio (Live Vercel Repo)",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": false
+    },
+    "editor.wordWrap": "on"
+  }
+}
