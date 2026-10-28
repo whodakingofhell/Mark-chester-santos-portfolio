@@ -1,6 +1,6 @@
 // ============================================================================
 // Mark Chester Santos Portfolio — Interactive Controller
-// High-Conversion Bento Grid • Zero AI Slop • 100% Privacy-Protected
+// High-Conversion Personal Portfolio • Zero AI Slop • 100% Privacy-Protected
 // ============================================================================
 
 const PORTFOLIO_CONFIG = {
@@ -8,10 +8,10 @@ const PORTFOLIO_CONFIG = {
   SITE_NAME: "Mark Chester Santos Portfolio"
 };
 
-// Role Lens Data — Tailors the Hero & Highlights to the Employer's Exact Need
+// Role Lens Data — Tailors Hero & Highlights to Employer's Exact Need
 const ROLE_LENSES = {
   hybrid: {
-    badge: "100% Remote & WFH Ready • US / UK / AU / APAC Shift Coverage",
+    badge: "Available for Immediate Full-Time / Contract Remote Work • US/UK Shift Ready",
     headline: "Your Remote Technical Operator,<br class='hidden sm:inline' /> AI Automator & Full-Stack Builder.",
     subheadline:
       "I combine enterprise customer support & booking operations (<strong class='text-white font-medium'>Walmart / IBEX Global</strong> & <strong class='text-white font-medium'>IGT Solutions</strong>) with production <strong class='text-white font-medium'>AI workflow automation (n8n, Python, Agent-Reach)</strong> and <strong class='text-white font-medium'>Next.js / Supabase engineering</strong>—so I can run your daily operations on Day 1 and automate the repetitive work by Week 2.",
@@ -22,7 +22,7 @@ const ROLE_LENSES = {
     stat3Val: "14-Stage",
     stat3Label: "n8n + Python AI Automation",
     stat4Val: "$0/mo",
-    stat4Label: "Zero-Fee Agent-Reach & Free-Tier Stack"
+    stat4Label: "Zero-Fee Agent-Reach & Free Tier"
   },
   va: {
     badge: "Executive & Technical Virtual Assistant • Client Support & Operations",
@@ -140,51 +140,6 @@ const CASE_STUDIES = {
     liveUrl: "https://github.com/whodakingofhell",
     githubUrl: "https://github.com/whodakingofhell"
   }
-};
-
-// Agent-Reach Live Simulation Outputs
-const AGENT_REACH_SIMULATIONS = {
-  doctor: [
-    { text: "$ agent-reach doctor --json", color: "text-white" },
-    { text: "[INFO] Initializing Agent-Reach diagnostic scanner...", color: "text-[#a1a6b4]" },
-    { text: "[OK] Channel: web (Jina Reader)      -> Connected (Zero API Key Required)", color: "text-[#30d158]" },
-    { text: "[OK] Channel: github (GitHub CLI)    -> Connected (Authenticated via gh CLI)", color: "text-[#30d158]" },
-    { text: "[OK] Channel: youtube (yt-dlp)       -> Connected (Transcript diarization ready)", color: "text-[#30d158]" },
-    { text: "[OK] Channel: reddit (rdt-cli)       -> Connected (Public subreddits readable)", color: "text-[#30d158]" },
-    { text: "[OK] Channel: x-twitter (syndication) -> Connected (Read-only feed active)", color: "text-[#30d158]" },
-    { text: "[OK] Channel: rss-aggregator         -> Connected (14 tech/startup feeds listening)", color: "text-[#30d158]" },
-    { text: "✓ Diagnostic Summary: 6/6 channels healthy. 100% zero-API-cost research online.", color: "text-[#2997ff]" }
-  ],
-  radar: [
-    { text: "$ agent-reach search --sources=reddit,github \"hiring remote technical assistant\"", color: "text-white" },
-    { text: "[INFO] Querying r/forhire, r/VirtualAssistant & GitHub discussions...", color: "text-[#a1a6b4]" },
-    { text: "[MATCH 1] US SaaS Founder: \"Looking for a Tech VA to manage AnyDesk PC setup + Zendesk tickets\"", color: "text-[#30d158]" },
-    { text: "          Location: 100% Remote (US EST Hours) | Budget: $20-30/hr | Skill: AnyDesk, Customer Ops", color: "text-[#d1d5db]" },
-    { text: "[MATCH 2] UK E-commerce Agency: \"Need n8n workflow specialist to sync Shopify with Discord\"", color: "text-[#30d158]" },
-    { text: "          Location: Remote (UK GMT) | Scope: Weekly retainer | Skill: n8n, Webhooks, APIs", color: "text-[#d1d5db]" },
-    { text: "[MATCH 3] AI Startup: \"Seeking Technical Operator to draft SOPs and monitor bug reports\"", color: "text-[#30d158]" },
-    { text: "          Location: Remote Global | Skill: Obsidian, Git, QA Verification, Next.js", color: "text-[#d1d5db]" },
-    { text: "✓ Discovered 3 high-intent overseas hiring leads in 1.4 seconds (API Cost: $0.00).", color: "text-[#2997ff]" }
-  ],
-  transcribe: [
-    { text: "$ agent-reach youtube https://youtube.com/watch?v=demo --extract-sop", color: "text-white" },
-    { text: "[1/3] Downloading high-fidelity audio stream via yt-dlp...", color: "text-[#a1a6b4]" },
-    { text: "[2/3] Extracting synchronized English captions & timestamp segments...", color: "text-[#a1a6b4]" },
-    { text: "[3/3] Generating clean Standard Operating Procedure (SOP) Checklist:", color: "text-[#2997ff]" },
-    { text: "      - Step 1: Initialize Cloudflare Turnstile token on client submission", color: "text-[#d1d5db]" },
-    { text: "      - Step 2: Validate payload through Zod schema before DB insertion", color: "text-[#d1d5db]" },
-    { text: "      - Step 3: Trigger Discord webhook with 3-attempt exponential backoff", color: "text-[#d1d5db]" },
-    { text: "✓ Output saved to ./sop/deployment-guide.md (Production Ready SOP).", color: "text-[#30d158]" }
-  ],
-  github: [
-    { text: "$ agent-reach github --repo=whodakingofhell/mark-chester-santos-portfolio", color: "text-white" },
-    { text: "[INFO] Fetching repository health and deployment status...", color: "text-[#a1a6b4]" },
-    { text: "[STATUS] Branch: main (Commit: 256f396) -> Clean tree", color: "text-[#30d158]" },
-    { text: "[STATUS] Vercel Deploy Hook: Triggered automatically via GitHub push", color: "text-[#30d158]" },
-    { text: "[AUDIT] Sensitive data scan: 0 leaks, 0 exposed keys, 0 phone numbers", color: "text-[#30d158]" },
-    { text: "[AUDIT] Security headers: Strict CSP, HSTS, and X-Content-Type-Options active", color: "text-[#30d158]" },
-    { text: "✓ Repository verified 10/10 production standard.", color: "text-[#2997ff]" }
-  ]
 };
 
 // Toast Notification Helper
@@ -356,110 +311,7 @@ function updateWorldClocks() {
   if (auEl) auEl.textContent = formatTime("Australia/Sydney");
 }
 
-// ============================================================================
-// ROI Calculator
-// ============================================================================
-function calculateROI() {
-  const supportHours = parseFloat(document.getElementById("calc-support-input")?.value || 15);
-  const adminHours = parseFloat(document.getElementById("calc-admin-input")?.value || 10);
-  const researchHours = parseFloat(document.getElementById("calc-research-input")?.value || 12);
-  const hourlyRate = parseFloat(document.getElementById("calc-rate-input")?.value || 35);
-
-  const supLabel = document.getElementById("calc-support-label");
-  const admLabel = document.getElementById("calc-admin-label");
-  const resLabel = document.getElementById("calc-research-label");
-  const rateLabel = document.getElementById("calc-rate-label");
-
-  if (supLabel) supLabel.textContent = supportHours + " hrs/wk";
-  if (admLabel) admLabel.textContent = adminHours + " hrs/wk";
-  if (resLabel) resLabel.textContent = researchHours + " hrs/wk";
-  if (rateLabel) rateLabel.textContent = "$" + hourlyRate + "/hr";
-
-  const weeklyHoursSaved = supportHours * 0.7 + adminHours * 0.8 + researchHours * 0.75;
-  const monthlyHoursSaved = Math.round(weeklyHoursSaved * 4.2);
-  const monthlyDollarsSaved = Math.round(monthlyHoursSaved * hourlyRate);
-  const annualDollarsSaved = monthlyDollarsSaved * 12;
-
-  const hEl = document.getElementById("calc-monthly-hours");
-  const dEl = document.getElementById("calc-monthly-dollars");
-  const aEl = document.getElementById("calc-annual-dollars");
-
-  if (hEl) hEl.textContent = monthlyHoursSaved + " hrs";
-  if (dEl) dEl.textContent = "$" + monthlyDollarsSaved.toLocaleString();
-  if (aEl) aEl.textContent = "$" + annualDollarsSaved.toLocaleString();
-}
-
-function copyROIAuditToEmail() {
-  const supportHours = document.getElementById("calc-support-input")?.value || 15;
-  const adminHours = document.getElementById("calc-admin-input")?.value || 10;
-  const researchHours = document.getElementById("calc-research-input")?.value || 12;
-  const monthlyHours = document.getElementById("calc-monthly-hours")?.textContent || "98 hrs";
-  const monthlyDollars = document.getElementById("calc-monthly-dollars")?.textContent || "$3,430";
-
-  const subject = encodeURIComponent("Inquiry: Remote Operations & AI Workflow Audit");
-  const body = encodeURIComponent(
-    `Hi Mark,\n\nI reviewed your portfolio and ran the Remote Operations ROI calculator for our business:\n` +
-    `- Weekly Support Tasks: ${supportHours} hrs/wk\n` +
-    `- Weekly Scheduling & Admin: ${adminHours} hrs/wk\n` +
-    `- Weekly Research & Content: ${researchHours} hrs/wk\n` +
-    `- Estimated Hours to Save: ${monthlyHours}/month (Estimated Savings: ${monthlyDollars}/month)\n\n` +
-    `Let's schedule a 15-minute intro call to discuss how you can help take these bottlenecks off our plate.\n\nBest,\n`
-  );
-
-  window.location.href = `mailto:${PORTFOLIO_CONFIG.CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-}
-
-// ============================================================================
-// Agent-Reach Live Simulation
-// ============================================================================
-let simInterval = null;
-function runAgentReachSim(scenarioKey) {
-  const terminalScreen = document.getElementById("agent-reach-sim-screen");
-  if (!terminalScreen) return;
-
-  ["doctor", "radar", "transcribe", "github"].forEach((k) => {
-    const btn = document.getElementById("sim-btn-" + k);
-    if (btn) {
-      if (k === scenarioKey) {
-        btn.classList.add("bg-[#2997ff]", "text-white");
-        btn.classList.remove("bg-[#181b26]", "text-[#a1a6b4]");
-      } else {
-        btn.classList.remove("bg-[#2997ff]", "text-white");
-        btn.classList.add("bg-[#181b26]", "text-[#a1a6b4]");
-      }
-    }
-  });
-
-  const lines = AGENT_REACH_SIMULATIONS[scenarioKey] || AGENT_REACH_SIMULATIONS.doctor;
-  terminalScreen.innerHTML = "";
-
-  if (simInterval) clearInterval(simInterval);
-
-  let i = 0;
-  terminalScreen.innerHTML = `<div class="text-[#a1a6b4] mb-2 font-mono text-xs">[Executing Agent-Reach CLI pipeline...]</div>`;
-
-  simInterval = setInterval(() => {
-    if (i < lines.length) {
-      const lineData = lines[i];
-      const p = document.createElement("p");
-      p.className = `${lineData.color} font-mono text-xs sm:text-sm leading-relaxed`;
-      p.textContent = lineData.text;
-      terminalScreen.appendChild(p);
-      terminalScreen.scrollTop = terminalScreen.scrollHeight;
-      i++;
-    } else {
-      clearInterval(simInterval);
-      const cursor = document.createElement("div");
-      cursor.className = "mt-3 flex items-center gap-1 text-xs text-[#30d158] font-mono";
-      cursor.innerHTML = `<span>mark@agent-reach:~$</span> <span class="terminal-cursor"></span>`;
-      terminalScreen.appendChild(cursor);
-    }
-  }, 160);
-}
-
-// ============================================================================
 // Case Study Deep-Dive Modal
-// ============================================================================
 function openCaseStudy(caseKey) {
   const data = CASE_STUDIES[caseKey];
   if (!data) return;
@@ -508,9 +360,7 @@ function closeCaseStudy() {
   }
 }
 
-// ============================================================================
 // ATS Clean Resume Modal & 1-Click Print
-// ============================================================================
 function openResumeModal() {
   const modal = document.getElementById("resume-modal");
   if (modal) {
@@ -531,9 +381,7 @@ function printCleanResume() {
   window.print();
 }
 
-// ============================================================================
-// Bento Grid Feature: Direct Quick Note to Mark (Card 2 from reference concept)
-// ============================================================================
+// Bento Grid Feature: Direct Quick Note to Mark
 function sendBentoQuickNote() {
   const input = document.getElementById("bento-quick-input");
   const statusEl = document.getElementById("bento-quick-status");
@@ -544,7 +392,7 @@ function sendBentoQuickNote() {
     return;
   }
 
-  const subject = encodeURIComponent("Quick Message from Mark Chester Santos Portfolio");
+  const subject = encodeURIComponent("Quick Note from Mark Chester Santos Portfolio");
   const body = encodeURIComponent(
     `Hi Mark,\n\nI visited your portfolio and wanted to reach out regarding:\n\n"${text}"\n\nLet's connect!\n`
   );
@@ -560,30 +408,7 @@ function sendBentoQuickNote() {
   showToast("Opening email composer with your note!");
 }
 
-// ============================================================================
-// Bento Grid Feature: Deep Focus Flow Toggle
-// ============================================================================
-let focusFlowActive = true;
-function toggleFocusFlow() {
-  focusFlowActive = !focusFlowActive;
-  const bars = document.querySelectorAll(".eq-bar");
-  const stateText = document.getElementById("focus-flow-state");
-
-  bars.forEach((b) => {
-    b.style.animationPlayState = focusFlowActive ? "running" : "paused";
-  });
-
-  if (stateText) {
-    stateText.textContent = focusFlowActive ? "Deep Flow: Active (Low-Latency Ops)" : "Flow Paused (Ready for Sync)";
-    stateText.className = focusFlowActive ? "text-[11px] font-mono text-[#30d158]" : "text-[11px] font-mono text-[#a1a6b4]";
-  }
-
-  showToast(focusFlowActive ? "Focus Flow Mode: Active" : "Focus Flow: Paused");
-}
-
-// ============================================================================
 // Direct Client Briefing & Timezone Sync
-// ============================================================================
 function updateClientBriefingLink() {
   const tzSelect = document.getElementById("client-tz-select")?.value || "US Eastern (EST)";
   const roleSelect = document.getElementById("client-role-select")?.value || "Full-Time Remote VA & Operations";
@@ -620,60 +445,6 @@ function copyStructuredBriefing() {
   copyText(text, "Structured briefing copied! You can paste it into an email or message.");
 }
 
-// ============================================================================
-// Ambient Canvas Background (Subtle Interactive Light Atmosphere)
-// ============================================================================
-function initAmbientCanvas() {
-  const canvas = document.getElementById("ambient-canvas");
-  if (!canvas) return;
-
-  const ctx = canvas.getContext("2d");
-  let width = (canvas.width = window.innerWidth);
-  let height = (canvas.height = window.innerHeight);
-
-  window.addEventListener("resize", () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  });
-
-  const particles = [];
-  const particleCount = 28;
-
-  for (let i = 0; i < particleCount; i++) {
-    particles.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      radius: Math.random() * 2 + 1,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      alpha: Math.random() * 0.4 + 0.15
-    });
-  }
-
-  function render() {
-    ctx.clearRect(0, 0, width, height);
-
-    particles.forEach((p) => {
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0) p.x = width;
-      if (p.x > width) p.x = 0;
-      if (p.y < 0) p.y = height;
-      if (p.y > height) p.y = 0;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(41, 151, 255, ${p.alpha})`;
-      ctx.fill();
-    });
-
-    requestAnimationFrame(render);
-  }
-
-  render();
-}
-
 // Global Modal Esc Key Listener
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
@@ -684,19 +455,8 @@ document.addEventListener("keydown", (e) => {
 
 // Initialization
 document.addEventListener("DOMContentLoaded", () => {
-  initAmbientCanvas();
   updateWorldClocks();
   setInterval(updateWorldClocks, 30000);
-
-  // Setup ROI calculator listeners
-  ["calc-support-input", "calc-admin-input", "calc-research-input", "calc-rate-input"].forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener("input", calculateROI);
-  });
-  calculateROI();
-
-  // Run initial Agent-Reach simulation
-  runAgentReachSim("doctor");
 
   // Setup client brief sync
   ["client-tz-select", "client-role-select", "client-notes-input"].forEach((id) => {

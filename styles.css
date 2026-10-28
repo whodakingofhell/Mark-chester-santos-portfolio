@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Mark Chester Santos Portfolio — Design System (Bento Grid + Visual Richness)
-   Clean, Modern, Interactive, High-Conversion (Zero AI Slop)
+   Mark Chester Santos Portfolio — Design System
+   High-Contrast Dark Aesthetic • Apple/Vercel Polish • Zero AI Slop
    ========================================================================== */
 
 :root {
@@ -33,20 +33,12 @@ html {
 body {
   background-color: var(--bg-canvas);
   background-image:
-    radial-gradient(circle at 15% 0%, rgba(41, 151, 255, 0.1) 0%, transparent 45%),
-    radial-gradient(circle at 85% 10%, rgba(48, 209, 88, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 50% 60%, rgba(191, 90, 242, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 18% 0%, rgba(41, 151, 255, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 82% 8%, rgba(48, 209, 88, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 55%, rgba(191, 90, 242, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
   overflow-x: hidden;
   position: relative;
-}
-
-/* Ambient Canvas Background */
-#ambient-canvas {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.55;
 }
 
 /* Custom Scrollbar */
@@ -67,7 +59,7 @@ body {
 
 /* Clean Metallic Headline Gradient */
 .text-titanium {
-  background: linear-gradient(180deg, #ffffff 15%, #b8bcc8 100%);
+  background: linear-gradient(180deg, #ffffff 20%, #b8bcc8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -86,7 +78,7 @@ body {
 
 /* Frosted Glass Navigation & Pills */
 .glass-nav {
-  background: rgba(12, 14, 20, 0.9);
+  background: rgba(12, 14, 20, 0.92);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -122,19 +114,6 @@ body {
   border: 1px solid rgba(41, 151, 255, 0.32);
 }
 
-/* Visual Mockup Header for Project Cards */
-.project-mockup-header {
-  background: #0d0f17;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: all 0.25s ease;
-}
-.bento-card:hover .project-mockup-header {
-  border-color: rgba(41, 151, 255, 0.25);
-  box-shadow: 0 10px 25px -10px rgba(41, 151, 255, 0.2);
-}
-
 /* Role Lens Switcher Active State */
 .lens-btn {
   transition: all 0.2s ease;
@@ -151,17 +130,6 @@ body {
   color: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
-
-/* Window Traffic Dots */
-.win-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 9999px;
-  display: inline-block;
-}
-.win-dot-red { background-color: #ff5f56; }
-.win-dot-yellow { background-color: #ffbd2e; }
-.win-dot-green { background-color: #27c93f; }
 
 /* Toast Notification */
 #toast-notification {
@@ -180,7 +148,7 @@ body {
   pointer-events: auto;
 }
 
-/* Infinite Scrolling Marquee (Inspired by Nishant Deshmukh Bento Portfolio) */
+/* Infinite Scrolling Marquee */
 @keyframes marquee-scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -198,7 +166,7 @@ body {
   display: flex;
   flex-shrink: 0;
   gap: 12px;
-  animation: marquee-scroll 24s linear infinite;
+  animation: marquee-scroll 26s linear infinite;
   align-items: center;
 }
 
@@ -206,61 +174,10 @@ body {
   animation-play-state: paused;
 }
 
-/* Animated Sound / Focus Equalizer Bars */
-@keyframes eq-bar-1 { 0%, 100% { height: 4px; } 50% { height: 18px; } }
-@keyframes eq-bar-2 { 0%, 100% { height: 12px; } 50% { height: 26px; } }
-@keyframes eq-bar-3 { 0%, 100% { height: 6px; } 50% { height: 20px; } }
-@keyframes eq-bar-4 { 0%, 100% { height: 16px; } 50% { height: 8px; } }
-
-.eq-bar {
-  width: 3px;
-  background-color: #30d158;
-  border-radius: 9999px;
-  display: inline-block;
-}
-.eq-bar-1 { animation: eq-bar-1 0.7s ease-in-out infinite; }
-.eq-bar-2 { animation: eq-bar-2 0.55s ease-in-out infinite; }
-.eq-bar-3 { animation: eq-bar-3 0.8s ease-in-out infinite; }
-.eq-bar-4 { animation: eq-bar-4 0.65s ease-in-out infinite; }
-
-/* Code / Blueprint Terminal */
+/* Code Blueprint Scroll */
 .code-scroll {
   scrollbar-width: thin;
   scrollbar-color: #262936 #0c0d13;
-}
-
-/* Custom Styled Range Sliders for ROI Calculator */
-input[type="range"] {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 6px;
-  background: #25293a;
-  border-radius: 9999px;
-  outline: none;
-}
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #2997ff;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(41, 151, 255, 0.6);
-  transition: transform 0.15s ease, background-color 0.15s ease;
-}
-input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
-  background: #0077ed;
-}
-input[type="range"]::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #2997ff;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(41, 151, 255, 0.6);
-  border: none;
 }
 
 /* Modals */
@@ -306,20 +223,6 @@ details summary::-webkit-details-marker {
 details[open] summary .faq-icon {
   transform: rotate(180deg);
   color: #2997ff;
-}
-
-/* Blinking Terminal Cursor */
-.terminal-cursor {
-  display: inline-block;
-  width: 8px;
-  height: 15px;
-  background-color: #30d158;
-  vertical-align: middle;
-  animation: blink 1s step-end infinite;
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
 }
 
 /* High-Quality Print Stylesheet for 1-Click Clean Resume Download */
