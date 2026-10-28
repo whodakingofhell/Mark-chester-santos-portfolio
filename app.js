@@ -381,6 +381,22 @@ function printCleanResume() {
   window.print();
 }
 
+// Share Portfolio Link Helper
+function sharePortfolio() {
+  const url = "https://mark-chester-santos-portfolio.vercel.app/";
+  if (navigator.share) {
+    navigator
+      .share({
+        title: "Mark Chester Santos Portfolio",
+        text: "Remote Technical Virtual Assistant, AI Automation Specialist & Full-Stack Developer",
+        url: url
+      })
+      .catch(() => copyText(url, "Portfolio link copied to clipboard!"));
+  } else {
+    copyText(url, "Portfolio link copied to clipboard!");
+  }
+}
+
 // Bento Grid Feature: Direct Quick Note to Mark
 function sendBentoQuickNote() {
   const input = document.getElementById("bento-quick-input");
@@ -427,6 +443,11 @@ function updateClientBriefingLink() {
   const emailBtn = document.getElementById("client-submit-email-btn");
   if (emailBtn) {
     emailBtn.href = `mailto:${PORTFOLIO_CONFIG.CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  }
+
+  const previewEl = document.getElementById("briefing-live-preview");
+  if (previewEl) {
+    previewEl.innerHTML = `<strong>Role:</strong> ${roleSelect} • <strong>TZ:</strong> ${tzSelect} • <strong>Notes:</strong> ${notes ? notes : "Direct collaboration inquiry"} • <strong>Direct:</strong> ${PORTFOLIO_CONFIG.CONTACT_EMAIL}`;
   }
 }
 

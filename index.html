@@ -14,8 +14,18 @@
   <!-- Open Graph / Social Preview -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mark-chester-santos-portfolio.vercel.app/" />
-  <meta property="og:title" content="Mark Chester Santos Portfolio" />
+  <meta property="og:title" content="Mark Chester Santos Portfolio — Remote Tech VA &amp; AI Operator" />
   <meta property="og:description" content="Enterprise customer &amp; booking operations (Walmart/IBEX, IGT Solutions) + production Next.js apps, n8n AI pipelines, and zero-cost Agent-Reach automation." />
+  <meta property="og:image" content="https://mark-chester-santos-portfolio.vercel.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Mark Chester Santos Portfolio" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mark Chester Santos Portfolio — Remote Tech VA &amp; AI Operator" />
+  <meta name="twitter:description" content="Enterprise customer &amp; booking operations (Walmart/IBEX, IGT Solutions) + production Next.js apps, n8n AI pipelines, and zero-cost Agent-Reach automation." />
+  <meta name="twitter:image" content="https://mark-chester-santos-portfolio.vercel.app/og-image.png" />
 
   <!-- Schema.org JSON-LD for Global Recruiters & Search Engines -->
   <script type="application/ld+json">
@@ -190,6 +200,11 @@
         <button onclick="copyText('chesrakzxc@gmail.com', 'Copied Email: chesrakzxc@gmail.com')" class="px-5 py-3 rounded-full glass-pill text-[#d1d5db] hover:text-white hover:bg-white/10 font-medium text-sm transition-all active:scale-95 flex items-center gap-2">
           <svg class="w-4 h-4 text-[#2997ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
           <span>Copy Email</span>
+        </button>
+
+        <button onclick="sharePortfolio()" class="px-5 py-3 rounded-full glass-pill text-[#d1d5db] hover:text-white hover:bg-white/10 font-medium text-sm transition-all active:scale-95 flex items-center gap-2" title="Share Portfolio Link">
+          <svg class="w-4 h-4 text-[#30d158]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+          <span>Share Link</span>
         </button>
 
         <a href="https://github.com/whodakingofhell" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full glass-pill text-[#a1a6b4] hover:text-white hover:bg-white/10 transition-all" aria-label="GitHub Profile" title="GitHub (@whodakingofhell)">
@@ -823,6 +838,35 @@
             </div>
           </div>
 
+                    <!-- Flowchart 1: Customer Resolution Pipeline -->
+          <div class="p-4 rounded-xl bg-[#141722] border border-white/8 space-y-2">
+            <div class="text-[11px] font-mono text-[#30d158] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <span>⚡</span> Customer Support Resolution Pipeline:
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 text-xs">
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">STAGE 1</div>
+                <div class="font-bold text-white">Inbound Queue Triage</div>
+                <div class="text-[10px] text-[#a1a6b4]">Zendesk / Email / Chat</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">STAGE 2</div>
+                <div class="font-bold text-[#2997ff]">Root-Cause Lookup</div>
+                <div class="text-[10px] text-[#a1a6b4]">DB &amp; Carrier Portals</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">STAGE 3</div>
+                <div class="font-bold text-[#30d158]">Empathetic Resolution</div>
+                <div class="text-[10px] text-[#a1a6b4]">SLA-Compliant Closure</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">STAGE 4</div>
+                <div class="font-bold text-[#bf5af2]">SOP Documentation</div>
+                <div class="text-[10px] text-[#a1a6b4]">Obsidian Vault Storage</div>
+              </div>
+            </div>
+          </div>
+
           <!-- Outcome Strip & Skills -->
           <div class="p-4 rounded-xl bg-[#0e1017] border border-white/8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
@@ -878,6 +922,35 @@
                   <span><strong>Live Remote Desktop Fixes:</strong> Jump into client or employee computers via AnyDesk or TeamViewer to configure software, fix permissions, and test connections.</span>
                 </li>
               </ul>
+            </div>
+          </div>
+
+                    <!-- Flowchart 2: Remote Operations & Logistics Pipeline -->
+          <div class="p-4 rounded-xl bg-[#141722] border border-white/8 space-y-2">
+            <div class="text-[11px] font-mono text-[#2997ff] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <span>⚡</span> Remote Operations &amp; Logistics Pipeline:
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 text-xs">
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">PHASE 1</div>
+                <div class="font-bold text-white">Multi-TZ Request</div>
+                <div class="text-[10px] text-[#a1a6b4]">US/UK/AU Alignment</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">PHASE 2</div>
+                <div class="font-bold text-[#2997ff]">Buffer Scheduling</div>
+                <div class="text-[10px] text-[#a1a6b4]">Zero-Conflict Calendars</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">PHASE 3</div>
+                <div class="font-bold text-[#30d158]">AnyDesk Setup</div>
+                <div class="text-[10px] text-[#a1a6b4]">Remote Client PC Config</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">PHASE 4</div>
+                <div class="font-bold text-[#ff9f0a]">Async Video Recap</div>
+                <div class="text-[10px] text-[#a1a6b4]">Daily Loom Accountability</div>
+              </div>
             </div>
           </div>
 
@@ -939,6 +1012,35 @@
             </div>
           </div>
 
+                    <!-- Flowchart 3: AI Automation Pipeline -->
+          <div class="p-4 rounded-xl bg-[#141722] border border-white/8 space-y-2">
+            <div class="text-[11px] font-mono text-[#bf5af2] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <span>⚡</span> AI Automation Pipeline Flowchart:
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 text-xs">
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">STEP 1</div>
+                <div class="font-bold text-white">Bottleneck Audit</div>
+                <div class="text-[10px] text-[#a1a6b4]">Identify 10+ hr Chores</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">STEP 2</div>
+                <div class="font-bold text-[#bf5af2]">Agent-Reach Mining</div>
+                <div class="text-[10px] text-[#a1a6b4]">$0 Free-Tier Web Intel</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">STEP 3</div>
+                <div class="font-bold text-[#2997ff]">n8n Webhook Mesh</div>
+                <div class="text-[10px] text-[#a1a6b4]">LLM Structured Prompts</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">STEP 4</div>
+                <div class="font-bold text-[#30d158]">Autonomous Delivery</div>
+                <div class="text-[10px] text-[#a1a6b4]">Discord / Slack Alerts</div>
+              </div>
+            </div>
+          </div>
+
           <!-- Outcome Strip & Skills -->
           <div class="p-4 rounded-xl bg-[#0e1017] border border-white/8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
@@ -994,6 +1096,35 @@
                   <span><strong>Clean Code &amp; Backups:</strong> With a BSIT degree and 5+ years building production Next.js and Java systems, all work is cleanly structured, tested, and tracked on GitHub.</span>
                 </li>
               </ul>
+            </div>
+          </div>
+
+                    <!-- Flowchart 4: Security & Data Protection -->
+          <div class="p-4 rounded-xl bg-[#141722] border border-white/8 space-y-2">
+            <div class="text-[11px] font-mono text-[#ff9f0a] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <span>⚡</span> Security &amp; Data Governance Flowchart:
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 text-xs">
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">LAYER 1</div>
+                <div class="font-bold text-white">Bot &amp; Spam Shield</div>
+                <div class="text-[10px] text-[#a1a6b4]">Cloudflare Turnstile</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">LAYER 2</div>
+                <div class="font-bold text-[#30d158]">Credential Vault</div>
+                <div class="text-[10px] text-[#a1a6b4]">Masked 1Password + 2FA</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">LAYER 3</div>
+                <div class="font-bold text-[#2997ff]">Encrypted Rig</div>
+                <div class="text-[10px] text-[#a1a6b4]">BitLocker Hardened Drive</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#181b26] border border-white/8 text-center space-y-1">
+                <div class="text-[10px] text-[#a1a6b4] font-mono">LAYER 4</div>
+                <div class="font-bold text-[#ff9f0a]">Mutual NDA Protocol</div>
+                <div class="text-[10px] text-[#a1a6b4]">ISC2 Security Awareness</div>
+              </div>
             </div>
           </div>
 
@@ -1295,6 +1426,17 @@
           <div>
             <label class="block text-xs font-semibold text-white mb-1.5">Quick Project or Bottleneck Note (Optional):</label>
             <input type="text" id="client-notes-input" placeholder="e.g. Need someone to handle customer tickets and build an n8n lead scraper" class="w-full p-2.5 rounded-xl bg-[#181b26] border border-white/10 text-xs text-white placeholder-[#6e7485] outline-none focus:border-[#2997ff]" />
+          </div>
+
+          <!-- Live Structured Preview -->
+          <div class="p-3.5 rounded-xl bg-[#0e1017] border border-white/8 space-y-1 text-xs">
+            <div class="text-[10px] text-[#a1a6b4] font-mono uppercase tracking-wider flex items-center justify-between">
+              <span>Dynamic Briefing Preview:</span>
+              <span class="text-[#30d158] font-bold">● Formatted for Mark</span>
+            </div>
+            <p id="briefing-live-preview" class="font-mono text-[#d1d5db] text-[11px] leading-relaxed">
+              Target Role: Full-Time Remote VA &amp; Operations (40 hrs/wk) • Timezone: US Eastern (EST/EDT) • Direct: chesrakzxc@gmail.com
+            </p>
           </div>
 
           <div class="pt-2 flex flex-wrap items-center gap-3">
