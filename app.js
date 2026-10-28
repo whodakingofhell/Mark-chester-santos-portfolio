@@ -237,12 +237,12 @@ function setRoleLens(lensKey) {
   showToast(lensNames[lensKey] || "Profile updated");
 }
 
-// Switch Architecture / Automation Blueprints Tab
-function switchBlueprintTab(tabKey) {
-  const tabs = ["agent-reach", "sonata-api", "content-pipeline", "pos-security"];
+// Switch Skills in Action / Problem-Solving Playbook Tab
+function switchPlaybookTab(tabKey) {
+  const tabs = ["support", "logistics", "automation", "security"];
   tabs.forEach((t) => {
-    const content = document.getElementById("bp-content-" + t);
-    const btn = document.getElementById("bp-tab-" + t);
+    const content = document.getElementById("playbook-content-" + t);
+    const btn = document.getElementById("playbook-tab-" + t);
     if (content && btn) {
       if (t === tabKey) {
         content.classList.remove("hidden");

@@ -112,7 +112,7 @@
         <a href="#about" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">About &amp; Ops</a>
         <a href="#services" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">What I Do</a>
         <a href="#projects" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Featured Systems</a>
-        <a href="#blueprints" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Code Blueprints</a>
+        <a href="#playbooks" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Skills in Action</a>
         <a href="#experience" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Experience</a>
         <a href="#skills" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Skills</a>
         <a href="#faq" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">FAQ</a>
@@ -750,94 +750,265 @@
     </section>
 
     <!-- ====================================================================
-         5. CODE BLUEPRINTS & AGENT-REACH ARCHITECTURE
+         5. SKILLS IN ACTION: HOW I SOLVE REAL-WORLD PROBLEMS
          ==================================================================== -->
-    <section id="blueprints" class="space-y-6">
+    <section id="playbooks" class="space-y-6">
       <div class="text-center max-w-2xl mx-auto">
-        <span class="text-xs font-semibold text-[#2997ff] uppercase tracking-wider">Architecture &amp; Clean Code</span>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">Production Code Blueprints</h2>
+        <span class="text-xs font-semibold text-[#2997ff] uppercase tracking-wider">Applied Skills &amp; Problem Solving</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">Skills in Action: Real-World Business Solutions</h2>
         <p class="text-xs sm:text-sm text-[#a1a6b4] mt-2">
-          Inspect production scripts showing how I integrate <strong>Agent-Reach (<a href="https://github.com/Panniantong/Agent-Reach" target="_blank" class="text-[#2997ff] underline">Panniantong/Agent-Reach</a>)</strong>, secure booking APIs, automated media pipelines, and concurrency locks:
+          You don't need to be a software engineer to see the value I bring. Select any business scenario below to see how I apply my operational discipline, technical troubleshooting, and AI tools to solve common headaches:
         </p>
       </div>
 
-      <!-- Tabbed Code Card -->
+      <!-- Playbook Interactive Card -->
       <div class="rounded-2xl border border-white/12 bg-[#12141d] overflow-hidden shadow-2xl">
-        <div class="p-2.5 bg-[#0e1017] border-b border-white/10 flex items-center gap-2 overflow-x-auto text-xs font-mono">
-          <span class="text-[#a1a6b4] px-2 text-[11px]">Select File:</span>
-          <button onclick="switchBlueprintTab('agent-reach')" id="bp-tab-agent-reach" class="px-3.5 py-1.5 rounded-lg bg-[#25293a] text-white border border-white/15 transition-all whitespace-nowrap">
-            01_AgentReach_Research_Ops.sh
+        <!-- Interactive Scenario Selector -->
+        <div class="p-2.5 bg-[#0e1017] border-b border-white/10 flex items-center gap-2 overflow-x-auto text-xs font-medium">
+          <span class="text-[#a1a6b4] px-2 text-[11px] font-mono">Select Scenario:</span>
+          <button onclick="switchPlaybookTab('support')" id="playbook-tab-support" class="px-3.5 py-2 rounded-xl bg-[#25293a] text-white border border-white/15 transition-all whitespace-nowrap flex items-center gap-2">
+            <span>🎧</span> 1. High-Volume Support &amp; Escalations
           </button>
-          <button onclick="switchBlueprintTab('sonata-api')" id="bp-tab-sonata-api" class="px-3.5 py-1.5 rounded-lg text-[#a1a6b4] hover:text-white border border-transparent transition-all whitespace-nowrap">
-            02_Booking_Fulfillment_API.ts
+          <button onclick="switchPlaybookTab('logistics')" id="playbook-tab-logistics" class="px-3.5 py-2 rounded-xl text-[#a1a6b4] hover:text-white border border-transparent transition-all whitespace-nowrap flex items-center gap-2">
+            <span>📅</span> 2. Executive Logistics &amp; Remote PC Setup
           </button>
-          <button onclick="switchBlueprintTab('content-pipeline')" id="bp-tab-content-pipeline" class="px-3.5 py-1.5 rounded-lg text-[#a1a6b4] hover:text-white border border-transparent transition-all whitespace-nowrap">
-            03_14Stage_Content_Pipeline.py
+          <button onclick="switchPlaybookTab('automation')" id="playbook-tab-automation" class="px-3.5 py-2 rounded-xl text-[#a1a6b4] hover:text-white border border-transparent transition-all whitespace-nowrap flex items-center gap-2">
+            <span>🤖</span> 3. AI Automation &amp; Zero-Cost Research
           </button>
-          <button onclick="switchBlueprintTab('pos-security')" id="bp-tab-pos-security" class="px-3.5 py-1.5 rounded-lg text-[#a1a6b4] hover:text-white border border-transparent transition-all whitespace-nowrap">
-            04_POS_Concurrency_And_RLS.java
+          <button onclick="switchPlaybookTab('security')" id="playbook-tab-security" class="px-3.5 py-2 rounded-xl text-[#a1a6b4] hover:text-white border border-transparent transition-all whitespace-nowrap flex items-center gap-2">
+            <span>🛡️</span> 4. System Reliability &amp; Data Protection
           </button>
         </div>
 
-        <div class="p-6 bg-[#0b0c12] font-mono text-xs sm:text-sm text-[#d1d5db] min-h-[260px] overflow-x-auto code-scroll leading-relaxed">
-          <!-- Tab 1: Agent-Reach Workflow -->
-          <div id="bp-content-agent-reach" class="space-y-2">
-            <p class="text-[#30d158]"># 1. Agent-Reach (Panniantong/Agent-Reach) Zero-API-Fee Research &amp; Lead Ops</p>
-            <p class="text-[#a1a6b4]"># Gives AI agents &amp; remote ops workflows read access across GitHub, Reddit, YouTube, X &amp; Web at $0 API cost</p>
-            <p class="text-white mt-3">$ npx skills add Panniantong/Agent-Reach@agent-reach &amp;&amp; agent-reach doctor</p>
-            <p class="text-[#2997ff] mt-2">[OK] Web Reader (Jina Reader)     -&gt; Clean Markdown extraction from any client/competitor URL</p>
-            <p class="text-[#2997ff]">[OK] GitHub CLI &amp; Search          -&gt; Track technical repos, issues, and hiring engineering teams</p>
-            <p class="text-[#2997ff]">[OK] YouTube (yt-dlp transcripts) -&gt; Extract video transcripts &amp; research summaries for content ops</p>
-            <p class="text-[#2997ff]">[OK] Reddit / X / RSS Channels    -&gt; Monitor niche market pain points &amp; remote client leads</p>
-            <p class="text-[#30d158] mt-3">Result: 100% free-tier market intelligence, competitor research, and lead enrichment for overseas founders.</p>
+        <!-- Scenario 1: Customer Support & Escalation Triage -->
+        <div id="playbook-content-support" class="p-6 sm:p-8 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-white/10">
+            <div>
+              <span class="text-[11px] font-mono text-[#30d158] font-semibold uppercase tracking-wider">Customer Experience &amp; Retention</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-0.5">Handling Angry Customers &amp; Clearing Ticket Backlogs</h3>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-[#30d158]/15 text-[#30d158] text-xs font-semibold">Trained at Walmart (IBEX)</span>
           </div>
 
-          <!-- Tab 2: Sonata & Appointment Booking API -->
-          <div id="bp-content-sonata-api" class="hidden space-y-2">
-            <p class="text-[#2997ff]">// 2. Sonata (LicenseDesk) &amp; Appointment Assistant — Serverless Intake Pipeline</p>
-            <p class="text-[#a1a6b4]">// Validates customer bookings, prevents spam (5 req/IP/hr), logs to Supabase RLS, and alerts Discord with 3x retry</p>
-            <pre class="text-white mt-2 overflow-x-auto">export async function POST(req: Request) {
-  const payload = BookingSchema.parse(await req.json()); // Strict Zod validation
-  await enforceRateLimit(req.headers.get("x-forwarded-for"), { maxPerHour: 5 });
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Pain Point -->
+            <div class="p-5 rounded-2xl bg-[#181b26] border border-red-500/20 space-y-2.5">
+              <div class="flex items-center gap-2 text-red-400 font-bold text-xs uppercase tracking-wider">
+                <span>⚠️</span> The Common Headache
+              </div>
+              <p class="text-xs text-[#d1d5db] leading-relaxed">
+                Founders and managers spend their precious evenings replying to upset customers, untangling lost orders, or watching unread tickets pile up in Zendesk or email queues.
+              </p>
+            </div>
 
-  const booking = await supabase.from("appointments").insert(payload).select().single();
-  await retryWithBackoff(() =&gt; sendDiscordWebhookEmbed(booking), { attempts: 3 });
-  await resend.emails.send({ to: payload.email, subject: "Session Confirmed" });
-
-  return Response.json({ status: "confirmed", id: booking.id });
-}</pre>
+            <!-- Mark's Method -->
+            <div class="p-5 rounded-2xl bg-[#181b26] border border-[#2997ff]/20 space-y-2.5 md:col-span-2">
+              <div class="flex items-center gap-2 text-[#2997ff] font-bold text-xs uppercase tracking-wider">
+                <span>⚡</span> How Mark Solves It (Step-by-Step)
+              </div>
+              <ul class="text-xs text-[#d1d5db] space-y-2 leading-relaxed">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#2997ff] font-bold">1.</span>
+                  <span><strong>Empathy &amp; Instant Calm:</strong> Native-level English tone that defuses customer frustration within the first message across live chat, phone, or email.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#2997ff] font-bold">2.</span>
+                  <span><strong>Root-Cause Investigation:</strong> Rather than giving robotic excuses, I navigate internal order databases, shipping portals, and CRM logs to solve the actual breakdown.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#2997ff] font-bold">3.</span>
+                  <span><strong>Standard Operating Procedure (SOP):</strong> I document every unique issue into a clean company knowledge base so it gets resolved in half the time next time.</span>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <!-- Tab 3: 14-Stage Content Pipeline -->
-          <div id="bp-content-content-pipeline" class="hidden space-y-2">
-            <p class="text-[#bf5af2]"># 3. AI Engineering OS — 14-Stage YouTube &amp; Media Content Pipeline (n8n + Python)</p>
-            <p class="text-[#a1a6b4]"># Reduces manual content production from hours to minutes operating on $0/mo free-tier quotas</p>
-            <pre class="text-white mt-2 overflow-x-auto">def execute_14_stage_pipeline(topic_brief: dict):
-    research_context = agent_reach_gather_sources(topic_brief["keywords"])
-    script_draft     = llm_orchestrator.generate_script(research_context)
-    verified_script  = qa_criticism_gate.enforce_rubric(script_draft, min_score=10)
-    voiceover_audio  = elevenlabs_tts.synthesize(verified_script)
-    rendered_mp4     = ffmpeg_assembler.render_video(voiceover_audio, assets=topic_brief["visuals"])
-    return youtube_api_v3.upload_with_seo_metadata(rendered_mp4, verified_script.metadata)</pre>
+          <!-- Outcome Strip & Skills -->
+          <div class="p-4 rounded-xl bg-[#0e1017] border border-white/8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-[11px] text-[#a1a6b4]">What Your Business Gains:</span>
+              <p class="text-xs font-bold text-white mt-0.5">High CSAT ratings, zero dropped tickets, and founders get their free time back.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">Zendesk</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">Omnichannel Support</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">CRM Triage</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">Obsidian SOPs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scenario 2: Executive Logistics & Remote PC Support -->
+        <div id="playbook-content-logistics" class="hidden p-6 sm:p-8 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-white/10">
+            <div>
+              <span class="text-[11px] font-mono text-[#2997ff] font-semibold uppercase tracking-wider">Executive Coordination &amp; IT Helpdesk</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-0.5">Scheduling Across Timezones &amp; Fixing Remote Employee PCs</h3>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-[#2997ff]/15 text-[#2997ff] text-xs font-semibold">Trained at IGT Solutions</span>
           </div>
 
-          <!-- Tab 4: Java 17 POS & Concurrency -->
-          <div id="bp-content-pos-security" class="hidden space-y-2">
-            <p class="text-[#ff9f0a]">// 4. SMC Inventory System (Java 17, MySQL 8.0, HikariCP) — Row-Locked Transaction Engine</p>
-            <p class="text-[#a1a6b4]">// Prevents inventory race conditions and verifies server-side financial calculations</p>
-            <pre class="text-white mt-2 overflow-x-auto">public SaleReceipt processSaleWithDeadlockRetry(SaleRequest request) {
-    return executeWithExponentialBackoff(() =&gt; {
-        try (Connection conn = hikariDataSource.getConnection()) {
-            conn.setAutoCommit(false);
-            // SELECT ... FOR UPDATE locks inventory rows during transaction
-            InventoryItem item = repository.lockByIdForUpdate(conn, request.productId());
-            item.verifySufficientStock(request.quantity());
-            repository.deductStockAndWriteAuditLog(conn, item, request.operatorId());
-            conn.commit();
-            return SaleReceipt.fromVerifiedTransaction(item, request);
-        }
-    }, maxRetries = 3);
-}</pre>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Pain Point -->
+            <div class="p-5 rounded-2xl bg-[#181b26] border border-red-500/20 space-y-2.5">
+              <div class="flex items-center gap-2 text-red-400 font-bold text-xs uppercase tracking-wider">
+                <span>⚠️</span> The Common Headache
+              </div>
+              <p class="text-xs text-[#d1d5db] leading-relaxed">
+                Double-booked client meetings, messed-up international flight times, and remote contractors stranded because their software or laptop won't connect.
+              </p>
+            </div>
+
+            <!-- Mark's Method -->
+            <div class="p-5 rounded-2xl bg-[#181b26] border border-[#2997ff]/20 space-y-2.5 md:col-span-2">
+              <div class="flex items-center gap-2 text-[#2997ff] font-bold text-xs uppercase tracking-wider">
+                <span>⚡</span> How Mark Solves It (Step-by-Step)
+              </div>
+              <ul class="text-xs text-[#d1d5db] space-y-2 leading-relaxed">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#2997ff] font-bold">1.</span>
+                  <span><strong>Timezone Shielding:</strong> Strict calendar auditing across US Eastern/Pacific, UK GMT, and Australia AEST with automated buffer blocks.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#2997ff] font-bold">2.</span>
+                  <span><strong>Complex Travel Booking:</strong> Learned from global travel operations at IGT Solutions—handling flight rebookings, hotel changes, and emergency itineraries flawlessly.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#2997ff] font-bold">3.</span>
+                  <span><strong>Live Remote Desktop Fixes:</strong> Jump into client or employee computers via AnyDesk or TeamViewer to configure software, fix permissions, and test connections.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Outcome Strip & Skills -->
+          <div class="p-4 rounded-xl bg-[#0e1017] border border-white/8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-[11px] text-[#a1a6b4]">What Your Business Gains:</span>
+              <p class="text-xs font-bold text-white mt-0.5">Zero missed appointments, smooth employee onboarding, and zero executive scheduling stress.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">AnyDesk</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">TeamViewer</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">Google Calendar / Outlook</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">Travel Coordination</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scenario 3: AI Automation & Zero-Cost Research -->
+        <div id="playbook-content-automation" class="hidden p-6 sm:p-8 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-white/10">
+            <div>
+              <span class="text-[11px] font-mono text-[#bf5af2] font-semibold uppercase tracking-wider">AI Systems &amp; Automation</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-0.5">Automating Repetitive Chores &amp; Research at $0/mo Cost</h3>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-[#bf5af2]/15 text-[#bf5af2] text-xs font-semibold">AI Engineering OS</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Pain Point -->
+            <div class="p-5 rounded-2xl bg-[#181b26] border border-red-500/20 space-y-2.5">
+              <div class="flex items-center gap-2 text-red-400 font-bold text-xs uppercase tracking-wider">
+                <span>⚠️</span> The Common Headache
+              </div>
+              <p class="text-xs text-[#d1d5db] leading-relaxed">
+                Your team wastes 10 to 15 hours every week manually copying form entries into spreadsheets, researching leads across the web, or paying expensive monthly fees for basic automation tools.
+              </p>
+            </div>
+
+            <!-- Mark's Method -->
+            <div class="p-5 rounded-2xl bg-[#181b26] border border-[#bf5af2]/20 space-y-2.5 md:col-span-2">
+              <div class="flex items-center gap-2 text-[#bf5af2] font-bold text-xs uppercase tracking-wider">
+                <span>⚡</span> How Mark Solves It (Step-by-Step)
+              </div>
+              <ul class="text-xs text-[#d1d5db] space-y-2 leading-relaxed">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#bf5af2] font-bold">1.</span>
+                  <span><strong>Zero-Cost Market Research:</strong> I deploy <em>Agent-Reach</em> to search GitHub, Reddit, and the web for market leads and competitor insights without paying expensive API fees.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#bf5af2] font-bold">2.</span>
+                  <span><strong>n8n Workflow Pipelines:</strong> Connect your contact forms, customer notifications, and Discord/Slack alerts so tasks run automatically in seconds.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#bf5af2] font-bold">3.</span>
+                  <span><strong>Precision AI Prompts:</strong> I structure multi-step AI prompts (Claude 3.5, GPT-4o, Gemini) that clean messy data, draft executive briefings, and eliminate human error.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Outcome Strip & Skills -->
+          <div class="p-4 rounded-xl bg-[#0e1017] border border-white/8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-[11px] text-[#a1a6b4]">What Your Business Gains:</span>
+              <p class="text-xs font-bold text-white mt-0.5">Hours of repetitive grunt work completed on autopilot every week with zero software bloat.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">n8n Automation</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">Agent-Reach</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">Claude 3.5 &amp; GPT-4o</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">Discord / Slack Webhooks</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scenario 4: System Reliability & Data Protection -->
+        <div id="playbook-content-security" class="hidden p-6 sm:p-8 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-white/10">
+            <div>
+              <span class="text-[11px] font-mono text-[#ff9f0a] font-semibold uppercase tracking-wider">Security &amp; Web Reliability</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-0.5">Protecting Company Data &amp; Keeping Client Portals Fast</h3>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-[#ff9f0a]/15 text-[#ff9f0a] text-xs font-semibold">ISC2 Security Trained</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Pain Point -->
+            <div class="p-5 rounded-2xl bg-[#181b26] border border-red-500/20 space-y-2.5">
+              <div class="flex items-center gap-2 text-red-400 font-bold text-xs uppercase tracking-wider">
+                <span>⚠️</span> The Common Headache
+              </div>
+              <p class="text-xs text-[#d1d5db] leading-relaxed">
+                Hiring an unverified freelancer who writes sloppy code, shares company passwords over unencrypted chat, or builds web forms that get spammed by fake bot inquiries.
+              </p>
+            </div>
+
+            <!-- Mark's Method -->
+            <div class="p-5 rounded-2xl bg-[#181b26] border border-[#ff9f0a]/20 space-y-2.5 md:col-span-2">
+              <div class="flex items-center gap-2 text-[#ff9f0a] font-bold text-xs uppercase tracking-wider">
+                <span>⚡</span> How Mark Solves It (Step-by-Step)
+              </div>
+              <ul class="text-xs text-[#d1d5db] space-y-2 leading-relaxed">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#ff9f0a] font-bold">1.</span>
+                  <span><strong>Zero-Leak Password Vaults:</strong> I use 1Password and Bitwarden with masked sharing, hardware 2FA keys, and encrypted drives so company credentials never leak.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#ff9f0a] font-bold">2.</span>
+                  <span><strong>Cloudflare Bot Protection:</strong> I block 100% of spam submissions on contact forms and portals using Cloudflare Turnstile without annoying real human visitors.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#ff9f0a] font-bold">3.</span>
+                  <span><strong>Clean Code &amp; Backups:</strong> With a BSIT degree and 5+ years building production Next.js and Java systems, all work is cleanly structured, tested, and tracked on GitHub.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Outcome Strip & Skills -->
+          <div class="p-4 rounded-xl bg-[#0e1017] border border-white/8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-[11px] text-[#a1a6b4]">What Your Business Gains:</span>
+              <p class="text-xs font-bold text-white mt-0.5">Complete peace of mind knowing your client data, company passwords, and websites are safe.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">1Password / Bitwarden</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">Cloudflare Turnstile</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">ISC2 Security Awareness</span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#181b26] border border-white/10 text-[11px] text-[#d1d5db]">GitHub Version Control</span>
+            </div>
           </div>
         </div>
       </div>
