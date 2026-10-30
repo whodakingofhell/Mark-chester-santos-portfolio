@@ -92,7 +92,7 @@
       }
     };
   </script>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261030c" />
 </head>
 
 <body class="font-sans antialiased selection:bg-[#2997ff] selection:text-white min-h-screen">
@@ -122,12 +122,12 @@
 
       <!-- Navigation Links -->
       <div class="hidden lg:flex items-center space-x-1 text-xs text-[#a1a6b4] font-medium">
+        <a href="#video-vfx" class="px-3.5 py-1.5 rounded-full bg-[#bf5af2]/20 border border-[#bf5af2]/40 text-[#bf5af2] hover:text-white hover:bg-[#bf5af2]/30 transition-all font-semibold flex items-center gap-1.5 shadow-sm">
+          <span>🎬</span>
+          <span>Video Graphic</span>
+        </a>
         <a href="#about" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">About &amp; Ops</a>
         <a href="#services" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">What I Do</a>
-        <a href="#video-vfx" class="px-3 py-1.5 rounded-full text-[#bf5af2] hover:text-white hover:bg-[#bf5af2]/10 transition-all font-semibold flex items-center gap-1">
-          <span>🎬</span>
-          <span>Video VFX</span>
-        </a>
         <a href="#projects" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Featured Systems</a>
         <a href="#playbooks" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Skills in Action</a>
         <a href="#experience" class="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Experience</a>
@@ -195,6 +195,10 @@
 
       <!-- Primary Action Buttons -->
       <div class="flex flex-wrap items-center justify-center gap-3.5 mb-14">
+        <a href="#video-vfx" class="px-6 py-3 rounded-full bg-gradient-to-r from-[#bf5af2] to-[#5e5ce6] text-white hover:brightness-110 font-semibold text-sm transition-all active:scale-95 flex items-center gap-2 shadow-lg shadow-[#bf5af2]/30 border border-[#bf5af2]/40">
+          <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <span>🎬 Watch Example Video Graphic</span>
+        </a>
         <a href="#projects" class="px-6 py-3 rounded-full bg-white text-black hover:bg-[#e5e7eb] font-semibold text-sm transition-all active:scale-95 flex items-center gap-2 shadow-lg">
           <span>Explore Featured Systems</span>
           <svg class="w-4 h-4 text-[#2997ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M19 9l-7 7-7-7"/></svg>
@@ -334,215 +338,9 @@
     </div>
 
     <!-- ====================================================================
-         2. ABOUT & REMOTE OPERATIONS HUB (STREAMLINED BENTO)
+         2. PREMIER NEURAL VIDEO GRAPHIC & VFX SHOWCASE
          ==================================================================== -->
-    <section id="about" class="space-y-6">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <span class="text-xs font-semibold text-[#2997ff] uppercase tracking-wider">Operational Reliability</span>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">About &amp; Daily Remote Execution</h2>
-        </div>
-        <p class="text-xs text-[#a1a6b4] max-w-md">
-          A high-signal view of my remote readiness, shift synchronization, and communication dispatch for overseas teams.
-        </p>
-      </div>
-
-      <!-- Bento Grid (12 Columns) -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
-
-        <!-- Card 1: Remote Hardware & Redundancy (5 cols) -->
-        <div class="bento-card md:col-span-5 p-6 sm:p-7 flex flex-col justify-between space-y-5">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-[11px] font-mono text-[#2997ff] uppercase tracking-wider font-semibold">Home Office Rig</span>
-              <span class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#30d158]/15 text-[#30d158] text-[10px] font-mono">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#30d158] animate-pulse"></span> READY
-              </span>
-            </div>
-            <h3 class="text-base font-bold text-white mb-2">Zero-Downtime Infrastructure</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              Configured for uninterrupted remote work across global timezones with redundant connectivity and secure credential management:
-            </p>
-
-            <div class="space-y-2 text-xs">
-              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
-                <span class="text-[#d1d5db]">Primary Line:</span>
-                <span class="font-mono text-[#30d158] font-semibold">200 Mbps Fiber (Low Latency)</span>
-              </div>
-              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
-                <span class="text-[#d1d5db]">Failover Backup:</span>
-                <span class="font-mono text-white">5G Wireless Hotspot</span>
-              </div>
-              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
-                <span class="text-[#d1d5db]">Power Backup:</span>
-                <span class="font-mono text-white">UPS Battery Backup</span>
-              </div>
-              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
-                <span class="text-[#d1d5db]">Security Vault:</span>
-                <span class="font-mono text-[#2997ff]">1Password / Bitwarden + 2FA</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-3 border-t border-white/10 text-[11px] text-[#a1a6b4] flex items-center justify-between">
-            <span>Location: Metro Manila (UTC+8)</span>
-            <span class="text-white font-medium">US / UK / AU Shift Ready</span>
-          </div>
-        </div>
-
-        <!-- Card 2: Interactive Note Dispatcher (7 cols) -->
-        <div class="bento-card bento-card-highlight md:col-span-7 p-6 sm:p-7 flex flex-col justify-between space-y-4">
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-[11px] font-mono text-[#30d158] uppercase tracking-wider font-semibold">Direct Dispatch</span>
-              <span class="text-[11px] text-[#a1a6b4] font-mono">Response: &lt; 2 hrs</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-1">Send a Quick Note to Mark</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              Have an open remote role, customer support queue backlog, or repetitive workflow you need automated? Type your note below:
-            </p>
-
-            <div class="space-y-3">
-              <div class="relative">
-                <textarea id="bento-quick-input" rows="3" placeholder="e.g. Hi Mark, we need a Technical VA to handle our Zendesk customer tickets and build n8n webhook alerts for our US team..." class="w-full p-3 rounded-xl bg-[#181b26] border border-white/12 text-xs text-white placeholder-[#6e7485] outline-none focus:border-[#2997ff] resize-none leading-relaxed"></textarea>
-              </div>
-
-              <div class="flex flex-wrap items-center justify-between gap-3">
-                <div id="bento-quick-status" class="text-xs"></div>
-                <button onclick="sendBentoQuickNote()" class="px-5 py-2.5 rounded-xl bg-[#2997ff] hover:bg-[#1482eb] text-white text-xs font-semibold tracking-tight transition-all active:scale-95 shadow-md flex items-center gap-1.5">
-                  <span>Send Direct Note</span>
-                  <span>→</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-[#a1a6b4]">
-            <span>Direct Email: <strong class="text-white">chesrakzxc@gmail.com</strong></span>
-            <button onclick="copyText('chesrakzxc@gmail.com', 'Copied: chesrakzxc@gmail.com')" class="text-[#2997ff] hover:underline">Copy Address</button>
-          </div>
-        </div>
-
-        <!-- Card 3: Live Global Shift Alignment Clocks (12 cols) -->
-        <div class="bento-card md:col-span-12 p-6 sm:p-7 bg-[#12141d]">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#30d158]"></span>
-                <span class="text-xs font-bold text-white uppercase tracking-wider">Live Global Shift Alignment</span>
-              </div>
-              <p class="text-xs text-[#a1a6b4] mt-1">
-                Based in Metro Manila (UTC+8) with permanent daily synchronization for US (EST/PST), UK (GMT), and Australian (AEST) business hours.
-              </p>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
-              <div class="px-4 py-2.5 rounded-xl bg-[#181b26] border border-white/10">
-                <div class="text-[10px] text-[#a1a6b4]">Manila (Local)</div>
-                <div id="clock-ph" class="text-xs font-mono font-bold text-white mt-0.5">--:--</div>
-              </div>
-              <div class="px-4 py-2.5 rounded-xl bg-[#181b26] border border-white/10">
-                <div class="text-[10px] text-[#a1a6b4]">New York (EST/EDT)</div>
-                <div id="clock-us" class="text-xs font-mono font-bold text-[#2997ff] mt-0.5">--:--</div>
-              </div>
-              <div class="px-4 py-2.5 rounded-xl bg-[#181b26] border border-white/10">
-                <div class="text-[10px] text-[#a1a6b4]">London (GMT/BST)</div>
-                <div id="clock-uk" class="text-xs font-mono font-bold text-[#30d158] mt-0.5">--:--</div>
-              </div>
-              <div class="px-4 py-2.5 rounded-xl bg-[#181b26] border border-white/10">
-                <div class="text-[10px] text-[#a1a6b4]">Sydney (AEST)</div>
-                <div id="clock-au" class="text-xs font-mono font-bold text-[#ff9f0a] mt-0.5">--:--</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         3. WHAT I CAN DO IN WEEK 1 (OPERATIONAL PILLARS)
-         ==================================================================== -->
-    <section id="services" class="space-y-6">
-      <div class="text-center max-w-2xl mx-auto">
-        <span class="text-xs font-semibold text-[#30d158] uppercase tracking-wider">Immediate Value for Remote Founders</span>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">What I Can Take Off Your Plate in Week 1</h2>
-        <p class="text-xs sm:text-sm text-[#a1a6b4] mt-2">
-          Instead of hiring two separate contractors (an administrative VA and an automation engineer), I handle both execution and automation:
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <!-- Pillar 1 -->
-        <div class="bento-card p-6 flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-[#2997ff]/15 border border-[#2997ff]/30 flex items-center justify-center text-lg mb-4">
-              🎧
-            </div>
-            <h3 class="text-base font-bold text-white mb-2">1. Customer Support &amp; Inbox Triage</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              Omnichannel support across phone, live chat, email, Zendesk, and Discord. Proven record managing customer queues while hitting high CSAT and AHT metrics.
-            </p>
-          </div>
-          <div class="pt-3 border-t border-white/10 text-[11px] text-[#2997ff] font-medium">
-            Proven at Walmart (IBEX) &amp; IGT
-          </div>
-        </div>
-
-        <!-- Pillar 2 -->
-        <div class="bento-card p-6 flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-[#30d158]/15 border border-[#30d158]/30 flex items-center justify-center text-lg mb-4">
-              📅
-            </div>
-            <h3 class="text-base font-bold text-white mb-2">2. Scheduling, Travel &amp; PC Support</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              End-to-end appointment coordination, international flight/hotel booking modifications, software license provisioning, and remote PC troubleshooting via AnyDesk / TeamViewer.
-            </p>
-          </div>
-          <div class="pt-3 border-t border-white/10 text-[11px] text-[#30d158] font-medium">
-            Zero Double-Bookings • SLA Driven
-          </div>
-        </div>
-
-        <!-- Pillar 3 -->
-        <div class="bento-card p-6 flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-[#bf5af2]/15 border border-[#bf5af2]/30 flex items-center justify-center text-lg mb-4">
-              🤖
-            </div>
-            <h3 class="text-base font-bold text-white mb-2">3. AI Workflow &amp; Content Automation</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              Building n8n + Python + LLM pipelines that turn hours of manual research, data entry, scriptwriting, voice synthesis (ElevenLabs), and media publishing into automated flows.
-            </p>
-          </div>
-          <div class="pt-3 border-t border-white/10 text-[11px] text-[#bf5af2] font-medium">
-            14-Stage Pipeline Architecture
-          </div>
-        </div>
-
-        <!-- Pillar 4 -->
-        <div class="bento-card p-6 flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-[#ff9f0a]/15 border border-[#ff9f0a]/30 flex items-center justify-center text-lg mb-4">
-              🌐
-            </div>
-            <h3 class="text-base font-bold text-white mb-2">4. Zero-Fee Research &amp; Web Apps</h3>
-            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
-              Using <strong>Agent-Reach</strong> for $0-API-cost research across GitHub, Reddit, YouTube, X, and Web, plus building secure Next.js + Supabase internal tools and booking portals.
-            </p>
-          </div>
-          <div class="pt-3 border-t border-white/10 text-[11px] text-[#ff9f0a] font-medium">
-            Next.js 15/16 • Supabase • Agent-Reach
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         3.5. PREMIER NEURAL VIDEO GRAPHIC & VFX SHOWCASE
-         ==================================================================== -->
-    <section id="video-vfx" class="space-y-8 reveal-on-scroll">
+    <section id="video-vfx" class="space-y-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#bf5af2]/15 border border-[#bf5af2]/35 text-xs text-[#bf5af2] font-semibold mb-2">
@@ -576,11 +374,13 @@
               
               <!-- Video Element -->
               <video id="vfx-video-player"
-                     class="relative z-10 w-full h-full object-cover rounded-[26px]"
-                     preload="metadata"
+                     class="relative z-10 w-full h-full object-cover rounded-[26px] cursor-pointer" onclick="toggleVfxPlay()"
+                     preload="auto"
                      playsinline
-                     poster="humble_video_poster.jpg"
-                     loop>
+                     muted
+                     autoplay
+                     loop
+                     poster="humble_video_poster.jpg">
                 <source src="mark_chester_humble_4x5.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
@@ -792,6 +592,234 @@
     </section>
 
     <!-- ====================================================================
+         3. ABOUT & REMOTE OPERATIONS HUB (STREAMLINED BENTO)
+         ==================================================================== -->
+    <section id="about" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-semibold text-[#2997ff] uppercase tracking-wider">Operational Reliability</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">About &amp; Daily Remote Execution</h2>
+        </div>
+        <p class="text-xs text-[#a1a6b4] max-w-md">
+          A high-signal view of my remote readiness, shift synchronization, and communication dispatch for overseas teams.
+        </p>
+      </div>
+
+      <!-- Featured Video Graphic Spotlight Banner within About -->
+      <div class="bento-card p-5 border border-[#bf5af2]/40 bg-gradient-to-r from-[#bf5af2]/15 via-[#141724] to-[#12141d] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-[#bf5af2]/25 border border-[#bf5af2]/50 flex items-center justify-center text-2xl shrink-0 shadow-lg shadow-[#bf5af2]/20">
+            🎬
+          </div>
+          <div>
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-[#bf5af2]/25 text-[10px] text-white font-semibold mb-1">
+              Example Video Graphic Created by Mark Chester
+            </div>
+            <h3 class="text-sm sm:text-base font-bold text-white">Kendrick Lamar "HUMBLE." Photorealistic Facial Synthesis</h3>
+            <p class="text-xs text-[#a1a6b4]">512px GFPGAN super-resolution • 35mm Kodak film grain • 4:5 vertical video graphic</p>
+          </div>
+        </div>
+        <a href="#video-vfx" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#bf5af2] to-[#5e5ce6] hover:brightness-110 text-white text-xs font-bold shrink-0 transition-all active:scale-95 flex items-center gap-1.5 shadow-md shadow-[#bf5af2]/30">
+          <span>▶ Watch Video Player</span>
+          <span>↑</span>
+        </a>
+      </div>
+
+
+
+      <!-- Bento Grid (12 Columns) -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+
+        <!-- Card 1: Remote Hardware & Redundancy (5 cols) -->
+        <div class="bento-card md:col-span-5 p-6 sm:p-7 flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-mono text-[#2997ff] uppercase tracking-wider font-semibold">Home Office Rig</span>
+              <span class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#30d158]/15 text-[#30d158] text-[10px] font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#30d158] animate-pulse"></span> READY
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Zero-Downtime Infrastructure</h3>
+            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
+              Configured for uninterrupted remote work across global timezones with redundant connectivity and secure credential management:
+            </p>
+
+            <div class="space-y-2 text-xs">
+              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
+                <span class="text-[#d1d5db]">Primary Line:</span>
+                <span class="font-mono text-[#30d158] font-semibold">200 Mbps Fiber (Low Latency)</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
+                <span class="text-[#d1d5db]">Failover Backup:</span>
+                <span class="font-mono text-white">5G Wireless Hotspot</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
+                <span class="text-[#d1d5db]">Power Backup:</span>
+                <span class="font-mono text-white">UPS Battery Backup</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[#181b26] border border-white/8 flex items-center justify-between">
+                <span class="text-[#d1d5db]">Security Vault:</span>
+                <span class="font-mono text-[#2997ff]">1Password / Bitwarden + 2FA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-white/10 text-[11px] text-[#a1a6b4] flex items-center justify-between">
+            <span>Location: Metro Manila (UTC+8)</span>
+            <span class="text-white font-medium">US / UK / AU Shift Ready</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Interactive Note Dispatcher (7 cols) -->
+        <div class="bento-card bento-card-highlight md:col-span-7 p-6 sm:p-7 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-mono text-[#30d158] uppercase tracking-wider font-semibold">Direct Dispatch</span>
+              <span class="text-[11px] text-[#a1a6b4] font-mono">Response: &lt; 2 hrs</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Send a Quick Note to Mark</h3>
+            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
+              Have an open remote role, customer support queue backlog, or repetitive workflow you need automated? Type your note below:
+            </p>
+
+            <div class="space-y-3">
+              <div class="relative">
+                <textarea id="bento-quick-input" rows="3" placeholder="e.g. Hi Mark, we need a Technical VA to handle our Zendesk customer tickets and build n8n webhook alerts for our US team..." class="w-full p-3 rounded-xl bg-[#181b26] border border-white/12 text-xs text-white placeholder-[#6e7485] outline-none focus:border-[#2997ff] resize-none leading-relaxed"></textarea>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <div id="bento-quick-status" class="text-xs"></div>
+                <button onclick="sendBentoQuickNote()" class="px-5 py-2.5 rounded-xl bg-[#2997ff] hover:bg-[#1482eb] text-white text-xs font-semibold tracking-tight transition-all active:scale-95 shadow-md flex items-center gap-1.5">
+                  <span>Send Direct Note</span>
+                  <span>→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-[#a1a6b4]">
+            <span>Direct Email: <strong class="text-white">chesrakzxc@gmail.com</strong></span>
+            <button onclick="copyText('chesrakzxc@gmail.com', 'Copied: chesrakzxc@gmail.com')" class="text-[#2997ff] hover:underline">Copy Address</button>
+          </div>
+        </div>
+
+        <!-- Card 3: Live Global Shift Alignment Clocks (12 cols) -->
+        <div class="bento-card md:col-span-12 p-6 sm:p-7 bg-[#12141d]">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#30d158]"></span>
+                <span class="text-xs font-bold text-white uppercase tracking-wider">Live Global Shift Alignment</span>
+              </div>
+              <p class="text-xs text-[#a1a6b4] mt-1">
+                Based in Metro Manila (UTC+8) with permanent daily synchronization for US (EST/PST), UK (GMT), and Australian (AEST) business hours.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
+              <div class="px-4 py-2.5 rounded-xl bg-[#181b26] border border-white/10">
+                <div class="text-[10px] text-[#a1a6b4]">Manila (Local)</div>
+                <div id="clock-ph" class="text-xs font-mono font-bold text-white mt-0.5">--:--</div>
+              </div>
+              <div class="px-4 py-2.5 rounded-xl bg-[#181b26] border border-white/10">
+                <div class="text-[10px] text-[#a1a6b4]">New York (EST/EDT)</div>
+                <div id="clock-us" class="text-xs font-mono font-bold text-[#2997ff] mt-0.5">--:--</div>
+              </div>
+              <div class="px-4 py-2.5 rounded-xl bg-[#181b26] border border-white/10">
+                <div class="text-[10px] text-[#a1a6b4]">London (GMT/BST)</div>
+                <div id="clock-uk" class="text-xs font-mono font-bold text-[#30d158] mt-0.5">--:--</div>
+              </div>
+              <div class="px-4 py-2.5 rounded-xl bg-[#181b26] border border-white/10">
+                <div class="text-[10px] text-[#a1a6b4]">Sydney (AEST)</div>
+                <div id="clock-au" class="text-xs font-mono font-bold text-[#ff9f0a] mt-0.5">--:--</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         3. WHAT I CAN DO IN WEEK 1 (OPERATIONAL PILLARS)
+         ==================================================================== -->
+    <section id="services" class="space-y-6">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="text-xs font-semibold text-[#30d158] uppercase tracking-wider">Immediate Value for Remote Founders</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">What I Can Take Off Your Plate in Week 1</h2>
+        <p class="text-xs sm:text-sm text-[#a1a6b4] mt-2">
+          Instead of hiring two separate contractors (an administrative VA and an automation engineer), I handle both execution and automation:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Pillar 1 -->
+        <div class="bento-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-[#2997ff]/15 border border-[#2997ff]/30 flex items-center justify-center text-lg mb-4">
+              🎧
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">1. Customer Support &amp; Inbox Triage</h3>
+            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
+              Omnichannel support across phone, live chat, email, Zendesk, and Discord. Proven record managing customer queues while hitting high CSAT and AHT metrics.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-white/10 text-[11px] text-[#2997ff] font-medium">
+            Proven at Walmart (IBEX) &amp; IGT
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="bento-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-[#30d158]/15 border border-[#30d158]/30 flex items-center justify-center text-lg mb-4">
+              📅
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">2. Scheduling, Travel &amp; PC Support</h3>
+            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
+              End-to-end appointment coordination, international flight/hotel booking modifications, software license provisioning, and remote PC troubleshooting via AnyDesk / TeamViewer.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-white/10 text-[11px] text-[#30d158] font-medium">
+            Zero Double-Bookings • SLA Driven
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="bento-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-[#bf5af2]/15 border border-[#bf5af2]/30 flex items-center justify-center text-lg mb-4">
+              🤖
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">3. AI Workflow &amp; Content Automation</h3>
+            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
+              Building n8n + Python + LLM pipelines that turn hours of manual research, data entry, scriptwriting, voice synthesis (ElevenLabs), and media publishing into automated flows.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-white/10 text-[11px] text-[#bf5af2] font-medium">
+            14-Stage Pipeline Architecture
+          </div>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="bento-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-[#ff9f0a]/15 border border-[#ff9f0a]/30 flex items-center justify-center text-lg mb-4">
+              🌐
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">4. Zero-Fee Research &amp; Web Apps</h3>
+            <p class="text-xs text-[#a1a6b4] leading-relaxed mb-4">
+              Using <strong>Agent-Reach</strong> for $0-API-cost research across GitHub, Reddit, YouTube, X, and Web, plus building secure Next.js + Supabase internal tools and booking portals.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-white/10 text-[11px] text-[#ff9f0a] font-medium">
+            Next.js 15/16 • Supabase • Agent-Reach
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- ====================================================================
          4. FEATURED PRODUCTION APPLICATIONS
          ==================================================================== -->
     <section id="projects" class="space-y-8">
@@ -1946,6 +1974,6 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=20261030c"></script>
 </body>
 </html>

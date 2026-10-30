@@ -741,6 +741,7 @@ document.addEventListener("keydown", (e) => {
 
 // Initialization
 document.addEventListener("DOMContentLoaded", () => {
+  document.documentElement.classList.add("js-ready");
   updateWorldClocks();
   setInterval(updateWorldClocks, 30000);
 
