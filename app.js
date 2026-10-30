@@ -56,6 +56,20 @@ const ROLE_LENSES = {
 
 // Detailed Case Studies for Interactive Deep-Dive Modal
 const CASE_STUDIES = {
+  "humble-vfx": {
+    title: "Kendrick Lamar 'HUMBLE.' — Photorealistic Facial Synthesis Video Graphic",
+    badge: "Neural VFX & Computer Graphics (Example Graphic)",
+    challenge: "Traditional face replacement suffers from obvious flaws: floating hoodie collars, blurred dental shapes during vocal choruses, muddy AI skin textures lacking 35mm film grain, and noticeable edge jitter when music plays.",
+    solution: "Engineered a production-grade 4:5 vertical neural VFX video graphic. Extracted Mark Chester's inner facial features via ArcFace w600k and aligned with 5-point similarity affine transforms onto Kendrick Lamar's head using Hyperswap 1B. De-bearded the jawline and mustache, restored high-definition human skin pores, iris reflections, and crisp tooth enamel geometry with GFPGAN 1.4 (512px), matched Kodak Vision3 500T 35mm film grain, and stabilized 355 frames using bidirectional Gaussian landmark tracking.",
+    stack: ["Hyperswap 1B (ONNX)", "GFPGAN 1.4 (512px)", "ArcFace w600k", "DFL XSeg Occlusion", "BiSeNet ResNet-34", "Python 3.11", "FFmpeg", "OpenCV"],
+    metrics: [
+      "0% hoodie bleed or floating collars (Kendrick's crewneck t-shirt and crowd remain 100% untouched original pixels)",
+      "512px human pore and tooth enamel restoration eliminating artificial CGI smoothing",
+      "Exact 355-frame master synchronization at 24fps with zero frame-to-frame jitter"
+    ],
+    liveUrl: "#video-vfx",
+    githubUrl: "https://github.com/whodakingofhell"
+  },
   sonata: {
     title: "Sonata — Microsoft Setup Form (LicenseDesk)",
     badge: "SaaS & Fulfillment Pipeline",
@@ -186,7 +200,7 @@ function fallbackCopyText(text, label) {
   document.body.removeChild(textarea);
 }
 
-// Switch Employer Role Lens (Hybrid / VA & Ops / AI & Full-Stack)
+// Switch Employer Role Lens with Smooth Fluid Cross-Fade
 function setRoleLens(lensKey) {
   const data = ROLE_LENSES[lensKey] || ROLE_LENSES.hybrid;
 
@@ -203,31 +217,43 @@ function setRoleLens(lensKey) {
     }
   });
 
-  const badgeEl = document.getElementById("hero-badge-text");
-  const headlineEl = document.getElementById("hero-headline");
-  const subEl = document.getElementById("hero-subheadline");
+  const heroHeadline = document.getElementById("hero-headline");
+  const heroSubheadline = document.getElementById("hero-subheadline");
+  const heroBadge = document.getElementById("hero-badge-text");
 
-  if (badgeEl) badgeEl.textContent = data.badge;
-  if (headlineEl) headlineEl.innerHTML = data.headline;
-  if (subEl) subEl.innerHTML = data.subheadline;
+  // Animate out
+  [heroHeadline, heroSubheadline, heroBadge].forEach((el) => {
+    if (el) el.classList.add("fade-transition", "is-fading");
+  });
 
-  const s1v = document.getElementById("stat-1-val");
-  const s1l = document.getElementById("stat-1-label");
-  const s2v = document.getElementById("stat-2-val");
-  const s2l = document.getElementById("stat-2-label");
-  const s3v = document.getElementById("stat-3-val");
-  const s3l = document.getElementById("stat-3-label");
-  const s4v = document.getElementById("stat-4-val");
-  const s4l = document.getElementById("stat-4-label");
+  setTimeout(() => {
+    if (heroBadge) heroBadge.textContent = data.badge;
+    if (heroHeadline) heroHeadline.innerHTML = data.headline;
+    if (heroSubheadline) heroSubheadline.innerHTML = data.subheadline;
 
-  if (s1v) s1v.textContent = data.stat1Val;
-  if (s1l) s1l.textContent = data.stat1Label;
-  if (s2v) s2v.textContent = data.stat2Val;
-  if (s2l) s2l.textContent = data.stat2Label;
-  if (s3v) s3v.textContent = data.stat3Val;
-  if (s3l) s3l.textContent = data.stat3Label;
-  if (s4v) s4v.textContent = data.stat4Val;
-  if (s4l) s4l.textContent = data.stat4Label;
+    const s1v = document.getElementById("stat-1-val");
+    const s1l = document.getElementById("stat-1-label");
+    const s2v = document.getElementById("stat-2-val");
+    const s2l = document.getElementById("stat-2-label");
+    const s3v = document.getElementById("stat-3-val");
+    const s3l = document.getElementById("stat-3-label");
+    const s4v = document.getElementById("stat-4-val");
+    const s4l = document.getElementById("stat-4-label");
+
+    if (s1v) s1v.textContent = data.stat1Val;
+    if (s1l) s1l.textContent = data.stat1Label;
+    if (s2v) s2v.textContent = data.stat2Val;
+    if (s2l) s2l.textContent = data.stat2Label;
+    if (s3v) s3v.textContent = data.stat3Val;
+    if (s3l) s3l.textContent = data.stat3Label;
+    if (s4v) s4v.textContent = data.stat4Val;
+    if (s4l) s4l.textContent = data.stat4Label;
+
+    // Animate in
+    [heroHeadline, heroSubheadline, heroBadge].forEach((el) => {
+      if (el) el.classList.remove("is-fading");
+    });
+  }, 140);
 
   const lensNames = {
     hybrid: "Viewing: Hybrid Remote Builder & Tech VA Profile",
@@ -237,7 +263,7 @@ function setRoleLens(lensKey) {
   showToast(lensNames[lensKey] || "Profile updated");
 }
 
-// Switch Skills in Action / Problem-Solving Playbook Tab
+// Switch Skills in Action / Problem-Solving Playbook Tab with Smooth Fade
 function switchPlaybookTab(tabKey) {
   const tabs = ["support", "logistics", "automation", "security"];
   tabs.forEach((t) => {
@@ -246,6 +272,8 @@ function switchPlaybookTab(tabKey) {
     if (content && btn) {
       if (t === tabKey) {
         content.classList.remove("hidden");
+        content.classList.add("fade-transition", "is-fading");
+        setTimeout(() => content.classList.remove("is-fading"), 30);
         btn.classList.add("bg-[#25293a]", "text-white", "border-white/15");
         btn.classList.remove("text-[#a1a6b4]", "border-transparent");
       } else {
@@ -257,9 +285,9 @@ function switchPlaybookTab(tabKey) {
   });
 }
 
-// Filter Featured Projects
+// Filter Featured Projects with Smooth Staggered Animation
 function filterProjects(category) {
-  const buttons = ["all", "ops", "web", "systems"];
+  const buttons = ["all", "vfx", "ops", "web", "systems"];
   buttons.forEach((b) => {
     const btn = document.getElementById("btn-filter-" + b);
     if (btn) {
@@ -274,12 +302,26 @@ function filterProjects(category) {
   });
 
   const cards = document.querySelectorAll(".project-item");
-  cards.forEach((card) => {
+  cards.forEach((card, index) => {
     const cats = (card.getAttribute("data-category") || "").split(" ");
-    if (category === "all" || cats.includes(category)) {
-      card.classList.remove("hidden");
+    const matches = (category === "all" || cats.includes(category));
+    
+    if (matches) {
+      card.classList.remove("is-hidden");
+      card.style.display = "flex";
+      setTimeout(() => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0) scale(1)";
+      }, index * 30);
     } else {
-      card.classList.add("hidden");
+      card.style.opacity = "0";
+      card.style.transform = "translateY(8px) scale(0.96)";
+      setTimeout(() => {
+        if (!matches) {
+          card.classList.add("is-hidden");
+          card.style.display = "none";
+        }
+      }, 200);
     }
   });
 }
@@ -466,11 +508,234 @@ function copyStructuredBriefing() {
   copyText(text, "Structured briefing copied! You can paste it into an email or message.");
 }
 
+// ============================================================================
+// Interactive Neural VFX Video Player Controller
+// ============================================================================
+let vfxVideo = null;
+let vfxPlayOverlay = null;
+let vfxCenterIcon = null;
+let vfxBottomIcon = null;
+let vfxSeekBar = null;
+let vfxTimeDisplay = null;
+let vfxMuteBadge = null;
+let vfxMuteIcon = null;
+let vfxMuteLabel = null;
+
+function initVfxVideoPlayer() {
+  vfxVideo = document.getElementById("vfx-video-player");
+  vfxPlayOverlay = document.getElementById("vfx-play-overlay");
+  vfxCenterIcon = document.getElementById("vfx-center-play-icon");
+  vfxBottomIcon = document.getElementById("vfx-bottom-play-icon");
+  vfxSeekBar = document.getElementById("vfx-seek-bar");
+  vfxTimeDisplay = document.getElementById("vfx-time-display");
+  vfxMuteBadge = document.getElementById("vfx-mute-badge");
+  vfxMuteIcon = document.getElementById("vfx-mute-icon");
+  vfxMuteLabel = document.getElementById("vfx-mute-label");
+
+  if (!vfxVideo) return;
+
+  vfxVideo.addEventListener("timeupdate", () => {
+    if (!vfxVideo.duration) return;
+    const pct = (vfxVideo.currentTime / vfxVideo.duration) * 100;
+    if (vfxSeekBar) vfxSeekBar.value = pct;
+    if (vfxTimeDisplay) {
+      const cur = formatVideoTime(vfxVideo.currentTime);
+      const dur = formatVideoTime(vfxVideo.duration);
+      vfxTimeDisplay.textContent = `${cur} / ${dur}`;
+    }
+  });
+
+  vfxVideo.addEventListener("play", () => {
+    if (vfxPlayOverlay) {
+      vfxPlayOverlay.style.opacity = "0";
+      vfxPlayOverlay.style.pointerEvents = "none";
+    }
+    updatePlayIcons(true);
+  });
+
+  vfxVideo.addEventListener("pause", () => {
+    if (vfxPlayOverlay) {
+      vfxPlayOverlay.style.opacity = "1";
+      vfxPlayOverlay.style.pointerEvents = "auto";
+    }
+    updatePlayIcons(false);
+  });
+
+  vfxVideo.addEventListener("ended", () => {
+    updatePlayIcons(false);
+  });
+}
+
+function formatVideoTime(sec) {
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${s < 10 ? "0" : ""}${s}`;
+}
+
+function updatePlayIcons(isPlaying) {
+  const playPath = "M8 5v14l11-7z";
+  const pausePath = "M6 19h4V5H6v14zm8-14v14h4V5h-4z";
+  const path = isPlaying ? pausePath : playPath;
+  if (vfxBottomIcon) vfxBottomIcon.innerHTML = `<path d="${path}" />`;
+  if (vfxCenterIcon) vfxCenterIcon.innerHTML = `<path d="${path}" />`;
+}
+
+function toggleVfxPlay() {
+  if (!vfxVideo) return;
+  if (vfxVideo.paused) {
+    vfxVideo.play().catch(() => {});
+  } else {
+    vfxVideo.pause();
+  }
+}
+
+function toggleVfxMute(event) {
+  if (event) event.stopPropagation();
+  if (!vfxVideo) return;
+  vfxVideo.muted = !vfxVideo.muted;
+  if (vfxMuteIcon) vfxMuteIcon.textContent = vfxVideo.muted ? "🔇" : "🔊";
+  if (vfxMuteLabel) vfxMuteLabel.textContent = vfxVideo.muted ? "Unmute" : "Mute";
+  showToast(vfxVideo.muted ? "Audio Muted" : "Master Audio Enabled 🎵");
+}
+
+function onVfxSeek(val) {
+  if (!vfxVideo || !vfxVideo.duration) return;
+  vfxVideo.currentTime = (val / 100) * vfxVideo.duration;
+}
+
+function restartVfxVideo() {
+  if (!vfxVideo) return;
+  vfxVideo.currentTime = 0;
+  vfxVideo.play().catch(() => {});
+}
+
+function toggleVfxFullscreen() {
+  if (!vfxVideo) return;
+  if (vfxVideo.requestFullscreen) {
+    vfxVideo.requestFullscreen();
+  } else if (vfxVideo.webkitRequestFullscreen) {
+    vfxVideo.webkitRequestFullscreen();
+  }
+}
+
+// Switch VFX Tab
+function switchVfxTab(tabName) {
+  const tabs = ["comparison", "architecture", "breakdown"];
+  tabs.forEach((t) => {
+    const pane = document.getElementById("vfx-tab-" + t);
+    const btn = document.getElementById("vfx-tab-btn-" + t);
+    if (pane && btn) {
+      if (t === tabName) {
+        pane.classList.remove("hidden");
+        btn.classList.add("active");
+        btn.classList.remove("text-[#a1a6b4]");
+      } else {
+        pane.classList.add("hidden");
+        btn.classList.remove("active");
+        btn.classList.add("text-[#a1a6b4]");
+      }
+    }
+  });
+}
+
+// Image Lightbox Modal
+function openImageModal(imgSrc, title) {
+  const modal = document.getElementById("image-lightbox-modal");
+  const imgEl = document.getElementById("image-modal-img");
+  const titleEl = document.getElementById("image-modal-title");
+  if (!modal || !imgEl) return;
+  imgEl.src = imgSrc;
+  if (titleEl) titleEl.textContent = title || "High-Resolution Image Inspection";
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeImageModal() {
+  const modal = document.getElementById("image-lightbox-modal");
+  if (!modal) return;
+  modal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+// Mouse-following Spotlight Glow on Bento Cards (Throttled via RAF)
+function initSpotlightGlow() {
+  const cards = document.querySelectorAll(".bento-card");
+  if (!cards.length) return;
+
+  let mouseX = -9999;
+  let mouseY = -9999;
+  let isTicking = false;
+
+  window.addEventListener(
+    "mousemove",
+    (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!isTicking) {
+        window.requestAnimationFrame(() => {
+          cards.forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const x = mouseX - rect.left;
+            const y = mouseY - rect.top;
+            card.style.setProperty("--mouse-x", `${x}px`);
+            card.style.setProperty("--mouse-y", `${y}px`);
+          });
+          isTicking = false;
+        });
+        isTicking = true;
+      }
+    },
+    { passive: true }
+  );
+}
+
+// Reading Progress Bar
+function initReadingProgressBar() {
+  const bar = document.getElementById("reading-progress-bar");
+  if (!bar) return;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight <= 0) return;
+      const progress = (window.scrollY / totalHeight) * 100;
+      bar.style.width = `${progress}%`;
+    },
+    { passive: true }
+  );
+}
+
+// Reveal on Scroll with IntersectionObserver
+function initRevealOnScroll() {
+  const elements = document.querySelectorAll(".reveal-on-scroll");
+  if (!("IntersectionObserver" in window)) {
+    elements.forEach((el) => el.classList.add("is-revealed"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+}
+
 // Global Modal Esc Key Listener
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     closeCaseStudy();
     closeResumeModal();
+    closeImageModal();
   }
 });
 
@@ -485,4 +750,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (el) el.addEventListener("input", updateClientBriefingLink);
   });
   updateClientBriefingLink();
+
+  // Initialize interactive features
+  initVfxVideoPlayer();
+  initSpotlightGlow();
+  initReadingProgressBar();
+  initRevealOnScroll();
 });

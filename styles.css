@@ -225,6 +225,164 @@ details[open] summary .faq-icon {
   color: #2997ff;
 }
 
+/* ==========================================================================
+   INTERACTIVE MICRO-INTERACTIONS & TRANSITIONS (10/10 Polish)
+   ========================================================================== */
+
+/* Universal tactile button press & hover state */
+button, .btn-action, .lens-btn, a[role="button"] {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+button:active, .btn-action:active, .lens-btn:active, a[role="button"]:active {
+  transform: scale(0.96) translateY(1px);
+}
+
+/* Mouse-following Ambient Spotlight on Bento Cards */
+.bento-card {
+  position: relative;
+  isolation: isolate;
+}
+.bento-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(
+    500px circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
+    rgba(41, 151, 255, 0.14),
+    transparent 60%
+  );
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.bento-card:hover::before {
+  opacity: 1;
+}
+.bento-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Interactive Tabs */
+.tab-btn {
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tab-btn.active {
+  background: #25293a;
+  color: #ffffff;
+  border-color: rgba(41, 151, 255, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Smooth Cross-Fade Switcher (Role Lens & Tabs) */
+.fade-transition {
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.fade-transition.is-fading {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* Project Filter Card Transitions */
+.project-item {
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.project-item.is-hidden {
+  opacity: 0;
+  transform: scale(0.95) translateY(10px);
+  pointer-events: none;
+  display: none;
+}
+
+/* Reveal on Scroll */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom Interactive Video Player Container & Ambient Glow */
+.video-glow-wrapper {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85);
+  background: #090a0f;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.video-glow-wrapper:hover {
+  border-color: rgba(41, 151, 255, 0.38);
+  box-shadow: 0 30px 70px -12px rgba(41, 151, 255, 0.22);
+}
+.video-glow-ambient {
+  position: absolute;
+  inset: -12%;
+  background: radial-gradient(circle at 50% 50%, rgba(41, 151, 255, 0.18), transparent 65%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.35s ease;
+}
+.video-glow-wrapper:hover .video-glow-ambient {
+  opacity: 0.95;
+}
+
+/* Custom Video Control Scrub Bar */
+.video-scrub-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  transition: height 0.15s ease, background 0.2s ease;
+  cursor: pointer;
+}
+.video-scrub-bar:hover {
+  height: 7px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.video-scrub-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #2997ff;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(41, 151, 255, 0.8);
+  transition: transform 0.15s ease;
+}
+.video-scrub-bar::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+}
+
+/* Reading Progress Bar */
+#reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, #2997ff, #30d158, #bf5af2);
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
 /* High-Quality Print Stylesheet for 1-Click Clean Resume Download */
 @media print {
   body * {
