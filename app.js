@@ -259,20 +259,24 @@ const NO_AI_SLOP_PATTERNS = [
 
 // Verified Portfolio Dataset for the 7-Theme Interactive Editorial Dashboard
 const PORTFOLIO_DEFAULT_DATASET = {
-  name: "Mark Chester Santos — Verified Shipped Systems & Repos",
+  name: "Mark Chester Santos — Verified Shipped Systems & GitHub Repos",
   labelCol: "System",
   categoryCol: "Domain",
   metricCol: "Engineering Score",
   secondaryCol: "Key Metric",
   columns: ["System", "Domain", "Primary Stack", "Engineering Score", "Key Metric", "Status"],
   rows: [
-    { System: "BGround Studio", Domain: "AI Web App", "Primary Stack": "Next.js + WASM/ONNX", "Engineering Score": 96, "Key Metric": "0 AI credits / 3 formats", Status: "Live on Vercel" },
-    { System: "Philippine Skyland", Domain: "Full-Stack SaaS", "Primary Stack": "Next.js 16 + Prisma + PG", "Engineering Score": 98, "Key Metric": "13 models / 11-layer sec", Status: "Live on Vercel" },
-    { System: "Sonata LicenseDesk", Domain: "Full-Stack SaaS", "Primary Stack": "Next.js 15 + Zod + Resend", "Engineering Score": 94, "Key Metric": "3-attempt webhook retry", Status: "Live on Vercel" },
-    { System: "SMC Inventory POS", Domain: "Enterprise Java", "Primary Stack": "Java 17 + MySQL 8.0", "Engineering Score": 97, "Key Metric": "10,400+ LOC / 100+ tests", Status: "GitHub Master" },
-    { System: "AI Appointment API", Domain: "Backend API", "Primary Stack": "Node.js + Supabase RLS", "Engineering Score": 92, "Key Metric": "3 endpoints / 5 req/hr", Status: "Live on Vercel" },
-    { System: "PAIOS & 14-Stage OS", Domain: "AI Automation", "Primary Stack": "TypeScript + n8n + Python", "Engineering Score": 95, "Key Metric": "14 stages / $0/mo cost", Status: "GitHub Public" },
-    { System: "System Intel Scanner", Domain: "AI Automation", "Primary Stack": "Python CLI + 5-Layer YT", "Engineering Score": 91, "Key Metric": "GitHub + SO + YT intel", Status: "GitHub Public" },
+    { System: "BGround Studio", Domain: "Live Web App", "Primary Stack": "Next.js + WASM/ONNX", "Engineering Score": 96, "Key Metric": "0 AI credits / 3 formats", Status: "Live on Vercel" },
+    { System: "Philippine Skyland", Domain: "Live Web App", "Primary Stack": "Next.js 16 + Prisma + PG", "Engineering Score": 98, "Key Metric": "13 models / 11-layer sec", Status: "Live on Vercel" },
+    { System: "Sonata LicenseDesk", Domain: "Live Web App", "Primary Stack": "Next.js 15 + Zod + Resend", "Engineering Score": 94, "Key Metric": "3-attempt webhook retry", Status: "Live on Vercel" },
+    { System: "SMC Inventory POS", Domain: "Ops & Backend", "Primary Stack": "Java 17 + MySQL 8.0", "Engineering Score": 97, "Key Metric": "10,400+ LOC / 100+ tests", Status: "GitHub Public" },
+    { System: "AI Appointment API", Domain: "Ops & Backend", "Primary Stack": "Node.js + Supabase RLS", "Engineering Score": 92, "Key Metric": "3 endpoints / 5 req/hr", Status: "Live on Vercel" },
+    { System: "PAIOS", Domain: "AI & Python", "Primary Stack": "TypeScript + n8n", "Engineering Score": 95, "Key Metric": "Personal AI OS", Status: "GitHub Public" },
+    { System: "system-intel-scanner", Domain: "AI & Python", "Primary Stack": "Python CLI", "Engineering Score": 92, "Key Metric": "GitHub + SO + YT intel", Status: "GitHub Public" },
+    { System: "youtube-transcript-pro", Domain: "AI & Python", "Primary Stack": "Python 5-Layer", "Engineering Score": 91, "Key Metric": "5-layer caption fallback", Status: "GitHub Public" },
+    { System: "dashboard-extras", Domain: "AI & Python", "Primary Stack": "Python Voice API", "Engineering Score": 90, "Key Metric": "Monitor & voice backend", Status: "GitHub Public" },
+    { System: "hermes-restore-point", Domain: "Ops & Backend", "Primary Stack": "PowerShell", "Engineering Score": 89, "Key Metric": "Snapshot & rollback", Status: "GitHub Public" },
+    { System: "critical-skill-evaluator", Domain: "AI & Python", "Primary Stack": "QA + SHA-256", "Engineering Score": 90, "Key Metric": "Error-driven skill QA", Status: "GitHub Public" },
     { System: "Walmart & IGT Ops", Domain: "Technical Support", "Primary Stack": "Phone/Chat/Email + CRM", "Engineering Score": 95, "Key Metric": "Top CSAT / AHT / FCR", Status: "Verified Role" }
   ]
 };
@@ -1767,81 +1771,318 @@ function downloadCoverLetter() {
 }
 
 // ============================================================================
-// 7. MAE — INTERACTIVE 3D META AVATAR + VOICE MIC (STT) + SPEECH (TTS)
+// 7. MAE — LIVE 3D VIDEO AVATAR + NATURAL NEURAL VOICE + SITE WALKTHROUGH
 // ============================================================================
-const MAE_CLICK_REACTIONS = [
-  "Hey! Tap the mic button below and talk to me — I can reply out loud too.",
-  "Want to test BGround's 0-credit cutout demo or audit a website live?",
-  "Need a no-ai-slop check on your writing? Paste it right here!",
-  "Mark built me with Web Speech voice recognition, TTS, and 3D hover motion."
+const MAE_HOVER_GREETINGS = [
+  { text: "Sorry, may I help you?", audio: "audio/mae-hover-1.mp3" },
+  { text: "Hi there! I'm Mae — happy to help you with this website.", audio: "audio/mae-hover-2.mp3" },
+  { text: "Need a hand? Click me anytime for a quick site tour.", audio: "audio/mae-hover-3.mp3" }
 ];
 
-function initMae3DAvatarInteraction() {
-  const card = document.getElementById("mae-avatar-card");
-  if (!card) return;
-  card.addEventListener("mousemove", (e) => {
-    const r = card.getBoundingClientRect();
-    const rx = (((e.clientY - r.top) / r.height) - 0.5) * -22;
-    const ry = (((e.clientX - r.left) / r.width) - 0.5) * 24;
-    card.style.transform = `perspective(600px) rotateX(${rx.toFixed(1)}deg) rotateY(${ry.toFixed(1)}deg) scale(1.05)`;
+const SITE_TOUR_STEPS = [
+  {
+    selector: "#demos",
+    title: "1. Live Interactive Project Demos",
+    body: "Switch tabs here to try BGround's 0-credit cutout preview, Philippine Skyland, Sonata, and Mark's GitHub CLI tools directly in your browser.",
+    audio: "audio/mae-tour-1.mp3"
+  },
+  {
+    selector: "#work",
+    title: "2. All 12 Useful GitHub Projects",
+    body: "Browse every shipped app and open-source tool from Mark's GitHub — filter by Live Web Apps, AI & Python Tools, or Ops & Backend.",
+    audio: "audio/mae-tour-2.mp3"
+  },
+  {
+    selector: "#analytics-dashboard",
+    title: "3. 7-Theme Data Studio & CSV Explorer",
+    body: "Switch among 7 high-contrast themes, sort table columns, ask questions about the data, or upload your own .csv file for instant SVG charts.",
+    audio: "audio/mae-tour-3.mp3"
+  },
+  {
+    selector: "#website-checker",
+    title: "4. Live Website Security & Accessibility Checker",
+    body: "Enter any public URL (or click one of Mark's live apps) to run a real-time HTTPS/HSTS, CSP, WCAG accessibility, and Google SEO audit.",
+    audio: "audio/mae-tour-4.mp3"
+  },
+  {
+    selector: "#mae-dock",
+    title: "5. Talk to Mae Anytime",
+    body: "Hover over Mae, click her live 3D avatar, tap the mic to speak, or press Ctrl+K anytime if you want help navigating the website.",
+    audio: "audio/mae-tour-5.mp3"
+  }
+];
+
+let maeActiveAudio = null;
+let maeActiveAudioUrl = null;
+let maeHoverCooldownAt = 0;
+let maeHoverBubbleTimer = null;
+let maeHoverIdx = 0;
+let maeAudioUnlocked = false;
+let currentTourIndex = -1;
+let currentHighlightedEl = null;
+
+function stopMaeAudio() {
+  if (maeActiveAudio) {
+    try {
+      maeActiveAudio.pause();
+      maeActiveAudio.currentTime = 0;
+    } catch {}
+    maeActiveAudio = null;
+  }
+  if (maeActiveAudioUrl) {
+    try { URL.revokeObjectURL(maeActiveAudioUrl); } catch {}
+    maeActiveAudioUrl = null;
+  }
+  if ("speechSynthesis" in window) {
+    try { window.speechSynthesis.cancel(); } catch {}
+  }
+  setMaeAvatarState("idle");
+}
+
+function setMaeAvatarState(mode) {
+  const shell = document.getElementById("mae-video-shell");
+  const bars = document.getElementById("mae-voice-bars");
+  const vIdle = document.getElementById("mae-vid-idle");
+  const vHover = document.getElementById("mae-vid-hover");
+  const vTalk = document.getElementById("mae-vid-talk");
+  const orbVid = document.getElementById("mae-orb-video");
+
+  const activeMode = mode === "talking" ? "talk" : mode === "hover" ? "hover" : "idle";
+  const layers = [
+    ["idle", vIdle],
+    ["hover", vHover],
+    ["talk", vTalk]
+  ];
+
+  layers.forEach(([key, vid]) => {
+    if (!vid) return;
+    if (key === activeMode) {
+      vid.classList.add("active");
+      try {
+        if (key !== "idle" && vid.paused) vid.currentTime = 0;
+        const p = vid.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      } catch {}
+    } else {
+      vid.classList.remove("active");
+      if (key !== "idle") {
+        try { vid.pause(); } catch {}
+      }
+    }
   });
-  card.addEventListener("mouseleave", () => { card.style.transform = ""; });
+
+  if (orbVid) {
+    const targetSrc = activeMode === "talk" ? "media/mae-talk.mp4" : activeMode === "hover" ? "media/mae-hover.mp4" : "media/mae-idle.mp4";
+    if (!orbVid.getAttribute("src")?.endsWith(targetSrc)) {
+      orbVid.setAttribute("src", targetSrc);
+      const p = orbVid.play();
+      if (p && typeof p.catch === "function") p.catch(() => {});
+    }
+  }
+
+  shell?.classList.toggle("speaking", mode === "talking" || mode === "hover");
+  shell?.classList.toggle("listening", mode === "listening");
+  bars?.classList.toggle("active", mode === "talking" || mode === "hover");
+}
+
+function playMaeAudioClip(src, animMode = "talking") {
+  if (!STATE.maeVoiceEnabled) return Promise.resolve(false);
+  stopMaeAudio();
+  return new Promise((resolve) => {
+    try {
+      const audio = new Audio(src);
+      audio.preload = "auto";
+      maeActiveAudio = audio;
+      audio.onplay = () => setMaeAvatarState(animMode);
+      audio.onended = () => {
+        if (maeActiveAudio === audio) maeActiveAudio = null;
+        setMaeAvatarState("idle");
+        resolve(true);
+      };
+      audio.onerror = () => {
+        if (maeActiveAudio === audio) maeActiveAudio = null;
+        setMaeAvatarState("idle");
+        resolve(false);
+      };
+      const playPromise = audio.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {
+          // Browser blocked autoplay prior to first user click — keep visual animation graceful
+          setMaeAvatarState(animMode);
+          setTimeout(() => {
+            if (maeActiveAudio === audio) {
+              maeActiveAudio = null;
+              setMaeAvatarState("idle");
+            }
+          }, 2200);
+          resolve(false);
+        });
+      }
+    } catch {
+      setMaeAvatarState("idle");
+      resolve(false);
+    }
+  });
+}
+
+function showMaeHoverTooltip(text, durationMs = 3600) {
+  const tip = document.getElementById("mae-hover-bubble");
+  if (!tip) return;
+  tip.textContent = text;
+  tip.classList.add("visible");
+  clearTimeout(maeHoverBubbleTimer);
+  maeHoverBubbleTimer = setTimeout(() => tip.classList.remove("visible"), durationMs);
+}
+
+function triggerMaeHoverGreeting(force = false) {
+  const now = Date.now();
+  if (!force && now - maeHoverCooldownAt < 6500) {
+    setMaeAvatarState("hover");
+    setTimeout(() => {
+      if (!maeActiveAudio) setMaeAvatarState("idle");
+    }, 1800);
+    return;
+  }
+  maeHoverCooldownAt = now;
+  const item = MAE_HOVER_GREETINGS[maeHoverIdx % MAE_HOVER_GREETINGS.length];
+  maeHoverIdx += 1;
+
+  const bubble = document.getElementById("mae-avatar-bubble");
+  if (bubble) bubble.textContent = item.text;
+  if (!STATE.maeOpen) showMaeHoverTooltip(item.text, 4200);
+
+  if (STATE.maeVoiceEnabled) {
+    playMaeAudioClip(item.audio, "hover");
+  } else {
+    setMaeAvatarState("hover");
+    setTimeout(() => setMaeAvatarState("idle"), 2200);
+  }
+}
+
+function initMae3DAvatarInteraction() {
+  // Unlock audio cleanly on first gesture anywhere so hover voice works smoothly
+  const unlock = () => {
+    maeAudioUnlocked = true;
+    document.removeEventListener("pointerdown", unlock);
+    document.removeEventListener("keydown", unlock);
+  };
+  document.addEventListener("pointerdown", unlock, { passive: true });
+  document.addEventListener("keydown", unlock, { passive: true });
+
+  const launcher = document.getElementById("mae-launcher");
+  if (launcher) {
+    launcher.addEventListener("mouseenter", () => {
+      if (!STATE.maeOpen) triggerMaeHoverGreeting(false);
+    });
+  }
+
+  const stage = document.getElementById("mae-avatar-stage");
+  const shell = document.getElementById("mae-video-shell");
+  if (stage && shell) {
+    stage.addEventListener("mouseenter", () => {
+      if (!maeActiveAudio) triggerMaeHoverGreeting(false);
+    });
+    stage.addEventListener("mousemove", (e) => {
+      const r = stage.getBoundingClientRect();
+      const rx = (((e.clientY - r.top) / r.height) - 0.5) * -14;
+      const ry = (((e.clientX - r.left) / r.width) - 0.5) * 18;
+      shell.style.transform = `perspective(700px) rotateX(${rx.toFixed(1)}deg) rotateY(${ry.toFixed(1)}deg) scale(1.03)`;
+    });
+    stage.addEventListener("mouseleave", () => {
+      shell.style.transform = "";
+    });
+  }
 }
 
 function interactWithMaeAvatar() {
-  const card = document.getElementById("mae-avatar-card");
   const bubble = document.getElementById("mae-avatar-bubble");
-  if (card) {
-    card.classList.remove("pop-react");
-    void card.offsetWidth;
-    card.classList.add("pop-react");
-  }
-  const line = MAE_CLICK_REACTIONS[STATE.maeClickIdx % MAE_CLICK_REACTIONS.length];
-  STATE.maeClickIdx += 1;
-  if (bubble) bubble.textContent = line;
-  if (STATE.maeVoiceEnabled) speakAsMae(line);
+  const msg = "Hi! I'm Mae. I'm happy to help you explore Mark's website.";
+  if (bubble) bubble.textContent = msg;
+  playMaeAudioClip("audio/mae-welcome.mp3", "talking");
 }
 
 function toggleMaeVoice() {
   STATE.maeVoiceEnabled = !STATE.maeVoiceEnabled;
   const btn = document.getElementById("mae-tts-toggle");
   if (btn) btn.textContent = STATE.maeVoiceEnabled ? "Voice: ON" : "Voice: OFF";
-  if (!STATE.maeVoiceEnabled && "speechSynthesis" in window) {
-    window.speechSynthesis.cancel();
-    document.getElementById("mae-avatar-card")?.classList.remove("speaking");
-  }
+  if (!STATE.maeVoiceEnabled) stopMaeAudio();
 }
 
-function speakAsMae(text) {
-  if (!STATE.maeVoiceEnabled || !("speechSynthesis" in window)) return;
-  try {
-    window.speechSynthesis.cancel();
-    const clean = String(text || "").replace(/[*_`#]/g, "").replace(/\n+/g, " ").slice(0, 420);
-    const utt = new SpeechSynthesisUtterance(clean);
-    const voices = window.speechSynthesis.getVoices();
-    const preferred = voices.find((v) => /female|zira|samantha|aria|jenny|google us english/i.test(v.name) && /en/i.test(v.lang)) || voices.find((v) => /en/i.test(v.lang));
-    if (preferred) utt.voice = preferred;
-    utt.rate = 1.03;
-    utt.pitch = 1.1;
+// Natural Human Voice Synthesis: Gemini 2.5 Neural TTS (/api/tts) -> Natural Neural Browser Voice only (zero robotic fallback!)
+async function speakAsMae(text) {
+  if (!STATE.maeVoiceEnabled) return;
+  stopMaeAudio();
 
-    const card = document.getElementById("mae-avatar-card");
-    utt.onstart = () => card?.classList.add("speaking");
-    utt.onend = () => card?.classList.remove("speaking");
-    utt.onerror = () => card?.classList.remove("speaking");
-    window.speechSynthesis.speak(utt);
-  } catch {}
+  const clean = String(text || "")
+    .replace(/[*_`#<>]/g, "")
+    .replace(/\n+/g, " ")
+    .trim()
+    .slice(0, 420);
+  if (!clean) return;
+
+  // 1. Live Server Neural Human Voice (/api/tts powered by Gemini 2.5 Flash Leda voice)
+  if (window.location.protocol !== "file:") {
+    try {
+      setMaeAvatarState("talking");
+      const res = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: clean })
+      });
+      if (res.ok && (res.headers.get("content-type") || "").includes("audio/")) {
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        maeActiveAudioUrl = url;
+        const audio = new Audio(url);
+        maeActiveAudio = audio;
+        audio.onplay = () => setMaeAvatarState("talking");
+        audio.onended = () => stopMaeAudio();
+        audio.onerror = () => stopMaeAudio();
+        await audio.play();
+        return;
+      }
+    } catch {
+      // Fall through to natural browser neural voice check
+    }
+  }
+
+  // 2. Fallback ONLY if the browser has a genuine high-quality neural female voice (never harsh legacy Zira/David!)
+  if ("speechSynthesis" in window) {
+    const voices = window.speechSynthesis.getVoices();
+    const naturalVoice = voices.find((v) =>
+      /natural|online|ava|emma|aria|jenny|samantha|google us english/i.test(v.name) && /en/i.test(v.lang)
+    );
+    if (naturalVoice) {
+      try {
+        const utt = new SpeechSynthesisUtterance(clean.replace(/\bMae\b/g, "May"));
+        utt.voice = naturalVoice;
+        utt.rate = 1.0;
+        utt.pitch = 1.04;
+        utt.onstart = () => setMaeAvatarState("talking");
+        utt.onend = () => setMaeAvatarState("idle");
+        utt.onerror = () => setMaeAvatarState("idle");
+        window.speechSynthesis.speak(utt);
+        return;
+      } catch {}
+    }
+  }
+
+  // Graceful silent talking motion if no neural voice is reachable
+  setMaeAvatarState("talking");
+  setTimeout(() => {
+    if (!maeActiveAudio) setMaeAvatarState("idle");
+  }, Math.min(4500, Math.max(1800, clean.length * 36)));
 }
 
 let activeRecognition = null;
 function toggleMaeMic() {
   const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
   const micBtn = document.getElementById("mae-mic-btn");
-  const card = document.getElementById("mae-avatar-card");
   const bubble = document.getElementById("mae-avatar-bubble");
 
   if (!SpeechRec) {
-    showToast("Voice mic requires Chrome or Edge browser");
-    if (bubble) bubble.textContent = "Your browser doesn't support SpeechRecognition — try Chrome or Edge, or type below!";
+    showToast("Voice mic requires Chrome or Edge");
+    if (bubble) bubble.textContent = "Voice mic works in Chrome or Edge — or just type below!";
     return;
   }
 
@@ -1850,6 +2091,7 @@ function toggleMaeMic() {
     return;
   }
 
+  stopMaeAudio();
   const rec = new SpeechRec();
   rec.lang = "en-US";
   rec.interimResults = false;
@@ -1859,8 +2101,8 @@ function toggleMaeMic() {
   rec.onstart = () => {
     STATE.maeListening = true;
     micBtn?.classList.add("mic-btn-active");
-    card?.classList.add("listening");
-    if (bubble) bubble.textContent = "Listening... speak your question now!";
+    setMaeAvatarState("listening");
+    if (bubble) bubble.textContent = "Listening... go ahead!";
   };
   rec.onresult = (event) => {
     const transcript = event.results?.[0]?.[0]?.transcript || "";
@@ -1871,12 +2113,12 @@ function toggleMaeMic() {
     }
   };
   rec.onerror = () => {
-    showToast("Mic permission denied or no speech detected");
+    showToast("Mic permission needed or no voice heard");
   };
   rec.onend = () => {
     STATE.maeListening = false;
     micBtn?.classList.remove("mic-btn-active");
-    card?.classList.remove("listening");
+    if (!maeActiveAudio) setMaeAvatarState("idle");
   };
   rec.start();
 }
@@ -1884,9 +2126,19 @@ function toggleMaeMic() {
 function toggleMaePanel(force) {
   const panel = document.getElementById("mae-panel");
   if (!panel) return;
+  const wasOpen = STATE.maeOpen;
   STATE.maeOpen = typeof force === "boolean" ? force : !STATE.maeOpen;
   panel.classList.toggle("open", STATE.maeOpen);
-  if (STATE.maeOpen) setTimeout(() => document.getElementById("mae-input")?.focus(), 140);
+
+  if (STATE.maeOpen) {
+    document.getElementById("mae-hover-bubble")?.classList.remove("visible");
+    if (!wasOpen && STATE.maeHistory.length === 0 && STATE.maeVoiceEnabled) {
+      playMaeAudioClip("audio/mae-welcome.mp3", "talking");
+    }
+    setTimeout(() => document.getElementById("mae-input")?.focus(), 140);
+  } else {
+    stopMaeAudio();
+  }
 }
 
 function appendMaeMessage(role, text) {
@@ -1914,19 +2166,30 @@ async function handleMaeSubmit(ev) {
 }
 
 function runLocalMaeFallback(message) {
-  const q = message.toLowerCase();
-  if (/(slop|audit|clich|check)/.test(q)) {
-    const hits = auditTextForAiSlop(message);
-    if (hits.length) return `No-AI-Slop found ${hits.length} pattern(s): ` + hits.map((h) => `"${h.pattern}" (${h.fix})`).join("; ");
-    return "No AI-slop clichés found. Paste any paragraph to test all 16+ writing patterns.";
+  const q = message.toLowerCase().trim();
+  if (/(what date|today'?s date|what day|current date|what time|time is it)/.test(q)) {
+    const now = new Date();
+    const dStr = now.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+    const tStr = now.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+    return `Today is ${dStr}, and it's ${tStr}. How can I help you with the website?`;
   }
-  if (/(bground|project|demo|github|skyland|sonata)/.test(q)) {
-    return "Mark's live deployments include BGround (bground.vercel.app — 0-credit browser-local background remover), Philippine Skyland (11-layer security SaaS), Sonata Microsoft Setup Form, and AI Appointment API, plus 12 repos on GitHub (@whodakingofhell).";
+  if (/^(hi|hello|hey|good morning|good afternoon|good evening)\b/.test(q)) {
+    return "Hi! I'm Mae. I'm happy to help you explore Mark's website.";
   }
-  if (/(security|pentest|csp|ssrf|hsts|vault)/.test(q)) {
-    return "This site enforces HSTS preload, strict CSP, X-Frame-Options DENY, DNS-checked SSRF protection on /api/audit, and a hidden Owner Vault locked with timing-safe HttpOnly HMAC authentication.";
+  if (/(walkthrough|tour|how to use|guide)/.test(q)) {
+    setTimeout(() => startSiteWalkthrough(), 400);
+    return "Starting the quick 5-step website walkthrough for you now!";
   }
-  return "Hi! I'm Mae. You can click my 3D avatar, use the mic to speak, inspect Mark's live projects like BGround, test any URL in the Website Checker, or upload a CSV into the 7-Theme Data Studio.";
+  if (/(contact|email|hire|phone|social|github|facebook|instagram)/.test(q)) {
+    return "You can reach Mark at chesrakzxc@gmail.com, +63 995-814-0991, or on GitHub at github.com/whodakingofhell.";
+  }
+  if (/(bground|project|demo|github|skyland|sonata|paios|scanner|inventory|transcript)/.test(q)) {
+    return "Mark has 12 useful projects listed under Projects — including BGround, Philippine Skyland, Sonata, PAIOS, system-intel-scanner, youtube-transcript-pro, and his Java 17 POS.";
+  }
+  if (/(security|pentest|csp|ssrf|hsts|checker|audit)/.test(q)) {
+    return "Try the Website Checker section to audit any public URL live. This site enforces HSTS, strict CSP, anti-clickjacking, and SSRF protection.";
+  }
+  return "I'm happy to help you around Mark's website — ask me about his projects, how to use any tool, or click Site Walkthrough for a quick tour.";
 }
 
 async function sendToMae(text) {
@@ -1934,10 +2197,10 @@ async function sendToMae(text) {
   STATE.maeHistory.push({ role: "user", text });
   const bubble = document.getElementById("mae-avatar-bubble");
   const badge = document.getElementById("mae-engine-badge");
-  if (bubble) bubble.textContent = "Thinking...";
+  if (bubble) bubble.textContent = "Just a second...";
 
   let reply = null;
-  let eng = "Mae Local";
+  let eng = "Live 3D";
   if (window.location.protocol !== "file:") {
     try {
       const r = await fetch("/api/mae", {
@@ -1949,18 +2212,89 @@ async function sendToMae(text) {
         const d = await r.json();
         if (d?.reply) {
           reply = d.reply;
-          eng = d.engine === "gemini-live" ? "Gemini Live" : "Mae Serverless";
+          eng = d.engine === "gemini-live" ? "Gemini Live" : "Assistant";
         }
       }
     } catch {}
   }
   if (!reply) reply = runLocalMaeFallback(text);
 
-  if (badge) badge.textContent = `Mae 3D • ${eng}`;
-  if (bubble) bubble.textContent = reply.slice(0, 115) + (reply.length > 115 ? "..." : "");
+  if (badge) badge.textContent = `Mae • ${eng}`;
+  if (bubble) bubble.textContent = reply.length > 110 ? reply.slice(0, 108) + "..." : reply;
   appendMaeMessage("assistant", reply);
   STATE.maeHistory.push({ role: "assistant", text: reply });
   speakAsMae(reply);
+}
+
+// ============================================================================
+// 7B. INTERACTIVE WEBSITE WALKTHROUGH (GUIDED BY MAE)
+// ============================================================================
+function startSiteWalkthrough() {
+  currentTourIndex = 0;
+  renderTourStep();
+}
+
+function stepSiteWalkthrough(delta) {
+  const next = currentTourIndex + delta;
+  if (next < 0) return;
+  if (next >= SITE_TOUR_STEPS.length) {
+    closeSiteWalkthrough();
+    showToast("Walkthrough complete — ask Mae anytime!");
+    return;
+  }
+  currentTourIndex = next;
+  renderTourStep();
+}
+
+function replayCurrentTourVoice() {
+  const step = SITE_TOUR_STEPS[currentTourIndex];
+  if (step) playMaeAudioClip(step.audio, "talking");
+}
+
+function renderTourStep() {
+  const step = SITE_TOUR_STEPS[currentTourIndex];
+  const card = document.getElementById("site-tour-card");
+  if (!step || !card) return;
+
+  if (currentHighlightedEl) {
+    currentHighlightedEl.classList.remove("tour-highlight");
+    currentHighlightedEl = null;
+  }
+
+  const target = document.querySelector(step.selector);
+  if (target) {
+    currentHighlightedEl = target;
+    target.classList.add("tour-highlight");
+    if (step.selector !== "#mae-dock") {
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  document.getElementById("tour-step-badge").textContent = `Step ${currentTourIndex + 1} of ${SITE_TOUR_STEPS.length}`;
+  document.getElementById("tour-step-title").textContent = step.title;
+  document.getElementById("tour-step-body").textContent = step.body;
+
+  const prevBtn = document.getElementById("tour-prev-btn");
+  const nextBtn = document.getElementById("tour-next-btn");
+  if (prevBtn) prevBtn.disabled = currentTourIndex === 0;
+  if (prevBtn) prevBtn.style.opacity = currentTourIndex === 0 ? "0.45" : "1";
+  if (nextBtn) nextBtn.textContent = currentTourIndex === SITE_TOUR_STEPS.length - 1 ? "Done ✓" : "Next →";
+
+  card.classList.remove("hidden");
+  showMaeHoverTooltip(step.title, 4500);
+  if (STATE.maeVoiceEnabled) {
+    playMaeAudioClip(step.audio, "talking");
+  }
+}
+
+function closeSiteWalkthrough() {
+  currentTourIndex = -1;
+  if (currentHighlightedEl) {
+    currentHighlightedEl.classList.remove("tour-highlight");
+    currentHighlightedEl = null;
+  }
+  document.getElementById("site-tour-card")?.classList.add("hidden");
+  stopMaeAudio();
 }
 
 // ============================================================================
@@ -2012,6 +2346,7 @@ document.addEventListener("DOMContentLoaded", () => {
       closeCaseStudy();
       closeOwnerAuthModal();
       closePlatformPicker();
+      closeSiteWalkthrough();
       toggleMaePanel(false);
     }
   });
@@ -2035,5 +2370,5 @@ document.addEventListener("DOMContentLoaded", () => {
   populateDashCategoryFilter();
   renderDashboard();
   checkOwnerSession();
-  appendMaeMessage("assistant", "Hi! I'm Mae. Click my 3D avatar, press the mic button to talk, or ask about Mark's latest projects like BGround, the 7-theme data dashboard, or security checks.");
+  appendMaeMessage("assistant", "Hi! I'm Mae. I'm happy to help you explore Mark's website.");
 });

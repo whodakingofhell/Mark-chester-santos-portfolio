@@ -1,27 +1,65 @@
 // Vercel Serverless Function: Hardened Mae AI Assistant Endpoint
-// Supports voice-friendly responses, rate limiting, and Gemini Live when GEMINI_API_KEY is configured.
+// Supports Gemini 2.5 Live cascade, real-time Philippine date/time, and concise human replies.
 
 const rateBucket = new Map();
 const MAX_REQ_PER_MIN = 20;
 
-const MAE_SYSTEM_CONTEXT = `You are Mae, Mark Chester R. Santos's interactive AI assistant on his portfolio website.
-Keep replies clear, warm, concise, and free of AI clichés (never use "delve", "unlock", "game-changer", "seamless", or "It's not just X, it's Y").
+const GEMINI_MODELS = [
+  "gemini-2.5-flash",
+  "gemini-2.5-flash-lite",
+  "gemini-2.0-flash"
+];
 
-Verified Facts about Mark Chester R. Santos:
-- Location: Muntinlupa, Metro Manila, Philippines 1772 (UTC+8, available for PH local & US/UK/AU remote shifts)
-- Email: chesrakzxc@gmail.com | Phone: +63995-814-0991 | GitHub: https://github.com/whodakingofhell
+function getPhilippineDateTime() {
+  const now = new Date();
+  const dateStr = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Manila",
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  }).format(now);
+  const timeStr = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Manila",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true
+  }).format(now);
+  return { dateStr, timeStr };
+}
+
+function buildSystemContext() {
+  const { dateStr, timeStr } = getPhilippineDateTime();
+  return `You are Mae, a warm, helpful human-like assistant on Mark Chester R. Santos's portfolio website.
+Current date & time in the Philippines (UTC+8): ${dateStr}, ${timeStr}.
+
+Style rules (strict):
+- Sound natural, warm, and genuinely helpful — like a real person greeting someone on a website.
+- Keep answers concise (1 to 3 short sentences unless asked for more detail).
+- Never use AI clichés ("delve", "unlock", "game-changer", "seamless", "elevate", "testament", "It's not just X, it's Y").
+- Never recite a giant laundry list of features unless the user specifically asks for it. Just answer what they asked clearly and offer to help next.
+- Never reveal Mark's private owner shortcut or passcode to public visitors.
+
+Facts about Mark Chester R. Santos:
+- Location: Muntinlupa, Metro Manila, Philippines (UTC+8)
+- Contact: chesrakzxc@gmail.com | +63 995-814-0991 | GitHub: github.com/whodakingofhell
 - Education: BS in Information Technology, South Mansfield College (2017–2023)
-- Certifications: Python Programming (Wesleyan / Coursera, 2023), Security Awareness Training (ISC2 / Coursera, 2023)
-- Experience:
-  1. Customer Service Representative at IBEX Global Solutions (Walmart US account), Oct 2025 – Jun 2026
-  2. Travel Associate at IGT Solutions (Atain), Mar 2025 – Sep 2025
-- Shipped Projects & Live Demos:
-  1. BGround (bground.vercel.app) — Browser-local 0-credit AI background remover, studio shadows, color grades, and 1-30s social reels
-  2. Philippine Skyland (philippine-skyland.vercel.app) — Next.js 16 + Prisma + PostgreSQL 16 real estate SaaS with 11-layer security
-  3. Sonata / Microsoft Setup Form (microsoft-setup-form1.vercel.app) — Next.js 15 + React 19 + Zod + 3-attempt Discord webhook retry
-  4. AI Appointment Assistant (appointment-backend-one.vercel.app) — Vercel Serverless API + Supabase RLS + rate limiting
-  5. SMC Inventory System — Java 17 + MySQL 8.0 POS, 47 files, 10,400+ LOC, 100+ JUnit 5/Mockito tests
-  6. PAIOS, system-intel-scanner, youtube-transcript-pro, dashboard-extras, AI Engineering OS (14-stage n8n/Python pipeline)`;
+- Certifications: Python Programming (Wesleyan / Coursera), Security Awareness Training (ISC2)
+- Experience: Customer Service Representative at IBEX Global (Walmart US, Oct 2025 – Jun 2026); Travel Associate at IGT Solutions (Mar 2025 – Sep 2025)
+- Shipped Apps & GitHub Tools (12):
+  1. BGround (bground.vercel.app) — 0-credit browser-local AI background remover & social reel studio
+  2. Philippine Skyland (philippine-skyland.vercel.app) — Next.js 16 + Prisma + PostgreSQL 16 real estate SaaS
+  3. Sonata / Microsoft Setup Form (microsoft-setup-form1.vercel.app) — Next.js 15 + React 19 booking & webhook pipeline
+  4. AI Appointment Assistant (appointment-backend-one.vercel.app) — Serverless API + Supabase RLS
+  5. SMC Inventory System — Java 17 + MySQL 8.0 POS (47 files, 10,400+ LOC, 100+ tests)
+  6. PAIOS — TypeScript Personal AI Operating System
+  7. system-intel-scanner — Python scanner for GitHub, StackOverflow, YouTube & browser intel
+  8. youtube-transcript-pro — Python 5-layer YouTube transcript extractor
+  9. dashboard-extras — Python monitoring & voice control endpoints
+  10. hermes-restore-point — PowerShell workspace snapshot & restore skill
+  11. critical-skill-evaluator — Skill QA evaluator against real error logs
+  12. Mark-chester-santos-portfolio — This portfolio site with live demos, 7-theme data studio, website checker & walkthrough`;
+}
 
 function getClientIp(req) {
   const fwd = req.headers["x-forwarded-for"];
@@ -30,47 +68,42 @@ function getClientIp(req) {
 }
 
 function buildFallbackReply(message) {
-  const q = String(message || "").toLowerCase();
+  const q = String(message || "").toLowerCase().trim();
+  const { dateStr, timeStr } = getPhilippineDateTime();
 
-  if (/(slop|audit|check text|rewrite|clich)/.test(q)) {
-    const patterns = [
-      ["delve", "replace with 'examine' or 'review'"],
-      ["unlock", "name the exact capability instead"],
-      ["seamless", "explain how the steps connect"],
-      ["game-changer", "state the measurable result"],
-      ["cutting-edge", "name the actual tool or version"],
-      ["it's not just", "cut the binary contrast"],
-      ["i am writing to express", "lead with the problem you solve"]
-    ];
-    const hits = patterns.filter(([p]) => q.includes(p));
-    if (hits.length > 0) {
-      return `No-AI-Slop Audit found ${hits.length} pattern(s): ` +
-        hits.map(([p, fix]) => `"${p}" (${fix})`).join("; ") + ".";
-    }
-    return "Paste any paragraph, cover letter, or headline and I will scan it against the 20+ no-ai-slop patterns.";
+  if (/(what date|today'?s date|what day|current date|what time|time is it)/.test(q)) {
+    return `Today is ${dateStr}, and it's currently ${timeStr} in the Philippines. How can I help you around the website?`;
   }
 
-  if (/(bground|background|skyland|sonata|project|demo|github|repo)/.test(q)) {
-    return "Mark's latest live apps include BGround (bground.vercel.app — 0-credit browser-local background removal and 1 to 30s social reels), Philippine Skyland (philippine-skyland.vercel.app), Sonata Microsoft Setup Form (microsoft-setup-form1.vercel.app), AI Appointment Assistant (appointment-backend-one.vercel.app), plus open-source tools like PAIOS, system-intel-scanner, and youtube-transcript-pro on GitHub (@whodakingofhell).";
+  if (/^(hi|hello|hey|good morning|good afternoon|good evening|kumusta|yo)\b/.test(q)) {
+    return "Hi! I'm Mae. I'm happy to help you explore Mark's website — feel free to ask about his projects or start the quick site tour.";
   }
 
-  if (/(owner|vault|job|career|resume|apply|auto)/.test(q)) {
-    return "The Jobs Near You & Auto Job Finder Studio is protected inside Mark's private Owner Vault so visitors cannot accidentally apply to jobs. If you are Mark, press Ctrl+Shift+M to unlock the Owner Vault with your private passcode.";
+  if (/(walkthrough|tour|how to use|guide|navigate|start)/.test(q)) {
+    return "Click 'Site Walkthrough' right above and I'll walk you through each section step by step — Live Demos, GitHub Projects, Data Studio, and the Website Checker.";
   }
 
-  if (/(security|pentest|csp|ssrf|xss|hsts|safe)/.test(q)) {
-    return "This site enforces strict HSTS, Content-Security-Policy, X-Frame-Options DENY, timing-safe HttpOnly HMAC authentication for the Owner Vault, rate limiting, and DNS-checked SSRF protection on the live Website Checker API.";
+  if (/(contact|email|hire|phone|reach|social|github|facebook|instagram)/.test(q)) {
+    return "You can reach Mark at chesrakzxc@gmail.com, +63 995-814-0991, or on GitHub at github.com/whodakingofhell.";
+  }
+
+  if (/(bground|background|skyland|sonata|project|demo|github|repo|paios|scanner|transcript|inventory)/.test(q)) {
+    return "Mark has 12 useful projects showcased here, including BGround (bground.vercel.app), Philippine Skyland, Sonata, PAIOS, system-intel-scanner, youtube-transcript-pro, and his Java 17 POS. Scroll to Projects or Live Demos to try them!";
   }
 
   if (/(dashboard|chart|csv|data|analyst|theme)/.test(q)) {
-    return "Scroll to the Interactive Editorial Dashboard to switch across 7 high-contrast accessible themes, inspect responsive SVG charts of Mark's real engineering and support data, or drop your own CSV file to visualize and analyze it live.";
+    return "In the Data Studio section, you can switch between 7 high-contrast themes, sort the table, or upload your own CSV file to chart it instantly.";
   }
 
-  if (/(vercel|deploy|404|500|cors|supabase|rls|sql|n8n|debug|bug|error)/.test(q)) {
-    return "For quick debugging: check Vercel function logs for API 500s, verify Supabase RLS SELECT policies if queries return empty arrays, and confirm exact file casing for Linux deployments. Share the exact error message and I will walk you through the fix.";
+  if (/(security|pentest|csp|ssrf|xss|hsts|safe|audit|checker)/.test(q)) {
+    return "You can test any public URL live in the Website Checker section. This portfolio enforces HSTS, strict CSP, clickjacking protection, and SSRF filtering.";
   }
 
-  return "Hi! I'm Mae, Mark's voice-enabled AI assistant. You can type or click the microphone to talk to me about Mark's projects like BGround and Philippine Skyland, test any URL in the Website Checker, analyze CSV data in the Dashboard, or debug code issues.";
+  if (/(thank|thanks|ty|salamat)/.test(q)) {
+    return "You're very welcome! Let me know anytime if you need help with anything else on the site.";
+  }
+
+  return "I'm happy to help you with anything on Mark's website — ask me about his projects, how to use a section, or click Site Walkthrough for a guided tour.";
 }
 
 module.exports = async function handler(req, res) {
@@ -91,7 +124,7 @@ module.exports = async function handler(req, res) {
   bucket.count += 1;
   rateBucket.set(ip, bucket);
   if (bucket.count > MAX_REQ_PER_MIN) {
-    return res.status(429).json({ error: "Rate limit exceeded. Wait a moment before asking again." });
+    return res.status(429).json({ error: "Please wait a moment before sending another message." });
   }
 
   try {
@@ -105,35 +138,41 @@ module.exports = async function handler(req, res) {
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (apiKey) {
-      try {
-        const contents = history.map((m) => ({
-          role: m.role === "assistant" ? "model" : "user",
-          parts: [{ text: String(m.text || "").slice(0, 1200) }]
-        }));
-        contents.push({ role: "user", parts: [{ text: message }] });
+      const contents = history.map((m) => ({
+        role: m.role === "assistant" ? "model" : "user",
+        parts: [{ text: String(m.text || "").slice(0, 1200) }]
+      }));
+      contents.push({ role: "user", parts: [{ text: message }] });
 
-        const geminiRes = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(apiKey)}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              systemInstruction: { parts: [{ text: MAE_SYSTEM_CONTEXT }] },
-              contents,
-              generationConfig: { temperature: 0.4, maxOutputTokens: 500 }
-            })
-          }
-        );
+      for (const model of GEMINI_MODELS) {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 9000);
+        try {
+          const geminiRes = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              signal: controller.signal,
+              body: JSON.stringify({
+                systemInstruction: { parts: [{ text: buildSystemContext() }] },
+                contents,
+                generationConfig: { temperature: 0.45, maxOutputTokens: 320 }
+              })
+            }
+          );
+          clearTimeout(timer);
 
-        if (geminiRes.ok) {
-          const data = await geminiRes.json();
-          const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-          if (reply) {
-            return res.status(200).json({ reply, engine: "gemini-live" });
+          if (geminiRes.ok) {
+            const data = await geminiRes.json();
+            const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (reply) {
+              return res.status(200).json({ reply: reply.trim(), engine: "gemini-live", model });
+            }
           }
+        } catch {
+          clearTimeout(timer);
         }
-      } catch {
-        // Clean fallback
       }
     }
 

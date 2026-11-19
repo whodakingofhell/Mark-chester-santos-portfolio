@@ -485,17 +485,46 @@ select:focus-visible {
 }
 
 /* ============================================================================
-   MAE 3D META-STYLE INTERACTIVE AVATAR + VOICE ASSISTANT PANEL
+   MAE LIVE 3D VIDEO AVATAR + NATURAL VOICE ASSISTANT (Meta Muse AI Style)
    ============================================================================ */
-#mae-launcher {
+#mae-dock {
   position: fixed;
   right: 22px;
   bottom: 22px;
   z-index: 75;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+#mae-hover-bubble {
+  max-width: 240px;
+  background: #ffffff;
+  color: var(--ink-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 16px 16px 4px 16px;
+  padding: 9px 13px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  box-shadow: 0 14px 34px -10px rgba(17, 18, 21, 0.24);
+  opacity: 0;
+  transform: translateY(8px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#mae-hover-bubble.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+#mae-launcher {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 7px 16px 7px 7px;
+  padding: 6px 16px 6px 6px;
   border-radius: var(--radius-pill);
   background: var(--ink-primary);
   color: #ffffff;
@@ -507,28 +536,40 @@ select:focus-visible {
 
 #mae-launcher:hover {
   transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 20px 42px -10px rgba(26, 115, 232, 0.45);
+  box-shadow: 0 20px 42px -10px rgba(26, 115, 232, 0.48);
 }
 
-.mae-mini-avatar {
-  width: 38px;
-  height: 38px;
+.mae-mini-orb {
+  position: relative;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  object-fit: cover;
+  overflow: hidden;
   border: 2px solid #ffffff;
+  background: #f4f6fa;
+  flex-shrink: 0;
+}
+
+.mae-mini-orb video,
+.mae-mini-orb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
 }
 
 #mae-panel {
   position: fixed;
   right: 22px;
-  bottom: 84px;
+  bottom: 88px;
   z-index: 80;
-  width: min(430px, calc(100vw - 26px));
-  max-height: min(670px, calc(100vh - 104px));
+  width: min(410px, calc(100vw - 24px));
+  max-height: min(690px, calc(100vh - 106px));
   background: #ffffff;
   border: 1px solid var(--border-light);
-  border-radius: 24px;
-  box-shadow: 0 26px 68px -16px rgba(17, 18, 21, 0.32);
+  border-radius: 26px;
+  box-shadow: 0 28px 72px -16px rgba(17, 18, 21, 0.34);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -544,56 +585,86 @@ select:focus-visible {
   pointer-events: auto;
 }
 
-/* Interactive 3D Avatar Stage inside Mae Panel */
+/* Meta Muse AI-Inspired Full-Width Live 3D Avatar Viewport */
 .mae-3d-stage {
-  perspective: 700px;
-  background: linear-gradient(135deg, #d7ecff 0%, #eaf9f4 55%, #f4f7fb 100%);
+  perspective: 900px;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.96), rgba(235, 243, 255, 0.92) 60%, rgba(226, 236, 250, 0.98) 100%);
   position: relative;
   overflow: hidden;
 }
 
-.mae-3d-avatar-wrap {
+.mae-live-viewport {
   position: relative;
-  width: 112px;
-  height: 112px;
-  border-radius: 26px;
-  transform-style: preserve-3d;
-  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+  width: 100%;
+  height: 226px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  box-shadow: 0 14px 28px -10px rgba(17, 18, 21, 0.25);
-  border: 3px solid #ffffff;
+  transform-style: preserve-3d;
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mae-video-shell {
+  position: relative;
+  width: 184px;
+  height: 214px;
+  border-radius: 28px;
   overflow: hidden;
-  animation: maeIdleBreath 4.2s ease-in-out infinite;
+  background: #f6f7f9;
+  border: 2.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18px 40px -14px rgba(17, 18, 21, 0.28);
+  transition: box-shadow 220ms ease, transform 220ms ease;
 }
 
-.mae-3d-avatar-wrap.pop-react {
-  animation: maeClickPop 520ms cubic-bezier(0.22, 1, 0.36, 1);
+.mae-video-shell.speaking {
+  box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.38), 0 22px 46px -10px rgba(26, 115, 232, 0.42);
 }
 
-.mae-3d-avatar-wrap.speaking {
-  box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.45), 0 16px 32px -8px rgba(26, 115, 232, 0.45);
-  animation: maeTalkPulse 0.65s ease-in-out infinite;
+.mae-video-shell.listening {
+  box-shadow: 0 0 0 5px rgba(220, 38, 38, 0.42), 0 20px 44px -10px rgba(220, 38, 38, 0.36);
 }
 
-.mae-3d-avatar-wrap.listening {
-  box-shadow: 0 0 0 5px rgba(220, 38, 38, 0.4), 0 16px 32px -8px rgba(220, 38, 38, 0.35);
+.mae-video-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 14%;
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
 }
 
-@keyframes maeIdleBreath {
-  0%, 100% { transform: translateY(0px) rotateY(0deg); }
-  50% { transform: translateY(-4px) rotateY(4deg); }
+.mae-video-layer.active {
+  opacity: 1;
 }
 
-@keyframes maeClickPop {
-  0% { transform: scale(1) rotateZ(0deg); }
-  30% { transform: scale(1.1) rotateZ(-5deg) translateY(-6px); }
-  65% { transform: scale(1.04) rotateZ(4deg) translateY(-2px); }
-  100% { transform: scale(1) rotateZ(0deg); }
+.mae-voice-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 14px;
 }
 
-@keyframes maeTalkPulse {
-  0%, 100% { transform: scale(1) translateY(0px); }
-  50% { transform: scale(1.045) translateY(-3px); }
+.mae-voice-bars span {
+  width: 3px;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--accent);
+  transition: height 140ms ease;
+}
+
+.mae-voice-bars.active span:nth-child(1) { animation: voiceEq 0.55s ease-in-out infinite 0.0s; }
+.mae-voice-bars.active span:nth-child(2) { animation: voiceEq 0.55s ease-in-out infinite 0.12s; }
+.mae-voice-bars.active span:nth-child(3) { animation: voiceEq 0.55s ease-in-out infinite 0.24s; }
+.mae-voice-bars.active span:nth-child(4) { animation: voiceEq 0.55s ease-in-out infinite 0.08s; }
+
+@keyframes voiceEq {
+  0%, 100% { height: 4px; }
+  50% { height: 14px; }
 }
 
 .mae-msg-user {
@@ -601,9 +672,9 @@ select:focus-visible {
   background: var(--ink-primary);
   color: #ffffff;
   border-radius: 16px 16px 4px 16px;
-  padding: 10px 14px;
+  padding: 9px 13px;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.48;
   max-width: 86%;
 }
 
@@ -613,11 +684,33 @@ select:focus-visible {
   color: var(--ink-primary);
   border: 1px solid var(--border-light);
   border-radius: 16px 16px 16px 4px;
-  padding: 11px 14px;
+  padding: 10px 13px;
   font-size: 13px;
-  line-height: 1.55;
+  line-height: 1.5;
   max-width: 92%;
   white-space: pre-wrap;
+}
+
+/* Interactive Website Walkthrough Spotlight & Floating Guide */
+.tour-highlight {
+  position: relative;
+  border-radius: 24px;
+  box-shadow: 0 0 0 3px #1a73e8, 0 0 0 10px rgba(26, 115, 232, 0.14);
+  transition: box-shadow 240ms ease;
+}
+
+#site-tour-card {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  z-index: 85;
+  width: min(370px, calc(100vw - 28px));
+  background: #111215;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
+  padding: 18px 20px;
+  box-shadow: 0 24px 60px -14px rgba(17, 18, 21, 0.55);
 }
 
 .mic-btn-active {
@@ -672,7 +765,7 @@ select:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mae-3d-avatar-wrap,
+  .mae-voice-bars span,
   .prismatic-cursor,
   .mic-btn-active {
     animation: none !important;

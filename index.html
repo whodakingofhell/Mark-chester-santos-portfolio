@@ -65,7 +65,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css?v=20261119b" />
+  <link rel="stylesheet" href="styles.css?v=20261120a" />
 </head>
 <body>
 
@@ -105,11 +105,14 @@
           <span>Owner Jobs OS</span>
         </button>
 
+        <button type="button" onclick="startSiteWalkthrough()" class="btn-soft px-3.5 py-2 text-xs">
+          <span>Site Tour</span>
+        </button>
         <button type="button" onclick="toggleMaePanel(true)" class="btn-soft px-3.5 py-2 text-xs">
-          <span>Talk to Mae</span>
+          <span>Mae AI</span>
         </button>
         <a href="#contact" class="btn-dark px-4 py-2 text-xs">
-          <span>Hire / Contact</span>
+          <span>Contact</span>
         </a>
       </div>
     </div>
@@ -120,39 +123,39 @@
     <!-- ====================================================================
          1. HERO SECTION — ANTIGRAVITY PARTICLE FIELD & FIRM TYPOGRAPHY
          ==================================================================== -->
-    <section id="hero" class="relative min-h-[78vh] pt-32 pb-20 px-4 sm:px-6 lg:px-8 flex flex-col justify-center overflow-hidden">
+    <section id="hero" class="relative min-h-[76vh] pt-32 pb-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-center overflow-hidden">
       <canvas id="hero-particle-canvas" class="particle-canvas" aria-hidden="true"></canvas>
 
       <div class="relative z-10 max-w-4xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f5f6f8] border border-[#e6e8ed] text-xs font-medium text-[#5a5f69] mb-8 float-pill" data-float="5">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f5f6f8] border border-[#e6e8ed] text-xs font-medium text-[#5a5f69] mb-7 float-pill" data-float="5">
           <span class="w-2 h-2 rounded-full bg-[#137333]"></span>
           <span>Muntinlupa, Metro Manila (UTC+8)</span>
           <span class="text-[#c5c9d1]">/</span>
           <span>Full-Stack, AI Automation &amp; Technical Support</span>
         </div>
 
-        <h1 class="font-display font-bold text-4xl sm:text-6xl lg:text-[66px] tracking-[-0.045em] leading-[1.06] text-[#111215] mb-6">
+        <h1 class="font-display font-bold text-4xl sm:text-6xl lg:text-[66px] tracking-[-0.045em] leading-[1.06] text-[#111215] mb-5">
           <span class="kinetic-word">Mark</span>
           <span class="kinetic-word">Chester</span>
           <span class="kinetic-word">Santos</span><br />
-          <span class="text-[#5a5f69] font-semibold">ships production</span>
+          <span class="text-[#5a5f69] font-semibold">builds practical</span>
           <span id="typewriter-role" class="text-[#111215] inline-block">web apps &amp; AI tools</span><span class="prismatic-cursor" aria-hidden="true"></span>
         </h1>
 
-        <p class="text-base sm:text-lg text-[#5a5f69] max-w-2xl mx-auto leading-relaxed mb-10">
-          BSIT graduate with 5+ years of programming across Next.js, TypeScript, Python, Supabase, and Java 17, combined with high-CSAT enterprise customer support at Walmart (IBEX Global) and IGT Solutions. Creator of BGround, Philippine Skyland, Sonata, and PAIOS.
+        <p class="text-base sm:text-lg text-[#5a5f69] max-w-2xl mx-auto leading-relaxed mb-9">
+          BSIT graduate working across Next.js, TypeScript, Python, Java 17, and enterprise technical support. Try the live demos below, browse all 12 GitHub projects, or take a quick guided tour.
         </p>
 
-        <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-9">
           <a href="#demos" class="btn-dark px-6 py-3 text-sm float-pill" data-float="6">
-            <span>Try Interactive Demos</span>
+            <span>Try Live Demos</span>
           </a>
-          <a href="#analytics-dashboard" class="btn-soft px-6 py-3 text-sm float-pill" data-float="6">
-            <span>Open Data Dashboard</span>
-          </a>
+          <button type="button" onclick="startSiteWalkthrough()" class="btn-soft px-6 py-3 text-sm float-pill" data-float="6">
+            <span>How to Use This Site (Tour)</span>
+          </button>
           <button type="button" onclick="toggleMaePanel(true)" class="btn-soft px-5 py-3 text-sm float-pill" data-float="6">
-            <img src="mae-avatar.jpg" alt="" class="w-5 h-5 rounded-full object-cover" />
-            <span>Ask Mae (Voice AI)</span>
+            <img src="mae-avatar.jpg" alt="" class="w-5 h-5 rounded-full object-cover object-top" />
+            <span>Talk to Mae</span>
           </button>
         </div>
 
@@ -227,169 +230,125 @@
     </section>
 
     <!-- ====================================================================
-         4. FIRM PRODUCTION PROJECTS & LATEST GITHUB REPOSITORIES
+         4. ALL 12 USEFUL PROJECTS & GITHUB REPOSITORIES
          ==================================================================== -->
     <section id="work" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-[#e6e8ed]">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
         <div class="max-w-2xl">
-          <span class="text-xs font-mono-code uppercase tracking-widest text-[#767c89]">Verified Deployments &amp; GitHub Repositories</span>
+          <span class="text-xs font-mono-code uppercase tracking-widest text-[#767c89]">GitHub &amp; Live Deployments</span>
           <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-[-0.035em] text-[#111215] mt-2">
-            Latest Shipped Apps &amp; Open-Source Tools
+            All Useful Projects &amp; Tools
           </h2>
         </div>
 
         <div id="work-filter-bar" class="flex flex-wrap gap-1.5">
-          <button type="button" data-filter="all" onclick="filterWork('all')" class="studio-tab active">All (8)</button>
+          <button type="button" data-filter="all" onclick="filterWork('all')" class="studio-tab active">All (12)</button>
           <button type="button" data-filter="web" onclick="filterWork('web')" class="studio-tab">Live Web Apps</button>
           <button type="button" data-filter="ai" onclick="filterWork('ai')" class="studio-tab">AI &amp; Python Tools</button>
-          <button type="button" data-filter="enterprise" onclick="filterWork('enterprise')" class="studio-tab">Java &amp; Backend</button>
+          <button type="button" data-filter="enterprise" onclick="filterWork('enterprise')" class="studio-tab">Ops &amp; Backend</button>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-        <!-- 1. BGround (NEW — Latest Flagship App!) -->
-        <article class="work-card prismatic-stage" data-category="web">
-          <div class="firm-card p-6 h-full flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-xs font-mono-code text-[#5a5f69]">bground.vercel.app</span>
-                <span class="px-2.5 py-0.5 rounded-full bg-[#e6f4ea] text-[#137333] text-[11px] font-semibold">Latest Live App</span>
-              </div>
-              <h3 class="font-display font-bold text-xl text-[#111215]">BGround — 0-Credit Browser-Local Background Studio</h3>
-              <p class="text-sm text-[#5a5f69] leading-relaxed">
-                Removes cluttered product photo backgrounds directly inside the browser (WASM/ONNX — zero AI credits burned), adds natural contact shadows and editorial color grades, and exports 1:1 Marketplace, 4:5 Carousel, and 1–30s Social Reels.
-              </p>
+        <!-- 1. BGround -->
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4 border-[#1a73e8]/30" data-category="web">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">bground.vercel.app</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#e6f4ea] text-[#137333] text-[11px] font-semibold">Live App</span>
             </div>
-            <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
-              <span class="font-mono-code text-[#767c89] font-normal">Next.js • WASM/ONNX • Canvas • Strict CSP</span>
-              <div class="flex items-center gap-3">
-                <button type="button" onclick="openProjectDemo('bground')" class="text-[#111215] hover:text-[#1a73e8]">Interactive Preview</button>
-                <a href="https://bground.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">Open Live ↗</a>
-              </div>
+            <h3 class="font-display font-bold text-lg text-[#111215]">BGround — 0-Credit Background Studio</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              Removes photo backgrounds locally in the browser (WASM/ONNX), adds contact shadows &amp; color grades, and exports 1:1, 4:5, and 1–30s social reels.
+            </p>
+          </div>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">Next.js • WASM</span>
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="openProjectDemo('bground')" class="text-[#111215] hover:text-[#1a73e8]">Preview</button>
+              <a href="https://bground.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">Live ↗</a>
             </div>
           </div>
         </article>
 
         <!-- 2. Philippine Skyland -->
-        <article class="work-card firm-card p-6 flex flex-col justify-between space-y-4" data-category="web">
-          <div class="space-y-3">
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4" data-category="web">
+          <div class="space-y-2.5">
             <div class="flex items-center justify-between gap-2">
-              <span class="text-xs font-mono-code text-[#5a5f69]">philippine-skyland.vercel.app</span>
-              <span class="px-2.5 py-0.5 rounded-full bg-[#e6f4ea] text-[#137333] text-[11px] font-semibold">Live SaaS</span>
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">MarkChesterSantosRealEstateProj</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#e6f4ea] text-[#137333] text-[11px] font-semibold">Live SaaS</span>
             </div>
-            <h3 class="font-display font-bold text-xl text-[#111215]">Philippine Skyland — Real Estate &amp; Appraiser SaaS</h3>
-            <p class="text-sm text-[#5a5f69] leading-relaxed">
-              13 Prisma models on PostgreSQL 16, 14+ authenticated endpoints, 4-role RBAC with 5-attempt lockout, 11-layer security stack (Zod, CSRF, HMAC signing, bcrypt, JWT, Turnstile), EN/FIL/ZH localization, and Playwright E2E tests.
+            <h3 class="font-display font-bold text-lg text-[#111215]">Philippine Skyland</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              Real estate broker &amp; appraiser platform with 13 Prisma models, PostgreSQL 16, 4-role RBAC, 11-layer security, and EN/FIL/ZH localization.
             </p>
           </div>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
-            <span class="font-mono-code text-[#767c89] font-normal">Next.js 16 • Prisma • PostgreSQL 16</span>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">Next.js 16 • Prisma</span>
             <div class="flex items-center gap-3">
-              <button type="button" onclick="openProjectDemo('skyland')" class="text-[#111215] hover:text-[#1a73e8]">Interactive Preview</button>
-              <a href="https://philippine-skyland.vercel.app" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">Open Live ↗</a>
+              <a href="https://github.com/whodakingofhell/MarkChesterSantosRealEstateProj" target="_blank" rel="noopener noreferrer" class="text-[#111215] hover:text-[#1a73e8]">GitHub</a>
+              <a href="https://philippine-skyland.vercel.app" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">Live ↗</a>
             </div>
           </div>
         </article>
 
         <!-- 3. Sonata / Microsoft Setup Form -->
-        <article class="work-card firm-card p-6 flex flex-col justify-between space-y-4" data-category="web">
-          <div class="space-y-3">
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4" data-category="web">
+          <div class="space-y-2.5">
             <div class="flex items-center justify-between gap-2">
-              <span class="text-xs font-mono-code text-[#5a5f69]">microsoft-setup-form1.vercel.app</span>
-              <span class="px-2.5 py-0.5 rounded-full bg-[#e6f4ea] text-[#137333] text-[11px] font-semibold">Live Pipeline</span>
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">microsoft-setup-form1</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#e6f4ea] text-[#137333] text-[11px] font-semibold">Live App</span>
             </div>
-            <h3 class="font-display font-bold text-xl text-[#111215]">Sonata — Microsoft Setup Form (LicenseDesk)</h3>
-            <p class="text-sm text-[#5a5f69] leading-relaxed">
-              Production booking platform built with Next.js 15, React 19, and Tailwind CSS 4. Includes Zod schema validation, deduplication, email rate limiting, 3-attempt Discord webhook retry, Resend emails, Turnstile CAPTCHA, and Sentry monitoring.
+            <h3 class="font-display font-bold text-lg text-[#111215]">Sonata — Microsoft Setup Form</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              Booking intake for Microsoft activation workflows with Zod validation, deduplication, 3-attempt Discord webhook retry, Resend emails, and Turnstile.
             </p>
           </div>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
-            <span class="font-mono-code text-[#767c89] font-normal">Next.js 15 • React 19 • Zod • Supabase</span>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">Next.js 15 • Zod</span>
             <div class="flex items-center gap-3">
-              <button type="button" onclick="openProjectDemo('sonata')" class="text-[#111215] hover:text-[#1a73e8]">Interactive Preview</button>
-              <a href="https://microsoft-setup-form1.vercel.app" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">Open Live ↗</a>
+              <a href="https://github.com/whodakingofhell/MarkChesterSantosSoftwareDeveloperAutomationEngineer1" target="_blank" rel="noopener noreferrer" class="text-[#111215] hover:text-[#1a73e8]">GitHub</a>
+              <a href="https://microsoft-setup-form1.vercel.app" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">Live ↗</a>
             </div>
           </div>
         </article>
 
-        <!-- 4. AI Appointment Assistant Backend API -->
-        <article class="work-card firm-card p-6 flex flex-col justify-between space-y-4" data-category="enterprise">
-          <div class="space-y-3">
+        <!-- 4. AI Appointment Assistant API -->
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4" data-category="enterprise">
+          <div class="space-y-2.5">
             <div class="flex items-center justify-between gap-2">
-              <span class="text-xs font-mono-code text-[#5a5f69]">appointment-backend-one.vercel.app</span>
-              <span class="px-2.5 py-0.5 rounded-full bg-[#e6f4ea] text-[#137333] text-[11px] font-semibold">Live API</span>
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">appointment-backend-one</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#e6f4ea] text-[#137333] text-[11px] font-semibold">Live API</span>
             </div>
-            <h3 class="font-display font-bold text-xl text-[#111215]">AI Appointment Assistant — Serverless API</h3>
-            <p class="text-sm text-[#5a5f69] leading-relaxed">
-              Three curl-testable Vercel serverless endpoints (book-appointment, list-appointments, health) for remote AnyDesk/TeamViewer support with Philippine timezone resolution, Supabase RLS audit logging, and 5 bookings/IP/hr rate limiting.
+            <h3 class="font-display font-bold text-lg text-[#111215]">AI Appointment Assistant API</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              Vercel serverless endpoints for remote AnyDesk/TeamViewer PC support with Supabase RLS audit logs and 5 bookings/IP/hr rate limiting.
             </p>
           </div>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
-            <span class="font-mono-code text-[#767c89] font-normal">Node.js • Supabase RLS • Vercel</span>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">Node.js • Supabase</span>
             <div class="flex items-center gap-3">
               <button type="button" onclick="openCaseStudy('appointment')" class="text-[#111215] hover:text-[#1a73e8]">Specs</button>
-              <a href="https://appointment-backend-one.vercel.app" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">Open API ↗</a>
+              <a href="https://appointment-backend-one.vercel.app" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">API ↗</a>
             </div>
           </div>
         </article>
 
-        <!-- 5. PAIOS (NEW from GitHub!) -->
-        <article class="work-card firm-card p-6 flex flex-col justify-between space-y-4" data-category="ai">
-          <div class="space-y-3">
+        <!-- 5. SMC Inventory System -->
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4" data-category="enterprise">
+          <div class="space-y-2.5">
             <div class="flex items-center justify-between gap-2">
-              <span class="text-xs font-mono-code text-[#5a5f69]">github.com/whodakingofhell/PAIOS</span>
-              <span class="px-2.5 py-0.5 rounded-full bg-[#f1f3f6] text-[#111215] text-[11px] font-semibold">TypeScript OS</span>
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">Java 17 • 10,400+ LOC</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#f1f3f6] text-[#111215] text-[11px] font-semibold">100+ Tests</span>
             </div>
-            <h3 class="font-display font-bold text-xl text-[#111215]">PAIOS &amp; AI Engineering OS (14-Stage Pipeline)</h3>
-            <p class="text-sm text-[#5a5f69] leading-relaxed">
-              Personal AI Operating System and 13-section engineering framework orchestrating multi-LLM prompts, 10-persona roles, QA criticism rubrics, and a 14-stage n8n + Python content pipeline designed at $0/month free-tier cost.
+            <h3 class="font-display font-bold text-lg text-[#111215]">SMC Inventory System (POS)</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              47-file Java 17 POS &amp; warehouse core with 10-table MySQL 8.0 schema, HikariCP, BCrypt, row locking, and 100+ JUnit 5/Mockito tests.
             </p>
           </div>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
-            <span class="font-mono-code text-[#767c89] font-normal">TypeScript • n8n • Python • Obsidian</span>
-            <div class="flex items-center gap-3">
-              <button type="button" onclick="openCaseStudy('content-os')" class="text-[#111215] hover:text-[#1a73e8]">Architecture</button>
-              <a href="https://github.com/whodakingofhell/PAIOS" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">GitHub ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- 6. system-intel-scanner & youtube-transcript-pro (NEW from GitHub!) -->
-        <article class="work-card firm-card p-6 flex flex-col justify-between space-y-4" data-category="ai">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between gap-2">
-              <span class="text-xs font-mono-code text-[#5a5f69]">system-intel-scanner • youtube-transcript-pro</span>
-              <span class="px-2.5 py-0.5 rounded-full bg-[#f1f3f6] text-[#111215] text-[11px] font-semibold">Python Skills</span>
-            </div>
-            <h3 class="font-display font-bold text-xl text-[#111215]">System Intel Scanner &amp; 5-Layer YouTube Extractor</h3>
-            <p class="text-sm text-[#5a5f69] leading-relaxed">
-              Unified Python intelligence toolkit scanning GitHub, StackOverflow, YouTube transcripts (with a 5-layer resilient fallback chain), plus monitoring/voice backend endpoints (`dashboard-extras`) and `hermes-restore-point` PowerShell snapshots.
-            </p>
-          </div>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
-            <span class="font-mono-code text-[#767c89] font-normal">Python • PowerShell • CLI Automation</span>
-            <div class="flex items-center gap-3">
-              <button type="button" onclick="openProjectDemo('intel')" class="text-[#111215] hover:text-[#1a73e8]">Preview CLI</button>
-              <a href="https://github.com/whodakingofhell/system-intel-scanner" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">GitHub ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- 7. SMC Inventory System (Java 17 Enterprise POS) -->
-        <article class="work-card firm-card p-6 flex flex-col justify-between space-y-4" data-category="enterprise">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between gap-2">
-              <span class="text-xs font-mono-code text-[#5a5f69]">Java 17 • MySQL 8.0 • 10,400+ LOC</span>
-              <span class="px-2.5 py-0.5 rounded-full bg-[#f1f3f6] text-[#111215] text-[11px] font-semibold">100+ Tests</span>
-            </div>
-            <h3 class="font-display font-bold text-xl text-[#111215]">SMC Inventory System — Enterprise POS Core</h3>
-            <p class="text-sm text-[#5a5f69] leading-relaxed">
-              47 source files in clean Model-Service-Repository-UI architecture with 10-table MySQL schema, HikariCP pooling, BCrypt (12 rounds), PreparedStatement SQLi defense, SELECT FOR UPDATE row locking, deadlock retry, and 100+ JUnit 5 + Mockito + H2 tests.
-            </p>
-          </div>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
-            <span class="font-mono-code text-[#767c89] font-normal">Java 17 • Swing + FlatLaf • Gradle 8.14</span>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">Java 17 • MySQL</span>
             <div class="flex items-center gap-3">
               <button type="button" onclick="openCaseStudy('inventory')" class="text-[#111215] hover:text-[#1a73e8]">Specs</button>
               <a href="https://github.com/whodakingofhell/MarkChesterSantosSoftwareDeveloperAutomationEngineer" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">GitHub ↗</a>
@@ -397,24 +356,138 @@
           </div>
         </article>
 
-        <!-- 8. Autonomous File Organizer & Critical Skill Evaluator -->
-        <article class="work-card firm-card p-6 flex flex-col justify-between space-y-4" data-category="ai">
-          <div class="space-y-3">
+        <!-- 6. PAIOS -->
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4" data-category="ai">
+          <div class="space-y-2.5">
             <div class="flex items-center justify-between gap-2">
-              <span class="text-xs font-mono-code text-[#5a5f69]">SHA-256 Deduplicator • Skill Evaluator</span>
-              <span class="px-2.5 py-0.5 rounded-full bg-[#f1f3f6] text-[#111215] text-[11px] font-semibold">Agent Ops</span>
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">whodakingofhell/PAIOS</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#f1f3f6] text-[#111215] text-[11px] font-semibold">TypeScript</span>
             </div>
-            <h3 class="font-display font-bold text-xl text-[#111215]">Autonomous File Organizer &amp; Critical Skill Evaluator</h3>
-            <p class="text-sm text-[#5a5f69] leading-relaxed">
-              Semantic asset organizer from the AI Files Hub using SHA-256 collision hashing and JSON catalog indexing, paired with `critical-skill-evaluator` to audit agent skills against real failure logs.
+            <h3 class="font-display font-bold text-lg text-[#111215]">PAIOS — Personal AI OS</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              Personal AI operating system in TypeScript orchestrating multi-LLM prompts, reusable workflows, and $0/mo n8n + Python pipelines.
             </p>
           </div>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
-            <span class="font-mono-code text-[#767c89] font-normal">Python • SHA-256 • JSON Catalog</span>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">TypeScript • n8n</span>
             <div class="flex items-center gap-3">
-              <button type="button" onclick="openCaseStudy('ops-vault')" class="text-[#111215] hover:text-[#1a73e8]">Architecture</button>
+              <button type="button" onclick="openCaseStudy('content-os')" class="text-[#111215] hover:text-[#1a73e8]">Specs</button>
+              <a href="https://github.com/whodakingofhell/PAIOS" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 7. system-intel-scanner -->
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4" data-category="ai">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">system-intel-scanner</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#f1f3f6] text-[#111215] text-[11px] font-semibold">Python</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#111215]">System Intel Scanner</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              Unified Python research scanner extracting structured data from GitHub, StackOverflow, YouTube, and local browser history.
+            </p>
+          </div>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">Python • CLI</span>
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="openProjectDemo('intel')" class="text-[#111215] hover:text-[#1a73e8]">Preview</button>
+              <a href="https://github.com/whodakingofhell/system-intel-scanner" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 8. youtube-transcript-pro -->
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4" data-category="ai">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">youtube-transcript-pro</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#f1f3f6] text-[#111215] text-[11px] font-semibold">Python</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#111215]">YouTube Transcript Pro</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              Resilient YouTube transcript extraction skill using a 5-layer fallback chain so caption pulls don't fail on rate limits or missing auto-subs.
+            </p>
+          </div>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">Python • 5-Layer</span>
+            <a href="https://github.com/whodakingofhell/youtube-transcript-pro" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">GitHub ↗</a>
+          </div>
+        </article>
+
+        <!-- 9. dashboard-extras -->
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4" data-category="ai">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">dashboard-extras</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#f1f3f6] text-[#111215] text-[11px] font-semibold">Python</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#111215]">Dashboard Extras (Voice &amp; Monitor)</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              Python backend endpoints built for live agent monitoring, system health checks, and voice control integrations.
+            </p>
+          </div>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">Python • Voice API</span>
+            <a href="https://github.com/whodakingofhell/dashboard-extras" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">GitHub ↗</a>
+          </div>
+        </article>
+
+        <!-- 10. hermes-restore-point -->
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4" data-category="enterprise">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">hermes-restore-point</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#f1f3f6] text-[#111215] text-[11px] font-semibold">PowerShell</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#111215]">Hermes Restore Point</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              Automated Windows PowerShell snapshot and restore-point utility for safely rolling back agent configs and local environments.
+            </p>
+          </div>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">PowerShell • Ops</span>
+            <a href="https://github.com/whodakingofhell/hermes-restore-point" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">GitHub ↗</a>
+          </div>
+        </article>
+
+        <!-- 11. critical-skill-evaluator -->
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4" data-category="ai">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">critical-skill-evaluator</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#f1f3f6] text-[#111215] text-[11px] font-semibold">Agent QA</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#111215]">Critical Skill Evaluator</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              Evaluates AI agent skills against real failure logs and recurring pain points, paired with SHA-256 file organization.
+            </p>
+          </div>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">QA • SHA-256</span>
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="openCaseStudy('ops-vault')" class="text-[#111215] hover:text-[#1a73e8]">Specs</button>
               <a href="https://github.com/whodakingofhell/critical-skill-evaluator" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">GitHub ↗</a>
             </div>
+          </div>
+        </article>
+
+        <!-- 12. Interactive Portfolio Studio -->
+        <article class="work-card firm-card p-5 flex flex-col justify-between space-y-4" data-category="web">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[11px] font-mono-code text-[#5a5f69]">Mark-chester-santos-portfolio</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#e6f4ea] text-[#137333] text-[11px] font-semibold">Live Site</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#111215]">Interactive Portfolio &amp; Mae Voice AI</h3>
+            <p class="text-xs text-[#5a5f69] leading-relaxed">
+              This site: 7-theme CSV data studio, SSRF-hardened live website auditor, private HMAC-authenticated owner vault, and live 3D voice Mae.
+            </p>
+          </div>
+          <div class="flex items-center justify-between gap-2 pt-3 border-t border-[#e6e8ed] text-xs font-semibold">
+            <span class="font-mono-code text-[11px] text-[#767c89] font-normal">JS • Vercel API</span>
+            <a href="https://github.com/whodakingofhell/Mark-chester-santos-portfolio" target="_blank" rel="noopener noreferrer" class="text-[#1a73e8] hover:underline">GitHub ↗</a>
           </div>
         </article>
 
@@ -426,12 +499,12 @@
          ==================================================================== -->
     <section id="analytics-dashboard" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-[#e6e8ed]">
       <div class="mb-8 max-w-3xl">
-        <span class="text-xs font-mono-code uppercase tracking-widest text-[#767c89]">Interactive Editorial Dashboard &amp; CSV Data Analyst</span>
+        <span class="text-xs font-mono-code uppercase tracking-widest text-[#767c89]">Data Studio</span>
         <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-[-0.035em] text-[#111215] mt-2">
-          Live Portfolio Telemetry &amp; Custom Dataset Explorer
+          Interactive Data Dashboard &amp; CSV Explorer
         </h2>
-        <p class="text-sm sm:text-base text-[#5a5f69] mt-2 leading-relaxed">
-          Switch among 7 high-contrast accessible themes, filter verified metrics across Mark's shipped repositories, or drop your own <code class="font-mono-code text-[#111215]">.csv</code> file to generate live responsive SVG charts, accessible tables, and instant dataset insights.
+        <p class="text-sm text-[#5a5f69] mt-2 leading-relaxed">
+          Switch among 7 high-contrast themes, filter Mark's project data, or upload your own <code class="font-mono-code text-[#111215]">.csv</code> file to generate live SVG charts.
         </p>
       </div>
 
@@ -530,15 +603,15 @@
       <div class="obsidian-frame p-6 sm:p-10 space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div class="max-w-2xl">
-            <span class="text-xs font-mono-code uppercase tracking-wider text-[#9aa0ad]">Live Security, Accessibility &amp; SEO Auditor</span>
+            <span class="text-xs font-mono-code uppercase tracking-wider text-[#9aa0ad]">Site Checker</span>
             <h2 class="font-display font-bold text-2xl sm:text-4xl tracking-tight text-white mt-1">
-              Website Accessibility &amp; Security Checker
+              Live Website Security &amp; Accessibility Checker
             </h2>
             <p class="text-xs sm:text-sm text-[#9aa0ad] mt-2 leading-relaxed">
-              Audit any public website live via our SSRF-hardened serverless endpoint (<code class="text-white">/api/audit</code>): inspects HTTPS/HSTS, CSP, Clickjacking defense, WCAG landmarks/alt text, TTFB latency, Google SEO tags, and AI-slop copy.
+              Enter any public URL to check its HTTPS/HSTS headers, CSP, WCAG landmarks, load speed, and Google SEO tags live.
             </p>
           </div>
-          <span class="text-[11px] font-mono-code px-3 py-1 rounded-full bg-white/10 text-[#34d399] self-start">SSRF &amp; Rate-Limit Hardened</span>
+          <span class="text-[11px] font-mono-code px-3 py-1 rounded-full bg-white/10 text-[#34d399] self-start">SSRF Protected</span>
         </div>
 
         <!-- URL Input + Mark's Live Sites Presets -->
@@ -846,18 +919,19 @@
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12">
       <div class="md:col-span-6 space-y-2.5">
         <p class="font-display text-xl sm:text-2xl font-medium tracking-tight text-[#111215]">
-          Engineered in Manila. Built for real production.
+          Mark Chester R. Santos — Manila, Philippines.
         </p>
         <p class="text-xs text-[#5a5f69] max-w-sm">
-          Live interactive demos, 7-theme data analyst studio, SSRF-safe website checker, and voice-enabled Mae AI assistant.
+          Live demos, 12 GitHub projects, 7-theme CSV data studio, site checker, and interactive 3D Mae assistant.
         </p>
       </div>
       <div class="md:col-span-3 space-y-2 text-sm">
         <div class="text-xs font-semibold text-[#767c89] uppercase tracking-wider">Explore</div>
         <ul class="space-y-1.5 text-[#111215]">
+          <li><button type="button" onclick="startSiteWalkthrough()" class="hover:text-[#1a73e8] text-left">Site Walkthrough (Tour)</button></li>
           <li><a href="#demos" class="hover:text-[#1a73e8]">Live Project Demos</a></li>
-          <li><a href="#work" class="hover:text-[#1a73e8]">All Projects &amp; GitHub</a></li>
-          <li><a href="#analytics-dashboard" class="hover:text-[#1a73e8]">7-Theme Data Dashboard</a></li>
+          <li><a href="#work" class="hover:text-[#1a73e8]">All 12 Projects</a></li>
+          <li><a href="#analytics-dashboard" class="hover:text-[#1a73e8]">Data Studio</a></li>
           <li><a href="#website-checker" class="hover:text-[#1a73e8]">Website Checker</a></li>
         </ul>
       </div>
@@ -882,23 +956,52 @@
   </footer>
 
   <!-- ======================================================================
-       FLOATING MAE 3D META-AVATAR VOICE AI ASSISTANT
+       INTERACTIVE SITE WALKTHROUGH GUIDE CARD
        ====================================================================== -->
-  <button type="button" id="mae-launcher" class="no-print" onclick="toggleMaePanel()" aria-label="Open Mae Voice AI Assistant">
-    <img src="mae-avatar.jpg" alt="Mae 3D Avatar" class="mae-mini-avatar" />
-    <span class="text-left leading-tight">
-      <span class="block text-xs font-bold tracking-tight">Mae</span>
-      <span class="block text-[10px] text-white/75">3D Voice AI</span>
-    </span>
-  </button>
+  <div id="site-tour-card" class="hidden no-print" role="dialog" aria-label="Website Walkthrough">
+    <div class="flex items-center justify-between gap-2 mb-2">
+      <span id="tour-step-badge" class="text-[11px] font-mono-code px-2.5 py-0.5 rounded-full bg-white/15 text-[#93c5fd]">Step 1 of 5</span>
+      <button type="button" onclick="closeSiteWalkthrough()" class="text-white/70 hover:text-white text-xs px-2 py-0.5 rounded" aria-label="Close walkthrough">Close ✕</button>
+    </div>
+    <h3 id="tour-step-title" class="font-display font-bold text-base text-white"></h3>
+    <p id="tour-step-body" class="text-xs text-white/80 leading-relaxed mt-1.5"></p>
+    <div class="flex items-center justify-between gap-2 mt-4 pt-3 border-t border-white/15">
+      <button type="button" id="tour-prev-btn" onclick="stepSiteWalkthrough(-1)" class="btn-ghost-dark px-3.5 py-1.5 text-xs">Back</button>
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="replayCurrentTourVoice()" class="btn-ghost-dark px-3 py-1.5 text-xs" title="Replay voice narration">🔊 Replay</button>
+        <button type="button" id="tour-next-btn" onclick="stepSiteWalkthrough(1)" class="btn-white px-4 py-1.5 text-xs">Next →</button>
+      </div>
+    </div>
+  </div>
 
-  <aside id="mae-panel" class="no-print" aria-label="Mae Voice AI Assistant">
-    <!-- Top Interactive 3D Meta Avatar Stage -->
-    <div class="mae-3d-stage p-4 border-b border-[#e6e8ed]">
+  <!-- ======================================================================
+       FLOATING LIVE 3D VIDEO MAE ASSISTANT (Meta Muse AI Style)
+       Hover triggers animated greeting + natural human voice!
+       ====================================================================== -->
+  <div id="mae-dock" class="no-print">
+    <div id="mae-hover-bubble" role="status" aria-live="polite">Sorry, may I help you?</div>
+    <button type="button" id="mae-launcher" onclick="toggleMaePanel()" aria-label="Open Mae Interactive 3D Assistant">
+      <span class="mae-mini-orb">
+        <video id="mae-orb-video" src="media/mae-idle.mp4" poster="mae-avatar.jpg" autoplay loop muted playsinline></video>
+      </span>
+      <span class="text-left leading-tight">
+        <span class="block text-xs font-bold tracking-tight">Mae</span>
+        <span class="block text-[10px] text-white/75">Live 3D Assistant</span>
+      </span>
+    </button>
+  </div>
+
+  <aside id="mae-panel" class="no-print" aria-label="Mae Interactive 3D Assistant">
+    <!-- Top Live 3D Video Avatar Stage (Meta Muse AI Style) -->
+    <div class="mae-3d-stage px-4 pt-3 pb-3.5 border-b border-[#e6e8ed]">
       <div class="flex items-center justify-between mb-2">
-        <span id="mae-engine-badge" class="text-[10px] font-mono-code font-semibold px-2.5 py-0.5 rounded-full bg-white/85 text-[#111215]">Mae 3D • Voice Ready</span>
+        <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/90 text-[10px] font-mono-code font-semibold text-[#111215] border border-[#dce0e8]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#137333]"></span>
+          <span id="mae-engine-badge">Mae • Live 3D</span>
+          <span id="mae-voice-bars" class="mae-voice-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        </div>
         <div class="flex items-center gap-1.5">
-          <button type="button" id="mae-tts-toggle" onclick="toggleMaeVoice()" class="px-2.5 py-1 rounded-full bg-white/90 hover:bg-white text-[10px] font-semibold text-[#111215] border border-[#dce0e8]" title="Toggle Text-to-Speech">
+          <button type="button" id="mae-tts-toggle" onclick="toggleMaeVoice()" class="px-2.5 py-1 rounded-full bg-white/90 hover:bg-white text-[10px] font-semibold text-[#111215] border border-[#dce0e8]" title="Toggle Mae's Voice">
             Voice: ON
           </button>
           <button type="button" onclick="toggleMaePanel(false)" class="p-1 rounded-full bg-white/90 hover:bg-white text-[#111215]" aria-label="Close Mae">
@@ -907,37 +1010,36 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-4">
-        <!-- Clickable 3D Animated Meta-Style Avatar -->
-        <div id="mae-avatar-card" class="mae-3d-avatar-wrap shrink-0" onclick="interactWithMaeAvatar()" role="button" tabindex="0" aria-label="Click Mae's 3D Avatar" onkeydown="if(event.key==='Enter') interactWithMaeAvatar()">
-          <img src="mae-avatar.jpg" alt="Mae 3D Cartoon Meta Avatar" class="w-full h-full object-cover select-none pointer-events-none" />
-        </div>
-
-        <div class="space-y-1.5 min-w-0">
-          <div class="font-display font-bold text-sm text-[#111215]">Hi, I'm Mae!</div>
-          <p id="mae-avatar-bubble" class="text-xs text-[#3b4252] bg-white/90 rounded-xl px-3 py-2 border border-[#dce0e8] leading-snug">
-            Click my avatar, tap the mic to talk, or ask me about Mark's projects, CSV data, or code bugs.
-          </p>
+      <!-- Full Interactive 3D Video Avatar Viewport (Hover & Click Reactive!) -->
+      <div id="mae-avatar-stage" class="mae-live-viewport" onclick="interactWithMaeAvatar()" role="button" tabindex="0" aria-label="Interact with Mae's 3D avatar" onkeydown="if(event.key==='Enter') interactWithMaeAvatar()">
+        <div id="mae-video-shell" class="mae-video-shell">
+          <video id="mae-vid-idle" class="mae-video-layer active" src="media/mae-idle.mp4" poster="mae-avatar.jpg" autoplay loop muted playsinline preload="auto"></video>
+          <video id="mae-vid-hover" class="mae-video-layer" src="media/mae-hover.mp4" poster="mae-avatar.jpg" loop muted playsinline preload="auto"></video>
+          <video id="mae-vid-talk" class="mae-video-layer" src="media/mae-talk.mp4" poster="mae-avatar.jpg" loop muted playsinline preload="auto"></video>
         </div>
       </div>
+
+      <p id="mae-avatar-bubble" class="mt-2 text-center text-xs text-[#2b303a] bg-white/92 rounded-2xl px-3.5 py-2 border border-[#dce0e8] leading-snug">
+        Hi! I'm Mae. Happy to help you around the site.
+      </p>
     </div>
 
-    <!-- Quick Actions -->
+    <!-- Clean Quick Actions -->
     <div class="px-3.5 py-2 bg-[#f7f8fa] border-b border-[#e6e8ed] flex flex-wrap gap-1.5">
-      <button type="button" onclick="maeQuickPrompt('Tell me about BGround and Mark latest GitHub projects')" class="px-2.5 py-1 rounded-full bg-white border border-[#dcdfe6] text-[11px] font-medium text-[#111215] hover:border-[#111215]">Latest Projects</button>
-      <button type="button" onclick="maeQuickPrompt('Audit this for AI slop: It is not just a game-changer, let us delve into seamless synergy.')" class="px-2.5 py-1 rounded-full bg-white border border-[#dcdfe6] text-[11px] font-medium text-[#111215] hover:border-[#111215]">No-AI-Slop Check</button>
-      <button type="button" onclick="maeQuickPrompt('How is this website security hardened?')" class="px-2.5 py-1 rounded-full bg-white border border-[#dcdfe6] text-[11px] font-medium text-[#111215] hover:border-[#111215]">Security Audit</button>
+      <button type="button" onclick="startSiteWalkthrough()" class="px-2.5 py-1 rounded-full bg-[#111215] text-white text-[11px] font-medium hover:bg-[#23262e]">Site Walkthrough</button>
+      <button type="button" onclick="maeQuickPrompt('What projects has Mark built on GitHub?')" class="px-2.5 py-1 rounded-full bg-white border border-[#dcdfe6] text-[11px] font-medium text-[#111215] hover:border-[#111215]">All Projects</button>
+      <button type="button" onclick="maeQuickPrompt('How can I contact Mark?')" class="px-2.5 py-1 rounded-full bg-white border border-[#dcdfe6] text-[11px] font-medium text-[#111215] hover:border-[#111215]">Contact</button>
     </div>
 
     <!-- Messages -->
-    <div id="mae-messages" class="flex-1 p-3.5 space-y-2.5 overflow-y-auto thin-scroll flex flex-col min-h-[190px] max-h-[260px] bg-white"></div>
+    <div id="mae-messages" class="flex-1 p-3.5 space-y-2.5 overflow-y-auto thin-scroll flex flex-col min-h-[155px] max-h-[210px] bg-white"></div>
 
     <!-- Voice Mic + Input Bar -->
     <form onsubmit="handleMaeSubmit(event)" class="p-3 border-t border-[#e6e8ed] bg-[#f7f8fa] flex items-center gap-2">
-      <button type="button" id="mae-mic-btn" onclick="toggleMaeMic()" class="w-9 h-9 rounded-full bg-white border border-[#dcdfe6] hover:border-[#111215] flex items-center justify-center text-[#111215] shrink-0" title="Speak to Mae (Voice Mic)" aria-label="Speak to Mae">
+      <button type="button" id="mae-mic-btn" onclick="toggleMaeMic()" class="w-9 h-9 rounded-full bg-white border border-[#dcdfe6] hover:border-[#111215] flex items-center justify-center text-[#111215] shrink-0" title="Speak to Mae" aria-label="Speak to Mae">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19 10v2a7 7 0 01-14 0v-2M12 19v4m-4 0h8"/></svg>
       </button>
-      <input id="mae-input" type="text" autocomplete="off" class="flex-1 px-3.5 py-2 rounded-full border border-[#dcdfe6] bg-white text-xs text-[#111215]" placeholder="Type or tap mic to speak..." />
+      <input id="mae-input" type="text" autocomplete="off" class="flex-1 px-3.5 py-2 rounded-full border border-[#dcdfe6] bg-white text-xs text-[#111215]" placeholder="Ask Mae anything..." />
       <button type="submit" id="mae-send-btn" class="btn-dark px-4 py-2 text-xs">Send</button>
     </form>
   </aside>
@@ -1003,6 +1105,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=20261119b"></script>
+  <script src="app.js?v=20261120a"></script>
 </body>
 </html>
