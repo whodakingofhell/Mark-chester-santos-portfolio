@@ -65,7 +65,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css?v=20261120a" />
+  <link rel="stylesheet" href="styles.css?v=20261120b" />
 </head>
 <body>
 
@@ -956,27 +956,34 @@
   </footer>
 
   <!-- ======================================================================
-       INTERACTIVE SITE WALKTHROUGH GUIDE CARD
+       REWORKED INTERACTIVE SITE WALKTHROUGH (Smooth Transitions, No Audio)
        ====================================================================== -->
-  <div id="site-tour-card" class="hidden no-print" role="dialog" aria-label="Website Walkthrough">
-    <div class="flex items-center justify-between gap-2 mb-2">
-      <span id="tour-step-badge" class="text-[11px] font-mono-code px-2.5 py-0.5 rounded-full bg-white/15 text-[#93c5fd]">Step 1 of 5</span>
-      <button type="button" onclick="closeSiteWalkthrough()" class="text-white/70 hover:text-white text-xs px-2 py-0.5 rounded" aria-label="Close walkthrough">Close ✕</button>
+  <div id="tour-backdrop" class="no-print" onclick="closeSiteWalkthrough()" aria-hidden="true"></div>
+
+  <div id="site-tour-card" class="no-print" role="dialog" aria-label="Website Walkthrough" aria-hidden="true">
+    <div class="tour-progress-track" aria-hidden="true">
+      <div id="tour-progress-fill"></div>
     </div>
-    <h3 id="tour-step-title" class="font-display font-bold text-base text-white"></h3>
-    <p id="tour-step-body" class="text-xs text-white/80 leading-relaxed mt-1.5"></p>
-    <div class="flex items-center justify-between gap-2 mt-4 pt-3 border-t border-white/15">
-      <button type="button" id="tour-prev-btn" onclick="stepSiteWalkthrough(-1)" class="btn-ghost-dark px-3.5 py-1.5 text-xs">Back</button>
-      <div class="flex items-center gap-2">
-        <button type="button" onclick="replayCurrentTourVoice()" class="btn-ghost-dark px-3 py-1.5 text-xs" title="Replay voice narration">🔊 Replay</button>
-        <button type="button" id="tour-next-btn" onclick="stepSiteWalkthrough(1)" class="btn-white px-4 py-1.5 text-xs">Next →</button>
-      </div>
+
+    <div class="flex items-center justify-between gap-2 mb-2.5">
+      <span id="tour-step-badge" class="text-[11px] font-mono-code px-2.5 py-0.5 rounded-full bg-white/12 text-[#93c5fd]">Step 1 of 5</span>
+      <button type="button" onclick="closeSiteWalkthrough()" class="text-white/65 hover:text-white text-xs px-2 py-0.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close walkthrough">Skip ✕</button>
+    </div>
+
+    <div id="tour-content">
+      <h3 id="tour-step-title" class="font-display font-bold text-base text-white"></h3>
+      <p id="tour-step-body" class="text-xs text-white/75 leading-relaxed mt-1.5"></p>
+    </div>
+
+    <div class="flex items-center justify-between gap-3 mt-4 pt-3 border-t border-white/12">
+      <button type="button" id="tour-prev-btn" onclick="stepSiteWalkthrough(-1)" class="btn-ghost-dark px-3.5 py-1.5 text-xs">← Back</button>
+      <div id="tour-dots" class="flex items-center gap-1.5" role="tablist" aria-label="Walkthrough steps"></div>
+      <button type="button" id="tour-next-btn" onclick="stepSiteWalkthrough(1)" class="btn-white px-4 py-1.5 text-xs">Next →</button>
     </div>
   </div>
 
   <!-- ======================================================================
-       FLOATING LIVE 3D VIDEO MAE ASSISTANT (Meta Muse AI Style)
-       Hover triggers animated greeting + natural human voice!
+       FLOATING LIVE 3D VIDEO MAE ASSISTANT (Silent 3D Avatar + Mic Input)
        ====================================================================== -->
   <div id="mae-dock" class="no-print">
     <div id="mae-hover-bubble" role="status" aria-live="polite">Sorry, may I help you?</div>
@@ -992,22 +999,16 @@
   </div>
 
   <aside id="mae-panel" class="no-print" aria-label="Mae Interactive 3D Assistant">
-    <!-- Top Live 3D Video Avatar Stage (Meta Muse AI Style) -->
+    <!-- Top Live 3D Video Avatar Stage -->
     <div class="mae-3d-stage px-4 pt-3 pb-3.5 border-b border-[#e6e8ed]">
       <div class="flex items-center justify-between mb-2">
         <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/90 text-[10px] font-mono-code font-semibold text-[#111215] border border-[#dce0e8]">
           <span class="w-1.5 h-1.5 rounded-full bg-[#137333]"></span>
           <span id="mae-engine-badge">Mae • Live 3D</span>
-          <span id="mae-voice-bars" class="mae-voice-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
         </div>
-        <div class="flex items-center gap-1.5">
-          <button type="button" id="mae-tts-toggle" onclick="toggleMaeVoice()" class="px-2.5 py-1 rounded-full bg-white/90 hover:bg-white text-[10px] font-semibold text-[#111215] border border-[#dce0e8]" title="Toggle Mae's Voice">
-            Voice: ON
-          </button>
-          <button type="button" onclick="toggleMaePanel(false)" class="p-1 rounded-full bg-white/90 hover:bg-white text-[#111215]" aria-label="Close Mae">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
-        </div>
+        <button type="button" onclick="toggleMaePanel(false)" class="p-1.5 rounded-full bg-white/90 hover:bg-white text-[#111215] border border-[#dce0e8]" aria-label="Close Mae">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
 
       <!-- Full Interactive 3D Video Avatar Viewport (Hover & Click Reactive!) -->
@@ -1034,12 +1035,12 @@
     <!-- Messages -->
     <div id="mae-messages" class="flex-1 p-3.5 space-y-2.5 overflow-y-auto thin-scroll flex flex-col min-h-[155px] max-h-[210px] bg-white"></div>
 
-    <!-- Voice Mic + Input Bar -->
+    <!-- Record Audio Mic + Text Input Bar -->
     <form onsubmit="handleMaeSubmit(event)" class="p-3 border-t border-[#e6e8ed] bg-[#f7f8fa] flex items-center gap-2">
-      <button type="button" id="mae-mic-btn" onclick="toggleMaeMic()" class="w-9 h-9 rounded-full bg-white border border-[#dcdfe6] hover:border-[#111215] flex items-center justify-center text-[#111215] shrink-0" title="Speak to Mae" aria-label="Speak to Mae">
+      <button type="button" id="mae-mic-btn" onclick="toggleMaeMic()" class="w-9 h-9 rounded-full bg-white border border-[#dcdfe6] hover:border-[#111215] flex items-center justify-center text-[#111215] shrink-0" title="Record voice question" aria-label="Record voice question">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19 10v2a7 7 0 01-14 0v-2M12 19v4m-4 0h8"/></svg>
       </button>
-      <input id="mae-input" type="text" autocomplete="off" class="flex-1 px-3.5 py-2 rounded-full border border-[#dcdfe6] bg-white text-xs text-[#111215]" placeholder="Ask Mae anything..." />
+      <input id="mae-input" type="text" autocomplete="off" class="flex-1 px-3.5 py-2 rounded-full border border-[#dcdfe6] bg-white text-xs text-[#111215]" placeholder="Type or tap mic to record..." />
       <button type="submit" id="mae-send-btn" class="btn-dark px-4 py-2 text-xs">Send</button>
     </form>
   </aside>
@@ -1105,6 +1106,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=20261120a"></script>
+  <script src="app.js?v=20261120b"></script>
 </body>
 </html>

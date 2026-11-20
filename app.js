@@ -1771,90 +1771,63 @@ function downloadCoverLetter() {
 }
 
 // ============================================================================
-// 7. MAE — LIVE 3D VIDEO AVATAR + NATURAL NEURAL VOICE + SITE WALKTHROUGH
+// 7. MAE — LIVE 3D VIDEO AVATAR (SILENT) + VOICE RECORD INPUT (MIC ONLY)
 // ============================================================================
 const MAE_HOVER_GREETINGS = [
-  { text: "Sorry, may I help you?", audio: "audio/mae-hover-1.mp3" },
-  { text: "Hi there! I'm Mae — happy to help you with this website.", audio: "audio/mae-hover-2.mp3" },
-  { text: "Need a hand? Click me anytime for a quick site tour.", audio: "audio/mae-hover-3.mp3" }
+  "Sorry, may I help you?",
+  "Hi there! I'm Mae — happy to help you with this website.",
+  "Need a hand? Click me anytime for a quick site tour."
 ];
 
 const SITE_TOUR_STEPS = [
   {
     selector: "#demos",
-    title: "1. Live Interactive Project Demos",
-    body: "Switch tabs here to try BGround's 0-credit cutout preview, Philippine Skyland, Sonata, and Mark's GitHub CLI tools directly in your browser.",
-    audio: "audio/mae-tour-1.mp3"
+    title: "Live Project Demos",
+    body: "Switch tabs here to test BGround's 0-credit cutout studio, Philippine Skyland, Sonata, and Mark's CLI tools directly in your browser."
   },
   {
     selector: "#work",
-    title: "2. All 12 Useful GitHub Projects",
-    body: "Browse every shipped app and open-source tool from Mark's GitHub — filter by Live Web Apps, AI & Python Tools, or Ops & Backend.",
-    audio: "audio/mae-tour-2.mp3"
+    title: "All 12 Useful GitHub Projects",
+    body: "Browse every shipped app and open-source repository from Mark's GitHub — filter by Live Web Apps, AI & Python Tools, or Ops & Backend."
   },
   {
     selector: "#analytics-dashboard",
-    title: "3. 7-Theme Data Studio & CSV Explorer",
-    body: "Switch among 7 high-contrast themes, sort table columns, ask questions about the data, or upload your own .csv file for instant SVG charts.",
-    audio: "audio/mae-tour-3.mp3"
+    title: "7-Theme Data Studio & CSV Explorer",
+    body: "Switch among 7 high-contrast themes, sort any table column, ask data questions, or upload your own .csv file for instant SVG charts."
   },
   {
     selector: "#website-checker",
-    title: "4. Live Website Security & Accessibility Checker",
-    body: "Enter any public URL (or click one of Mark's live apps) to run a real-time HTTPS/HSTS, CSP, WCAG accessibility, and Google SEO audit.",
-    audio: "audio/mae-tour-4.mp3"
+    title: "Live Website Security & Accessibility Checker",
+    body: "Enter any public URL (or click one of Mark's live apps) to run a real-time HTTPS/HSTS, CSP, WCAG accessibility, and Google SEO audit."
   },
   {
     selector: "#mae-dock",
-    title: "5. Talk to Mae Anytime",
-    body: "Hover over Mae, click her live 3D avatar, tap the mic to speak, or press Ctrl+K anytime if you want help navigating the website.",
-    audio: "audio/mae-tour-5.mp3"
+    title: "Ask Mae Anytime",
+    body: "Open Mae anytime to ask questions by typing or tapping the mic button to record your voice — or press Ctrl+K as a shortcut."
   }
 ];
 
-let maeActiveAudio = null;
-let maeActiveAudioUrl = null;
+let maeAnimTimer = null;
 let maeHoverCooldownAt = 0;
 let maeHoverBubbleTimer = null;
 let maeHoverIdx = 0;
-let maeAudioUnlocked = false;
 let currentTourIndex = -1;
 let currentHighlightedEl = null;
 
-function stopMaeAudio() {
-  if (maeActiveAudio) {
-    try {
-      maeActiveAudio.pause();
-      maeActiveAudio.currentTime = 0;
-    } catch {}
-    maeActiveAudio = null;
-  }
-  if (maeActiveAudioUrl) {
-    try { URL.revokeObjectURL(maeActiveAudioUrl); } catch {}
-    maeActiveAudioUrl = null;
-  }
-  if ("speechSynthesis" in window) {
-    try { window.speechSynthesis.cancel(); } catch {}
-  }
-  setMaeAvatarState("idle");
-}
-
-function setMaeAvatarState(mode) {
+function setMaeAvatarState(mode, autoResetMs = 0) {
+  clearTimeout(maeAnimTimer);
   const shell = document.getElementById("mae-video-shell");
-  const bars = document.getElementById("mae-voice-bars");
   const vIdle = document.getElementById("mae-vid-idle");
   const vHover = document.getElementById("mae-vid-hover");
   const vTalk = document.getElementById("mae-vid-talk");
   const orbVid = document.getElementById("mae-orb-video");
 
   const activeMode = mode === "talking" ? "talk" : mode === "hover" ? "hover" : "idle";
-  const layers = [
+  [
     ["idle", vIdle],
     ["hover", vHover],
     ["talk", vTalk]
-  ];
-
-  layers.forEach(([key, vid]) => {
+  ].forEach(([key, vid]) => {
     if (!vid) return;
     if (key === activeMode) {
       vid.classList.add("active");
@@ -1882,50 +1855,15 @@ function setMaeAvatarState(mode) {
 
   shell?.classList.toggle("speaking", mode === "talking" || mode === "hover");
   shell?.classList.toggle("listening", mode === "listening");
-  bars?.classList.toggle("active", mode === "talking" || mode === "hover");
+
+  if (autoResetMs > 0) {
+    maeAnimTimer = setTimeout(() => {
+      if (!STATE.maeListening) setMaeAvatarState("idle");
+    }, autoResetMs);
+  }
 }
 
-function playMaeAudioClip(src, animMode = "talking") {
-  if (!STATE.maeVoiceEnabled) return Promise.resolve(false);
-  stopMaeAudio();
-  return new Promise((resolve) => {
-    try {
-      const audio = new Audio(src);
-      audio.preload = "auto";
-      maeActiveAudio = audio;
-      audio.onplay = () => setMaeAvatarState(animMode);
-      audio.onended = () => {
-        if (maeActiveAudio === audio) maeActiveAudio = null;
-        setMaeAvatarState("idle");
-        resolve(true);
-      };
-      audio.onerror = () => {
-        if (maeActiveAudio === audio) maeActiveAudio = null;
-        setMaeAvatarState("idle");
-        resolve(false);
-      };
-      const playPromise = audio.play();
-      if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(() => {
-          // Browser blocked autoplay prior to first user click — keep visual animation graceful
-          setMaeAvatarState(animMode);
-          setTimeout(() => {
-            if (maeActiveAudio === audio) {
-              maeActiveAudio = null;
-              setMaeAvatarState("idle");
-            }
-          }, 2200);
-          resolve(false);
-        });
-      }
-    } catch {
-      setMaeAvatarState("idle");
-      resolve(false);
-    }
-  });
-}
-
-function showMaeHoverTooltip(text, durationMs = 3600) {
+function showMaeHoverTooltip(text, durationMs = 3400) {
   const tip = document.getElementById("mae-hover-bubble");
   if (!tip) return;
   tip.textContent = text;
@@ -1934,45 +1872,27 @@ function showMaeHoverTooltip(text, durationMs = 3600) {
   maeHoverBubbleTimer = setTimeout(() => tip.classList.remove("visible"), durationMs);
 }
 
-function triggerMaeHoverGreeting(force = false) {
+function triggerMaeHoverGreeting() {
   const now = Date.now();
-  if (!force && now - maeHoverCooldownAt < 6500) {
-    setMaeAvatarState("hover");
-    setTimeout(() => {
-      if (!maeActiveAudio) setMaeAvatarState("idle");
-    }, 1800);
+  if (now - maeHoverCooldownAt < 4000) {
+    setMaeAvatarState("hover", 2000);
     return;
   }
   maeHoverCooldownAt = now;
-  const item = MAE_HOVER_GREETINGS[maeHoverIdx % MAE_HOVER_GREETINGS.length];
+  const text = MAE_HOVER_GREETINGS[maeHoverIdx % MAE_HOVER_GREETINGS.length];
   maeHoverIdx += 1;
 
   const bubble = document.getElementById("mae-avatar-bubble");
-  if (bubble) bubble.textContent = item.text;
-  if (!STATE.maeOpen) showMaeHoverTooltip(item.text, 4200);
-
-  if (STATE.maeVoiceEnabled) {
-    playMaeAudioClip(item.audio, "hover");
-  } else {
-    setMaeAvatarState("hover");
-    setTimeout(() => setMaeAvatarState("idle"), 2200);
-  }
+  if (bubble) bubble.textContent = text;
+  if (!STATE.maeOpen) showMaeHoverTooltip(text, 3600);
+  setMaeAvatarState("hover", 2400);
 }
 
 function initMae3DAvatarInteraction() {
-  // Unlock audio cleanly on first gesture anywhere so hover voice works smoothly
-  const unlock = () => {
-    maeAudioUnlocked = true;
-    document.removeEventListener("pointerdown", unlock);
-    document.removeEventListener("keydown", unlock);
-  };
-  document.addEventListener("pointerdown", unlock, { passive: true });
-  document.addEventListener("keydown", unlock, { passive: true });
-
   const launcher = document.getElementById("mae-launcher");
   if (launcher) {
     launcher.addEventListener("mouseenter", () => {
-      if (!STATE.maeOpen) triggerMaeHoverGreeting(false);
+      if (!STATE.maeOpen) triggerMaeHoverGreeting();
     });
   }
 
@@ -1980,7 +1900,7 @@ function initMae3DAvatarInteraction() {
   const shell = document.getElementById("mae-video-shell");
   if (stage && shell) {
     stage.addEventListener("mouseenter", () => {
-      if (!maeActiveAudio) triggerMaeHoverGreeting(false);
+      if (!STATE.maeListening) triggerMaeHoverGreeting();
     });
     stage.addEventListener("mousemove", (e) => {
       const r = stage.getBoundingClientRect();
@@ -1996,82 +1916,8 @@ function initMae3DAvatarInteraction() {
 
 function interactWithMaeAvatar() {
   const bubble = document.getElementById("mae-avatar-bubble");
-  const msg = "Hi! I'm Mae. I'm happy to help you explore Mark's website.";
-  if (bubble) bubble.textContent = msg;
-  playMaeAudioClip("audio/mae-welcome.mp3", "talking");
-}
-
-function toggleMaeVoice() {
-  STATE.maeVoiceEnabled = !STATE.maeVoiceEnabled;
-  const btn = document.getElementById("mae-tts-toggle");
-  if (btn) btn.textContent = STATE.maeVoiceEnabled ? "Voice: ON" : "Voice: OFF";
-  if (!STATE.maeVoiceEnabled) stopMaeAudio();
-}
-
-// Natural Human Voice Synthesis: Gemini 2.5 Neural TTS (/api/tts) -> Natural Neural Browser Voice only (zero robotic fallback!)
-async function speakAsMae(text) {
-  if (!STATE.maeVoiceEnabled) return;
-  stopMaeAudio();
-
-  const clean = String(text || "")
-    .replace(/[*_`#<>]/g, "")
-    .replace(/\n+/g, " ")
-    .trim()
-    .slice(0, 420);
-  if (!clean) return;
-
-  // 1. Live Server Neural Human Voice (/api/tts powered by Gemini 2.5 Flash Leda voice)
-  if (window.location.protocol !== "file:") {
-    try {
-      setMaeAvatarState("talking");
-      const res = await fetch("/api/tts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: clean })
-      });
-      if (res.ok && (res.headers.get("content-type") || "").includes("audio/")) {
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        maeActiveAudioUrl = url;
-        const audio = new Audio(url);
-        maeActiveAudio = audio;
-        audio.onplay = () => setMaeAvatarState("talking");
-        audio.onended = () => stopMaeAudio();
-        audio.onerror = () => stopMaeAudio();
-        await audio.play();
-        return;
-      }
-    } catch {
-      // Fall through to natural browser neural voice check
-    }
-  }
-
-  // 2. Fallback ONLY if the browser has a genuine high-quality neural female voice (never harsh legacy Zira/David!)
-  if ("speechSynthesis" in window) {
-    const voices = window.speechSynthesis.getVoices();
-    const naturalVoice = voices.find((v) =>
-      /natural|online|ava|emma|aria|jenny|samantha|google us english/i.test(v.name) && /en/i.test(v.lang)
-    );
-    if (naturalVoice) {
-      try {
-        const utt = new SpeechSynthesisUtterance(clean.replace(/\bMae\b/g, "May"));
-        utt.voice = naturalVoice;
-        utt.rate = 1.0;
-        utt.pitch = 1.04;
-        utt.onstart = () => setMaeAvatarState("talking");
-        utt.onend = () => setMaeAvatarState("idle");
-        utt.onerror = () => setMaeAvatarState("idle");
-        window.speechSynthesis.speak(utt);
-        return;
-      } catch {}
-    }
-  }
-
-  // Graceful silent talking motion if no neural voice is reachable
-  setMaeAvatarState("talking");
-  setTimeout(() => {
-    if (!maeActiveAudio) setMaeAvatarState("idle");
-  }, Math.min(4500, Math.max(1800, clean.length * 36)));
+  if (bubble) bubble.textContent = "Hi! I'm Mae. I'm happy to help you explore Mark's website.";
+  setMaeAvatarState("hover", 2400);
 }
 
 let activeRecognition = null;
@@ -2081,8 +1927,8 @@ function toggleMaeMic() {
   const bubble = document.getElementById("mae-avatar-bubble");
 
   if (!SpeechRec) {
-    showToast("Voice mic requires Chrome or Edge");
-    if (bubble) bubble.textContent = "Voice mic works in Chrome or Edge — or just type below!";
+    showToast("Voice recording requires Chrome or Edge");
+    if (bubble) bubble.textContent = "Voice recording works in Chrome or Edge — or just type below!";
     return;
   }
 
@@ -2091,7 +1937,6 @@ function toggleMaeMic() {
     return;
   }
 
-  stopMaeAudio();
   const rec = new SpeechRec();
   rec.lang = "en-US";
   rec.interimResults = false;
@@ -2118,7 +1963,7 @@ function toggleMaeMic() {
   rec.onend = () => {
     STATE.maeListening = false;
     micBtn?.classList.remove("mic-btn-active");
-    if (!maeActiveAudio) setMaeAvatarState("idle");
+    setMaeAvatarState("idle");
   };
   rec.start();
 }
@@ -2132,12 +1977,10 @@ function toggleMaePanel(force) {
 
   if (STATE.maeOpen) {
     document.getElementById("mae-hover-bubble")?.classList.remove("visible");
-    if (!wasOpen && STATE.maeHistory.length === 0 && STATE.maeVoiceEnabled) {
-      playMaeAudioClip("audio/mae-welcome.mp3", "talking");
-    }
+    if (!wasOpen) setMaeAvatarState("hover", 2200);
     setTimeout(() => document.getElementById("mae-input")?.focus(), 140);
   } else {
-    stopMaeAudio();
+    setMaeAvatarState("idle");
   }
 }
 
@@ -2177,8 +2020,8 @@ function runLocalMaeFallback(message) {
     return "Hi! I'm Mae. I'm happy to help you explore Mark's website.";
   }
   if (/(walkthrough|tour|how to use|guide)/.test(q)) {
-    setTimeout(() => startSiteWalkthrough(), 400);
-    return "Starting the quick 5-step website walkthrough for you now!";
+    setTimeout(() => startSiteWalkthrough(), 350);
+    return "Starting the 5-step website walkthrough for you now!";
   }
   if (/(contact|email|hire|phone|social|github|facebook|instagram)/.test(q)) {
     return "You can reach Mark at chesrakzxc@gmail.com, +63 995-814-0991, or on GitHub at github.com/whodakingofhell.";
@@ -2223,15 +2066,23 @@ async function sendToMae(text) {
   if (bubble) bubble.textContent = reply.length > 110 ? reply.slice(0, 108) + "..." : reply;
   appendMaeMessage("assistant", reply);
   STATE.maeHistory.push({ role: "assistant", text: reply });
-  speakAsMae(reply);
+  setMaeAvatarState("talking", 2800);
 }
 
 // ============================================================================
-// 7B. INTERACTIVE WEBSITE WALKTHROUGH (GUIDED BY MAE)
+// 7B. REWORKED INTERACTIVE WEBSITE WALKTHROUGH (Smooth Transitions, Silent)
 // ============================================================================
 function startSiteWalkthrough() {
+  toggleMaePanel(false);
   currentTourIndex = 0;
-  renderTourStep();
+  renderTourStep("next");
+}
+
+function goToTourStep(idx) {
+  if (idx < 0 || idx >= SITE_TOUR_STEPS.length || idx === currentTourIndex) return;
+  const dir = idx > currentTourIndex ? "next" : "prev";
+  currentTourIndex = idx;
+  renderTourStep(dir);
 }
 
 function stepSiteWalkthrough(delta) {
@@ -2239,21 +2090,18 @@ function stepSiteWalkthrough(delta) {
   if (next < 0) return;
   if (next >= SITE_TOUR_STEPS.length) {
     closeSiteWalkthrough();
-    showToast("Walkthrough complete — ask Mae anytime!");
+    showToast("Walkthrough complete");
     return;
   }
   currentTourIndex = next;
-  renderTourStep();
+  renderTourStep(delta > 0 ? "next" : "prev");
 }
 
-function replayCurrentTourVoice() {
-  const step = SITE_TOUR_STEPS[currentTourIndex];
-  if (step) playMaeAudioClip(step.audio, "talking");
-}
-
-function renderTourStep() {
+function renderTourStep(direction = "next") {
   const step = SITE_TOUR_STEPS[currentTourIndex];
   const card = document.getElementById("site-tour-card");
+  const backdrop = document.getElementById("tour-backdrop");
+  const content = document.getElementById("tour-content");
   if (!step || !card) return;
 
   if (currentHighlightedEl) {
@@ -2270,21 +2118,41 @@ function renderTourStep() {
     }
   }
 
+  // Smooth progress bar + clickable step dots
+  const pct = ((currentTourIndex + 1) / SITE_TOUR_STEPS.length) * 100;
+  const fill = document.getElementById("tour-progress-fill");
+  if (fill) fill.style.width = `${pct}%`;
+
+  const dotsEl = document.getElementById("tour-dots");
+  if (dotsEl) {
+    dotsEl.innerHTML = SITE_TOUR_STEPS.map((_, i) =>
+      `<button type="button" onclick="goToTourStep(${i})" class="tour-dot ${i === currentTourIndex ? "active" : ""}" aria-label="Go to step ${i + 1}"></button>`
+    ).join("");
+  }
+
   document.getElementById("tour-step-badge").textContent = `Step ${currentTourIndex + 1} of ${SITE_TOUR_STEPS.length}`;
   document.getElementById("tour-step-title").textContent = step.title;
   document.getElementById("tour-step-body").textContent = step.body;
 
+  if (content) {
+    content.classList.remove("tour-slide-next", "tour-slide-prev");
+    void content.offsetWidth;
+    content.classList.add(direction === "prev" ? "tour-slide-prev" : "tour-slide-next");
+  }
+
   const prevBtn = document.getElementById("tour-prev-btn");
   const nextBtn = document.getElementById("tour-next-btn");
-  if (prevBtn) prevBtn.disabled = currentTourIndex === 0;
-  if (prevBtn) prevBtn.style.opacity = currentTourIndex === 0 ? "0.45" : "1";
-  if (nextBtn) nextBtn.textContent = currentTourIndex === SITE_TOUR_STEPS.length - 1 ? "Done ✓" : "Next →";
-
-  card.classList.remove("hidden");
-  showMaeHoverTooltip(step.title, 4500);
-  if (STATE.maeVoiceEnabled) {
-    playMaeAudioClip(step.audio, "talking");
+  if (prevBtn) {
+    prevBtn.disabled = currentTourIndex === 0;
+    prevBtn.style.opacity = currentTourIndex === 0 ? "0.35" : "1";
   }
+  if (nextBtn) {
+    nextBtn.textContent = currentTourIndex === SITE_TOUR_STEPS.length - 1 ? "Finish ✓" : "Next →";
+  }
+
+  backdrop?.classList.add("active");
+  card.classList.add("open");
+  card.setAttribute("aria-hidden", "false");
 }
 
 function closeSiteWalkthrough() {
@@ -2293,8 +2161,12 @@ function closeSiteWalkthrough() {
     currentHighlightedEl.classList.remove("tour-highlight");
     currentHighlightedEl = null;
   }
-  document.getElementById("site-tour-card")?.classList.add("hidden");
-  stopMaeAudio();
+  document.getElementById("tour-backdrop")?.classList.remove("active");
+  const card = document.getElementById("site-tour-card");
+  if (card) {
+    card.classList.remove("open");
+    card.setAttribute("aria-hidden", "true");
+  }
 }
 
 // ============================================================================
@@ -2342,6 +2214,12 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
       toggleMaePanel();
+    } else if (e.key === "ArrowRight" && currentTourIndex >= 0) {
+      e.preventDefault();
+      stepSiteWalkthrough(1);
+    } else if (e.key === "ArrowLeft" && currentTourIndex >= 0) {
+      e.preventDefault();
+      stepSiteWalkthrough(-1);
     } else if (e.key === "Escape") {
       closeCaseStudy();
       closeOwnerAuthModal();
