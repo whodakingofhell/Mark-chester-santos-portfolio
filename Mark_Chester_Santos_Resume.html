@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mark Chester R. Santos - Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    @page {
+      size: letter;
+      margin: 10mm 12mm;
+    }
+
+    :root {
+      --primary: #0f172a;
+      --accent: #1d4ed8;
+      --accent-hover: #1e40af;
+      --text: #1e293b;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --tag-bg: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      background-color: #f8fafc;
+      line-height: 1.34;
+      font-size: 11px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .resume-container {
+      max-width: 820px;
+      margin: 20px auto;
+      background: #ffffff;
+      padding: 30px 38px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 6px;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+      }
+      .resume-container {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .page-break {
+        page-break-before: always;
+        break-before: page;
+      }
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 7px;
+      margin-bottom: 8px;
+    }
+
+    .name {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .role-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .contact-row a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-row a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1.5px solid var(--border);
+      padding-bottom: 2px;
+      margin-bottom: 5px;
+    }
+
+    .summary-text {
+      color: var(--muted);
+      text-align: justify;
+      font-size: 11px;
+      line-height: 1.38;
+    }
+
+    /* Skills Table */
+    .skills-table {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      row-gap: 2.5px;
+      column-gap: 8px;
+      font-size: 10.8px;
+    }
+
+    .skill-label {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .skill-value {
+      color: var(--muted);
+    }
+
+    /* Item Blocks */
+    .item-group {
+      margin-bottom: 6.5px;
+    }
+
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .item-name {
+      font-weight: 600;
+      font-size: 11.5px;
+      color: var(--primary);
+    }
+
+    .item-badge {
+      font-size: 10.5px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .item-badge a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .item-badge a:hover {
+      text-decoration: underline;
+    }
+
+    .item-links {
+      font-size: 10.5px;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    ul.bullet-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 1.5px;
+    }
+
+    ul.bullet-list li {
+      position: relative;
+      padding-left: 11px;
+      margin-bottom: 1.5px;
+      color: var(--muted);
+      font-size: 10.8px;
+      line-height: 1.32;
+    }
+
+    ul.bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 1px;
+      top: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Floating Print Button */
+    .print-btn-float {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: background 0.2s;
+    }
+    .print-btn-float:hover {
+      background: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn-float no-print" onclick="window.print()">Print / Save PDF</button>
+
+  <div class="resume-container">
+    <!-- ================= PAGE 1 ================= -->
+    <header class="header">
+      <h1 class="name">Mark Chester R. Santos</h1>
+      <div class="role-title">Full-Stack Developer &bull; AI Automation Engineer &bull; Technical Operations</div>
+      <div class="contact-row">
+        <span>Muntinlupa, Metro Manila, Philippines</span>
+        <span>&bull;</span>
+        <a href="mailto:chesrakzxc@gmail.com">chesrakzxc@gmail.com</a>
+        <span>&bull;</span>
+        <span>+63 995 814 0991</span>
+        <span>&bull;</span>
+        <a href="https://mark-chester-santos-portfolio.vercel.app/" target="_blank">Portfolio: mark-chester-santos-portfolio.vercel.app</a>
+        <span>&bull;</span>
+        <a href="https://github.com/whodakingofhell" target="_blank">GitHub: @whodakingofhell</a>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="section">
+      <h2 class="section-title">Professional Summary</h2>
+      <p class="summary-text">
+        Full-Stack Developer and AI Automation Engineer with 5+ years of software engineering foundations, enterprise customer-facing reliability, and a verified track record of shipping production web platforms. Combines hands-on development in Next.js 16, React 19, TypeScript, PostgreSQL, and WebAssembly with enterprise operations experience supporting Walmart US (IBEX Global) and global travel booking infrastructure (IGT Solutions). Specializes in building high-performance web applications, client-side neural tools, and automated backend event pipelines that eliminate manual operational bottlenecks.
+      </p>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="section">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-table">
+        <div class="skill-label">Languages</div>
+        <div class="skill-value">TypeScript, JavaScript, Python, Java 17, SQL, HTML5, CSS3, C</div>
+
+        <div class="skill-label">Frontend & Web</div>
+        <div class="skill-value">Next.js 15/16, React 19, Tailwind CSS, WebAssembly (WASM), ONNX Runtime Web, Canvas API</div>
+
+        <div class="skill-label">Backend & APIs</div>
+        <div class="skill-value">Node.js, Vercel Serverless, PostgreSQL 16, Supabase, Prisma ORM, MySQL 8.0, REST APIs, Zod</div>
+
+        <div class="skill-label">Architecture & QA</div>
+        <div class="skill-value">HikariCP, MySQL Row Locking, JUnit 5, Mockito, Playwright E2E, Jakarta EE, Gradle, Docker</div>
+
+        <div class="skill-label">AI & Media Tools</div>
+        <div class="skill-value">GFPGAN 1.4, OpenCV, FFmpeg, n8n Workflow Automation, WebCodecs, Prompt Engineering</div>
+
+        <div class="skill-label">Security & Cloud</div>
+        <div class="skill-value">Role-Based Access Control (RBAC), Row-Level Security (RLS), Cloudflare Turnstile, Sentry, Git</div>
+      </div>
+    </section>
+
+    <!-- Featured Projects (Page 1) -->
+    <section class="section">
+      <h2 class="section-title">Featured Production Applications & Systems</h2>
+
+      <!-- Project 1: BGround -->
+      <div class="item-group">
+        <div class="item-top">
+          <span class="item-name">BGround &mdash; 0-Credit Browser-Local Background Studio &amp; Video Reels</span>
+          <span class="item-badge">
+            <a href="https://bground.vercel.app/" target="_blank">Live Demo: bground.vercel.app</a>
+          </span>
+        </div>
+        <div class="item-links"><strong>Stack:</strong> Next.js, React, WebAssembly (WASM), ONNX Runtime Web, Canvas API, WebCodecs, Tailwind CSS</div>
+        <ul class="bullet-list">
+          <li>Architected a 100% client-side AI image processing suite that strips photo backgrounds in under 2 seconds without external API subscriptions, server latency, or third-party data sharing.</li>
+          <li>Engineered real-time browser canvas pipeline rendering directional contact shadows, studio color grading, and dynamic aspect-ratio reframing (1:1 square, 4:5 vertical portrait, 16:9 landscape).</li>
+          <li>Built an in-browser animated video generator synthesizing 1 to 30-second social media reel exports (MP4/WebM) via WebCodecs and canvas frame capture.</li>
+        </ul>
+      </div>
+
+      <!-- Project 2: Philippine Skyland -->
+      <div class="item-group">
+        <div class="item-top">
+          <span class="item-name">Philippine Skyland &mdash; Multi-Tenant Real Estate SaaS Platform</span>
+          <span class="item-badge">
+            <a href="https://philippine-skyland.vercel.app" target="_blank">Live Demo</a> &bull; 
+            <a href="https://github.com/whodakingofhell/MarkChesterSantosRealEstateProj" target="_blank">GitHub</a>
+          </span>
+        </div>
+        <div class="item-links"><strong>Stack:</strong> Next.js 16, React, TypeScript, Prisma ORM, PostgreSQL 16, NextAuth, Sentry, Playwright</div>
+        <ul class="bullet-list">
+          <li>Architected a multi-tenant cloud platform for licensed real estate brokers and appraisers to manage property inventories, valuation records, and buyer transaction lifecycles.</li>
+          <li>Designed a 13-model normalized relational schema in PostgreSQL via Prisma ORM with 14+ REST endpoints and strict 4-tier Role-Based Access Control (Admin, Broker, Appraiser, Client).</li>
+          <li>Implemented 11-layer production security: JWT authentication, HMAC request signing, CAPTCHA bot mitigation, and automated session invalidation.</li>
+          <li>Integrated trilingual internationalization (English, Filipino, Simplified Chinese) and automated end-to-end regression suites via Playwright.</li>
+        </ul>
+      </div>
+
+      <!-- Project 3: Sonata -->
+      <div class="item-group">
+        <div class="item-top">
+          <span class="item-name">Sonata &mdash; Microsoft Activation &amp; Software License Booking Platform</span>
+          <span class="item-badge">
+            <a href="https://microsoft-setup-form1.vercel.app" target="_blank">Live Demo</a> &bull; 
+            <a href="https://github.com/whodakingofhell/MarkChesterSantosSoftwareDeveloperAutomationEngineer1" target="_blank">GitHub</a>
+          </span>
+        </div>
+        <div class="item-links"><strong>Stack:</strong> Next.js 15, React 19, TypeScript, Tailwind CSS 4, Supabase, Cloudflare Turnstile, Resend, Sentry</div>
+        <ul class="bullet-list">
+          <li>Engineered an automated client onboarding and license key management platform deployed on Vercel with real-time operational status tracking.</li>
+          <li>Built serverless API endpoints with strict Zod schema validation, transactional deduplication, and IP-based rate limiting to prevent spam submissions.</li>
+          <li>Integrated asynchronous Discord webhook dispatch with 3-attempt exponential retry logic and automated HTML receipt delivery via Resend.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= PAGE 2 BREAK ================= -->
+    <div class="page-break"></div>
+
+    <section class="section" style="margin-top: 3px;">
+      <!-- Project 4: AI Appointment Assistant -->
+      <div class="item-group">
+        <div class="item-top">
+          <span class="item-name">AI Appointment Assistant &mdash; Serverless Scheduling Backend</span>
+          <span class="item-badge">
+            <a href="https://appointment-backend-one.vercel.app" target="_blank">Live API: appointment-backend-one.vercel.app</a>
+          </span>
+        </div>
+        <div class="item-links"><strong>Stack:</strong> Node.js, Vercel Serverless, Supabase (PostgreSQL), Discord Webhooks</div>
+        <ul class="bullet-list">
+          <li>Designed and deployed a serverless appointment scheduling API for AnyDesk/TeamViewer remote technical support sessions across global timezones.</li>
+          <li>Configured Supabase Row-Level Security (RLS) policies, input sanitization, and IP rate limiting (5 requests/IP/hour) to prevent reservation tampering.</li>
+          <li>Integrated webhook dispatch delivering real-time notification embeds formatted for operational discord channels.</li>
+        </ul>
+      </div>
+
+      <!-- Project 5: SMC Inventory System -->
+      <div class="item-group">
+        <div class="item-top">
+          <span class="item-name">SMC Inventory System &mdash; Enterprise POS &amp; Inventory Engine</span>
+          <span class="item-badge">
+            <a href="https://github.com/whodakingofhell/MarkChesterSantosSoftwareDeveloperAutomationEngineer" target="_blank">View GitHub Repository</a>
+          </span>
+        </div>
+        <div class="item-links"><strong>Stack:</strong> Java 17, Swing, MySQL 8.0, HikariCP, jBCrypt, JUnit 5, Mockito, Gradle (10,400+ LOC)</div>
+        <ul class="bullet-list">
+          <li>Architected a 47-file enterprise Point-of-Sale and warehouse inventory platform in Java 17 using a strict 4-tier layered architecture (Model-Service-Repository-UI).</li>
+          <li>Implemented database transaction isolation using MySQL row-level locking (<code>SELECT FOR UPDATE</code>) with deadlock retry logic to safeguard financial ledger accuracy.</li>
+          <li>Built security infrastructure featuring 12-round BCrypt password hashing, brute-force lockout safeguards, and parameterized SQL statements.</li>
+          <li>Developed 100+ automated unit and integration tests with JUnit 5, Mockito, and in-memory H2 database fixtures ensuring reliable execution.</li>
+        </ul>
+      </div>
+
+      <!-- Project 6: Neural Video Graphic -->
+      <div class="item-group">
+        <div class="item-top">
+          <span class="item-name">Photorealistic Neural Video Graphic &amp; Expression Synthesis</span>
+          <span class="item-badge">
+            <a href="https://mark-chester-santos-portfolio.vercel.app/#video-vfx" target="_blank">Live Showcase: mark-chester-santos-portfolio.vercel.app/#video-vfx</a>
+          </span>
+        </div>
+        <div class="item-links"><strong>Stack:</strong> GFPGAN 1.4 (512px), Hyperswap 1B, DFL XSeg, OpenCV, FFmpeg, 35mm Kodak Grain Synthesis</div>
+        <ul class="bullet-list">
+          <li>Engineered a high-definition 4:5 vertical neural VFX video graphic re-enacting Kendrick Lamar's "HUMBLE." performance with Mark Chester's facial features.</li>
+          <li>Constructed custom alignment and feathered convex hull masking preserving 100% of original studio lighting, crewneck clothing, hair, and crowd background motion.</li>
+          <li>Applied 512px super-resolution restoration and synthetic 35mm Kodak Vision3 film grain to eliminate plastic AI artifacts and achieve natural cinematic fidelity.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section class="section">
+      <h2 class="section-title">Professional Experience</h2>
+
+      <div class="item-group">
+        <div class="item-top">
+          <span class="item-name">Customer Service Representative</span>
+          <span class="item-badge">Oct 2025 &mdash; Jun 2026</span>
+        </div>
+        <div class="item-links"><strong>IBEX Global Solutions Inc. (Walmart US Account)</strong></div>
+        <ul class="bullet-list">
+          <li>Delivered technical, account, and billing support for enterprise retail customer interactions across phone, live chat, and email channels.</li>
+          <li>Investigated and resolved complex order discrepancies, payment gateways, and fulfillment exceptions, consistently exceeding First-Contact Resolution (FCR) targets.</li>
+          <li>Navigated multiple backend management and CRM portals concurrently to diagnose transaction bottlenecks and order processing failures.</li>
+        </ul>
+      </div>
+
+      <div class="item-group">
+        <div class="item-top">
+          <span class="item-name">Travel Associate</span>
+          <span class="item-badge">Mar 2025 &mdash; Sep 2025</span>
+        </div>
+        <div class="item-links"><strong>IGT Solutions</strong></div>
+        <ul class="bullet-list">
+          <li>Managed end-to-end global reservation modifications and booking system exceptions in a fast-paced travel operations environment.</li>
+          <li>Conducted root-cause troubleshooting for booking API discrepancies and coordinated real-time resolutions with partner airline and hotel reservation systems.</li>
+          <li>Collaborated with operations leadership on workflow improvements, lowering Average Handle Time (AHT) while maintaining quality compliance.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section class="section">
+      <h2 class="section-title">Education &amp; Certifications</h2>
+      <div class="item-group">
+        <div class="item-top">
+          <span class="item-name">Bachelor of Science in Information Technology</span>
+          <span class="item-badge">2017 &mdash; 2023</span>
+        </div>
+        <div class="item-links"><strong>South Mansfield College</strong> &bull; Muntinlupa, Philippines</div>
+      </div>
+      <ul class="bullet-list" style="margin-top: 2px;">
+        <li><strong>Python Programming: A Concise Introduction</strong> &mdash; Wesleyan University (Coursera)</li>
+        <li><strong>Security Awareness Training</strong> &mdash; ISC2</li>
+        <li><strong>IN2ITION Tech &amp; Cybersecurity Summit</strong> &mdash; Attendee &amp; Participant</li>
+      </ul>
+    </section>
+  </div>
+
+</body>
+</html>

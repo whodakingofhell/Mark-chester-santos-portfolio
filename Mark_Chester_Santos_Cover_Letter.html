@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mark Chester R. Santos - Cover Letter</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    @page {
+      size: letter;
+      margin: 14mm 16mm;
+    }
+
+    :root {
+      --primary: #0f172a;
+      --accent: #1d4ed8;
+      --text: #1e293b;
+      --muted: #475569;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      background-color: #f8fafc;
+      line-height: 1.5;
+      font-size: 11.5px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .letter-container {
+      max-width: 800px;
+      margin: 24px auto;
+      background: #ffffff;
+      padding: 42px 48px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 6px;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+      }
+      .letter-container {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 3px;
+    }
+
+    .role-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-info {
+      text-align: right;
+      font-size: 10.5px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* Meta Info (Date & Recipient) */
+    .meta-section {
+      margin-bottom: 18px;
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .meta-section .date {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .recipient-block {
+      color: var(--text);
+    }
+
+    .salutation {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+
+    /* Letter Body */
+    .letter-body {
+      color: var(--text);
+      font-size: 11.2px;
+      line-height: 1.55;
+    }
+
+    .letter-body p {
+      margin-bottom: 13px;
+      text-align: justify;
+    }
+
+    .letter-body p strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .callout-box {
+      background: #f8fafc;
+      border-left: 3px solid var(--accent);
+      padding: 10px 14px;
+      margin: 12px 0 14px 0;
+      border-radius: 0 4px 4px 0;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .callout-box ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 4px;
+    }
+
+    .callout-box li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .callout-box li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Sign-off */
+    .sign-off {
+      margin-top: 18px;
+    }
+
+    .sign-off .closing {
+      font-size: 11.2px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .sign-off .sig-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .sign-off .sig-title {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Floating Print Button */
+    .print-btn-float {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: background 0.2s;
+    }
+    .print-btn-float:hover {
+      background: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn-float no-print" onclick="window.print()">Print / Save PDF</button>
+
+  <div class="letter-container">
+    <header class="header">
+      <div>
+        <h1 class="name">Mark Chester R. Santos</h1>
+        <div class="role-title">Full-Stack Developer &bull; AI Automation Engineer &bull; Technical Operations</div>
+      </div>
+      <div class="contact-info">
+        <div>Muntinlupa, Metro Manila, Philippines</div>
+        <div>chesrakzxc@gmail.com &bull; +63 995 814 0991</div>
+        <div><a href="https://mark-chester-santos-portfolio.vercel.app/" target="_blank">mark-chester-santos-portfolio.vercel.app</a></div>
+        <div><a href="https://github.com/whodakingofhell" target="_blank">github.com/whodakingofhell</a></div>
+      </div>
+    </header>
+
+    <div class="meta-section">
+      <div class="date">November 2026</div>
+      <div class="recipient-block">
+        <strong>Hiring Team &amp; Engineering Leadership</strong><br>
+        [Target Company Name]<br>
+        [Target Role: Full-Stack Developer / AI Automation Engineer / Technical Operator]
+      </div>
+    </div>
+
+    <div class="salutation">Dear Hiring Team,</div>
+
+    <div class="letter-body">
+      <p>
+        I am reaching out to bring an uncommon and dependable hybrid skillset to your team: <strong>5+ years of software engineering foundations</strong> (Next.js 16, TypeScript, PostgreSQL, WebAssembly, and Java 17) paired with <strong>high-stakes enterprise operations experience</strong> supporting Walmart US customers at IBEX Global and global travel reservation infrastructure at IGT Solutions.
+      </p>
+
+      <p>
+        Most software candidates either write code in isolation without understanding customer friction, or work in operations without the technical chops to build automated tooling when systems break. I do both. On day one, I can step in, communicate clearly with enterprise clients, diagnose complex data discrepancies across multiple CRMs, and immediately build the automated web applications and serverless webhooks that eliminate manual backlog.
+      </p>
+
+      <div class="callout-box">
+        <strong>What I Ship &amp; Maintain (All Live &amp; Testable):</strong>
+        <ul>
+          <li><strong>BGround (<a href="https://bground.vercel.app/" target="_blank" style="color:var(--accent);font-weight:600;">bground.vercel.app</a>):</strong> Built a 100% client-side AI image studio using browser-local WebAssembly and ONNX Runtime Web. It strips photo backgrounds in under 2 seconds, renders studio contact shadows, and generates 1&ndash;30s animated video reels directly in the browser with zero external API fees or server costs.</li>
+          <li><strong>Philippine Skyland (<a href="https://philippine-skyland.vercel.app" target="_blank" style="color:var(--accent);font-weight:600;">philippine-skyland.vercel.app</a>):</strong> Architected a multi-tenant real estate SaaS platform with 13 relational Prisma models on PostgreSQL 16, 4-tier Role-Based Access Control, an 11-layer security stack (JWT, HMAC signing, Turnstile), and trilingual localization.</li>
+          <li><strong>Sonata &amp; Support API (<a href="https://microsoft-setup-form1.vercel.app" target="_blank" style="color:var(--accent);font-weight:600;">microsoft-setup-form1.vercel.app</a>):</strong> Deployed automated service intake with strict Zod validation, transactional deduplication, and Discord webhook dispatch with exponential retry handling.</li>
+          <li><strong>SMC Inventory Engine:</strong> Engineered a 47-file, 10,400+ LOC Java 17 POS system with MySQL row-level locking (<code>SELECT FOR UPDATE</code>) and 100+ automated unit/integration tests (JUnit 5 &amp; Mockito).</li>
+        </ul>
+      </div>
+
+      <p>
+        In enterprise operations at IBEX Global (Walmart account), I routinely troubleshot complex multi-tier order and payment bottlenecks across concurrent backend systems, consistently beating First-Contact Resolution (FCR) benchmarks. At IGT Solutions, I conducted root-cause analysis on real-time booking API discrepancies with global airlines and hotels. I know how production services behave when traffic spikes, how to keep customers calm, and how to write code that prevents failures from recurring.
+      </p>
+
+      <p>
+        I am based in Metro Manila (UTC+8) and fully equipped with redundant power, fiber internet, and a tested home office setup ready for <strong>US, UK, Australian, or APAC shift alignment</strong>. Whether you need an engineer who can own end-to-end full-stack features, an automation builder who connects business tools to eliminate repetitive work, or a technical operator who can bridge the gap between engineering and end-users, I am ready to deliver immediate value.
+      </p>
+
+      <p>
+        You can explore all my live deployments, code repositories, and architecture case studies at <strong><a href="https://mark-chester-santos-portfolio.vercel.app/" target="_blank" style="color:var(--accent);">mark-chester-santos-portfolio.vercel.app</a></strong>. I welcome the opportunity to discuss how my hands-on technical skills and operational discipline will support your team's goals.
+      </p>
+    </div>
+
+    <div class="sign-off">
+      <div class="closing">Sincerely,</div>
+      <div class="sig-name">Mark Chester R. Santos</div>
+      <div class="sig-title">Full-Stack Developer &bull; AI Automation Engineer &bull; Technical Operations</div>
+    </div>
+  </div>
+
+</body>
+</html>
