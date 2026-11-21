@@ -285,17 +285,17 @@ const PORTFOLIO_DEFAULT_DATASET = {
 const STATE = {
   ownerAuthenticated: false,
   jobFinderMode: "manual", // 'manual' | 'auto'
-  location: "Muntinlupa, Metro Manila, Philippines",
+  location: "Remote (Philippines / Worldwide)",
+  minSalary: 600,
   jobs: [],
   selectedJob: null,
+  lastResumeModel: null,
   resumeVariant: 0,
   coverVariant: 0,
   reqsVariant: 0,
   maeOpen: false,
-  maeVoiceEnabled: true,
   maeListening: false,
   maeHistory: [],
-  maeClickIdx: 0,
   dataset: JSON.parse(JSON.stringify(PORTFOLIO_DEFAULT_DATASET)),
   sortCol: null,
   sortAsc: false,
@@ -305,24 +305,59 @@ const STATE = {
 };
 
 const RESUME_VARIANTS = [
-  { id: "tech_support", label: "Option 1/5 — Technical Support Representative & Escalation Specialist" },
-  { id: "impact", label: "Option 2/5 — Full-Stack Developer & Impact Builder" },
-  { id: "automation", label: "Option 3/5 — AI Automation & Workflow Architect" },
-  { id: "ops", label: "Option 4/5 — Remote Technical VA & Customer Operations" },
-  { id: "executive", label: "Option 5/5 — Concise Executive 1-Page ATS" }
+  { id: "ai_automation", label: "Track 1/5 — AI Automation Specialist (n8n / Python / Webhooks)" },
+  { id: "ai_prompt", label: "Track 2/5 — Prompt Engineer & AI Operations Specialist" },
+  { id: "it_support", label: "Track 3/5 — IT Support & Technical Support Specialist" },
+  { id: "fullstack", label: "Track 4/5 — Full-Stack Developer (Next.js / TypeScript / Postgres)" },
+  { id: "java_backend", label: "Track 5/5 — Java 17 / SQL Backend Software Engineer" }
 ];
 
 const COVER_VARIANTS = [
-  { id: "direct", label: "Option 1/4 — Direct Problem-Solver" },
-  { id: "support", label: "Option 2/4 — Technical Support & High-CSAT Specialist" },
-  { id: "dm", label: "Option 3/4 — Concise Recruiter / Hiring Manager Pitch (<120 words)" },
-  { id: "formal", label: "Option 4/4 — Formal Enterprise Portal Letter" }
+  { id: "role_matched", label: "Style 1/4 — Role-Matched Impact Letter" },
+  { id: "direct_remote", label: "Style 2/4 — Direct Remote Founder Pitch (OnlineJobs / Startup)" },
+  { id: "concise_dm", label: "Style 3/4 — Concise Recruiter Message (<130 words)" },
+  { id: "formal_portal", label: "Style 4/4 — Formal Enterprise Portal Letter (LinkedIn / JobStreet / Indeed)" }
 ];
 
 const REQS_VARIANTS = [
-  { id: "technical", label: "Option 1/3 — Technical Proof & Verification Angle" },
-  { id: "reliability", label: "Option 2/3 — Technical Support & SLA Reliability Angle" },
-  { id: "roi", label: "Option 3/3 — Automation Speed & Cost-Efficiency Angle" }
+  { id: "technical", label: "Angle 1/3 — Technical Proof & Live Portfolio" },
+  { id: "reliability", label: "Angle 2/3 — IT Support & SLA Reliability" },
+  { id: "roi", label: "Angle 3/3 — AI Automation ROI & $0/mo Cost Discipline" }
+];
+
+const JOB_BOARDS_AUTH = [
+  {
+    id: "onlinejobs",
+    name: "OnlineJobs.ph",
+    badge: "Best for $600–$1,400/mo Remote",
+    loginUrl: "https://www.onlinejobs.ph/login",
+    signupUrl: "https://www.onlinejobs.ph/jobseekers/signup",
+    buildSearchUrl: (q) => `https://www.onlinejobs.ph/jobseekers/jobsearch?jobkeyword=${encodeURIComponent(q)}&fullTime=on`
+  },
+  {
+    id: "linkedin",
+    name: "LinkedIn",
+    badge: "Remote + Easy Apply",
+    loginUrl: "https://www.linkedin.com/login",
+    signupUrl: "https://www.linkedin.com/signup",
+    buildSearchUrl: (q) => `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(q)}&location=Philippines&f_WT=2&f_AL=true`
+  },
+  {
+    id: "jobstreet",
+    name: "JobStreet PH",
+    badge: "WFH + PHP 35k+/mo",
+    loginUrl: "https://ph.jobstreet.com/oauth/login",
+    signupUrl: "https://ph.jobstreet.com/oauth/register",
+    buildSearchUrl: (q, minSal) => `https://ph.jobstreet.com/${encodeURIComponent(q.toLowerCase().replace(/[^a-z0-9]+/g, "-"))}-jobs/work-from-home?salary=${Math.round((minSal || 600) * 58)}`
+  },
+  {
+    id: "indeed",
+    name: "Indeed PH",
+    badge: "Remote IT & AI Roles",
+    loginUrl: "https://secure.indeed.com/auth",
+    signupUrl: "https://secure.indeed.com/auth",
+    buildSearchUrl: (q) => `https://ph.indeed.com/jobs?q=${encodeURIComponent(q)}&l=Remote&sc=0kf%3Aattr%28DSQF7%29%3B`
+  }
 ];
 
 // ============================================================================
@@ -1188,6 +1223,7 @@ function revealOwnerVault() {
   STATE.ownerAuthenticated = true;
   document.getElementById("owner-career-vault")?.classList.remove("hidden");
   document.getElementById("nav-owner-vault-btn")?.classList.remove("hidden");
+  renderBoardAuthHub();
   if (STATE.jobs.length === 0) fetchAlignedJobs();
 }
 
@@ -1206,8 +1242,84 @@ async function lockOwnerVault() {
 }
 
 // ============================================================================
-// 6. OWNER-ONLY EXPANDED JOB LOCATOR, PLATFORM PICKER & 10/10 ATS STUDIO
+// 6. OWNER-ONLY REMOTE CAREER ENGINE ($600-$700+/mo) & TAILORED PDF STUDIO
 // ============================================================================
+function getBoardAuthState() {
+  try {
+    return JSON.parse(localStorage.getItem("mcs_board_auth_v1") || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function toggleBoardAuthStatus(boardId) {
+  const cur = getBoardAuthState();
+  cur[boardId] = !cur[boardId];
+  try {
+    localStorage.setItem("mcs_board_auth_v1", JSON.stringify(cur));
+  } catch {}
+  renderBoardAuthHub();
+  showToast(cur[boardId] ? `Marked ${boardId} account as Ready` : `Marked ${boardId} as Sign-In Needed`);
+}
+
+function getEffectiveJobSearchQuery() {
+  const cat = document.getElementById("job-role-filter")?.value || "automation";
+  const typed = (document.getElementById("job-search-input")?.value || "").trim();
+  if (typed) return typed;
+  const map = {
+    automation: "AI Automation Specialist n8n",
+    ai_prompt: "Prompt Engineer AI Specialist",
+    tech_support: "IT Support Technical Support",
+    fullstack: "Next.js React TypeScript Developer",
+    backend: "Java SQL Backend Developer",
+    all: "AI Automation IT Specialist"
+  };
+  return map[cat] || map.automation;
+}
+
+function renderBoardAuthHub() {
+  const grid = document.getElementById("board-auth-grid");
+  if (!grid) return;
+  const authState = getBoardAuthState();
+  const q = getEffectiveJobSearchQuery();
+  const minSal = Number(document.getElementById("job-salary-filter")?.value || 600);
+
+  grid.innerHTML = JOB_BOARDS_AUTH.map((b) => {
+    const ready = !!authState[b.id];
+    const searchUrl = safeUrl(b.buildSearchUrl(q, minSal));
+    return `
+      <div class="p-3.5 rounded-xl border ${ready ? "border-[#137333]/40 bg-[#f4fbf6]" : "border-[#e6e8ed] bg-[#f9fafb]"} space-y-2.5">
+        <div class="flex items-center justify-between gap-2">
+          <div>
+            <div class="font-display font-bold text-xs text-[#111215]">${escapeHtml(b.name)}</div>
+            <div class="text-[10px] text-[#5a5f69]">${escapeHtml(b.badge)}</div>
+          </div>
+          <button type="button" onclick="toggleBoardAuthStatus('${b.id}')" class="px-2 py-0.5 rounded-full text-[10px] font-semibold ${ready ? "bg-[#e6f4ea] text-[#137333]" : "bg-[#f1f3f6] text-[#5a5f69]"}">
+            ${ready ? "Signed In ✓" : "Need Login"}
+          </button>
+        </div>
+        <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold">
+          <a href="${safeUrl(b.loginUrl)}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-white border border-[#dcdfe6] text-[#111215] hover:border-[#111215]">Sign In ↗</a>
+          <a href="${safeUrl(b.signupUrl)}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-white border border-[#dcdfe6] text-[#5a5f69] hover:text-[#111215]">Create Acct</a>
+          <a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-[#111215] text-white hover:bg-[#23262e]">Jobs ↗</a>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+function launchBatchBoardApply() {
+  const q = getEffectiveJobSearchQuery();
+  const minSal = Number(document.getElementById("job-salary-filter")?.value || 600);
+  if (STATE.lastResumeModel) downloadResumePdf();
+  const cover = document.getElementById("cover-letter-output")?.value || "";
+  if (cover) copyText(cover, "Downloaded tailored PDF + copied Cover Letter — opening boards!");
+  JOB_BOARDS_AUTH.forEach((b, idx) => {
+    setTimeout(() => {
+      window.open(safeUrl(b.buildSearchUrl(q, minSal)), "_blank", "noopener,noreferrer");
+    }, idx * 220);
+  });
+}
+
 function setJobFinderMode(mode) {
   STATE.jobFinderMode = mode;
   const mBtn = document.getElementById("job-mode-manual");
@@ -1220,51 +1332,38 @@ function setJobFinderMode(mode) {
     mBtn?.classList.remove("bg-white", "text-[#111215]");
     mBtn?.classList.add("text-white/75");
     if (banner) {
-      banner.innerHTML = `<span><strong>Automatic Job Finder Active (Owner-Only):</strong> Automatically scans verified public feeds, removes scam red flags, ranks your best matches (including Technical Support Rep &amp; Full-Stack), and pre-builds your 10/10 Resume, Cover Letter &amp; Quick-Apply Packet ready for your 1-click approval.</span><span class="font-mono-code text-[#137333]">Human-Approved Safe Launch</span>`;
+      banner.innerHTML = `<span><strong>Auto-Prep Mode Active (Owner-Only):</strong> Automatically pulls remote $600–$700+/mo AI Automation, AI, and IT openings, auto-matches the right resume track + cover letter for each role, and lets you 1-click download PDF + copy cover letter + launch all 4 boards safely.</span><span class="font-mono-code text-[#137333]">Safe Account-Protected Flow</span>`;
     }
     fetchAlignedJobs();
-    showToast("Automatic Job Finder active — verified matches queued");
+    showToast("Auto-Prep Mode active — remote $600–$700+/mo roles loaded");
   } else {
     mBtn?.classList.add("bg-white", "text-[#111215]");
     mBtn?.classList.remove("text-white/75");
     aBtn?.classList.remove("bg-white", "text-[#111215]");
     aBtn?.classList.add("text-white/75");
     if (banner) {
-      banner.innerHTML = `<span><strong>Manual Mode Active:</strong> Pick any role (Technical Support Representative, AI Automation, Full-Stack, or custom search) and click "Choose Board ↗" to choose LinkedIn, Indeed, JobStreet, or OnlineJobs.ph.</span><span class="font-mono-code text-[#137333]">Anti-Scam Filter: ON</span>`;
+      banner.innerHTML = `<span><strong>Remote $600–$700+/mo Career Engine:</strong> Pick any target role (AI Automation, AI/Prompt, IT Support, Full-Stack, Java), download a unique 1-2 page ATS PDF resume + tailored cover letter, and open verified boards directly.</span><span class="font-mono-code text-[#137333]">Anti-Scam Filter: ON</span>`;
     }
   }
 }
 
 function openPlatformPicker(customQueryOverride) {
-  const loc = (document.getElementById("job-location-input")?.value || STATE.location).trim();
-  const cat = document.getElementById("job-role-filter")?.value || "all";
-  const typed = (document.getElementById("job-search-input")?.value || "").trim();
-
-  const roleDefaults = {
-    all: "Technical Support Representative OR AI Automation OR Full Stack Developer",
-    tech_support: "Technical Support Representative",
-    va_ops: "Technical Virtual Assistant Customer Support",
-    automation: "AI Automation Engineer n8n Python",
-    fullstack: "Full Stack Next.js React TypeScript Developer",
-    backend: "Java 17 MySQL Backend Developer"
-  };
-
-  const q = customQueryOverride || typed || roleDefaults[cat] || roleDefaults.all;
+  const minSal = Number(document.getElementById("job-salary-filter")?.value || 600);
+  const q = customQueryOverride || getEffectiveJobSearchQuery();
   const eq = encodeURIComponent(q);
-  const el = encodeURIComponent(loc);
 
   const sub = document.getElementById("platform-picker-subtitle");
-  if (sub) sub.textContent = `Query: "${q}" • Location: ${loc}`;
+  if (sub) sub.textContent = `Query: "${q}" • Remote • $${minSal}+/mo (PHP ${Math.round(minSal * 58).toLocaleString()}+/mo)`;
 
   const platforms = [
-    { name: "LinkedIn Jobs (Active)", desc: "Verified company pages & Easy Apply", url: `https://www.linkedin.com/jobs/search/?keywords=${eq}&location=${el}&f_TPR=r604800` },
-    { name: "Indeed Philippines", desc: "Local Metro Manila, BGC & remote roles", url: `https://ph.indeed.com/jobs?q=${eq}&l=${el}` },
-    { name: "JobStreet PH", desc: "Verified PH corporate & BPO/Tech hiring", url: `https://ph.jobstreet.com/jobs?keywords=${eq}&where=${el}` },
-    { name: "OnlineJobs.ph", desc: "Direct overseas remote employers", url: `https://www.onlinejobs.ph/jobseekers/jobsearch?jobkeyword=${eq}` },
-    { name: "Kalibrr PH", desc: "Tech startups & support teams in PH", url: `https://www.kalibrr.com/home/te/${eq}` },
-    { name: "Google Jobs Live", desc: "Aggregated company career portals", url: `https://www.google.com/search?q=${encodeURIComponent(`${q} hiring near ${loc}`)}&ibp=htl;jobs` },
-    { name: "Remotive Remote", desc: "Curated global remote tech & support", url: `https://remotive.com/remote-jobs?search=${eq}` },
-    { name: "Wellfound (Startups)", desc: "Direct founder & startup hiring", url: `https://wellfound.com/jobs` }
+    { name: "OnlineJobs.ph (Direct Remote)", desc: "International founders paying $600–$1,600/mo", url: `https://www.onlinejobs.ph/jobseekers/jobsearch?jobkeyword=${eq}&fullTime=on` },
+    { name: "LinkedIn Remote Easy Apply", desc: "Pre-filtered Remote + Easy Apply (PH/APAC)", url: `https://www.linkedin.com/jobs/search/?keywords=${eq}&location=Philippines&f_WT=2&f_AL=true` },
+    { name: "JobStreet PH (WFH ₱35k+)", desc: "Verified PH WFH IT, AI & automation hiring", url: `https://ph.jobstreet.com/${encodeURIComponent(q.toLowerCase().replace(/[^a-z0-9]+/g, "-"))}-jobs/work-from-home?salary=${Math.round(minSal * 58)}` },
+    { name: "Indeed Philippines (Remote)", desc: "Remote IT Support, AI & full-stack roles", url: `https://ph.indeed.com/jobs?q=${eq}&l=Remote&sc=0kf%3Aattr%28DSQF7%29%3B` },
+    { name: "Kalibrr PH Remote", desc: "Tech startups & AI teams hiring in PH", url: `https://www.kalibrr.com/home/te/${eq}` },
+    { name: "Remotive Global Remote", desc: "Worldwide remote USD tech & support", url: `https://remotive.com/remote-jobs?search=${eq}` },
+    { name: "Himalayas Worldwide Remote", desc: "Curated async remote startups", url: `https://himalayas.app/jobs?q=${eq}` },
+    { name: "Wellfound (Remote Startups)", desc: "Direct founder hiring (USD remote)", url: `https://wellfound.com/jobs` }
   ];
 
   const grid = document.getElementById("platform-picker-grid");
@@ -1272,7 +1371,7 @@ function openPlatformPicker(customQueryOverride) {
     grid.innerHTML = platforms
       .map(
         (p) => `
-        <a href="${p.url}" target="_blank" rel="noopener noreferrer" onclick="closePlatformPicker()"
+        <a href="${safeUrl(p.url)}" target="_blank" rel="noopener noreferrer" onclick="closePlatformPicker()"
            class="p-3.5 rounded-xl border border-[#e6e8ed] hover:border-[#111215] hover:bg-[#f7f8fa] transition-colors block">
           <div class="font-display font-bold text-xs text-[#111215] flex items-center justify-between">
             <span>${escapeHtml(p.name)}</span><span>↗</span>
@@ -1299,7 +1398,7 @@ function setQuickLocation(loc) {
   const inp = document.getElementById("job-location-input");
   const badge = document.getElementById("location-status-badge");
   if (inp) inp.value = loc;
-  if (badge) badge.textContent = `Location set: ${loc}`;
+  if (badge) badge.textContent = `Target: ${loc}`;
   fetchAlignedJobs();
 }
 
@@ -1307,7 +1406,7 @@ function detectUserLocation() {
   const badge = document.getElementById("location-status-badge");
   const inp = document.getElementById("job-location-input");
   if (!navigator.geolocation) {
-    if (badge) badge.textContent = "Using Muntinlupa, Metro Manila";
+    if (badge) badge.textContent = "Using Remote (Philippines / Worldwide)";
     fetchAlignedJobs();
     return;
   }
@@ -1321,10 +1420,10 @@ function detectUserLocation() {
         if (res.ok) {
           const g = await res.json();
           const parts = [g.city || g.locality, g.principalSubdivision, g.countryName].filter(Boolean);
-          if (parts.length) resolved = parts.join(", ");
+          if (parts.length) resolved = `${parts.join(", ")} / Remote`;
         }
       } catch {
-        resolved = "Muntinlupa, Metro Manila, Philippines";
+        resolved = "Muntinlupa, Metro Manila / Remote";
       }
       STATE.location = resolved;
       if (inp) inp.value = resolved;
@@ -1332,79 +1431,96 @@ function detectUserLocation() {
       fetchAlignedJobs();
     },
     () => {
-      if (badge) badge.textContent = `Using manual location: ${STATE.location}`;
+      if (badge) badge.textContent = `Using: ${STATE.location}`;
       fetchAlignedJobs();
     },
     { timeout: 6000 }
   );
 }
 
-function buildCuratedRoles(loc, cat) {
-  const el = encodeURIComponent(loc);
+function buildCuratedRoles(loc, cat, minSal) {
+  const sal = Math.max(600, Number(minSal) || 600);
+  const phpMin = Math.round(sal * 58).toLocaleString();
   const items = [
     {
-      id: "curated-tsr",
-      title: "Technical Support Representative (Tier 1 / Tier 2 — Phone, Chat & Email)",
-      company: "Verified Local & Remote Tech Support Hiring",
-      location: `${loc} / Remote`,
-      type: "Full-time",
-      salary: "₱32,000–₱65,000/mo or $900–$1,800/mo",
-      url: `https://ph.jobstreet.com/jobs?keywords=${encodeURIComponent("Technical Support Representative")}&where=${el}`,
-      source: "JobStreet / LinkedIn Verified",
-      tags: ["Technical Support", "Troubleshooting", "AnyDesk", "CSAT", "AHT", "CRM", "SQL"],
-      description: "Hiring a Technical Support Representative to assist customers across phone, live chat, and email. Troubleshoot account, software, billing, and remote PC issues (AnyDesk/TeamViewer), navigate multiple backend systems, document clear tickets, and maintain high CSAT, FCR, and AHT metrics. IT degree and basic SQL/API troubleshooting strongly preferred.",
+      id: "curated-ai-auto",
+      title: "AI Automation Specialist (n8n, Python, Webhooks & LLM Pipelines)",
+      company: "OnlineJobs.ph & Global Remote AI Agencies",
+      location: "Remote (Philippines / US-AU-UK Clients)",
+      type: "Full-time Remote",
+      salary: `$${sal}–$1,500/mo (PHP ${phpMin}–87k/mo)`,
+      url: `https://www.onlinejobs.ph/jobseekers/jobsearch?jobkeyword=${encodeURIComponent("n8n AI automation")}&fullTime=on`,
+      source: "OnlineJobs.ph Verified",
+      tags: ["n8n", "AI Automation", "Python", "Webhooks", "Claude/GPT/Gemini", `$${sal}+/mo`],
+      description: "Build and maintain end-to-end AI workflow automations using n8n, Make, Python, REST webhooks, Discord/Email integrations, and LLM APIs (Claude, OpenAI GPT, Gemini). Replace repetitive manual processes with reliable, cost-disciplined pipelines.",
       alignmentScore: 99,
       hiringStatus: "Actively Hiring",
-      safetyBadge: "Legit Verified Source",
-      cat: "tech_support"
-    },
-    {
-      id: "curated-ai-auto",
-      title: "AI Automation & Workflow Engineer (n8n / Python / LLMs)",
-      company: "Verified Global Remote & PH Tech Teams",
-      location: `${loc} / Remote`,
-      type: "Full-time",
-      salary: "₱65,000–₱110,000/mo",
-      url: `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent("AI Automation Engineer n8n Python")}&location=${el}&f_TPR=r604800`,
-      source: "LinkedIn Active Hiring",
-      tags: ["n8n", "Python", "AI Automation", "Webhooks", "LLMs", "Supabase"],
-      description: "Design and deploy automated n8n and Python pipelines with webhook retries, LLM orchestration (Claude, Gemini, OpenAI), and PostgreSQL/Supabase integration to replace manual team bottlenecks.",
-      alignmentScore: 98,
-      hiringStatus: "Actively Hiring",
-      safetyBadge: "Legit Verified Source",
+      safetyBadge: "Verified Remote Role",
       cat: "automation"
     },
     {
+      id: "curated-ai-prompt",
+      title: "Prompt Engineer & AI Operations Specialist (Multi-LLM QA)",
+      company: "LinkedIn Remote AI Product Teams",
+      location: "Remote (Worldwide / APAC)",
+      type: "Full-time Remote",
+      salary: `$${Math.max(700, sal)}–$1,800/mo`,
+      url: `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent("Prompt Engineer AI Specialist")}&location=Philippines&f_WT=2&f_AL=true`,
+      source: "LinkedIn Easy Apply",
+      tags: ["Prompt Engineering", "Claude", "OpenAI GPT", "Gemini", "QA Rubrics", "AI Ops"],
+      description: "Design structured system prompts, multi-agent evaluation rubrics, knowledge bases, and AI media workflows (FFmpeg, ElevenLabs, WASM/ONNX) with strict quality gates and zero hallucination tolerance.",
+      alignmentScore: 98,
+      hiringStatus: "Actively Hiring",
+      safetyBadge: "Verified Remote Role",
+      cat: "ai_prompt"
+    },
+    {
+      id: "curated-it-support",
+      title: "Remote IT Support & Technical Support Specialist (Tier 1 / Tier 2)",
+      company: "JobStreet & Indeed PH Work-From-Home Teams",
+      location: `${loc} • Remote WFH`,
+      type: "Full-time Remote",
+      salary: `PHP ${phpMin}–PHP 65,000/mo ($${sal}–$1,120/mo)`,
+      url: `https://ph.jobstreet.com/it-technical-support-jobs/work-from-home?salary=${Math.round(sal * 58)}`,
+      source: "JobStreet PH Remote",
+      tags: ["IT Support", "Technical Support", "AnyDesk/TeamViewer", "SQL", "ISC2 Security", "CSAT"],
+      description: "Provide remote Tier 1/2 IT and technical support across phone, chat, email, and AnyDesk/TeamViewer. Troubleshoot Windows/Office lifecycle issues, backend accounts, SQL queries, and system escalations while exceeding SLA, CSAT, and AHT targets.",
+      alignmentScore: 98,
+      hiringStatus: "Actively Hiring",
+      safetyBadge: "Verified Remote Role",
+      cat: "tech_support"
+    },
+    {
       id: "curated-fullstack",
-      title: "Full-Stack Developer (Next.js, React, TypeScript, PostgreSQL)",
-      company: "Verified Metro Manila / BGC / Alabang / Remote",
-      location: `${loc} / Hybrid or Remote`,
-      type: "Full-time",
-      salary: "₱60,000–₱105,000/mo",
-      url: `https://ph.indeed.com/jobs?q=${encodeURIComponent("Next.js React TypeScript Developer")}&l=${el}`,
-      source: "Indeed PH Verified",
-      tags: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS", "Security"],
-      description: "Build production web apps in Next.js App Router, React, TypeScript, Prisma, and PostgreSQL. Implement RBAC, Zod validation, rate limiting, security headers, and E2E tests.",
+      title: "Remote Full-Stack Developer (Next.js, React, TypeScript, Supabase)",
+      company: "Indeed PH & Global Remote SaaS Teams",
+      location: "Remote (Philippines / Worldwide)",
+      type: "Full-time Remote",
+      salary: `$${Math.max(700, sal)}–$2,000/mo`,
+      url: `https://ph.indeed.com/jobs?q=${encodeURIComponent("Next.js React TypeScript Developer")}&l=Remote&sc=0kf%3Aattr%28DSQF7%29%3B`,
+      source: "Indeed PH Remote",
+      tags: ["Next.js 15/16", "React 19", "TypeScript", "Prisma", "PostgreSQL", "Supabase RLS"],
+      description: "Develop and deploy secure Next.js + TypeScript + PostgreSQL/Supabase web applications with Zod schema validation, RBAC authentication, rate limiting, Cloudflare Turnstile, and Playwright E2E tests.",
       alignmentScore: 97,
       hiringStatus: "Actively Hiring",
-      safetyBadge: "Legit Verified Source",
+      safetyBadge: "Verified Remote Role",
       cat: "fullstack"
     },
     {
-      id: "curated-va",
-      title: "Technical Virtual Assistant & Operations Specialist",
-      company: "Verified US / UK / AU Remote Employers",
-      location: `Remote (${loc} Shift Ready)`,
-      type: "Full-time / Contract",
-      salary: "$1,000–$2,200/mo",
-      url: `https://www.onlinejobs.ph/jobseekers/jobsearch?jobkeyword=${encodeURIComponent("Technical Virtual Assistant")}`,
-      source: "OnlineJobs.ph Verified",
-      tags: ["Virtual Assistant", "Customer Support", "AnyDesk", "SOPs", "Automation"],
-      description: "Support founder and client operations across email, chat, calendar scheduling, remote PC setup, SOP documentation, and AI workflow automation.",
+      id: "curated-java-backend",
+      title: "Backend Software Engineer (Java 17 / Node.js / MySQL / PostgreSQL)",
+      company: "LinkedIn & JobStreet Remote Engineering Teams",
+      location: "Remote (PH / APAC)",
+      type: "Full-time Remote",
+      salary: `$${Math.max(700, sal)}–$1,800/mo`,
+      url: `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent("Java Backend Developer SQL")}&location=Philippines&f_WT=2`,
+      source: "LinkedIn Remote",
+      tags: ["Java 17", "MySQL 8.0", "PostgreSQL", "REST APIs", "JUnit 5", "HikariCP"],
+      description: "Architect reliable backend services and relational database schemas with row-level transaction locking, BCrypt/HMAC security, connection pooling, and comprehensive JUnit 5/Mockito automated testing.",
       alignmentScore: 96,
       hiringStatus: "Actively Hiring",
-      safetyBadge: "Legit Verified Source",
-      cat: "va_ops"
+      safetyBadge: "Verified Remote Role",
+      cat: "backend"
     }
   ];
   if (cat === "all") return items;
@@ -1415,16 +1531,22 @@ async function fetchAlignedJobs() {
   const listEl = document.getElementById("jobs-list-container");
   const countEl = document.getElementById("live-jobs-count");
   const loc = (document.getElementById("job-location-input")?.value || STATE.location).trim();
-  const cat = document.getElementById("job-role-filter")?.value || "all";
+  const cat = document.getElementById("job-role-filter")?.value || "automation";
+  const minSal = Number(document.getElementById("job-salary-filter")?.value || 600);
   const q = (document.getElementById("job-search-input")?.value || "").trim();
   STATE.location = loc;
+  STATE.minSalary = minSal;
+  renderBoardAuthHub();
 
-  if (listEl) listEl.innerHTML = `<div class="firm-card p-5 text-xs text-[#5a5f69]">Scanning verified hiring posts &amp; filtering out scam signals...</div>`;
+  const badge = document.getElementById("location-status-badge");
+  if (badge) badge.textContent = `Target: ${loc} • $${minSal}+/mo`;
+
+  if (listEl) listEl.innerHTML = `<div class="firm-card p-5 text-xs text-[#5a5f69]">Scanning live remote AI, Automation &amp; IT boards ($${minSal}+/mo)...</div>`;
 
   let live = [];
   if (window.location.protocol !== "file:") {
     try {
-      const r = await fetch(`/api/jobs?location=${encodeURIComponent(loc)}&category=${encodeURIComponent(cat)}&q=${encodeURIComponent(q)}`);
+      const r = await fetch(`/api/jobs?location=${encodeURIComponent(loc)}&category=${encodeURIComponent(cat)}&q=${encodeURIComponent(q)}&minSalary=${encodeURIComponent(minSal)}`);
       if (r.ok) {
         const d = await r.json();
         if (Array.isArray(d.jobs)) live = d.jobs;
@@ -1432,7 +1554,7 @@ async function fetchAlignedJobs() {
     } catch {}
   }
 
-  const curated = buildCuratedRoles(loc, cat);
+  const curated = buildCuratedRoles(loc, cat, minSal);
   const all = [...curated, ...live];
   STATE.jobs = all;
   if (countEl) countEl.textContent = String(all.length);
@@ -1454,6 +1576,7 @@ function renderJobsList() {
           </div>
           <h4 class="font-display font-bold text-sm text-[#111215]">${escapeHtml(job.title)}</h4>
           <div class="text-xs text-[#5a5f69] mt-0.5">${escapeHtml(job.company)} • ${escapeHtml(job.location)}</div>
+          <div class="text-[11px] font-mono-code text-[#137333] mt-1">${escapeHtml(job.salary || "Remote USD / PHP Salary")}</div>
           <div class="flex flex-wrap gap-1 mt-2">${(job.tags || []).slice(0, 4).map((t) => `<span class="px-2 py-0.5 rounded bg-[#f1f3f6] text-[10px] font-mono-code text-[#5a5f69]">${escapeHtml(t)}</span>`).join("")}</div>
           <div class="flex items-center justify-between pt-2.5 mt-2.5 border-t border-[#eef0f4] text-[11px]">
             <span class="text-[#767c89] font-mono-code">${escapeHtml(job.source)}</span>
@@ -1473,7 +1596,7 @@ function switchJobsInputTab(tab) {
 
 function applyCustomJobDescription() {
   const company = (document.getElementById("custom-company")?.value || "").trim() || "Target Employer";
-  const title = (document.getElementById("custom-title")?.value || "").trim() || "Technical Support Representative";
+  const title = (document.getElementById("custom-title")?.value || "").trim() || "AI Automation Specialist";
   const loc = (document.getElementById("custom-location")?.value || "").trim() || STATE.location;
   const url = (document.getElementById("custom-url")?.value || "").trim() || "#";
   const desc = (document.getElementById("custom-jd-text")?.value || "").trim();
@@ -1481,7 +1604,7 @@ function applyCustomJobDescription() {
 
   const customJob = {
     id: `custom-${Date.now()}`,
-    title, company, location: loc, type: "Target Role", salary: "Listed on post", url,
+    title, company, location: loc, type: "Remote / Target Role", salary: `$${STATE.minSalary}+/mo (See post)`, url,
     source: "Custom Posting", tags: extractJobKeywords(`${title} ${desc}`).slice(0, 6),
     description: desc, alignmentScore: 99, hiringStatus: "Actively Hiring", safetyBadge: "Owner-Verified Post"
   };
@@ -1489,19 +1612,24 @@ function applyCustomJobDescription() {
   renderJobsList();
   switchJobsInputTab("live");
   selectJob(customJob.id);
-  showToast(`Built 10/10 Application Kit for ${company}`);
+  showToast(`Generated unique Resume & Cover Letter for ${company}`);
+}
+
+function detectTrackIndexForJob(job) {
+  const hay = `${job.title} ${job.description} ${(job.tags || []).join(" ")}`.toLowerCase();
+  if (/(java|junit|mockito|hikaricp|mysql|backend engineer|spring|jdbc)/.test(hay) && !/(n8n|make\.com|zapier|prompt engineer)/.test(hay)) return 4;
+  if (/(technical support|it support|helpdesk|service desk|tier 1|tier 2|customer service|support representative|anydesk|teamviewer)/.test(hay)) return 2;
+  if (/(prompt engineer|llm evaluation|ai operations|ai content|comfyui|stable diffusion|elevenlabs)/.test(hay)) return 1;
+  if (/(next\.?js|react|full.?stack|frontend|prisma|tailwind|web developer)/.test(hay) && !/(n8n|zapier|make\.com|ai automation)/.test(hay)) return 3;
+  return 0;
 }
 
 function selectJob(id) {
   const job = STATE.jobs.find((j) => j.id === id);
   if (!job) return;
   STATE.selectedJob = job;
-  // Auto-select best resume template for Technical Support vs Full-Stack vs AI
-  const lower = `${job.title} ${job.description}`.toLowerCase();
-  if (/technical support|support representative|customer service|helpdesk/.test(lower)) STATE.resumeVariant = 0;
-  else if (/n8n|automation|workflow|prompt/.test(lower)) STATE.resumeVariant = 2;
-  else STATE.resumeVariant = 1;
-
+  STATE.resumeVariant = detectTrackIndexForJob(job);
+  STATE.coverVariant = 0;
   renderJobsList();
   updateApplicationKit();
 }
@@ -1509,10 +1637,10 @@ function selectJob(id) {
 function prepareQuickApplyLaunch() {
   const job = STATE.selectedJob;
   if (!job) return;
+  downloadResumePdf();
   const cover = document.getElementById("cover-letter-output")?.value || "";
-  copyText(cover, "Copied tailored cover letter & opening platform chooser");
-  // Ask Mark which platform to open (or open direct official URL if it's a specific Remotive/Jobicy/Custom post)
-  if (job.source && /Remotive|Jobicy|Arbeitnow|Custom/.test(job.source) && job.url && job.url.startsWith("http")) {
+  if (cover) copyText(cover, "Downloaded PDF Resume + copied Cover Letter — opening job!");
+  if (job.url && job.url.startsWith("http")) {
     window.open(safeUrl(job.url), "_blank", "noopener,noreferrer");
   } else {
     openPlatformPicker(job.title);
@@ -1521,37 +1649,355 @@ function prepareQuickApplyLaunch() {
 
 function extractJobKeywords(text) {
   const dict = [
-    ["Technical Support", /(technical support|support representative|helpdesk|tier 1|tier 2|troubleshoot)/i],
-    ["Customer Service / CSAT", /(customer support|customer service|csat|aht|fcr|phone|chat|email)/i],
-    ["AnyDesk / Remote Support", /(anydesk|teamviewer|remote pc|remote support|ticketing|crm)/i],
-    ["Next.js / React", /(next\.?js|\breact\b)/i],
-    ["TypeScript", /typescript/i],
-    ["Python", /\bpython\b/i],
-    ["AI Automation / n8n", /(n8n|ai automation|workflow|automation|llm|prompt|openai|gemini)/i],
-    ["PostgreSQL / Supabase", /(postgres|postgresql|supabase|prisma)/i],
-    ["Java 17 / MySQL", /(\bjava\b|mysql|\bsql\b)/i],
-    ["Security / RBAC / Zod", /(security|rbac|zod|csrf|rls|bcrypt|rate limit|csp)/i],
-    ["Testing / QA", /(junit|playwright|mockito|\bqa\b|testing)/i]
+    ["AI Automation / n8n", /(n8n|make\.com|zapier|ai automation|workflow|automation|webhook)/i],
+    ["LLMs & Prompt Engineering", /(prompt|llm|claude|openai|gpt|gemini|ai agent|chatbot)/i],
+    ["Python Scripting", /\bpython\b/i],
+    ["IT & Technical Support", /(it support|technical support|support representative|helpdesk|tier 1|tier 2|troubleshoot)/i],
+    ["Remote Support (AnyDesk / SLA)", /(anydesk|teamviewer|remote support|csat|aht|fcr|ticketing|crm)/i],
+    ["Next.js / React / TypeScript", /(next\.?js|\breact\b|typescript|full.?stack|tailwind)/i],
+    ["PostgreSQL / Supabase / Prisma", /(postgres|postgresql|supabase|prisma)/i],
+    ["Java 17 / MySQL / SQL", /(\bjava\b|mysql|\bsql\b|jdbc|hikaricp)/i],
+    ["Web Security (ISC2 / RBAC / Zod)", /(security|rbac|zod|csrf|rls|bcrypt|rate limit|csp|hmac|isc2)/i],
+    ["QA & Testing (JUnit / Playwright)", /(junit|playwright|mockito|\bqa\b|testing)/i]
   ];
   const found = dict.filter(([, re]) => re.test(text)).map(([lbl]) => lbl);
   if (found.length < 4) {
-    ["Technical Support", "Next.js / React", "Python", "PostgreSQL / Supabase"].forEach((f) => { if (!found.includes(f)) found.push(f); });
+    ["AI Automation / n8n", "Python Scripting", "Next.js / React / TypeScript", "IT & Technical Support"].forEach((f) => {
+      if (!found.includes(f)) found.push(f);
+    });
   }
   return found;
 }
 
-function rankProjectsForJob(job, variantId) {
-  const hay = `${job.title} ${job.description} ${(job.tags || []).join(" ")}`.toLowerCase();
-  return MARK_PROFILE.projects
-    .map((p) => {
-      let s = p.tags.reduce((acc, t) => acc + (hay.includes(t) ? 3 : 0), 0);
-      if (variantId === "tech_support" && (p.id === "appointment" || p.id === "sonata")) s += 8;
-      if (variantId === "automation" && (p.id === "content-os" || p.id === "bground")) s += 8;
-      if (variantId === "impact" && (p.id === "bground" || p.id === "skyland")) s += 7;
-      return { p, s };
-    })
-    .sort((a, b) => b.s - a.s)
-    .map((x) => x.p);
+function buildTailoredResumeModel(job, keywords, variantId) {
+  const topKw = keywords.slice(0, 5).join(", ");
+  const companyLabel = job.company && !/Verified|Direct|Remote Employers/i.test(job.company) ? job.company : "Remote Team";
+
+  const TRACK_CONFIG = {
+    ai_automation: {
+      headline: "AI Automation Specialist & Workflow Engineer",
+      summary: `BSIT IT professional with 5+ years of programming experience specializing in AI workflow automation (n8n, Python, webhooks, Claude/OpenAI GPT/Gemini APIs) and serverless full-stack systems. Engineered a 14-stage automated pipeline running at $0/month free-tier cost, multi-AI governance systems (PAIOS), and webhook-driven booking platforms aligned to ${job.title} (${topKw}).`,
+      experienceFirst: false,
+      projectsHeading: "AI Automation & Workflow Engineering Projects",
+      skills: [
+        ["AI & Workflow Automation", "n8n, Python Scripting, Claude, OpenAI GPT, Gemini, Grok, Prompt Engineering, YouTube Data API v3, Discord & Resend Webhooks"],
+        ["Serverless & APIs", "Node.js, Vercel Serverless, REST APIs, Zod Validation, Retry & Deduplication Pipelines, Supabase (PostgreSQL RLS)"],
+        ["Web & Cloud Stack", "Next.js 15/16, React 18/19, TypeScript, Tailwind CSS 4, Cloudflare Turnstile, GitHub Actions, Docker, FFmpeg, ElevenLabs"],
+        ["IT & Security", "ISC2 Security Awareness, HMAC-SHA256, Rate Limiting, AnyDesk/TeamViewer Remote Ops, Multi-Channel Enterprise Support"]
+      ],
+      projects: [
+        {
+          name: "AI Engineering OS & 14-Stage n8n Automation Pipeline",
+          meta: "n8n, Python, Multi-LLM | $0/mo Architecture",
+          bullets: [
+            "Built a 14-stage automated pipeline (n8n + Python + LLM prompts) automating intake, scripting, voice synthesis, video assembly, upload, and analytics — cutting manual work from hours to minutes.",
+            "Designed cost-discipline architecture running at $0/month across Gemini, Supabase, Vercel, and GitHub Actions with built-in QA score rubrics."
+          ]
+        },
+        {
+          name: "AI-Ops Vault & PAIOS (Multi-AI Orchestration System)",
+          meta: "github.com/whodakingofhell/PAIOS | TypeScript, Obsidian, Python",
+          bullets: [
+            "Architected a canonical governance system coordinating 6 AI tools (Claude, Codex, Gemini, OpenCode, Copilot, ZCode) across 13 technical domains.",
+            "Built system-intel-scanner and youtube-transcript-pro (5-layer fallback chain) to feed verified web research into automated workflows."
+          ]
+        },
+        {
+          name: "Sonata — Automated Booking & Webhook Fulfillment Platform",
+          meta: "microsoft-setup-form1.vercel.app | Next.js 15, Zod, Discord, Resend",
+          bullets: [
+            "Engineered an automated intake-to-fulfillment pipeline with Zod validation, deduplication, email rate limiting, 3-attempt Discord webhook retry, Resend emails, and Sentry alerts."
+          ]
+        },
+        {
+          name: "BGround — 0-Credit Browser-Local AI Media Studio",
+          meta: "bground.vercel.app | Next.js, WASM/ONNX, Canvas",
+          bullets: [
+            "Built a browser-local AI background removal studio running WASM/ONNX on-device with zero per-image AI credit fees and automated 1:1, 4:5, and social reel exports."
+          ]
+        }
+      ],
+      experience: [
+        {
+          role: "Customer Service Representative (Technical & Account Operations)",
+          company: "IBEX Global Solutions INC (Walmart US)",
+          dates: "Oct 2025 - Jun 2026",
+          bullets: [
+            "Navigated multiple enterprise backend order, account, and payment systems simultaneously to resolve complex escalations while exceeding AHT, CSAT, and QA targets."
+          ]
+        },
+        {
+          role: "Travel Associate (Process & Workflow Optimization)",
+          company: "IGT Solutions (Atain)",
+          dates: "Mar 2025 - Sep 2025",
+          bullets: [
+            "Troubleshot booking system discrepancies under strict SLAs and partnered with team leads to identify workflow improvements that lowered average handle time."
+          ]
+        }
+      ]
+    },
+
+    ai_prompt: {
+      headline: "Prompt Engineer & AI Systems Operations Specialist",
+      summary: `BSIT graduate and AI systems builder specializing in structured system-prompt engineering, multi-LLM evaluation rubrics, and automated research/media pipelines across Claude, OpenAI GPT, Gemini, Grok, and Perplexity. Creator of the 10-persona AI Engineering OS, Critical Skill Evaluator, and browser-local WASM/ONNX tools aligned to ${job.title}.`,
+      experienceFirst: false,
+      projectsHeading: "AI Systems, Prompt Engineering & Evaluation Projects",
+      skills: [
+        ["AI/ML & Prompt Systems", "Claude, OpenAI GPT, Gemini, Grok, Perplexity, NotebookLM, OpenCode AI, System Prompt Design, Multi-Persona Role Architecture"],
+        ["AI QA & Evaluation", "QA Criticism Frameworks, Feature Score Rubrics, Critical Skill Evaluator, Anti-Slop Copy Auditing, Error-Driven Prompt Iteration"],
+        ["Automation & Media AI", "n8n, Python Scripting, FFmpeg, ElevenLabs, Stable Diffusion/ComfyUI, Browser WASM/ONNX, YouTube Transcript 5-Layer Extraction"],
+        ["Full-Stack & Data", "Next.js 15/16, TypeScript, Node.js, PostgreSQL, Supabase RLS, REST APIs, GitHub Actions, Obsidian Knowledge Engineering"]
+      ],
+      projects: [
+        {
+          name: "AI Engineering OS — 10-Persona Elite Team & QA Rubric",
+          meta: "Open Source | Multi-LLM Prompt Architecture",
+          bullets: [
+            "Architected a 10-persona system-prompt role framework (Architecture, Frontend, Backend, DB, DevOps, AI, Automation, Security, QA) enforcing reproducible quality gates.",
+            "Built a QA Criticism Framework and 14-stage n8n + Python content automation workflow operating on $0/month free-tier infrastructure."
+          ]
+        },
+        {
+          name: "Critical Skill Evaluator & System Intel Scanner",
+          meta: "github.com/whodakingofhell/critical-skill-evaluator | Python",
+          bullets: [
+            "Built automated skill auditing against real failure logs alongside a unified Python scanner pulling clean context from GitHub, StackOverflow, and YouTube (5-layer fallback)."
+          ]
+        },
+        {
+          name: "BGround — Browser-Local AI Cutout & Reel Studio",
+          meta: "bground.vercel.app | WASM/ONNX, Next.js, Canvas",
+          bullets: [
+            "Shipped an on-device AI image segmentation web app eliminating recurring cloud inference fees while outputting studio-grade marketplace assets."
+          ]
+        },
+        {
+          name: "AI-Ops Vault & PAIOS Knowledge Governance",
+          meta: "github.com/whodakingofhell/PAIOS | TypeScript, Obsidian",
+          bullets: [
+            "Created a 13-domain canonical knowledge vault coordinating 6 AI coding assistants through structured inbox-to-canonical verification workflows."
+          ]
+        }
+      ],
+      experience: [
+        {
+          role: "Customer Service Representative (Multi-Channel Escalations)",
+          company: "IBEX Global Solutions INC (Walmart US)",
+          dates: "Oct 2025 - Jun 2026",
+          bullets: [
+            "Communicated clear technical resolutions across phone, chat, and email while maintaining top QA accuracy and customer satisfaction scores."
+          ]
+        },
+        {
+          role: "Travel Associate (High-Volume SLA Operations)",
+          company: "IGT Solutions (Atain)",
+          dates: "Mar 2025 - Sep 2025",
+          bullets: [
+            "Diagnosed recurring system and booking discrepancies in fast-paced queues and documented repeatable fixes to speed up team handle time."
+          ]
+        }
+      ]
+    },
+
+    it_support: {
+      headline: "IT Support & Technical Support Specialist (BSIT • ISC2 Certified)",
+      summary: `Bachelor of Science in Information Technology graduate and ISC2 Security Awareness certified specialist combining verified multi-channel enterprise support at Walmart US (IBEX Global) and IGT Solutions with 5+ years of programming, SQL/database debugging, Windows/Office activation workflows, and remote PC support (AnyDesk/TeamViewer) aligned to ${job.title}.`,
+      experienceFirst: true,
+      projectsHeading: "IT Support, Remote Operations & Troubleshooting Systems",
+      skills: [
+        ["IT & Technical Support", "Tier 1/2 Troubleshooting, Phone/Live Chat/Email Escalations, AnyDesk, TeamViewer, Windows & Office Activation, CRM, SLA/CSAT/AHT/FCR"],
+        ["Systems, OS & Scripting", "Python Scripting, PowerShell (Restore Points & Snapshots), Windows Administration, Git, XAMPP, Sentry Error Monitoring, Postman"],
+        ["Databases & Web Debugging", "SQL, PostgreSQL, Supabase (RLS), MySQL 8.0, SQL Server Management Studio, REST API Diagnostics, Browser DevTools"],
+        ["Cybersecurity (ISC2)", "Security Awareness Training (ISC2), Access Control (RBAC), Rate Limiting, Brute-Force Lockout, CSP/HSTS, Input Sanitization"]
+      ],
+      projects: [
+        {
+          name: "AI Appointment Assistant — Remote PC Support Booking API",
+          meta: "appointment-backend-one.vercel.app | Node.js, Supabase RLS",
+          bullets: [
+            "Built a serverless remote PC support booking backend for 5-20 minute AnyDesk and TeamViewer troubleshooting sessions with Philippine timezone resolution.",
+            "Implemented Supabase Row-Level Security, audit logging, 5 bookings/IP/hr spam protection, and real-time Discord technician alerts."
+          ]
+        },
+        {
+          name: "Sonata — Microsoft Windows & Office Setup Form (LicenseDesk)",
+          meta: "microsoft-setup-form1.vercel.app | Next.js 15, Zod, Sentry",
+          bullets: [
+            "Built a production intake portal for Microsoft account lifecycle, Windows activation, and Office activation requests with deduplication, Resend confirmations, and Sentry error tracking."
+          ]
+        },
+        {
+          name: "Hermes Restore Point & System Intel Scanner",
+          meta: "github.com/whodakingofhell/hermes-restore-point | PowerShell, Python",
+          bullets: [
+            "Created automated PowerShell restore-point utilities for safe local environment rollbacks plus Python diagnostics scripts."
+          ]
+        }
+      ],
+      experience: [
+        {
+          role: "Customer Service Representative (Technical & Account Support)",
+          company: "IBEX Global Solutions INC (Walmart US)",
+          dates: "Oct 2025 - Jun 2026",
+          bullets: [
+            "Delivered frontline technical and account support for Walmart US customers across phone, live chat, and email channels.",
+            "Navigated multiple enterprise backend order, account, and payment systems simultaneously to resolve complex escalations with high first-call resolution.",
+            "Consistently met or exceeded daily AHT, CSAT, and quality assurance scorecards."
+          ]
+        },
+        {
+          role: "Travel Associate (Systems Troubleshooting & Escalation)",
+          company: "IGT Solutions (Atain)",
+          dates: "Mar 2025 - Sep 2025",
+          bullets: [
+            "Managed domestic and international booking operations, modifications, and cancellations under strict SLA deadlines.",
+            "Troubleshot booking system errors directly with airline and hotel partners and collaborated with team leads to lower average handle time."
+          ]
+        }
+      ]
+    },
+
+    fullstack: {
+      headline: "Full-Stack Web Developer (Next.js / React / TypeScript / PostgreSQL)",
+      summary: `BSIT Full-Stack Developer with 5+ years of programming experience shipping production Next.js 15/16, React 18/19, TypeScript, Prisma, PostgreSQL, and Supabase applications. Delivered 11-layer secured multi-role SaaS platforms, browser-local WASM/ONNX media apps, and Playwright E2E-tested deployments aligned to ${job.title} (${topKw}).`,
+      experienceFirst: false,
+      projectsHeading: "Shipped Production Web Applications",
+      skills: [
+        ["Frontend Engineering", "Next.js 15/16 (App Router), React 18/19, TypeScript 5.4, Tailwind CSS 4, Radix UI, Framer Motion, HTML5/CSS3, Responsive SVG"],
+        ["Backend & Databases", "Node.js, Vercel Serverless, Prisma ORM 5.22, PostgreSQL 16, Supabase (RLS), MySQL 8.0, REST APIs, Zod Schema Validation"],
+        ["Security & Testing", "11-Layer Defense (CSRF, RBAC, JWT, BCrypt, HMAC-SHA256, Turnstile, CSP/HSTS), Playwright E2E, Sentry Monitoring, JUnit 5"],
+        ["AI & Cloud DevOps", "Vercel, Cloudflare, Railway, GitHub Actions, Docker, WASM/ONNX, n8n, Python, OpenAI/Claude/Gemini APIs"]
+      ],
+      projects: [
+        {
+          name: "Philippine Skyland — Real Estate Broker & Appraiser SaaS",
+          meta: "philippine-skyland.vercel.app | Next.js 16, Prisma, PostgreSQL 16",
+          bullets: [
+            "Architected a full-stack SaaS platform with 13 Prisma models, 14+ authenticated endpoints, 4-role RBAC (5-attempt lockout), and EN/FIL/ZH localization.",
+            "Implemented an 11-layer security stack (Zod, CSRF, rate limiting, bcrypt, JWT, HMAC API signing, Turnstile, audit logs) verified with Playwright E2E tests."
+          ]
+        },
+        {
+          name: "BGround — 0-Credit Browser-Local Background Studio",
+          meta: "bground.vercel.app | Next.js, TypeScript, WASM/ONNX, Canvas",
+          bullets: [
+            "Built an on-device AI photo background remover with realistic contact shadows, editorial color grading, and 1:1 / 4:5 / 1-30s social reel exports under strict CSP."
+          ]
+        },
+        {
+          name: "Sonata — Microsoft Setup Form (LicenseDesk)",
+          meta: "microsoft-setup-form1.vercel.app | Next.js 15, React 19, Tailwind 4",
+          bullets: [
+            "Shipped a validated booking platform with deduplication, rate limiting, 3-attempt Discord webhook retry, Resend emails, Turnstile, and Sentry."
+          ]
+        },
+        {
+          name: "AI Appointment Assistant — Serverless API",
+          meta: "appointment-backend-one.vercel.app | Node.js, Supabase RLS",
+          bullets: [
+            "Deployed 3 independently testable Vercel serverless functions with Supabase RLS, CORS restrictions, and 5 bookings/IP/hr rate limiting."
+          ]
+        }
+      ],
+      experience: [
+        {
+          role: "Customer Service Representative (Enterprise Support)",
+          company: "IBEX Global Solutions INC (Walmart US)",
+          dates: "Oct 2025 - Jun 2026",
+          bullets: [
+            "Resolved complex multi-system customer and payment escalations across phone, chat, and email with strong communication and high FCR."
+          ]
+        },
+        {
+          role: "Travel Associate",
+          company: "IGT Solutions (Atain)",
+          dates: "Mar 2025 - Sep 2025",
+          bullets: [
+            "Debugged booking system discrepancies in high-volume queues and contributed workflow fixes that reduced average handle time."
+          ]
+        }
+      ]
+    },
+
+    java_backend: {
+      headline: "Backend & Java Software Engineer (Java 17 / SQL / Node.js)",
+      summary: `BSIT Software Engineer with 4+ years of Java development and 5+ years of SQL/backend architecture. Built a 47-file, 10,400+ LOC Java 17 + MySQL 8.0 enterprise POS with SELECT FOR UPDATE row locking, HikariCP pooling, and 100+ JUnit 5/Mockito tests alongside PostgreSQL 16 and serverless APIs aligned to ${job.title}.`,
+      experienceFirst: false,
+      projectsHeading: "Backend, Java 17 & Relational Database Systems",
+      skills: [
+        ["Backend & Languages", "Java 17 (4 years), SQL, Python, TypeScript, Node.js, C, Jakarta EE 11, REST APIs, Vercel Serverless, Swing + FlatLaf"],
+        ["Relational Databases", "MySQL 8.0, PostgreSQL 16, Supabase (RLS), Prisma ORM, HikariCP Connection Pooling, JDBC, H2 In-Memory DB, SSMS"],
+        ["Security & Concurrency", "SELECT FOR UPDATE Row Locking, Deadlock Retry w/ Exponential Backoff, PreparedStatement SQLi Defense, BCrypt (12 rounds), HMAC-SHA256"],
+        ["Testing & Build Tools", "JUnit 5, Mockito, H2 Integration Tests (100+ tests), Gradle 8.14, Shadow Fat JAR, Logback, Docker, GitHub Actions, Postman"]
+      ],
+      projects: [
+        {
+          name: "SMC Inventory System — Enterprise POS & Warehouse Core",
+          meta: "Java 17, MySQL 8.0, HikariCP | 47 Files, 10,400+ LOC",
+          bullets: [
+            "Architected a layered Model-Service-Repository-UI POS system with a 10-table normalized MySQL 8.0 schema, foreign keys, indexes, and HikariCP pooling.",
+            "Implemented BCrypt (12 rounds), PreparedStatement SQLi defense, transaction-wrapped sales with SELECT FOR UPDATE row locking, and deadlock retry.",
+            "Delivered 100+ automated tests (JUnit 5 + Mockito + H2) across all layers and packaged an executable fat JAR via Gradle Shadow."
+          ]
+        },
+        {
+          name: "Philippine Skyland — PostgreSQL 16 & RBAC API Backend",
+          meta: "philippine-skyland.vercel.app | Prisma ORM, PostgreSQL 16, NextAuth",
+          bullets: [
+            "Built 13 Prisma models and 14+ authenticated endpoints with 4-role RBAC, 5-attempt lockout, HMAC API signing, and persistent audit logs."
+          ]
+        },
+        {
+          name: "AI Appointment Assistant — Hardened Serverless API",
+          meta: "appointment-backend-one.vercel.app | Node.js, Supabase RLS",
+          bullets: [
+            "Engineered 3 curl-testable serverless endpoints enforcing Supabase RLS, IP rate limiting (5 req/hr), input sanitization, and structured webhook dispatch."
+          ]
+        }
+      ],
+      experience: [
+        {
+          role: "Customer Service Representative",
+          company: "IBEX Global Solutions INC (Walmart US)",
+          dates: "Oct 2025 - Jun 2026",
+          bullets: [
+            "Troubleshot multi-system enterprise order, account, and payment backend discrepancies while maintaining top CSAT and QA performance."
+          ]
+        },
+        {
+          role: "Travel Associate",
+          company: "IGT Solutions (Atain)",
+          dates: "Mar 2025 - Sep 2025",
+          bullets: [
+            "Resolved partner booking system errors under strict SLAs and identified process improvements reducing handle time."
+          ]
+        }
+      ]
+    }
+  };
+
+  const cfg = TRACK_CONFIG[variantId] || TRACK_CONFIG.ai_automation;
+  const dynamicSkills = [
+    [`Matched to ${job.title.slice(0, 32)}`, topKw],
+    ...cfg.skills
+  ];
+
+  return {
+    trackId: variantId,
+    fullName: MARK_PROFILE.fullName,
+    contactLine: `${MARK_PROFILE.location} | ${MARK_PROFILE.email} | ${MARK_PROFILE.phone} | ${MARK_PROFILE.github}`,
+    targetLine: `${cfg.headline} — Target: ${job.title} (${companyLabel})`,
+    jobTitle: job.title,
+    company: companyLabel,
+    summary: cfg.summary,
+    skills: dynamicSkills,
+    experienceFirst: cfg.experienceFirst,
+    projectsHeading: cfg.projectsHeading,
+    projects: cfg.projects,
+    experience: cfg.experience,
+    education: MARK_PROFILE.education,
+    certifications: MARK_PROFILE.certifications
+  };
 }
 
 function updateApplicationKit() {
@@ -1560,7 +2006,7 @@ function updateApplicationKit() {
   const keywords = extractJobKeywords(`${job.title} ${job.description} ${(job.tags || []).join(" ")}`);
 
   document.getElementById("selected-job-title").textContent = `${job.title} — ${job.company}`;
-  document.getElementById("selected-job-meta").textContent = `${job.location} • ${job.type} • ${job.salary || "Listed on post"}`;
+  document.getElementById("selected-job-meta").textContent = `${job.location} • ${job.type} • ${job.salary || "Remote USD / PHP"}`;
   document.getElementById("selected-job-status").textContent = job.safetyBadge || "Legit Verified";
   document.getElementById("matched-keywords-row").innerHTML = keywords
     .map((k) => `<span class="px-2.5 py-1 rounded-full bg-[#e6f4ea] text-[#137333] text-[11px] font-medium">✓ ${escapeHtml(k)}</span>`)
@@ -1577,22 +2023,13 @@ function renderTailoredResume(job, keywords) {
   const variant = RESUME_VARIANTS[STATE.resumeVariant % RESUME_VARIANTS.length];
   document.getElementById("resume-variant-label").textContent = variant.label;
 
-  const projects = rankProjectsForJob(job, variant.id).slice(0, variant.id === "executive" ? 3 : 4);
-  const topKw = keywords.slice(0, 5).join(", ");
-  const expFirst = variant.id === "tech_support" || variant.id === "ops";
-
-  const summaryMap = {
-    tech_support: `IT graduate (BSIT) and Technical Support Representative with proven multi-channel experience supporting Walmart US customers (IBEX Global) and international travel bookings (IGT Solutions). Combines high CSAT/AHT/FCR performance with hands-on SQL, remote PC troubleshooting (AnyDesk/TeamViewer), and web debugging aligned to ${job.title} at ${job.company}.`,
-    impact: `BSIT Full-Stack Developer with 5+ years of programming experience shipping production Next.js, TypeScript, Python, PostgreSQL, and Java 17 apps (BGround, Philippine Skyland, Sonata, SMC Inventory) aligned to ${job.title} (${topKw}).`,
-    automation: `AI Automation Engineer and Full-Stack Builder specializing in n8n, Python, browser-local WASM/ONNX (BGround), and zero-cost serverless pipelines. Built a 14-stage automation system alongside 11-layer secured web platforms matching ${topKw}.`,
-    ops: `Remote Technical Virtual Assistant and Operations Specialist combining enterprise phone/chat/email support (Walmart/IBEX, IGT Solutions) with software troubleshooting and AI workflow automation across ${topKw}.`,
-    executive: `BSIT Engineer & Support Specialist targeting ${job.title} (${job.company}). Core alignment: ${topKw}. Track record across 6+ production systems and high-CSAT operations at Walmart (IBEX Global) and IGT Solutions.`
-  };
+  const model = buildTailoredResumeModel(job, keywords, variant.id);
+  STATE.lastResumeModel = model;
 
   const expHtml = `
     <div class="ats-section-title">Professional Experience</div>
     <div class="space-y-2.5">
-      ${MARK_PROFILE.experience.map((e) => `
+      ${model.experience.map((e) => `
         <div>
           <div class="flex flex-wrap justify-between font-bold"><span>${escapeHtml(e.role)} — ${escapeHtml(e.company)}</span><span class="font-normal text-[11px] text-[#5a5f69]">${escapeHtml(e.dates)}</span></div>
           <ul class="list-disc pl-4 mt-1 space-y-0.5 text-[12px]">${e.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul>
@@ -1600,30 +2037,30 @@ function renderTailoredResume(job, keywords) {
     </div>`;
 
   const projHtml = `
-    <div class="ats-section-title">Selected Production Projects (Aligned to ${escapeHtml(job.title)})</div>
+    <div class="ats-section-title">${escapeHtml(model.projectsHeading)}</div>
     <div class="space-y-2.5">
-      ${projects.map((p) => `
+      ${model.projects.map((p) => `
         <div>
           <div class="flex flex-wrap justify-between font-bold"><span>${escapeHtml(p.name)}</span><span class="font-normal text-[11px] text-[#5a5f69]">${escapeHtml(p.meta)}</span></div>
-          <ul class="list-disc pl-4 mt-1 space-y-0.5 text-[12px]">${p.bullets.slice(0, variant.id === "executive" ? 2 : 3).map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul>
+          <ul class="list-disc pl-4 mt-1 space-y-0.5 text-[12px]">${p.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul>
         </div>`).join("")}
     </div>`;
 
   root.innerHTML = `
     <div class="text-center border-b border-[#d5d9e0] pb-3">
-      <h1 class="font-display font-bold text-xl">${escapeHtml(MARK_PROFILE.fullName)}</h1>
-      <p class="text-[11px] text-[#5a5f69] mt-1">${escapeHtml(MARK_PROFILE.location)} | ${escapeHtml(MARK_PROFILE.email)} | ${escapeHtml(MARK_PROFILE.phone)} | ${escapeHtml(MARK_PROFILE.github)}</p>
-      <p class="text-xs font-semibold mt-1">Target Role: ${escapeHtml(job.title)} (${escapeHtml(job.company)})</p>
+      <h1 class="font-display font-bold text-xl">${escapeHtml(model.fullName)}</h1>
+      <p class="text-[11px] text-[#5a5f69] mt-1">${escapeHtml(model.contactLine)}</p>
+      <p class="text-xs font-semibold text-[#1a73e8] mt-1">${escapeHtml(model.targetLine)}</p>
     </div>
     <div class="ats-section-title">Professional Summary</div>
-    <p class="text-[12px]">${escapeHtml(summaryMap[variant.id] || summaryMap.tech_support)}</p>
-    <div class="ats-section-title">Core Capabilities</div>
-    <div class="space-y-1 text-[12px]">${Object.entries(MARK_PROFILE.skillGroups).map(([k, v]) => `<div><strong>${escapeHtml(k)}:</strong> ${escapeHtml(v)}</div>`).join("")}</div>
-    ${expFirst ? expHtml + projHtml : projHtml + expHtml}
+    <p class="text-[12px]">${escapeHtml(model.summary)}</p>
+    <div class="ats-section-title">Core Skills &amp; Tools</div>
+    <div class="space-y-1 text-[12px]">${model.skills.map(([k, v]) => `<div><strong>${escapeHtml(k)}:</strong> ${escapeHtml(v)}</div>`).join("")}</div>
+    ${model.experienceFirst ? expHtml + projHtml : projHtml + expHtml}
     <div class="ats-section-title">Education &amp; Certifications</div>
     <div class="text-[12px] space-y-0.5">
-      <div><strong>${escapeHtml(MARK_PROFILE.education.degree)}</strong> — ${escapeHtml(MARK_PROFILE.education.school)} (${escapeHtml(MARK_PROFILE.education.dates)})</div>
-      ${MARK_PROFILE.certifications.map((c) => `<div>• ${escapeHtml(c)}</div>`).join("")}
+      <div><strong>${escapeHtml(model.education.degree)}</strong> — ${escapeHtml(model.education.school)} (${escapeHtml(model.education.dates)})</div>
+      ${model.certifications.map((c) => `<div>• ${escapeHtml(c)}</div>`).join("")}
     </div>`;
 
   const slopHits = auditTextForAiSlop(root.innerText);
@@ -1634,68 +2071,88 @@ function renderTailoredResume(job, keywords) {
 function renderTailoredCoverLetter(job, keywords) {
   const out = document.getElementById("cover-letter-output");
   if (!out) return;
-  const variant = COVER_VARIANTS[STATE.coverVariant % COVER_VARIANTS.length];
-  document.getElementById("cover-variant-label").textContent = variant.label;
+  const coverStyle = COVER_VARIANTS[STATE.coverVariant % COVER_VARIANTS.length];
+  const track = RESUME_VARIANTS[STATE.resumeVariant % RESUME_VARIANTS.length];
+  document.getElementById("cover-variant-label").textContent = coverStyle.label;
   const topKw = keywords.slice(0, 4).join(", ");
-  const topProj = rankProjectsForJob(job, "impact")[0];
+  const model = STATE.lastResumeModel || buildTailoredResumeModel(job, keywords, track.id);
+  const leadProj = model.projects[0];
+  const secondProj = model.projects[1] || model.projects[0];
+
+  const trackProof = {
+    ai_automation: `I build reliable AI workflows using n8n, Python, webhooks, and Claude/GPT/Gemini APIs. Most recently, I built a 14-stage n8n + Python automation pipeline operating at $0/month free-tier cost, PAIOS (multi-AI orchestration), and Sonata (automated booking with 3-attempt Discord webhook retry and Resend emails).`,
+    ai_prompt: `I specialize in structured system-prompt engineering, multi-LLM evaluation rubrics, and AI operations across Claude, OpenAI GPT, Gemini, and Grok. I built the 10-persona AI Engineering OS, Critical Skill Evaluator, and BGround (a 0-credit browser-local WASM/ONNX AI studio).`,
+    it_support: `I combine a BS in Information Technology and ISC2 Security Awareness certification with verified frontline enterprise support at Walmart US (IBEX Global) and IGT Solutions. Beyond phone/chat/email escalations and exceeding CSAT/AHT targets, I built a remote AnyDesk/TeamViewer booking API and Microsoft Windows/Office setup portal.`,
+    fullstack: `I ship production Next.js 15/16, React 18/19, TypeScript, Prisma, and PostgreSQL/Supabase web applications. My live deployments include Philippine Skyland (13 Prisma models, 11-layer security, Playwright E2E), BGround (bground.vercel.app), and Sonata (microsoft-setup-form1.vercel.app).`,
+    java_backend: `I bring 4+ years of Java and relational database engineering. I built SMC Inventory System — a 47-file, 10,400+ LOC Java 17 + MySQL 8.0 POS featuring SELECT FOR UPDATE row locking, HikariCP pooling, BCrypt (12 rounds), and 100+ JUnit 5/Mockito tests — alongside PostgreSQL 16 and Node.js APIs.`
+  }[track.id] || "";
 
   const drafts = {
-    direct: `Subject: ${job.title} — Mark Chester R. Santos
+    role_matched: `Subject: Application for ${job.title} — Mark Chester R. Santos
 
-Hi ${job.company} Hiring Team,
+Hi ${model.company} Hiring Team,
 
-I saw your open role for ${job.title} (${job.location}). My experience aligns directly with ${topKw}:
+I am applying for ${job.title} (${job.location}). My verified work aligns directly with ${topKw}:
 
-• Enterprise Support Execution: Resolved technical, account, and payment escalations for Walmart US customers (IBEX Global) and international travel clients (IGT Solutions) across phone, live chat, and email while exceeding CSAT and AHT targets.
-• Production Engineering: Built and deployed ${topProj.name} (${topProj.meta}) plus BGround (bground.vercel.app), Philippine Skyland, and a 14-stage n8n + Python automation suite.
+- Core Proof (${track.label.split("—")[1]?.trim() || job.title}): ${trackProof}
+- Shipped System Highlights: ${leadProj.name} (${leadProj.meta}) and ${secondProj.name} (${secondProj.meta}).
+- Reliable Remote Execution: Proven enterprise communication and SLA discipline at IBEX Global (Walmart US) and IGT Solutions, based in Muntinlupa, Philippines (UTC+8) and available immediately for full-time remote US/AU/UK/PH shifts.
 
-Live demos and code: ${MARK_PROFILE.portfolioUrl} | https://${MARK_PROFILE.github}
-Based in ${MARK_PROFILE.location} and ready for local or US/UK/AU shift schedules.
+Live portfolio & demos: ${MARK_PROFILE.portfolioUrl}
+GitHub (12 public repos): https://${MARK_PROFILE.github}
 
-Are you available for a 15-minute interview this week?
+My tailored ATS resume is attached. Would you be open to a quick 15-minute intro call this week?
 
 Best regards,
 Mark Chester R. Santos
 ${MARK_PROFILE.email} | ${MARK_PROFILE.phone}`,
 
-    support: `Subject: Technical Support Representative Application — Mark Chester R. Santos
+    direct_remote: `Hi ${model.company} team,
 
-Hello ${job.company} Hiring Team,
+Saw your remote opening for ${job.title} and wanted to apply directly.
 
-I am applying for ${job.title}. Unlike agents who only read scripts, I combine verified high-volume support experience with a BS in Information Technology and 5+ years of programming.
+${trackProof}
 
-At IBEX Global (Walmart US account) and IGT Solutions, I handled live phone, chat, and email escalations across multiple backend systems while maintaining high first-call resolution, CSAT, and QA scores. On the technical side, I built remote PC support scheduling APIs (AnyDesk/TeamViewer), SQL/PostgreSQL databases, and live web apps — meaning I can diagnose root causes quickly and communicate clear fixes to non-technical customers.
+You can test my live apps and inspect my code right away:
+- Live Portfolio: ${MARK_PROFILE.portfolioUrl}
+- GitHub: https://${MARK_PROFILE.github}
+- Key Live App: ${leadProj.name} (${leadProj.meta})
 
-Portfolio: ${MARK_PROFILE.portfolioUrl}
+I am based in the Philippines (UTC+8), fully equipped for remote work (reliable fiber + backup), comfortable with $600-$700+/month remote compensation depending on scope, and ready to start immediately.
 
-Sincerely,
+Happy to walk through any workflow or repo on a quick call.
+
+Best,
 Mark Chester R. Santos
 ${MARK_PROFILE.email} | ${MARK_PROFILE.phone}`,
 
-    dm: `Hi ${job.company} team — saw your opening for ${job.title}.
+    concise_dm: `Hi ${model.company} team — applying for ${job.title}.
 
-I bring enterprise phone/chat/email support from Walmart (IBEX Global) and IGT Solutions plus a BSIT degree and 5+ years building Next.js, Python, SQL, and AI automation tools (${topKw}).
+BSIT graduate with 5+ years coding across ${topKw}. ${trackProof.split(".")[0]}.
 
 Portfolio & live demos: ${MARK_PROFILE.portfolioUrl}
 GitHub: https://${MARK_PROFILE.github}
 
-Happy to hop on a quick 10-minute intro call this week.
+Available immediately for remote shifts (UTC+8 / US / AU / UK). Happy to jump on a 10-minute intro call this week!
 — Mark Chester Santos (${MARK_PROFILE.email})`,
 
-    formal: `To: Hiring Manager, ${job.company}
+    formal_portal: `To: Hiring Manager, ${model.company}
 Position: ${job.title}
 
 Dear Hiring Manager,
 
-Please accept my application for ${job.title}. I hold a Bachelor of Science in Information Technology from South Mansfield College, ISC2 Security Awareness certification, and proven operations experience at IBEX Global Solutions (Walmart) and IGT Solutions.
+Please accept my application for ${job.title}. I hold a Bachelor of Science in Information Technology from South Mansfield College, certifications in Python Programming (Wesleyan University) and Security Awareness Training (ISC2), and verified enterprise operations experience at IBEX Global Solutions (Walmart US) and IGT Solutions.
 
-My verified work spans ${topKw}, including BGround (bground.vercel.app), Philippine Skyland (philippine-skyland.vercel.app), Sonata (microsoft-setup-form1.vercel.app), and SMC Inventory System (Java 17, 10,400+ LOC). My tailored ATS resume is attached for your review.
+${trackProof}
+
+My tailored resume is attached for your review, and live interactive demonstrations of my systems are available at ${MARK_PROFILE.portfolioUrl}. I welcome the opportunity to discuss how I can contribute remotely to your team.
 
 Respectfully,
 Mark Chester R. Santos
 ${MARK_PROFILE.location} | ${MARK_PROFILE.email} | ${MARK_PROFILE.phone}`
   };
-  out.value = drafts[variant.id] || drafts.direct;
+
+  out.value = drafts[coverStyle.id] || drafts.role_matched;
 }
 
 function renderRequirementsAndAnswers(job, keywords) {
@@ -1705,11 +2162,12 @@ function renderRequirementsAndAnswers(job, keywords) {
   const variant = REQS_VARIANTS[STATE.reqsVariant % REQS_VARIANTS.length];
   document.getElementById("reqs-variant-label").textContent = variant.label;
 
-  // Quick-Apply Auto-Fill Field Packet (Click to copy into any job portal!)
+  const minSal = Number(document.getElementById("job-salary-filter")?.value || 600);
   const fields = [
     { k: "Full Name", v: MARK_PROFILE.fullName },
     { k: "Email / Phone", v: `${MARK_PROFILE.email} | ${MARK_PROFILE.phone}` },
-    { k: "Location / Shift", v: `${MARK_PROFILE.location} (UTC+8 — Local PH & US/UK/AU Shift Ready)` },
+    { k: "Expected Remote Salary", v: `$${Math.max(600, minSal)}–$${Math.max(700, minSal + 300)}/month USD (Negotiable based on role scope)` },
+    { k: "Location & Shift", v: `${MARK_PROFILE.location} (UTC+8 — Remote Full-Time, US/AU/UK/PH Shift Ready)` },
     { k: "Portfolio & GitHub", v: `${MARK_PROFILE.portfolioUrl} | https://${MARK_PROFILE.github}` },
     { k: "Matched JD Skills", v: keywords.join(", ") }
   ];
@@ -1721,9 +2179,9 @@ function renderRequirementsAndAnswers(job, keywords) {
     </div>`).join("");
 
   const answers = [
-    { q: `Why are you suited for ${job.title}?`, a: `I pair verified enterprise support performance at Walmart (IBEX Global) and IGT Solutions with hands-on software engineering across ${keywords.slice(0, 4).join(", ")}.` },
-    { q: "How do you handle difficult technical tickets or bugs?", a: "I reproduce the exact error, isolate whether it is client-side, auth/RLS, or backend data, resolve the issue calmly with clear customer updates, and document the root cause." },
-    { q: "Are you available immediately for local or remote shifts?", a: "Yes — based in Muntinlupa, Metro Manila (UTC+8) and available immediately for Philippine, US, UK, or Australian schedules." }
+    { q: `Why are you a strong match for ${job.title}?`, a: `I combine a BSIT degree and 5+ years building live AI automation (n8n, Python, multi-LLM pipelines) and full-stack Next.js/SQL apps with proven enterprise technical support at Walmart (IBEX Global) and IGT Solutions across ${keywords.slice(0, 4).join(", ")}.` },
+    { q: "What is your monthly salary expectation for remote work?", a: `I am targeting $${Math.max(600, minSal)}–$${Math.max(700, minSal + 300)} USD/month for full-time remote work, open to discussing based on role responsibilities and growth.` },
+    { q: "Can you share examples of AI automations or IT projects you built?", a: `Yes — you can test my live apps at ${MARK_PROFILE.portfolioUrl} (including BGround, Philippine Skyland, Sonata webhook pipeline, and my 14-stage n8n + Python AI Engineering OS on github.com/whodakingofhell).` }
   ];
 
   ansEl.innerHTML = answers.map((a, idx) => `
@@ -1745,29 +2203,80 @@ function switchStudioTab(tab) {
 function cycleResumeOption() { STATE.resumeVariant = (STATE.resumeVariant + 1) % RESUME_VARIANTS.length; updateApplicationKit(); showToast(RESUME_VARIANTS[STATE.resumeVariant].label); }
 function cycleCoverOption() { STATE.coverVariant = (STATE.coverVariant + 1) % COVER_VARIANTS.length; updateApplicationKit(); showToast(COVER_VARIANTS[STATE.coverVariant].label); }
 function cycleReqsOption() { STATE.reqsVariant = (STATE.reqsVariant + 1) % REQS_VARIANTS.length; updateApplicationKit(); showToast(REQS_VARIANTS[STATE.reqsVariant].label); }
-function printGeneratedResume() { switchStudioTab("resume"); setTimeout(() => window.print(), 100); }
-function copyGeneratedResume() { const e = document.getElementById("printable-resume-root"); if (e) copyText(e.innerText, "Copied 10/10 ATS Resume"); }
+
+function triggerBlobDownload(bytesOrBlob, filename, mimeType) {
+  const blob = bytesOrBlob instanceof Blob ? bytesOrBlob : new Blob([bytesOrBlob], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+
+function getSafeFileSlug(str) {
+  return String(str || "Tailored").replace(/[^a-z0-9]+/gi, "_").replace(/^_|_$/g, "").slice(0, 28) || "Tailored";
+}
+
+function downloadResumePdf() {
+  if (!STATE.lastResumeModel || typeof window.AtsPdfExporter === "undefined") {
+    showToast("Select a job first to generate your PDF resume");
+    return;
+  }
+  const { bytes, pageCount } = window.AtsPdfExporter.buildResumePdf(STATE.lastResumeModel);
+  const roleSlug = getSafeFileSlug(STATE.lastResumeModel.trackId);
+  const compSlug = getSafeFileSlug(STATE.lastResumeModel.company);
+  const filename = `Mark_Chester_Santos_Resume_${roleSlug}_${compSlug}.pdf`;
+  triggerBlobDownload(bytes, filename, "application/pdf");
+  showToast(`Downloaded clean ${pageCount}-page ATS PDF (${filename})`);
+}
+
+function downloadCoverLetterPdf() {
+  if (!STATE.lastResumeModel || typeof window.AtsPdfExporter === "undefined") {
+    showToast("Select a job first to generate your cover letter PDF");
+    return;
+  }
+  const cover = document.getElementById("cover-letter-output")?.value || "";
+  const { bytes, pageCount } = window.AtsPdfExporter.buildCoverLetterPdf(STATE.lastResumeModel, cover);
+  const compSlug = getSafeFileSlug(STATE.lastResumeModel.company);
+  const filename = `Mark_Chester_Santos_CoverLetter_${compSlug}.pdf`;
+  triggerBlobDownload(bytes, filename, "application/pdf");
+  showToast(`Downloaded ${pageCount}-page Cover Letter PDF`);
+}
+
+function downloadFullKitPdf() {
+  if (!STATE.lastResumeModel || typeof window.AtsPdfExporter === "undefined") {
+    showToast("Select a job first to generate your application kit");
+    return;
+  }
+  const cover = document.getElementById("cover-letter-output")?.value || "";
+  const { bytes, pageCount } = window.AtsPdfExporter.buildFullApplicationKitPdf(STATE.lastResumeModel, cover);
+  const roleSlug = getSafeFileSlug(STATE.lastResumeModel.trackId);
+  const compSlug = getSafeFileSlug(STATE.lastResumeModel.company);
+  const filename = `Mark_Chester_Santos_FullKit_${roleSlug}_${compSlug}.pdf`;
+  triggerBlobDownload(bytes, filename, "application/pdf");
+  showToast(`Downloaded ${pageCount}-page Resume + Cover Letter PDF`);
+}
+
+function copyGeneratedResume() { const e = document.getElementById("printable-resume-root"); if (e) copyText(e.innerText, "Copied tailored ATS Resume"); }
 function downloadResumeDoc() {
   const el = document.getElementById("printable-resume-root");
   if (!el) return;
-  const slug = (STATE.selectedJob?.company || "Tailored").replace(/[^a-z0-9]+/gi, "_").slice(0, 24);
-  const doc = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{font-family:Arial,sans-serif;font-size:11pt;color:#111;line-height:1.45;max-width:780px;margin:24px auto;}h1{font-size:16pt;margin:0;}.ats-section-title{font-weight:bold;text-transform:uppercase;border-bottom:1px solid #ccc;margin-top:12px;margin-bottom:6px;font-size:10pt;}ul{margin:4px 0 8px 18px;}</style></head><body>${el.innerHTML}</body></html>`;
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob([doc], { type: "application/msword" }));
-  a.download = `Mark_Chester_Santos_Resume_${slug}.doc`;
-  a.click();
-  URL.revokeObjectURL(a.href);
+  const roleSlug = getSafeFileSlug(STATE.lastResumeModel?.trackId || "Tailored");
+  const compSlug = getSafeFileSlug(STATE.selectedJob?.company || "Role");
+  const doc = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{font-family:Arial,sans-serif;font-size:10.5pt;color:#111;line-height:1.45;max-width:740px;margin:20px auto;}h1{font-size:15pt;margin:0;}.ats-section-title{font-weight:bold;text-transform:uppercase;border-bottom:1px solid #ccc;margin-top:12px;margin-bottom:6px;font-size:9.5pt;}ul{margin:4px 0 8px 18px;}</style></head><body>${el.innerHTML}</body></html>`;
+  triggerBlobDownload(doc, `Mark_Chester_Santos_Resume_${roleSlug}_${compSlug}.doc`, "application/msword");
   showToast("Downloaded Word (.doc) resume");
 }
-function copyCoverLetter() { const e = document.getElementById("cover-letter-output"); if (e) copyText(e.value, "Copied cover letter"); }
+function copyCoverLetter() { const e = document.getElementById("cover-letter-output"); if (e) copyText(e.value, "Copied tailored cover letter"); }
 function downloadCoverLetter() {
   const e = document.getElementById("cover-letter-output");
   if (!e) return;
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob([e.value], { type: "text/plain;charset=utf-8" }));
-  a.download = "Mark_Chester_Santos_CoverLetter.txt";
-  a.click();
-  URL.revokeObjectURL(a.href);
+  const compSlug = getSafeFileSlug(STATE.selectedJob?.company || "Role");
+  triggerBlobDownload(e.value, `Mark_Chester_Santos_CoverLetter_${compSlug}.txt`, "text/plain;charset=utf-8");
+  showToast("Downloaded Cover Letter (.txt)");
 }
 
 // ============================================================================
